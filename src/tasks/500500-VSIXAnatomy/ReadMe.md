@@ -16,7 +16,7 @@
 
 ![Build output](./60BuildOutput60.jpg)
 
-1. Install the extension as follows.
+3. Install the extension as follows.
 
 ![Extension installation](./70ExtensionInstallation70.jpg)
 
@@ -24,7 +24,7 @@
 
 ![Extension installation log](./80InstallLog80.jpg)
 
-1. Once installed, open the logs. You will see something like
+5. Once installed, open the logs. You will see something like
 
 > The extension has been installed to C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
 
