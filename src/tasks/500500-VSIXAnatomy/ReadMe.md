@@ -47,3 +47,4 @@
 
 That should be gone now, after the uninstall.
 
+10. Here we go...
