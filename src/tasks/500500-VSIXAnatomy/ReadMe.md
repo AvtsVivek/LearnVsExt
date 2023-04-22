@@ -14,6 +14,36 @@
 
 2. Then build and observe the output.
 
-![New Project Template](./60BuildOutput60.jpg)
+![Build output](./60BuildOutput60.jpg)
 
-3. 
+1. Install the extension as follows.
+
+![Extension installation](./70ExtensionInstallation70.jpg)
+
+4. See the logs.
+
+![Extension installation log](./80InstallLog80.jpg)
+
+1. Once installed, open the logs. You will see something like
+
+> The extension has been installed to C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+
+6. Go to that path and you will see
+
+![Extension Install location](./90InstallLocation90.jpg)
+
+7. To uninstall 
+   1. Visual Studio 2019: Extensions > Manage Extensions
+   2. Visual Studio 2022: Extensions > Manage Extensions
+   3. Then Go to the installed section and do the uninstall.
+   
+![Visual Stuion Managed Extensions dialog](./100ManagedExtensionsInVs2022100.jpg)
+
+
+8. Take a look at the following as well
+   1. https://stackoverflow.com/a/32672070/1977871
+
+9. Finally after you uninstall, do take a look at the path C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+
+That should be gone now, after the uninstall.
+

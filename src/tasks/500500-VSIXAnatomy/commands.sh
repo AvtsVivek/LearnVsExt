@@ -19,5 +19,22 @@ dotnet build --project ./VSIXAnatomy.csproj
 
 devenv /build Debug ./VSIXAnatomy.sln
 
+pwd
+
+Get-ChildItem
+
+cd bin/debug
+
+Get-ChildItem
+
+# Now to install the extension, first ensure all the instances of Visual Studio are closed.
+# Now simply run the following command to install the extension
+
+./VSIXAnatomy.vsix
+
+
+# Once installed, open the logs. You will see something like
+# The extension has been installed to C:\Users\YourUserName\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+
 
 
