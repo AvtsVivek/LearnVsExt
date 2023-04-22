@@ -4,7 +4,7 @@ cd src/tasks/500500-VSIXAnatomy
 
 cd src/apps/500500-VSIXAnatomy
 
-## I dont think we can build using the following command. 
+## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
 dotnet build --project ./VSIXAnatomy.csproj
