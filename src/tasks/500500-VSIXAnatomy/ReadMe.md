@@ -26,7 +26,19 @@
 
 5. Once installed, open the logs. You will see something like
 
-> The extension has been installed to C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+> The extension has been installed to C:\Users\YourUserName\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+
+   The first part is specific to the logged-in user and varies from machine to machine.
+   This path is the local Appdata folder of the user and can be accessed directly by the
+   environment variable %LOCALAPPDATA%.
+
+   The second part is the relative part where the extensions are installed. The path
+   comprises the folder structure, starting with Microsoft, which contains a folder named
+   VisualStudio followed by the version of Visual Studio, which would vary for Visual
+   Studio versions.
+
+   The third and final part is a folder name that the VSIX installer generates for the
+   extension to keep it unique
 
 6. Go to that path and you will see
 
