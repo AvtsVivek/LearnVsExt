@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace VSIXAnatomy
+namespace VSixBlankProjectAnalysis
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace VSIXAnatomy
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(VSIXAnatomyPackage.PackageGuidString)]
-    public sealed class VSIXAnatomyPackage : AsyncPackage
+    [Guid(VSixBlankProjectAnalysisPackage.PackageGuidString)]
+    public sealed class VSixBlankProjectAnalysisPackage : AsyncPackage
     {
         /// <summary>
-        /// VSIXAnatomyPackage GUID string.
+        /// VSixBlankProjectAnalysisPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "a4877438-42db-4d97-a8db-4d4061239b2b";
+        public const string PackageGuidString = "86a6374d-a69b-4d41-ab00-8d100e017adf";
 
         #region Package Members
 

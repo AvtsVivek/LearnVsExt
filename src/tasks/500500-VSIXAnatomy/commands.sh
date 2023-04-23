@@ -17,7 +17,7 @@ dotnet build --project ./VSIXAnatomy.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-devenv /build Debug ./VSIXAnatomy.sln
+devenv /build Debug ./VSixBlankProjectAnalysis.sln
 
 pwd
 
