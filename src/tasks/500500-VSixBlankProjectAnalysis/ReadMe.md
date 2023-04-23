@@ -14,7 +14,7 @@
 
 2. Then build and observe the output.
 
-![Build output](./images/60BuildOutput60.jpg)
+![Build output](./images/60BuildOutput61.jpg)
 
 3. Install the extension as follows.
 
@@ -42,7 +42,7 @@
 
 6. Go to that path and you will see
 
-![Extension Install location](./images/90InstallLocation90.jpg)
+![Extension Install location](./images/90InstallLocation91.jpg)
 
 7. To uninstall 
    1. Visual Studio 2019: Extensions > Manage Extensions
