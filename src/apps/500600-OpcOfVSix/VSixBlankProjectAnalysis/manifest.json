@@ -1,0 +1,27 @@
+{
+	"id": "VSixBlankProjectAnalysis.9bfb0bdb-2472-471a-b036-443979816499",
+	"version": "1.0",
+	"type": "Vsix",
+	"vsixId": "VSixBlankProjectAnalysis.9bfb0bdb-2472-471a-b036-443979816499",
+	"extensionDir": "[installdir]\\Common7\\IDE\\Extensions\\cmlcoger.pf4",
+	"files": [
+		{
+			"fileName": "/extension.vsixmanifest",
+			"sha256": null
+		},
+		{
+			"fileName": "/VSixBlankProjectAnalysis.dll",
+			"sha256": null
+		},
+		{
+			"fileName": "/VSixBlankProjectAnalysis.pkgdef",
+			"sha256": null
+		}
+	],
+	"installSizes": {
+		"targetDrive": 9254
+	},
+	"dependencies": {
+		"Microsoft.VisualStudio.Component.CoreEditor": "[17.0,18.0)"
+	}
+}
