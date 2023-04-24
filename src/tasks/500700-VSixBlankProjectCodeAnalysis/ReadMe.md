@@ -27,4 +27,10 @@ the package that would be exposed by the assembly created by building this proje
 
 Meta package is a special NuGet package that describes a group of packages that makes sense together. For example, Microsoft defined a meta package named Microsoft.NETCore.App, which contains all the NuGet packages that are needed to develop a .NET Core app. Likewise, Microsoft.VisualStudio.SDK is a meta package that groups a number of NuGet packages that are needed to develop extensions to extend Visual Studio.
 
-12. 
+12. Open the vsix manifest file in Visula Studio by double clicking it.
+
+![VSix Manifest in Visual Studio](./images/60VSixManifest60.jpg)
+
+13. This is where we define the supported Visual Studio version for this product;
+
+![VSix Manifest in Visual Studio Install Targets](./images/70VSixManifestInstallTargets75.jpg)
