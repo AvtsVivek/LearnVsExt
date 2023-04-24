@@ -59,4 +59,6 @@
 
 That should be gone now, after the uninstall.
 
-10. Here we go...
+10. Note the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/microsoft.visualstudio.sdk) nuget package reference. This package is a meta package and contains the Visual Studio Software Development Kit (SDK). When you installed this NuGet package in a stand-alone project, it will bring down 150+ assemblies!!!
+
+![Solution Explorer](./images/50SolutionExplorer60.jpg)
