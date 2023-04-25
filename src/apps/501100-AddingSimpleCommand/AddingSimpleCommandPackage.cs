@@ -25,6 +25,7 @@ namespace AddingSimpleCommand
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(AddingSimpleCommandPackage.PackageGuidString)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class AddingSimpleCommandPackage : AsyncPackage
     {
         /// <summary>
@@ -46,6 +47,7 @@ namespace AddingSimpleCommand
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await SimpleCommand.InitializeAsync(this);
         }
 
         #endregion
