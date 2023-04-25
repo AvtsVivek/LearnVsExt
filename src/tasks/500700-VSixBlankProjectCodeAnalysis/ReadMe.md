@@ -36,7 +36,6 @@ Meta package is a special NuGet package that describes a group of packages that 
 ![VSix Manifest in Visual Studio Install Targets](./images/70VSixManifestInstallTargets75.jpg)
 
 
-
 | Version | Name               |
 |---------|--------------------|
 | 8       | Visual Studio 2005 |

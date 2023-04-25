@@ -31,3 +31,22 @@ classify and install the extensions.
 10. Language Packs: A VSIX package may contain once or more Extension.vsixlangpack files to provide
 localized text during installation.
 
+11. [Content_Types].xml: As with any OPC file, [Content_Types].xml file identifies the file types contained in the .vsix file or package. 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+    <Default Extension="vsixmanifest" ContentType="text/xml" />
+    <Default Extension="dll" ContentType="application/octet-stream" />
+    <Default Extension="pkgdef" ContentType="text/plain" />
+    <Default Extension="json" ContentType="application/json" />
+</Types>
+```
+
+12. Visual Studio installer uses [Content_Types].xml during installation of the package but does not install it. That is why we did not see this file in the install directory.
+
+![Extension Install location](./images/90InstallLocation91.jpg)
+
+13. Catalog.json: This is a JSON file generated and packaged inside the VSIX at the time of build. This JSON file contains the manifest and packages information for the extension.
+
+14. The catalog.json file also has "extensionDir". This will indicate where the extension will be installed. 
