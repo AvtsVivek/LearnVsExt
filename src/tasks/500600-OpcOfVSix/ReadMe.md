@@ -28,3 +28,6 @@ classify and install the extensions.
 
 9. A VSIX file is the basic unit of deployment for Visual Studio.
 
+10. Language Packs: A VSIX package may contain once or more Extension.vsixlangpack files to provide
+localized text during installation.
+

@@ -34,3 +34,17 @@ Meta package is a special NuGet package that describes a group of packages that 
 13. This is where we define the supported Visual Studio version for this product;
 
 ![VSix Manifest in Visual Studio Install Targets](./images/70VSixManifestInstallTargets75.jpg)
+
+
+
+| Version | Name               |
+|---------|--------------------|
+| 8       | Visual Studio 2005 |
+| 9       | Visual Studio 2008 |
+| 10      | Visual Studio 2010 |
+| 11      | Visual Studio 2012 |
+| 12      | Visual Studio 2013 |
+| 14      | Visual Studio 2015 |
+| 15      | Visual Studio 2017 |
+| 16      | Visual Studio 2019 |
+| 17      | Visual Studio 2022 |
