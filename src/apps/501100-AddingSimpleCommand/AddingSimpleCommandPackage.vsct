@@ -57,6 +57,7 @@
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke SimpleCommand</ButtonText>
+			    <ToolTipText>Invoke SimpleCommand Tooltip</ToolTipText>
         </Strings>
       </Button>
     </Buttons>
