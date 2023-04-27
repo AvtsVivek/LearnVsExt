@@ -16,3 +16,8 @@ After
 ![After adding command](./images/52AfterAddingCommand50.jpg)
 
 So you see quite a few things get added as a result of the new item. 
+
+Once you install, open visual studio and you will see the following. 
+
+![After adding command](./images/53InstalledCommand50.jpg)
+
