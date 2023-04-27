@@ -15,4 +15,4 @@ After
 
 ![After adding command](./images/52AfterAddingCommand50.jpg)
 
-
+So you see quite a few things get added as a result of the new item. 
