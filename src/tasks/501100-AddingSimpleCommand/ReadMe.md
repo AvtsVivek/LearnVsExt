@@ -59,12 +59,26 @@ of the compilation output. For example:
 
 17. It comes from the xml file **AddingSimpleCommandPackage.vsct**. See Buttons element. 
 
-18. What if you want to add, a tool tip? 
-    1.  Add the following below the buttonText element.
+18. Launching Visul Studio for trying out. Press the debug button as shown. A new instance of Vs is launched side by side.
+
+![Launching visual studio](./images/56LaunchVs40.jpg)
+
+19. A new instance of Vs is launched side by side.
+
+![Visual Studio in Exp Mode](./images/56VsInExpMode50.jpg)
+
+20. If you just want to start and run visual studio in experimental mode, run the following command.
+
+```cmc
+devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
+```
+
+20. What if you want to add, a tool tip? 
+    1.  Add the following below the buttonText element in the xml file **AddingSimpleCommandPackage.vsct**.
 ```xml
 <ToolTipText>Invoke SimpleCommand Tooltip</ToolTipText>
 ```
 
-19.  Its not working.
+1.   Its not working.
 
 
