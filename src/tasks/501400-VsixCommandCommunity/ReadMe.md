@@ -10,3 +10,7 @@ Once installed, my command.
 Solution Explorer.
 
 ![Solution Explorer](./images/57SolutionExplorer50.jpg)
+
+The File changes to the VSCommandTable.vsct are as follows.
+
+![File Changes](./images/58CommandTableFileChanges50.jpg)

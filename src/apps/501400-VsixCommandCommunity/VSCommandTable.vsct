@@ -6,30 +6,30 @@
   <Include href="KnownImageIds.vsct"/>
   <Include href="VSGlobals.vsct"/>
 
-  <Commands package="VsixCommandCommunity">
+  <Commands package="InsertGuid">
     <Groups>
-      <Group guid="VsixCommandCommunity" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="VSMainMenu" id="Tools"/>
+      <Group guid="InsertGuid" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="VSMainMenu" id="Edit"/>
       </Group>
     </Groups>
 
     <!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
     <Buttons>
-      <Button guid="VsixCommandCommunity" id="MyCommand" priority="0x0100" type="Button">
-        <Parent guid="VsixCommandCommunity" id="MyMenuGroup" />
-        <Icon guid="ImageCatalogGuid" id="StatusInformation" />
+      <Button guid="InsertGuid" id="MyCommand" priority="0x0100" type="Button">
+        <Parent guid="InsertGuid" id="MyMenuGroup" />
+        <Icon guid="ImageCatalogGuid" id="PasteAppend" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
-          <ButtonText>My Command</ButtonText>
-          <LocCanonicalName>.VsixCommandCommunity.MyCommand</LocCanonicalName>
+          <ButtonText>Insert Guid</ButtonText>
+          <LocCanonicalName>.Edit.InsertGuid</LocCanonicalName>
         </Strings>
       </Button>
     </Buttons>
   </Commands>
 
   <Symbols>
-    <GuidSymbol name="VsixCommandCommunity" value="{3cef50ec-8f83-448b-aa25-f25a2abd03da}">
+    <GuidSymbol name="InsertGuid" value="{3cef50ec-8f83-448b-aa25-f25a2abd03da}">
       <IDSymbol name="MyMenuGroup" value="0x0001" />
       <IDSymbol name="MyCommand" value="0x0100" />
     </GuidSymbol>
