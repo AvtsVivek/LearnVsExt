@@ -73,6 +73,10 @@ of the compilation output. For example:
 devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
 ```
 
+21. Now, you can see its installed in the visual studio alone.
+
+22. Now to unstall it, just go to the Extensions(of the experimantal visual studio where you want to uninstall) -> Installed and uninstall it.
+
 20. What if you want to add, a tool tip? 
     1.  Add the following below the buttonText element in the xml file **AddingSimpleCommandPackage.vsct**.
 ```xml

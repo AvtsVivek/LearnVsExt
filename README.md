@@ -18,4 +18,5 @@ Cook Book reference
 Other references
 1. https://visualstudio.microsoft.com/vs/features/extend/
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/?view=vs-2022
+3. https://bideveloperextensions.github.io/features/VSIXextensionmodel/
 

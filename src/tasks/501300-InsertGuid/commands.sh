@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/501100-AddingSimpleCommand
+cd src/tasks/501300-InsertGuid
 
-cd src/apps/501100-AddingSimpleCommand
+cd src/apps/501300-InsertGuid
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./AddingSimpleCommand.csproj
+dotnet build --project ./InsertGuid.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -17,19 +17,12 @@ dotnet build --project ./AddingSimpleCommand.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-# The following three build commands does not seem to work. 
+# The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./AddingSimpleCommand.sln
-devenv /build Debug ./AddingSimpleCommand.csproj
-devenv /rootsuffix Exp /updateconfiguration
+devenv /build Debug ./InsertGuid.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
-
-# Now, you can see its installed in the visual studio alone.
-# Now to unstall it, just go to the Extensions(of the experimantal visual studio where you want to uninstall) -> Installed and uninstall it.
-
-# If you want to install on the machine, do the following. 
+devenv.exe /RootSuffix Exp ./InsertGuid.sln
 
 pwd
 
@@ -42,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./AddingSimpleCommand.vsix
+./InsertGuid.vsix
 
 
 # Once installed, open the logs. You will see something like. 
