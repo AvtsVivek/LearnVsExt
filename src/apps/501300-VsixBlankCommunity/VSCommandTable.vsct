@@ -6,11 +6,11 @@
   <Include href="KnownImageIds.vsct"/>
   <Include href="VSGlobals.vsct"/>
 
-  <Commands package="InsertGuid">
+  <Commands package="VsixBlankCommunity">
   </Commands>
 
   <Symbols>
-    <GuidSymbol name="InsertGuid" value="{7f5f574d-40a8-494d-a55c-6435bdc45675}">
+    <GuidSymbol name="VsixBlankCommunity" value="{b5a37eea-8914-4c17-8a3a-ee6758de2772}">
       
     </GuidSymbol>
   </Symbols>

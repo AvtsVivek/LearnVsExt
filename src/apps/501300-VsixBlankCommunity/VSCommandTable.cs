@@ -5,15 +5,15 @@
 // ------------------------------------------------------------------------------
 using System;
 
-namespace InsertGuid
+namespace VsixBlankCommunity
 {
     /// <summary>
     /// Helper class that exposes all GUIDs used across VS Package.
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string InsertGuidString = "7f5f574d-40a8-494d-a55c-6435bdc45675";
-        public static Guid InsertGuid = new Guid(InsertGuidString);
+        public const string VsixBlankCommunityString = "b5a37eea-8914-4c17-8a3a-ee6758de2772";
+        public static Guid VsixBlankCommunity = new Guid(VsixBlankCommunityString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.

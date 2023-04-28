@@ -1,6 +1,6 @@
-﻿using InsertGuid;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using VsixBlankCommunity;
 
 [assembly: AssemblyTitle(Vsix.Name)]
 [assembly: AssemblyDescription(Vsix.Description)]

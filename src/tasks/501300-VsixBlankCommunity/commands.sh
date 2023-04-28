@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/501300-InsertGuid
+cd src/tasks/501300-VsixBlankCommunity
 
-cd src/apps/501300-InsertGuid
+cd src/apps/501300-VsixBlankCommunity
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./InsertGuid.csproj
+dotnet build --project ./VsixBlankCommunity.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,10 +19,10 @@ dotnet build --project ./InsertGuid.csproj
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./InsertGuid.sln
+devenv /build Debug ./VsixBlankCommunity.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./InsertGuid.sln
+devenv.exe /RootSuffix Exp ./VsixBlankCommunity.sln
 
 pwd
 
