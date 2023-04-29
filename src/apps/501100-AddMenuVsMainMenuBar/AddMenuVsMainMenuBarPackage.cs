@@ -31,7 +31,7 @@ namespace AddMenuVsMainMenuBar
         /// <summary>
         /// AddMenuVsMainMenuBarPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "94afe47c-f606-4b95-8ac1-788e2710db97";
+        public const string PackageGuidString = "d8f67f70-b92c-4904-8a64-245ae8c2e10f";
 
         #region Package Members
 
@@ -47,7 +47,7 @@ namespace AddMenuVsMainMenuBar
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await AddMenuVsMainMenuBar.Commands.MainMenuCommand.InitializeAsync(this);
+            await AddMenuVsMainMenuBar.Commands.AddMenuVsMainMenuBar.InitializeAsync(this);
         }
 
         #endregion

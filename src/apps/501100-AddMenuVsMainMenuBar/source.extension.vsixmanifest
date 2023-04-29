@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="AddMenuVsMainMenuBar.1f7d1190-1534-49f7-b5df-505c54996b3b" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <Identity Id="AddMenuVsMainMenuBar.4d069c3d-1f5c-42e4-be2b-73e13c8bc03b" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
     <DisplayName>AddMenuVsMainMenuBar</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>

@@ -52,11 +52,11 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="MainMenuCommandId" priority="0x0100" type="Button">
+      <Button guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="AddMenuVsMainMenuBarId" priority="0x0100" type="Button">
         <Parent guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke MainMenuCommand</ButtonText>
+          <ButtonText>Invoke AddMenuVsMainMenuBar</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -68,21 +68,21 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\MainMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\AddMenuVsMainMenuBar.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
     </Bitmaps>
   </Commands>
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidAddMenuVsMainMenuBarPackage" value="{94afe47c-f606-4b95-8ac1-788e2710db97}" />
+    <GuidSymbol name="guidAddMenuVsMainMenuBarPackage" value="{d8f67f70-b92c-4904-8a64-245ae8c2e10f}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidAddMenuVsMainMenuBarPackageCmdSet" value="{992b3cdc-61c1-4b76-8c60-6598e88530e1}">
+    <GuidSymbol name="guidAddMenuVsMainMenuBarPackageCmdSet" value="{33c3153d-5f40-4e71-a11e-50cf8575ecf6}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="MainMenuCommandId" value="0x0100" />
+      <IDSymbol name="AddMenuVsMainMenuBarId" value="0x0100" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{c275e9e3-2560-4871-8b83-42cbb2d5b6cf}" >
+    <GuidSymbol name="guidImages" value="{5dbd87e1-c94b-4ae3-b5ea-07c651f71072}" >
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

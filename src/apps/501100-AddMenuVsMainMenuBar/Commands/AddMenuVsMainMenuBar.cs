@@ -12,7 +12,7 @@ namespace AddMenuVsMainMenuBar.Commands
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class MainMenuCommand
+    internal sealed class AddMenuVsMainMenuBar
     {
         /// <summary>
         /// Command ID.
@@ -22,7 +22,7 @@ namespace AddMenuVsMainMenuBar.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("992b3cdc-61c1-4b76-8c60-6598e88530e1");
+        public static readonly Guid CommandSet = new Guid("33c3153d-5f40-4e71-a11e-50cf8575ecf6");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -30,12 +30,12 @@ namespace AddMenuVsMainMenuBar.Commands
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainMenuCommand"/> class.
+        /// Initializes a new instance of the <see cref="AddMenuVsMainMenuBar"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private MainMenuCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private AddMenuVsMainMenuBar(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -48,7 +48,7 @@ namespace AddMenuVsMainMenuBar.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static MainMenuCommand Instance
+        public static AddMenuVsMainMenuBar Instance
         {
             get;
             private set;
@@ -71,12 +71,12 @@ namespace AddMenuVsMainMenuBar.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in MainMenuCommand's constructor requires
+            // Switch to the main thread - the call to AddCommand in AddMenuVsMainMenuBar's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new MainMenuCommand(package, commandService);
+            Instance = new AddMenuVsMainMenuBar(package, commandService);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace AddMenuVsMainMenuBar.Commands
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "MainMenuCommand";
+            string title = "AddMenuVsMainMenuBar";
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(

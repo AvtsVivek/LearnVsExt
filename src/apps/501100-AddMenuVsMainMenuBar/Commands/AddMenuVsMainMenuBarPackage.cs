@@ -12,13 +12,13 @@ namespace AddMenuVsMainMenuBar.Commands
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidAddMenuVsMainMenuBarPackageString = "94afe47c-f606-4b95-8ac1-788e2710db97";
+        public const string guidAddMenuVsMainMenuBarPackageString = "d8f67f70-b92c-4904-8a64-245ae8c2e10f";
         public static Guid guidAddMenuVsMainMenuBarPackage = new Guid(guidAddMenuVsMainMenuBarPackageString);
 
-        public const string guidAddMenuVsMainMenuBarPackageCmdSetString = "992b3cdc-61c1-4b76-8c60-6598e88530e1";
+        public const string guidAddMenuVsMainMenuBarPackageCmdSetString = "33c3153d-5f40-4e71-a11e-50cf8575ecf6";
         public static Guid guidAddMenuVsMainMenuBarPackageCmdSet = new Guid(guidAddMenuVsMainMenuBarPackageCmdSetString);
 
-        public const string guidImagesString = "c275e9e3-2560-4871-8b83-42cbb2d5b6cf";
+        public const string guidImagesString = "5dbd87e1-c94b-4ae3-b5ea-07c651f71072";
         public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>
@@ -27,7 +27,7 @@ namespace AddMenuVsMainMenuBar.Commands
     internal sealed partial class PackageIds
     {
         public const int MyMenuGroup = 0x1020;
-        public const int MainMenuCommandId = 0x0100;
+        public const int AddMenuVsMainMenuBarId = 0x0100;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;
