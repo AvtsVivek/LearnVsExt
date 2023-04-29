@@ -1,15 +1,23 @@
 
+https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar?view=vs-2022
+
 1.  Create a new project.
 
 2.  Add new project as follows.
 
 ![Add new project](./images/50NewVSixProject50.jpg)
 
-3. Note before and after adding the command, the changes in the project.
+3. Now add commands folder 
+
+4. Add a new command.
+
+![Adding new command](./images/52NewCommand50.jpg) 
+
+1. Note before and after adding the command, the changes in the project.
 
 Before
 
-![Before adding command](./images/50StartOfTemplate50.jpg)
+![Before adding command](./images/51ProjectTemplateBefore50.jpg)
 
 After
 
