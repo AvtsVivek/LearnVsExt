@@ -29,7 +29,17 @@ After
 
 8. Now we will change this. [Take a look at this](https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar?view=vs-2022). 
 
-9. 
+9. Impliment the chnages mentioned in the link.
 
+10. Then build and run the app.
 
+11. Now check Extension -> Test Menu
+
+![Test Menu Extension](./images/56TestMenuInExpVs50.jpg)
+
+12. Now to make this into a menu on the tool bar take a look this [SO Answer](https://stackoverflow.com/a/76146656/1977871). 
+
+13. Now debug again and launch the Exp.
+
+![Test Menu Extension](./images/57TestMenuInMenuBarVs50.jpg)
 

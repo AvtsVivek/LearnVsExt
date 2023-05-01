@@ -31,15 +31,24 @@
     group; your package should define its own command set in order to avoid collisions
     with command ids defined by other packages. -->
 
+	  <Menus>
+		  <Menu guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
+			  <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+			  <Strings>
+				  <ButtonText>Test Menu</ButtonText>
+			  </Strings>
+		  </Menu>
+	  </Menus>
+	  
     <!-- In this section you can define new menu groups. A menu group is a container for
          other menus or buttons (commands); from a visual point of view you can see the
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
-    <Groups>
-      <Group guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
-      </Group>
-    </Groups>
+	  <Groups>
+		  <Group guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+			  <Parent guid="guidAddMenuVsMainMenuBarPackageCmdSet" id="TopLevelMenu"/>
+		  </Group>
+	  </Groups>
 
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button
@@ -80,6 +89,7 @@
     <GuidSymbol name="guidAddMenuVsMainMenuBarPackageCmdSet" value="{33c3153d-5f40-4e71-a11e-50cf8575ecf6}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="AddMenuVsMainMenuBarId" value="0x0100" />
+		<IDSymbol name="TopLevelMenu" value="0x1021"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{5dbd87e1-c94b-4ae3-b5ea-07c651f71072}" >
