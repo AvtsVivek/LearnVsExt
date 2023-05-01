@@ -61,7 +61,8 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidAddMenuButtonVsMainMenuBarPackageCmdSet" id="AddMenuButtonCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidAddMenuButtonVsMainMenuBarPackageCmdSet" id="MyMenuGroup" />
+		  <Parent guid="guidSHLMainMenu"
+						id="IDG_VS_MM_TOOLSADDINS" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke AddMenuButtonCommand</ButtonText>
