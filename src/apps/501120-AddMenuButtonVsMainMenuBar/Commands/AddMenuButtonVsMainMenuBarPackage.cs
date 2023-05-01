@@ -28,6 +28,7 @@ namespace AddMenuButtonVsMainMenuBar.Commands
     {
         public const int MyMenuGroup = 0x1020;
         public const int AddMenuButtonCommandId = 0x0100;
+        public const int TopLevelMenu = 0x1021;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;
