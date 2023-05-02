@@ -31,4 +31,12 @@
 <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
 ```
 
-7. The parent is directly the MainMenu. In the earlier example, the hierarchy is Button, the parent of which is a group. And the parent of the group is menu. And the Menu's parent is the MainMenu.  
+7. Also note that other IDSymbols are removed. There is only one left.
+
+```xml
+<GuidSymbol name="guidAddMenuButtonVsMainMenuBarPackageCmdSet" value="{15ec0eb6-41aa-4b61-8259-5e07eeb95f18}">
+    <IDSymbol name="AddMenuButtonCommandId" value="0x0100" />
+</GuidSymbol>
+```
+
+8. The parent is directly the MainMenu. In the earlier example, the hierarchy is Button, the parent of which is a group. And the parent of the group is menu. And the Menu's parent is the MainMenu.  
