@@ -39,4 +39,8 @@ Repository to learn Visual Studio Extension development.
 then take a look at the [so answer](https://stackoverflow.com/a/76134788/1977871).
 
 
+```txt
+C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudioIntegration\Tools\Bin\CreateExpInstance.exe /Reset /VSInstance=17.0_c9ef2fd3 /RootSuffix=Exp && PAUSE
+```
+
 2. 
