@@ -30,3 +30,13 @@ Repository to learn Visual Studio Extension development.
 4. [VS SDK Samples repo](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
 5. [Extensibility chatroom on Gitter.im](https://gitter.im/Microsoft/extendvs)
 
+
+## Notes
+
+1. If you get an error something like the following, 
+> Extension 'AddMenuButtonVsMainMenuBar.d4c83f53-acb7-473a-8726-498e86ebae56' could not be found. Please make sure the extension has been installed.	AddMenuButtonVsMainMenuBar			
+
+then take a look at the [so answer](https://stackoverflow.com/a/76134788/1977871).
+
+
+2. 

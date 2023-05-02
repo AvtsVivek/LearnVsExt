@@ -30,24 +30,6 @@
     called "command set" and is used to group different command inside a logically related
     group; your package should define its own command set in order to avoid collisions
     with command ids defined by other packages. -->
-	  <Menus>
-		  <Menu guid="guidAddMenuButtonVsMainMenuBarPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
-			  <Parent guid="guidSHLMainMenu"
-					  id="IDG_VS_MM_TOOLSADDINS" />
-			  <Strings>
-				  <ButtonText>Test Menu</ButtonText>
-			  </Strings>
-		  </Menu>
-	  </Menus>
-    <!-- In this section you can define new menu groups. A menu group is a container for
-         other menus or buttons (commands); from a visual point of view you can see the
-         group as the part of a menu contained between two lines. The parent of a group
-         must be a menu. -->
-    <Groups>
-      <Group guid="guidAddMenuButtonVsMainMenuBarPackageCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
-      </Group>
-    </Groups>
 
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button
@@ -61,8 +43,7 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidAddMenuButtonVsMainMenuBarPackageCmdSet" id="AddMenuButtonCommandId" priority="0x0100" type="Button">
-		  <Parent guid="guidSHLMainMenu"
-						id="IDG_VS_MM_TOOLSADDINS" />
+		  <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke AddMenuButtonCommand</ButtonText>
