@@ -55,10 +55,14 @@
 8. Take a look at the following as well
    1. https://stackoverflow.com/a/32672070/1977871
 
-9. Finally after you uninstall, do take a look at the path C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+9. You may also want to run the following command to uninstall the extensions from Visual studio experimental or reset the extensions from Visual Studio Experimental 
+
+![Reset Experimental Visual Studio](./images/110ResetVsExpIntance50.jpg)
+
+1.  Finally after you uninstall, do take a look at the path C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
 
 That should be gone now, after the uninstall.
 
-10. Note the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/microsoft.visualstudio.sdk) nuget package reference. This package is a meta package and contains the Visual Studio Software Development Kit (SDK). When you installed this NuGet package in a stand-alone project, it will bring down 150+ assemblies!!!
+11. Note the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/microsoft.visualstudio.sdk) nuget package reference. This package is a meta package and contains the Visual Studio Software Development Kit (SDK). When you installed this NuGet package in a stand-alone project, it will bring down 150+ assemblies!!!
 
 ![Solution Explorer](./images/50SolutionExplorer60.jpg)

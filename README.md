@@ -45,6 +45,6 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 2. If you want to reset the experimental instance, do the following.
 
-![Reset Exp Vs](./src/images/50ResetVsExpIntance50.jpg)
+![Reset Exp Vs](./src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
 3. 
