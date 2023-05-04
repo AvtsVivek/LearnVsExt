@@ -9,6 +9,35 @@
 
    2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/how-to-use-asyncpackage-to-load-vspackages-in-the-background?view=vs-2017#create-an-asyncpackage
 
-   3. 
+4. Asdf
+
+```cs
+[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+[Guid(ProvideAutoLoadPackage.PackageGuidString)]
+[ProvideMenuResource("Menus.ctmenu", 1)]
+[ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
+[ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
+public sealed class ProvideAutoLoadPackage : AsyncPackage
+{
+
+}
+``` 
+
+5. Consider the attributes applied above.
+```cs
+[ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
+[ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
+```
+
+6. Try running debugging this app with and without the above attributes. Each time you run the app, ensure to reset the exp vs as follows.
+
+![Reset Visual Studio Exp](https://github.com/AvtsVivek/LearnVsExt/blob/main/src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
+
+Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called and our menu item will be in its default state – unchecked, regardless of the setting’s value.
+
+We need to make our Command to initialize at Visual Studio startup. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file.
+
+We have the attribute twice: When there’s no Solution, and when Solution exists. Which covers all cases. Also, note the PackageAutoLoadFlags.BackgroundLoad flag. This important flag states that our packages can initialize asynchronously on a background thread.
+
 
 
