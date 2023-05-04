@@ -47,4 +47,19 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 ![Reset Exp Vs](./src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
-3. 
+
+
+## A tutorial Series that I found on the net.
+
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-3-add-context-menu-get-selected-code/
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-4-show-a-popup-window/
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-highlight-code-in-editor/
+https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-6-follow-span-code-trackingspan/
+https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-7-insert-buttons-text-characters-adornments/
+https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-8-add-ui-in-the-indicator-margin-with-glyphs/
+
+And the code samples are here.
+https://github.com/michaelscodingspot/CodyDocs
+
