@@ -31,13 +31,22 @@
     group; your package should define its own command set in order to avoid collisions
     with command ids defined by other packages. -->
 
+	<Menus>
+		<Menu guid="guidProvideAutoLoadPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
+			<Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+			<Strings>
+				<ButtonText>Test Menu</ButtonText>
+			</Strings>
+		</Menu>
+	</Menus>  
+	  
     <!-- In this section you can define new menu groups. A menu group is a container for
          other menus or buttons (commands); from a visual point of view you can see the
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
       <Group guid="guidProvideAutoLoadPackageCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+        <Parent guid="guidProvideAutoLoadPackageCmdSet" id="TopLevelMenu"/>
       </Group>
     </Groups>
 
@@ -80,6 +89,7 @@
     <GuidSymbol name="guidProvideAutoLoadPackageCmdSet" value="{03fa143e-7834-4179-9fd5-edba6772c20f}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="ATrialCommandId" value="0x0100" />
+	  <IDSymbol name="TopLevelMenu" value="0x1021"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{b11efc6f-52b6-4686-9f4e-b9226d65b240}" >
