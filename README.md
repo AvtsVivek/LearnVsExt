@@ -51,15 +51,16 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 ## A tutorial Series that I found on the net.
 
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-3-add-context-menu-get-selected-code/
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-4-show-a-popup-window/
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-highlight-code-in-editor/
-https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-6-follow-span-code-trackingspan/
-https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-7-insert-buttons-text-characters-adornments/
-https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-8-add-ui-in-the-indicator-margin-with-glyphs/
+1. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
+2. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
+3. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-3-add-context-menu-get-selected-code/
+4. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-4-show-a-popup-window/
+5. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-highlight-code-in-editor/
+6. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-6-follow-span-code-trackingspan/
+7. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-7-insert-buttons-text-characters-adornments/
+8. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-8-add-ui-in-the-indicator-margin-with-glyphs/
 
 And the code samples are here.
-https://github.com/michaelscodingspot/CodyDocs
+
+1. https://github.com/michaelscodingspot/CodyDocs
 
