@@ -26,9 +26,9 @@ namespace CheckableMenuCommand {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public string EnableSomeSetting {
+        public bool EnableSomeSetting {
             get {
-                return ((string)(this["EnableSomeSetting"]));
+                return ((bool)(this["EnableSomeSetting"]));
             }
             set {
                 this["EnableSomeSetting"] = value;

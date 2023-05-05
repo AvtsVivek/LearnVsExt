@@ -8,6 +8,8 @@
    1. https://learn.microsoft.com/en-us/visualstudio/extensibility/how-to-use-asyncpackage-to-load-vspackages-in-the-background?view=vs-2022#create-an-asyncpackage
 
    2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/how-to-use-asyncpackage-to-load-vspackages-in-the-background?view=vs-2017#create-an-asyncpackage
+   
+   3. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar?view=vs-2022
 
 4. Asdf
 

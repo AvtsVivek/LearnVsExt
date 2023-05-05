@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CheckableMenuCommand" GeneratedClassName="GeneralSettings">
   <Profiles />
   <Settings>
-    <Setting Name="EnableSomeSetting" Type="System.String" Scope="User">
+    <Setting Name="EnableSomeSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
