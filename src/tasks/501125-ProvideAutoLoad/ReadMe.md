@@ -33,9 +33,9 @@ public sealed class ProvideAutoLoadPackage : AsyncPackage
 
 ![Reset Visual Studio Exp](https://github.com/AvtsVivek/LearnVsExt/blob/main/src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
-Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called and our menu item will be in its default state – unchecked, regardless of the setting’s value.
+Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called.
 
-We need to make our Command to initialize at Visual Studio startup. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file.
+If we need to make our Command to initialize at Visual Studio startup, that is, if we need our ctor to be called at start up, we need to do a bit more. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file.
 
 We have the attribute twice: When there’s no Solution, and when Solution exists. Which covers all cases. Also, note the PackageAutoLoadFlags.BackgroundLoad flag. This important flag states that our packages can initialize asynchronously on a background thread.
 
