@@ -47,3 +47,8 @@ Meta package is a special NuGet package that describes a group of packages that 
 | 15      | Visual Studio 2017 |
 | 16      | Visual Studio 2019 |
 | 17      | Visual Studio 2022 |
+
+14. Also take a look at the Assets tab, as below.
+
+![VSix Manifest in Visual Studio Assets Tab](./images/71VSixManifestAssets50.jpg)
+
