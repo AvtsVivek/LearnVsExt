@@ -64,3 +64,18 @@ And the code samples are here.
 
 1. https://github.com/michaelscodingspot/CodyDocs
 
+
+##  YouTube Playlist
+1. https://www.youtube.com/playlist?list=PLReL099Y5nRdG2n1PrY_tbCsUznoYvqkS
+
+2. https://www.youtube.com/watch?v=2c-4uZc0rq0
+
+3. Writing Visual Studio Extensions with Mads - Writing your first extension
+   1. https://www.youtube.com/watch?v=u0pRDM8qW04
+
+
+
+## Blog posts
+1. https://devblogs.microsoft.com/visualstudio/getting-started-writing-visual-studio-extensions/
+2. https://devblogs.microsoft.com/visualstudio/writing-extensions-just-got-easier/
+3. 
