@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/502100-AddingSimpleCommand
+cd src/tasks/500650-AddingSimpleCommand
 
-cd src/apps/502100-AddingSimpleCommand
+cd src/apps/500650-AddingSimpleCommand
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
