@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/501135-InsertGuidMenuCmd
+cd src/tasks/501140-InsertGuidContextMenu
 
-cd src/apps/501135-InsertGuidMenuCmd
+cd src/apps/501140-InsertGuidContextMenu
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./InsertGuidMenuCmd.csproj
+dotnet build --project ./InsertGuidContextMenu.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,10 +19,10 @@ dotnet build --project ./InsertGuidMenuCmd.csproj
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./InsertGuidMenuCmd.sln
+devenv /build Debug ./InsertGuidContextMenu.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./501135-InsertGuidMenuCmd.sln
+devenv.exe /RootSuffix Exp ./InsertGuidContextMenu.sln
 
 pwd
 
@@ -35,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./InsertGuidMenuCmd.vsix
+./InsertGuidContextMenu.vsix
 
 # Once installed, open the logs. You will see something like. 
 # YourUserName should be replaced with your user name. 
