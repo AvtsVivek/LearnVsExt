@@ -25,7 +25,7 @@ public sealed class ProvideAutoLoadPackage : AsyncPackage
 }
 ``` 
 
-5. Consider the attributes applied above.
+5. Consider the attributes applied above. Take a look at the YouTube ref: https://www.youtube.com/watch?v=p328QcgZObs&t=526s
 ```cs
 [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
