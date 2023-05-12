@@ -72,6 +72,12 @@ And the code samples are here.
 
 3. Writing Visual Studio Extensions with Mads - Writing your first extension
    1. https://www.youtube.com/watch?v=u0pRDM8qW04
+   2. https://www.youtube.com/watch?v=Pk7jdsvEhfc
+   3. https://www.youtube.com/watch?v=VVaGOxdvYSw
+   4. https://www.youtube.com/watch?v=haTDm8Qkips
+   5. https://www.youtube.com/watch?v=03M_4v0I1Gk
+   6. https://www.youtube.com/playlist?list=PLReL099Y5nReXKzeX10TZF3BfLdOZXxix
+
 
 
 
