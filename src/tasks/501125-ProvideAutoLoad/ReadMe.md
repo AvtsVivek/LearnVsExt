@@ -10,6 +10,8 @@
    2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/how-to-use-asyncpackage-to-load-vspackages-in-the-background?view=vs-2017#create-an-asyncpackage
    
    3. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar?view=vs-2022
+   
+   4. https://www.youtube.com/watch?v=p328QcgZObs&t=526s
 
 4. Asdf
 
@@ -30,6 +32,8 @@ public sealed class ProvideAutoLoadPackage : AsyncPackage
 [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
 ```
+
+   So they are not events. Think of them as states. https://www.youtube.com/watch?v=p328QcgZObs&t=565s
 
 6. Try running debugging this app with and without the above attributes. Each time you run the app, ensure to reset the exp vs as follows.
 
