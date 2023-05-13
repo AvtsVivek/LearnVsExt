@@ -14,6 +14,12 @@
 
 ![Settings Store Explorer Installed Products](./images/51SettingsStoreInstalledProducts50.jpg)
 
+6. Are the phone tools installed on your machine?
 
+```cs
+var settingsManager = new ShellSettingsManager(this.package);
+var configurationSettingsStore = settingsManager.GetReadOnlySettingsStore(SettingsScope.Configuration);
+var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\Microsoft Windows Phone Developer Tools");
+```
 
-
+7. 
