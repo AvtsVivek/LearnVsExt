@@ -72,4 +72,8 @@
             OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
       }
       ```
-11. 
+11. Place a break point at the start of the above code. Run and debug. Close and restart the EXP instance. Observe when the method is called.
+    1.  The method is called when the visual studio is started after the installation. This time, its not when the command is invoked.
+    2.  Now restart the EXP instance. Now the mthod is not called. Now invoke the command. Now the method is called.
+
+12. So from the second time on, the package is loaded only as required. Only when the command is invoked. If the command is **NOT** invoked, the package is not loaded at all!!! But after the intallatioin, the package is loaded irrespective of weather the command is invoked or not!!   
