@@ -77,3 +77,4 @@
     2.  Now restart the EXP instance. Now the mthod is not called. Now invoke the command. Now the method is called.
 
 12. So from the second time on, the package is loaded only as required. Only when the command is invoked. If the command is **NOT** invoked, the package is not loaded at all!!! But after the intallatioin, the package is loaded irrespective of weather the command is invoked or not!!   
+13. LOAD the extension as late as you possiblly can. This is important. 
