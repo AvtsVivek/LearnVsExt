@@ -1,6 +1,11 @@
-﻿using Microsoft.VisualStudio;
+﻿using FirstTimeAfterExtensionIsInstalled.Commands;
+using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Shell.Settings;
 using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
@@ -25,8 +30,14 @@ namespace FirstTimeAfterExtensionIsInstalled
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(FirstTimeAfterExtensionIsInstalledPackage.PackageGuidString)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.ShellInitialized_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [Guid(PackageGuidString)]
+    [ProvideAutoLoad(PackageGuids.autoloadString, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideUIContextRule(PackageGuids.autoloadString, 
+        name: "Auto Load",
+        expression: "!HasLoadedTermName",
+        termNames: new[] { "HasLoadedTermName" },
+        termValues: new[] { "UserSettingsStoreQuery:FirstTimeAfterExtensionIsInstalled\\HasLoaded" })]
     public sealed class FirstTimeAfterExtensionIsInstalledPackage : AsyncPackage
     {
         /// <summary>
@@ -47,7 +58,36 @@ namespace FirstTimeAfterExtensionIsInstalled
         {
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            
+
+            var settingsManager = new ShellSettingsManager(this);
+            var writableUserSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
+            var readOnlyUserSettingsStore = settingsManager.GetReadOnlySettingsStore(SettingsScope.UserSettings);
+
+            var hasLoadedPropertyExists = readOnlyUserSettingsStore.PropertyExists(@"FirstTimeAfterExtensionIsInstalled", "HasLoaded");
+
+            if (!hasLoadedPropertyExists)
+            {
+                writableUserSettingsStore.CreateCollection("FirstTimeAfterExtensionIsInstalled");
+                // writableUserSettingsStore.SetInt32("FirstTimeAfterExtensionIsInstalled", "VsRunCount", 1);
+                writableUserSettingsStore.SetBoolean("FirstTimeAfterExtensionIsInstalled", "HasLoaded", true);
+
+                var message = string.Format(CultureInfo.CurrentCulture, "Thanks for trying out. Good Day");
+                var title = "Thanks!!";
+
+                // Show a message box to prove we were here
+                VsShellUtilities.ShowMessageBox(
+                    this,
+                    message,
+                    title,
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+
+            await SomeCommand.InitializeAsync(this);
+
         }
 
         #endregion
