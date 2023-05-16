@@ -32,6 +32,12 @@ namespace ButtonWithVisibilityConstraints
         expression: "CSharp | VisualBasic",
         termNames: new[] { "CSharp", "VisualBasic" },
         termValues: new[] { "HierSingleSelectionName:.cs$", "HierSingleSelectionName:.vb$" })]
+    // Note you can use the following as well. Here we are using ActiveEditorContentType instead of HierSingleSelectionName
+    // The difference is the following. When you use HierSingleSelectionName, you must open a solution in visual studio and then 
+    // open files from that solution. Only then the Visibility of the command works as expected. So the context is a file belonging to a solution.
+    // On the other hand, with ActiveEditorContentType, you can open file from any arbitraty location as well. 
+    // So use the following and see.
+    // termValues: new[] { "ActiveEditorContentType:cs", "ActiveEditorContentType:vb" })]
     public sealed class ButtonWithVisibilityConstraintsPackage : AsyncPackage
     {
         /// <summary>
