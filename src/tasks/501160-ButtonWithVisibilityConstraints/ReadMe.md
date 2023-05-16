@@ -45,11 +45,14 @@ public static Guid uiContextSupportedFiles = new Guid(uiContextSupportedFilesStr
 
 8. In the exp instance, open a solution which has .cs file and other types of files. Open the .cs file and other file such as .vsct file. Right click on the file and observe the command. The cs file should have the command .vsct should not have the commmand.
    1. Cs file
+
 ![Right Click Cs file](./images/50_50RightClickCsFile.jpg)
-   1. Vsct file
+
+   2. Vsct file
+
 ![Right Click vsct file](./images/51_50RightClickVsctFile.jpg)
 
-9. Finally note the following.
+1. Finally note the following.
 
 
 ```cs
