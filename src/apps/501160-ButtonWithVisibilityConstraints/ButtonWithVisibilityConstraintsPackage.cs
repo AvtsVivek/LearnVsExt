@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using ButtonWithVisibilityConstraints.Commands;
+using Microsoft.VisualStudio.Shell;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -24,8 +25,13 @@ namespace ButtonWithVisibilityConstraints
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(ButtonWithVisibilityConstraintsPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideUIContextRule(PackageGuids.uiContextSupportedFilesString,
+        name: "Supported Files",
+        expression: "CSharp | VisualBasic",
+        termNames: new[] { "CSharp", "VisualBasic" },
+        termValues: new[] { "HierSingleSelectionName:.cs$", "HierSingleSelectionName:.vb$" })]
     public sealed class ButtonWithVisibilityConstraintsPackage : AsyncPackage
     {
         /// <summary>

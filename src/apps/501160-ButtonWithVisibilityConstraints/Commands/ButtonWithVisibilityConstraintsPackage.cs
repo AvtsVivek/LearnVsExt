@@ -15,6 +15,9 @@ namespace ButtonWithVisibilityConstraints.Commands
         public const string guidButtonWithVisibilityConstraintsPackageString = "508ffd1a-37af-4445-be4b-b321feed260d";
         public static Guid guidButtonWithVisibilityConstraintsPackage = new Guid(guidButtonWithVisibilityConstraintsPackageString);
 
+        public const string uiContextSupportedFilesString = "24551deb-f034-43e9-a279-0e541241687e"; // Must match guid in VsCommandTable.vsct
+        public static Guid uiContextSupportedFiles = new Guid(uiContextSupportedFilesString);
+
         public const string guidButtonWithVisibilityConstraintsPackageCmdSetString = "7ca17223-d0f2-47a4-85d0-697e6636fd45";
         public static Guid guidButtonWithVisibilityConstraintsPackageCmdSet = new Guid(guidButtonWithVisibilityConstraintsPackageCmdSetString);
 

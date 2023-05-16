@@ -19,6 +19,8 @@
       <Button guid="guidButtonWithVisibilityConstraintsPackageCmdSet" id="CsVbFileVisibleCommandId" priority="0x0100" type="Button">
         <Parent guid="guidButtonWithVisibilityConstraintsPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
+      <!--The following must be set for VisibilityConstraints to work (see below) -->
+		  <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Invoke CsVbFileVisibleCommand</ButtonText>
         </Strings>
@@ -31,9 +33,16 @@
     </Bitmaps>
   </Commands>
 
+	<VisibilityConstraints>
+		<VisibilityItem guid="guidButtonWithVisibilityConstraintsPackageCmdSet" id="CsVbFileVisibleCommandId" context="uiContextSupportedFiles" />
+	</VisibilityConstraints>	
+	
   <Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidButtonWithVisibilityConstraintsPackage" value="{508ffd1a-37af-4445-be4b-b321feed260d}" />
+
+	<!-- This is the UI Context guid that must match the one in ButtonWithVisibilityConstraintsPackage.cs -->
+	<GuidSymbol name="uiContextSupportedFiles" value="{24551deb-f034-43e9-a279-0e541241687e}" />
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidButtonWithVisibilityConstraintsPackageCmdSet" value="{7ca17223-d0f2-47a4-85d0-697e6636fd45}">

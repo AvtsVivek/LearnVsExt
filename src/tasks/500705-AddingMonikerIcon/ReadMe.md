@@ -12,7 +12,7 @@
 
 ![Seach for existing icons in Known Moniker Explorer](./images/51KnownMonikerExplorer50.jpg)
 
-5.  Lets create a new VSIX package.
+5. Lets create a new VSIX package.
 
 6. Add a Commands folder. Then add a command as follows.
 
