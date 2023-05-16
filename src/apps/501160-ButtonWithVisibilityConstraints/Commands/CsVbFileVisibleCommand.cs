@@ -41,7 +41,18 @@ namespace ButtonWithVisibilityConstraints.Commands
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID) 
+            {
+                // This defers the visibility logic back to the VisibilityConstraints in the .vsct file
+                Supported = false 
+            };
+
+            // The MyQueryStatus method makes the exact same check as the ProvideUIContextRule attribute
+            // does on the MyPackage class. When that is the case, there is no need to specify
+            // a QueryStatus method and we can set command.Supported=false to defer the logic back 
+            // to the VisibilityConstraint in the .vsct file.
+            menuItem.BeforeQueryStatus += MyQueryStatus;
+
             commandService.AddCommand(menuItem);
         }
 

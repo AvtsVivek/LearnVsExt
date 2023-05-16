@@ -11,7 +11,7 @@
 
 5. Reference: 
    1. https://www.youtube.com/watch?v=p328QcgZObs&t=760s
-   2. https://learn.microsoft.com/en-us/visualstudio/extensibility/how-to-use-rule-based-ui-context-for-visual-studio-extensions?view=vs-2022
+   2. https://learn.microsoft.com/en-us/visualstudio/extensibility/how-to-use-rule-based-ui-context-for-visual-studio-extensions
    3. 
 
 

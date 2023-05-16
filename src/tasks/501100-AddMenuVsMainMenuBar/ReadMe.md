@@ -27,7 +27,7 @@ After
 
 7. Click the command, you will see a message box. 
 
-8. Now we will change this. [Take a look at this](https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar?view=vs-2022). 
+8. Now we will change this. [Take a look at this](https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-to-the-visual-studio-menu-bar). 
 
 9. Impliment the chnages mentioned in the link.
 

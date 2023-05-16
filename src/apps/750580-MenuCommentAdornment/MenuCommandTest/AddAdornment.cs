@@ -13,7 +13,7 @@ using CommentAdornmentTest;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Text;
 //using Microsoft.VisualStudio.ComponentModelHost;
-// https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-using-a-shell-command-with-an-editor-extension?view=vs-2022&tabs=csharp
+// https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-using-a-shell-command-with-an-editor-extension
 
 namespace MenuCommandTest
 {

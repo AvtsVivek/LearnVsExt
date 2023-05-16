@@ -1,7 +1,7 @@
 
 
 
-https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-view-adornment-commands-and-settings-column-guides?view=vs-2022
+https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-view-adornment-commands-and-settings-column-guides
 
 
 ![Text Doc1](./images/50TextDocument50.jpg)
