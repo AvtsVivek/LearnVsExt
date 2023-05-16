@@ -84,4 +84,7 @@ And the code samples are here.
 ## Blog posts
 1. https://devblogs.microsoft.com/visualstudio/getting-started-writing-visual-studio-extensions/
 2. https://devblogs.microsoft.com/visualstudio/writing-extensions-just-got-easier/
-3. 
+
+
+## To do 
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-controller-to-a-toolbar
