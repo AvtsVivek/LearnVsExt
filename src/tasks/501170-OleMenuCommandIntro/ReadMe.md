@@ -10,7 +10,7 @@
 ## Scenario
 
 1. Say, 
-   1. a text file is opened in Visual STudio editor. I right click it, and I want a command on the context menu. 
+   1. a text file is opened in Visual STudio editor. You right click it, and you want a command on the context menu. 
    2. The command should be enabled only for file with extension of .cs. 
    3. Files with other extensions, when right clicked, on the context menu, the command should be present but should be disabled.
    4. Also if it is a cs file, the text on the enabled command should be **Add new class to the file**. And if the the file extension is different, then the text should be, say **Not Relevant** 
