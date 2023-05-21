@@ -19,6 +19,7 @@
       <Button guid="guidOleMenuCommandIntroPackageCmdSet" id="EnableDisableCommandId" priority="0x0100" type="Button">
         <Parent guid="guidOleMenuCommandIntroPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
+        <CommandFlag>TextChanges</CommandFlag>
         <Strings>
           <ButtonText>Invoke EnableDisableCommand</ButtonText>
         </Strings>
@@ -32,11 +33,11 @@
     </Bitmaps>
   </Commands>
 
-  <Symbols>
+	<Symbols>
     
     <GuidSymbol name="guidOleMenuCommandIntroPackage" value="{261c24b2-f22f-4079-939e-cd3fb2758c97}" />
 
-
+	  
     <GuidSymbol name="guidOleMenuCommandIntroPackageCmdSet" value="{804ac15b-135e-4eac-bfa4-a1ff18558d2c}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="EnableDisableCommandId" value="0x0100" />

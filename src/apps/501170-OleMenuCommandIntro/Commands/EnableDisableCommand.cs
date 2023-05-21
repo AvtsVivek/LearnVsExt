@@ -1,8 +1,13 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using EnvDTE;
+using EnvDTE80;
+using Microsoft;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
@@ -41,8 +46,39 @@ namespace OleMenuCommandIntro.Commands
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
             commandService.AddCommand(menuItem);
+        }
+
+        private async void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            // await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            var myCommand = sender as OleMenuCommand;
+            if (null != myCommand)
+            {
+                myCommand.Text = "New Text";
+            }
+
+            var dte = (DTE2)ServiceProvider.GetServiceAsync(typeof(DTE)).Result;
+            // var dte = await ServiceProvider.GetServiceAsync(typeof(DTE)) as DTE2;
+            Assumes.Present(dte);
+
+            var activeDocument = dte.ActiveDocument;
+
+            if (activeDocument != null)
+            {
+                string fileExtension = Path.GetExtension(activeDocument.Name).ToLowerInvariant();
+                string[] supportedFiles = new[] { ".cs" }; // You can have something like this as well. { ".cs", ".vb" };
+
+                // Enable it only if it is a cs file.
+                myCommand.Visible = true;
+                myCommand.Enabled = supportedFiles.Contains(fileExtension);
+                if (supportedFiles.Contains(fileExtension))
+                    myCommand.Text = $"Add new class to the file {activeDocument.Name}";
+                else
+                    myCommand.Text = "Not Relevant";
+            }
         }
 
         /// <summary>
