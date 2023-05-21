@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -26,6 +27,7 @@ namespace SimpleToolWindow.Commands
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            Debugger.Break();
             MessageBox.Show(
                 string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
                 "ToolWindowWithButton");

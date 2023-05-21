@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -88,6 +89,7 @@ namespace SimpleToolWindow.Commands
         {
             this.package.JoinableTaskFactory.RunAsync(async delegate
             {
+                Debugger.Break();
                 ToolWindowPane window = await this.package.ShowToolWindowAsync(typeof(ToolWindowWithButton), 0, true, this.package.DisposalToken);
                 if ((null == window) || (null == window.Frame))
                 {
