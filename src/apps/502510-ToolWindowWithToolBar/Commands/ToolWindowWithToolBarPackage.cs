@@ -20,6 +20,9 @@ namespace ToolWindowWithToolBar.Commands
 
         public const string guidImagesString = "105dc062-2db4-41b2-8ee8-f9aac33d1248";
         public static Guid guidImages = new Guid(guidImagesString);
+
+        public const string guidImages1String = "72e30b87-b7bf-4cfd-abee-341bd88fcbe1";
+        public static Guid guidImages1 = new Guid(guidImages1String);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -28,11 +31,20 @@ namespace ToolWindowWithToolBar.Commands
     {
         public const int MyMenuGroup = 0x1020;
         public const int ToolBarOnToolWindowCommandId = 0x0100;
+        public const int cmdidAsyncToolWindowCommand = 0x1021;
+        public const int TWToolbar = 0x1000;
+        public const int TWToolbarGroup = 0x1050;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;
         public const int bmpPicX = 0x0004;
         public const int bmpPicArrows = 0x0005;
         public const int bmpPicStrikethrough = 0x0006;
+        public const int bmpPic11 = 0x0001;
+        public const int bmpPic12 = 0x0002;
+        public const int bmpPicSearch1 = 0x0003;
+        public const int bmpPicX1 = 0x0004;
+        public const int bmpPicArrows1 = 0x0005;
+        public const int bmpPicStrikethrough1 = 0x0006;
     }
 }

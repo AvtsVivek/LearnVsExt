@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 
 namespace ToolWindowWithToolBar.Commands
@@ -29,6 +30,7 @@ namespace ToolWindowWithToolBar.Commands
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
             // the object returned by the Content property.
             this.Content = new AsyncToolWindowControl();
+            this.ToolBar = new CommandID(new Guid(PackageGuids.guidToolWindowWithToolBarPackageCmdSetString), 0x1000);
         }
     }
 }
