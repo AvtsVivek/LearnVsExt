@@ -12,13 +12,13 @@ namespace ToolWindowWithToolBar.Commands
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidToolWindowWithToolBarPackageString = "92b8ff5f-4b8b-480b-b288-afb0d2a407c4";
+        public const string guidToolWindowWithToolBarPackageString = "7aef415a-6359-46e2-9100-f32d60b99ec5";
         public static Guid guidToolWindowWithToolBarPackage = new Guid(guidToolWindowWithToolBarPackageString);
 
-        public const string guidToolWindowWithToolBarPackageCmdSetString = "8c6b1675-eff9-469b-8786-4e30d86bf487";
+        public const string guidToolWindowWithToolBarPackageCmdSetString = "8ceb06ac-a603-4393-b5db-c6b551262a8c";
         public static Guid guidToolWindowWithToolBarPackageCmdSet = new Guid(guidToolWindowWithToolBarPackageCmdSetString);
 
-        public const string guidImagesString = "1ecc7de7-c2cf-4075-abae-b922b2d1a351";
+        public const string guidImagesString = "105dc062-2db4-41b2-8ee8-f9aac33d1248";
         public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>
@@ -26,7 +26,8 @@ namespace ToolWindowWithToolBar.Commands
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int AsyncToolWindowCommandId = 0x0100;
+        public const int MyMenuGroup = 0x1020;
+        public const int ToolBarOnToolWindowCommandId = 0x0100;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;

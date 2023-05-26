@@ -26,13 +26,12 @@ namespace ToolWindowWithToolBar
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(ToolWindowWithToolBarPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(ToolWindowWithToolBar.Commands.AsyncToolWindow))]
     public sealed class ToolWindowWithToolBarPackage : AsyncPackage
     {
         /// <summary>
         /// ToolWindowWithToolBarPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "92b8ff5f-4b8b-480b-b288-afb0d2a407c4";
+        public const string PackageGuidString = "7aef415a-6359-46e2-9100-f32d60b99ec5";
 
         #region Package Members
 
@@ -48,7 +47,7 @@ namespace ToolWindowWithToolBar
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await ToolWindowWithToolBar.Commands.AsyncToolWindowCommand.InitializeAsync(this);
+            await ToolWindowWithToolBar.Commands.ToolBarOnToolWindowCommand.InitializeAsync(this);
         }
 
         #endregion

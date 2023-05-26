@@ -31,6 +31,16 @@
     group; your package should define its own command set in order to avoid collisions
     with command ids defined by other packages. -->
 
+    <!-- In this section you can define new menu groups. A menu group is a container for
+         other menus or buttons (commands); from a visual point of view you can see the
+         group as the part of a menu contained between two lines. The parent of a group
+         must be a menu. -->
+    <Groups>
+      <Group guid="guidToolWindowWithToolBarPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
@@ -42,11 +52,11 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidToolWindowWithToolBarPackageCmdSet" id="AsyncToolWindowCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+      <Button guid="guidToolWindowWithToolBarPackageCmdSet" id="ToolBarOnToolWindowCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidToolWindowWithToolBarPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>AsyncToolWindow</ButtonText>
+          <ButtonText>Invoke ToolBarOnToolWindowCommand</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -58,20 +68,21 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\AsyncToolWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\ToolBarOnToolWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
     </Bitmaps>
   </Commands>
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidToolWindowWithToolBarPackage" value="{92b8ff5f-4b8b-480b-b288-afb0d2a407c4}" />
+    <GuidSymbol name="guidToolWindowWithToolBarPackage" value="{7aef415a-6359-46e2-9100-f32d60b99ec5}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidToolWindowWithToolBarPackageCmdSet" value="{8c6b1675-eff9-469b-8786-4e30d86bf487}">
-      <IDSymbol name="AsyncToolWindowCommandId" value="0x0100" />
+    <GuidSymbol name="guidToolWindowWithToolBarPackageCmdSet" value="{8ceb06ac-a603-4393-b5db-c6b551262a8c}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="ToolBarOnToolWindowCommandId" value="0x0100" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{1ecc7de7-c2cf-4075-abae-b922b2d1a351}" >
+    <GuidSymbol name="guidImages" value="{105dc062-2db4-41b2-8ee8-f9aac33d1248}" >
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

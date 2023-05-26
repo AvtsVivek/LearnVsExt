@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ToolWindowWithToolBar.035d2eb6-c184-4db3-8582-12993c0135f1" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <Identity Id="ToolWindowWithToolBar.3857bd05-444b-4c41-8c72-7dc635528e1d" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
     <DisplayName>ToolWindowWithToolBar</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>

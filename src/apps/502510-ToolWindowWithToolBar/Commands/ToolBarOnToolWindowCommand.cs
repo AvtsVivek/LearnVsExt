@@ -12,7 +12,7 @@ namespace ToolWindowWithToolBar.Commands
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class AsyncToolWindowCommand
+    internal sealed class ToolBarOnToolWindowCommand
     {
         /// <summary>
         /// Command ID.
@@ -22,7 +22,7 @@ namespace ToolWindowWithToolBar.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("8c6b1675-eff9-469b-8786-4e30d86bf487");
+        public static readonly Guid CommandSet = new Guid("8ceb06ac-a603-4393-b5db-c6b551262a8c");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -30,12 +30,12 @@ namespace ToolWindowWithToolBar.Commands
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AsyncToolWindowCommand"/> class.
+        /// Initializes a new instance of the <see cref="ToolBarOnToolWindowCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private AsyncToolWindowCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private ToolBarOnToolWindowCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -48,7 +48,7 @@ namespace ToolWindowWithToolBar.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static AsyncToolWindowCommand Instance
+        public static ToolBarOnToolWindowCommand Instance
         {
             get;
             private set;
@@ -71,29 +71,35 @@ namespace ToolWindowWithToolBar.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in AsyncToolWindowCommand's constructor requires
+            // Switch to the main thread - the call to AddCommand in ToolBarOnToolWindowCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
-            OleMenuCommandService commandService = await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-            Instance = new AsyncToolWindowCommand(package, commandService);
+            OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
+            Instance = new ToolBarOnToolWindowCommand(package, commandService);
         }
 
         /// <summary>
-        /// Shows the tool window when the menu item is clicked.
+        /// This function is the callback used to execute the command when the menu item is clicked.
+        /// See the constructor to see how the menu item is associated with this function using
+        /// OleMenuCommandService service and MenuCommand class.
         /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event args.</param>
+        /// <param name="sender">Event sender.</param>
+        /// <param name="e">Event args.</param>
         private void Execute(object sender, EventArgs e)
         {
-            this.package.JoinableTaskFactory.RunAsync(async delegate
-            {
-                ToolWindowPane window = await this.package.ShowToolWindowAsync(typeof(AsyncToolWindow), 0, true, this.package.DisposalToken);
-                if ((null == window) || (null == window.Frame))
-                {
-                    throw new NotSupportedException("Cannot create tool window");
-                }
-            });
+            ThreadHelper.ThrowIfNotOnUIThread();
+            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
+            string title = "ToolBarOnToolWindowCommand";
+
+            // Show a message box to prove we were here
+            VsShellUtilities.ShowMessageBox(
+                this.package,
+                message,
+                title,
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
     }
 }
