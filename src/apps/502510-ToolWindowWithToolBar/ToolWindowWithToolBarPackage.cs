@@ -26,6 +26,7 @@ namespace ToolWindowWithToolBar
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(ToolWindowWithToolBarPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideToolWindow(typeof(ToolWindowWithToolBar.Commands.AsyncToolWindow))]
     public sealed class ToolWindowWithToolBarPackage : AsyncPackage
     {
         /// <summary>
@@ -48,6 +49,7 @@ namespace ToolWindowWithToolBar
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await ToolWindowWithToolBar.Commands.ToolBarOnToolWindowCommand.InitializeAsync(this);
+            await ToolWindowWithToolBar.Commands.AsyncToolWindowCommand.InitializeAsync(this);
         }
 
         #endregion
