@@ -108,3 +108,10 @@ And the code samples are here.
 
 ## To do 
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-controller-to-a-toolbar
+
+2. Need to be able to compile the following. 
+   1. https://github.com/luminous-software/extensibility-logs
+   2. https://marketplace.visualstudio.com/items?itemName=YannDuran.ExtensibilityLogs
+   3. https://github.com/VsixCommunity/ExtensibilityEssentials/issues/18
+
+3. 
