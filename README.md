@@ -90,7 +90,16 @@ And the code samples are here.
    6. https://www.youtube.com/playlist?list=PLReL099Y5nReXKzeX10TZF3BfLdOZXxix
 
 
-
+## Notes about Useful extensions
+1. The current latest version is 2022, and do check for the latest version
+2. [Extensibility Essentials 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022)
+3. [Clear MEF Component Cache](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ClearMEFComponentCache) extension. 
+   1. Typical errors that can be solved by clearing the component cache are:
+      1. Could not load package exception
+      2. Could not load assembly exception
+      3. Composition error when opening files
+      4. Missing syntax highlighting of some languages in VS 
+4. 
 
 ## Blog posts
 1. https://devblogs.microsoft.com/visualstudio/getting-started-writing-visual-studio-extensions/
