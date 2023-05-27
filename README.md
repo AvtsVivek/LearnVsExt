@@ -47,9 +47,20 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 ![Reset Exp Vs](./src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
+3. Also ensure you install [Clear MEF Component Cache](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ClearMEFComponentCache) extension. This is a part of [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022). The current latest version is 2022, and do check for the latest version
+   1. Typical errors that can be solved by clearing the component cache are:
+      1. Could not load package exception
+      2. Could not load assembly exception
+      3. Composition error when opening files
+      4. Missing syntax highlighting of some languages in VS
+ 
+   2. Clear Cache
+      ![Clear Cache](./images/50_50_VsExtensionEssentials_ClearMef.jpg)
+
+   3. HEre we go
 
 
-## A tutorial Series that I found on the net.
+## A tutorial Series that I found on the net. 
 
 1. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
 2. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
