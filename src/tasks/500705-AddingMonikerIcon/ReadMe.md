@@ -92,6 +92,6 @@ and finally
 
 20.  Next. Need to understand 
      1.   [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
-     2.   Also [image-service-and-catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
+     2.   Also [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
 
 

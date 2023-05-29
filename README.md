@@ -108,11 +108,13 @@ And the code samples are here.
 
 ## To do 
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-controller-to-a-toolbar
+2. https://github.com/Microsoft/VSSDK-Extensibility-Samples
 
-2. Need to be able to compile the following. 
+3. Need to be able to compile the following. 
    1. https://github.com/luminous-software/extensibility-logs
    2. https://marketplace.visualstudio.com/items?itemName=YannDuran.ExtensibilityLogs
    3. https://github.com/VsixCommunity/ExtensibilityEssentials/issues/18
 
-3. Need to understand the following.
-   1. [image-service-tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
+4. Need to understand the following.
+   1. [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
+   2. Also [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
