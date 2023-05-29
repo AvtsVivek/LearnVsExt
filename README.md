@@ -114,4 +114,5 @@ And the code samples are here.
    2. https://marketplace.visualstudio.com/items?itemName=YannDuran.ExtensibilityLogs
    3. https://github.com/VsixCommunity/ExtensibilityEssentials/issues/18
 
-3. 
+3. Need to understand the following.
+   1. [image-service-tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
