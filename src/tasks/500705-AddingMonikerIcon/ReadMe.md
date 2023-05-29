@@ -4,7 +4,7 @@
 
 2. First of all, Visual Studio shipps with thousands of icons.
 
-3. Ensure [Known Monikers Explorer Extension](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022) is installed.
+3. Ensure [Known Monikers Explorer Extension](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022) is installed. This should be part of [Extensibility Essentials pack](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022). 
 
 4. Open Visual Studio with or without code. Feature Search(Ctrl + Q) for known monikers. You will see a Known Moniker Explorer Window.
 
