@@ -90,6 +90,6 @@ and finally
 
 ![Exp Instance](./images/56InstalledExtensions50.jpg)
 
-20. Next. Need to understand https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools?view=vs-2022
+1.  Next. Need to understand [image-service-tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
 
 
