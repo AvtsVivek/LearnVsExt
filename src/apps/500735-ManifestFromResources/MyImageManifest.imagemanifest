@@ -3,7 +3,7 @@
 <!-- Version: 17.0.0.4 -->
 <ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
   <Symbols>
-    <String Name="Resources" Value="/ManifestFromResourceAssembly;Component/images" />
+    <String Name="Resources" Value="/ResourceAssembly;Component/images" />
     <Guid Name="AssetsGuid" Value="{a53ef225-175f-491b-a7c2-8e532d688134}" />
     <ID Name="Save" Value="1" />
   </Symbols>

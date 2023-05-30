@@ -19,19 +19,34 @@
    
    ![Path Env Var](./images/50_50PathEnvVar.png)
 
-6. ManifestFromResources /resources:C:\Trials\Ex\LearnVsExt\src\apps\500735-ManifestFromResources\images\save.png /assembly:ManifestFromResources 
+6. Run the following command. 
+```cmd
+ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ManifestFromResourceAssembly /manifest:MyImageManifest.imagemanifest
+```
 
-7. Include the added png file into the project. Then from the image properties, set include in VSIX to be true.
+7. The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/500735-ManifestFromResources
 
-8. Ensure [Image Manifest Tools](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ImageManifestTools) is installed. Also see this [git hub link](https://github.com/madskristensen/MonikerManifestTools)
+8. Now run the following command. The difference from the above is the assembly. Earlier it was ManifestFromResourceAssembly. Now it is ResourceAssembly 
+```cmd
+ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
+```
 
-9.  This should be part of [Extensibility Essentials pack](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022).
+9. Now observe the difference in the file MyImageManifest.imagemanifest file.
 
-10. Right click and take a look at the properties of the save.png file. Irrespecitve of weather Include in VSIX is true or false, you can create a imagemanifest file. And the image manifest file will be identical irrespecitve of weather Include in VSIX is true or false.
-   
-   ![Save Png Properties](./images/50_50SavePngProperties.jpg)
+Before
 
-11. If you want to switch Include in VSIX to true, then first make the build action to content. 
+```xml
+  <Symbols>
+    <String Name="Resources" Value="/ManifestFromResourceAssembly;Component/images" />
+    ...
+  </Symbols>
+```
 
-12. 
+After
+```xml
+  <Symbols>
+    <String Name="Resources" Value="/ResourceAssembly;Component/images" />
+    ...
+  </Symbols>
+```
 
