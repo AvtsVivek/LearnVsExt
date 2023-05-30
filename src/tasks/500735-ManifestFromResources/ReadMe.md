@@ -52,4 +52,18 @@ After
 
 10. Now add one more png file to the images folder.
 
-11.  
+11. Run the command once more.
+
+```cmd
+ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
+```
+
+12. Now observe the imagemanifest file. GitHub.png is added.
+
+```xml
+  <ItemGroup>
+    <Content Include="images\GitHub.png" />
+    <Content Include="images\Save.png" />
+  </ItemGroup>
+``` 
+
