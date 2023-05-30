@@ -1,5 +1,3 @@
-
-
 ## Introducing Image Manifest Tools Extension
 
 1. Create a new VSIX package. Then add a new folder images. 
@@ -14,4 +12,8 @@
 
 5. This should be part of [Extensibility Essentials pack](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022).
 
-6. 
+6. Right click and take a look at the properties of the sav.png file. Irrespecitve of weather Include in VSIX is true or false, you can create a imagemanifest file. And the image manifest file will be identical irrespecitve of weather Include in VSIX is true or false.
+   
+   ![Save Png Properties](./images/50_50SavePngProperties.jpg)
+
+7. 
