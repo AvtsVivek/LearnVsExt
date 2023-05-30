@@ -9,3 +9,9 @@
    2. From the known monikers you can select one, and you can even export, it as png, jpg or gif to any location on the disc 
 
 3. Include the added png file into the project. Then from the image properties, set include in VSIX to be true.
+
+4. Ensure [Image Manifest Tools](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ImageManifestTools) is installed. Also see https://github.com/madskristensen/MonikerManifestTools
+
+5. This should be part of [Extensibility Essentials pack](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022).
+
+6. 
