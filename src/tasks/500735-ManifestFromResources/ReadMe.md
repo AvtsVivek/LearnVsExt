@@ -50,3 +50,6 @@ After
   </Symbols>
 ```
 
+10. Now add one more png file to the images folder.
+
+11.  
