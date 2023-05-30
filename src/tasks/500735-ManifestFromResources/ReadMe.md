@@ -55,15 +55,9 @@ After
 11. Run the command once more.
 
 ```cmd
-ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
+ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:"C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png;C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/GitHub.png" 
+
 ```
 
-12. Now observe the imagemanifest file. GitHub.png is added.
-
-```xml
-  <ItemGroup>
-    <Content Include="images\GitHub.png" />
-    <Content Include="images\Save.png" />
-  </ItemGroup>
-``` 
-
+12.  Now observe the imagemanifest file.   
+    ![Add Git Hub](./images/51_50_AddGitHub.jpg)

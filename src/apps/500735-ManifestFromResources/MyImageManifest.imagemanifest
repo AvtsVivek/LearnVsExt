@@ -6,10 +6,16 @@
     <String Name="Resources" Value="/ResourceAssembly;Component/images" />
     <Guid Name="AssetsGuid" Value="{a53ef225-175f-491b-a7c2-8e532d688134}" />
     <ID Name="Save" Value="1" />
+    <ID Name="GitHub" Value="2" />
   </Symbols>
   <Images>
     <Image Guid="$(AssetsGuid)" ID="$(Save)">
       <Source Uri="$(Resources)/Save.png">
+        <Size Value="90" />
+      </Source>
+    </Image>
+    <Image Guid="$(AssetsGuid)" ID="$(GitHub)">
+      <Source Uri="$(Resources)/GitHub.png">
         <Size Value="90" />
       </Source>
     </Image>

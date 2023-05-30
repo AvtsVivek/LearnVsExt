@@ -17,7 +17,7 @@ ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-Manifes
 # Now add one more file. 
 # Run the command once more.
 
-ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
+ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:"C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png;C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/GitHub.png" 
 
 # Now observe the imagemanifest file. GitHub.png is added.
 
