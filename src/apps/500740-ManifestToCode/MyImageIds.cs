@@ -11,7 +11,7 @@ namespace ManifestToCode
 {
     public static class MyImageIds
     {
-        public const string AssetsGuidString = "{d6b7646f-8cef-49d0-97f1-14940add7126}";
+        public const string AssetsGuidString = "{f7d7b6c8-5cf5-410f-9564-ea0d9befbbc8}";
         public static readonly Guid AssetsGuid = new Guid(AssetsGuidString);
 
         public const int Save = 0;

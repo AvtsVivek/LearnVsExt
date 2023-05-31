@@ -45,13 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyImageIds.cs" />
-    <Compile Include="MyMonikers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ManifestToCodePackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MyImageManifest.imagemanifest" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
