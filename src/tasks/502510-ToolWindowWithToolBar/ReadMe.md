@@ -83,4 +83,5 @@
    14. asdf
 3. Build and Run.
 
-4. 
+4. The only problem with this is Menu Text does not appear. Observe closely the following image. You see the 1x and not any text. Need to find out!!!
+   ![The Problem](./images/54_50_Problem.jpg). 
