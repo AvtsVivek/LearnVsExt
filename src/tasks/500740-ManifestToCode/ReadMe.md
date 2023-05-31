@@ -21,4 +21,4 @@ ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500740-Manifes
 ManifestToCode /manifest:MyImageManifest.imagemanifest /language:CSharp /namespace:ManifestToCode /imageIdClass:MyImageIds /monikerClass:MyMonikers /classAccess:public
 ```
 
-6. The above command generats the cs files. Next include files in the project. 
+6. The above command generats the cs files. Next include files in the project. Build the project and ensure that it builds.

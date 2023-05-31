@@ -11,6 +11,6 @@ ManifestFromResources /resources:./images/Save.png /assembly:ManifestToCodeAssem
 
 # The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/500740-ManifestToCode
 
-# Now run the following command. The difference from the above is the assembly. Earlier it was ManifestFromResourceAssembly. Now it is ResourceAssembly 
+# Now run the following command. This will now generates the cs files.
 ManifestToCode /manifest:./MyImageManifest.imagemanifest /language:CSharp /namespace:ManifestToCode /imageIdClass:MyImageIds /monikerClass:MyMonikers /classAccess:public
 
