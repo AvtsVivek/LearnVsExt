@@ -34,7 +34,7 @@
 
 11.  Now click the new command Tools -> Invoke WriteToUserSettingsCOmmand.  
 
-![Tools Menu After](./images/53ToolsMenuAFter50.jpg)
+![Tools Menu After](./images/53ToolsMenuAfter50.jpg)
 
 12. You should see a message saying Installing Notepad. Now observe again.
 
