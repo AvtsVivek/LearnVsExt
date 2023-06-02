@@ -37,3 +37,5 @@ devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml ./UseSVsActivityLogService.s
 8. Some references.
    1. https://learn.microsoft.com/en-us/visualstudio/ide/reference/devenv-command-line-switches
    2. https://learn.microsoft.com/en-us/visualstudio/ide/reference/log-devenv-exe
+   3. https://learn.microsoft.com/en-us/visualstudio/extensibility/using-and-providing-services
+   4. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/service-essentials
