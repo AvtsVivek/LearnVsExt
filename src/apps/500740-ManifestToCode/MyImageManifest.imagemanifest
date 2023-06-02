@@ -3,8 +3,8 @@
 <!-- Version: 17.0.0.4 -->
 <ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
   <Symbols>
-    <String Name="Resources" Value="/ManifestToCodeAssembly;Component/images" />
-    <Guid Name="AssetsGuid" Value="{f7d7b6c8-5cf5-410f-9564-ea0d9befbbc8}" />
+    <String Name="Resources" Value="/C:/Trials/Ex/LearnVsExt/src/apps/500740-ManifestToCode/bin/Debug/ManifestToCode;Component/images" />
+    <Guid Name="AssetsGuid" Value="{a744f61f-279e-4085-b191-602d551b8ed5}" />
     <ID Name="Save" Value="0" />
   </Symbols>
   <Images>
