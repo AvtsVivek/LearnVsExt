@@ -21,6 +21,10 @@ ManifestFromResources /resources:./images/Save.png /assembly:ResourceAssembly /m
 
 ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:"C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png;C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/GitHub.png" 
 
+ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images 
+
+ManifestFromResources /assembly:ManifestFromResources /manifest:MyImageManifest.imagemanifest /resources:./images 
+
 # Now observe the imagemanifest file. GitHub.png is added.
 
 ```xml
