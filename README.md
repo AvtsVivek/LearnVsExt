@@ -29,6 +29,7 @@ Repository to learn Visual Studio Extension development.
 3. [Official VS SDK documentation](https://learn.microsoft.com/en-us/visualstudio/extensibility)
 4. [VS SDK Samples repo](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
 5. [Extensibility chatroom on Gitter.im](https://gitter.im/Microsoft/extendvs)
+6. [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022)
 
 
 ## Notes
