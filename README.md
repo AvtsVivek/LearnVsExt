@@ -108,6 +108,7 @@ And the code samples are here.
 
 ## To do 
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-a-menu-controller-to-a-toolbar
+
 2. https://github.com/Microsoft/VSSDK-Extensibility-Samples
 
 3. Need to be able to compile the following. 
@@ -118,3 +119,10 @@ And the code samples are here.
 4. Need to understand the following.
    1. [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
    2. Also [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
+
+5. Need to understand CrispImage.
+   1. https://github.com/amp2291/CrispImage-Test
+   2. https://github.com/microsoft/PTVS/blob/main/Python/Product/EnvironmentsList/images/images.xaml
+   3. https://stackoverflow.com/q/74840190/1977871
+   4. https://stackoverflow.com/q/40677826/1977871
+   5. https://developercommunity.visualstudio.com/t/extension-knowmonikers-image-is-not-showing-in-blu/1578087
