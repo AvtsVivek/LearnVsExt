@@ -4,15 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:vsimaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+			 xmlns:vsimagecat="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+			 xmlns:vstheming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
+
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
+    <UserControl.Resources>
+        <vsimaging:CrispImage x:Key="MyImage" Width="40" Height="40" Moniker="{x:Static vsimagecat:KnownMonikers.Git}" />
+    </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">SimpleToolWindow</TextBlock>
+            <TextBlock Margin="10" Foreground="White" HorizontalAlignment="Center">SimpleToolWindow</TextBlock>
             <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+            <CheckBox Width="60" Height="60" ToolTip="Git Mode" IsChecked="True">
+                <vsimaging:CrispImage Width="30" Height="30" Moniker="{x:Static vsimagecat:KnownMonikers.AbstractCube}" />
+            </CheckBox>
+            <Button Width="120" Height="50" Name="button2" Content="{StaticResource MyImage}" />
         </StackPanel>
     </Grid>
 </UserControl>
