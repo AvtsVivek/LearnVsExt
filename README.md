@@ -127,3 +127,4 @@ And the code samples are here.
    4. https://stackoverflow.com/q/40677826/1977871
    5. https://developercommunity.visualstudio.com/t/extension-knowmonikers-image-is-not-showing-in-blu/1578087
    6. https://learn.microsoft.com/en-us/answers/questions/1134844/crispimage-draws-empty-area-when-using-vs-image-se?comment=question#newest-question-comment
+   7. https://github.com/jfrog/jfrog-visual-studio-extension
