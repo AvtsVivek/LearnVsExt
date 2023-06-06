@@ -52,3 +52,5 @@ Meta package is a special NuGet package that describes a group of packages that 
 
 ![VSix Manifest in Visual Studio Assets Tab](./images/71VSixManifestAssets50.jpg)
 
+15. Take a look at this blog post. 
+    1.  [Visual Studio extensions and version ranges demystified](https://devblogs.microsoft.com/visualstudio/visual-studio-extensions-and-version-ranges-demystified/)
