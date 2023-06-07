@@ -71,6 +71,10 @@
       <Bitmap guid="guidImages" href="Resources\TestCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
     </Bitmaps>
   </Commands>
+
+  <KeyBindings>
+	  <KeyBinding guid="guidAssignKeyboardShortcutPackageCmdSet" id="TestCommandId" editor="guidVSStd97" key1="S" mod1="Alt"></KeyBinding>
+  </KeyBindings>
 	
   <Symbols>
     <!-- This is the package guid. -->
