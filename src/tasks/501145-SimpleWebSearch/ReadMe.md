@@ -2,10 +2,10 @@
 1. Objective: 
 
 2. Prereqs
-   1. 500670-AssignKeyboardShortcut
-   2. 500705-AddingMonikerIcon
-   3. 501135-InsertGuidMenuCmd
-   4. 501140-InsertGuidContextMenu
+   1. 500670-AssignKeyboardShortcut. 
+   2. 500705-AddingMonikerIcon. 
+   3. 501135-InsertGuidMenuCmd. This introduces DTE 
+   4. 501140-InsertGuidContextMenu. 
 
 
 3. Use IDM_VS_CTXT_CODEWIN instead of IDM_VS_MENU_TOOLS
@@ -53,3 +53,68 @@ and finally
 <Icon guid="guidImages" id="bmpPic1" />
 ```
 
+Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
+
+![Context Menu Command](./images/50_50ContextMenuCommand.jpg)
+
+1. Add the following properties to the command class.
+
+```cs
+public static IVsOutputWindowPane OutputWindow
+{
+    get;
+    private set;
+}
+
+public static DTE2 DteInstance
+{
+    get;
+    private set;
+}
+```
+
+8. Next populate the above prope as follows in InitializeAsync 
+
+```cs
+OutputWindow = await package.GetServiceAsync(typeof(SVsGeneralOutputWindowPane)) as IVsOutputWindowPane;
+Assumes.Present(OutputWindow);
+DteInstance = await package.GetServiceAsync(typeof(DTE)) as DTE2;
+Assumes.Present(DteInstance);
+```
+
+9. Reimpliment Execute the method
+
+```cs
+private void Execute(object sender, EventArgs e)
+{
+    ThreadHelper.ThrowIfNotOnUIThread();
+    var activeDocument = DteInstance?.ActiveDocument;
+    var textSelection = activeDocument?.Selection as TextSelection;
+
+    if (textSelection == null)
+    {
+        DteInstance.StatusBar.Text = "No Text selected";
+        return;
+    }
+
+    var textToBeSearched = textSelection?.Text.Trim();
+
+    if (string.IsNullOrWhiteSpace(textToBeSearched))
+    {
+        DteInstance.StatusBar.Text = "No Text selected";
+        return;
+    }
+
+    DteInstance.StatusBar.Text = string.Empty;
+    DteInstance.StatusBar.Text = $"Searching text: {textToBeSearched}";    
+    OutputWindow.OutputStringThreadSafe($"Searching text: {textToBeSearched}");
+
+    var url = $"https://www.bing.com/search?q={textToBeSearched}";
+    var encodedText = HttpUtility.UrlEncode(textToBeSearched);
+    var encodedUrl = string.Format(url, encodedText);
+
+    System.Diagnostics.Process.Start(encodedUrl);
+}
+```
+
+10. Now build and run. Execute the command now.

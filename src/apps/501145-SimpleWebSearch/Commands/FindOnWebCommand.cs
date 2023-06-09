@@ -1,10 +1,14 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using EnvDTE;
+using EnvDTE80;
+using Microsoft;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Task = System.Threading.Tasks.Task;
 
 namespace SimpleWebSearch.Commands
@@ -54,6 +58,18 @@ namespace SimpleWebSearch.Commands
             private set;
         }
 
+        public static IVsOutputWindowPane OutputWindow
+        {
+            get;
+            private set;
+        }
+
+        public static DTE2 DteInstance
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
@@ -75,6 +91,12 @@ namespace SimpleWebSearch.Commands
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
+            OutputWindow = await package.GetServiceAsync(typeof(SVsGeneralOutputWindowPane)) as IVsOutputWindowPane;
+                
+            Assumes.Present(OutputWindow);
+
+            DteInstance = await package.GetServiceAsync(typeof(DTE)) as DTE2;
+            Assumes.Present(DteInstance);
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             Instance = new FindOnWebCommand(package, commandService);
         }
@@ -89,17 +111,38 @@ namespace SimpleWebSearch.Commands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "FindOnWebCommand";
 
-            // Show a message box to prove we were here
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                message,
-                title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            var activeDocument = DteInstance?.ActiveDocument;
+
+            var textSelection = activeDocument?.Selection as TextSelection;
+
+            if (textSelection == null)
+            {
+                DteInstance.StatusBar.Text = "No Text selected";
+                return;
+            }
+
+            var textToBeSearched = textSelection?.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(textToBeSearched))
+            {
+                DteInstance.StatusBar.Text = "No Text selected";
+                return;
+            }
+
+            DteInstance.StatusBar.Text = string.Empty;
+
+            
+            DteInstance.StatusBar.Text = $"Searching text: {textToBeSearched}";
+            
+            OutputWindow.OutputStringThreadSafe($"Searching text: {textToBeSearched}");
+
+            var url = $"https://www.bing.com/search?q={textToBeSearched}";
+            var encodedText = HttpUtility.UrlEncode(textToBeSearched);
+            var encodedUrl = string.Format(url, encodedText);
+
+            System.Diagnostics.Process.Start(encodedUrl);
         }
     }
 }
