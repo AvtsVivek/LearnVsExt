@@ -118,3 +118,9 @@ private void Execute(object sender, EventArgs e)
 ```
 
 10. Now build and run. Execute the command now.
+
+11. Next need know more about Options and  
+    1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
+    2.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings
+    3.  https://learn.microsoft.com/en-us/previous-versions/cc826083(v=vs.140)
+    4.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages
