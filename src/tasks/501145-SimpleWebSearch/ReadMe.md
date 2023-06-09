@@ -4,7 +4,9 @@
 2. Prereqs
    1. 500670-AssignKeyboardShortcut
    2. 500705-AddingMonikerIcon
-   3. 501140-InsertGuidContextMenu
+   3. 501135-InsertGuidMenuCmd
+   4. 501140-InsertGuidContextMenu
+
 
 3. Use IDM_VS_CTXT_CODEWIN instead of IDM_VS_MENU_TOOLS
 ```cs
