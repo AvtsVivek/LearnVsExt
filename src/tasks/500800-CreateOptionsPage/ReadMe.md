@@ -41,3 +41,4 @@ public sealed class MyToolsOptionsPackage : AsyncPackage
 
 Your options page is also available through Visual Studio's search box. In the search box near the top of the IDE, type **My Category** and you'll see **My Category** -> **My Grid Page** listed in the results.
 
+8. Finally, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used.
