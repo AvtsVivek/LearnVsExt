@@ -133,8 +133,11 @@ private void Execute(object sender, EventArgs e)
 12.  Also try without selecting any text, just rightclick anywhere on the file, and see.
 
 13.  Next need know more about Options and  
-    1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
-    2.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings
-    3.  https://learn.microsoft.com/en-us/previous-versions/cc826083(v=vs.140)
-    4.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages
+     1. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page
+     2. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-a-settings-category
+     3. https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
+     4. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings
+     5. https://learn.microsoft.com/en-us/previous-versions/cc826083(v=vs.140)
+     6. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages
+
 
