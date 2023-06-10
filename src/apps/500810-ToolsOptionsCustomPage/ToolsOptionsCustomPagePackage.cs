@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace CreateOptionsPage
+namespace ToolsOptionsCustomPage
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -25,18 +24,13 @@ namespace CreateOptionsPage
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(CreateOptionsPagePackage.PackageGuidString)]
-    public sealed class CreateOptionsPagePackage : AsyncPackage
+    [Guid(ToolsOptionsCustomPagePackage.PackageGuidString)]
+    public sealed class ToolsOptionsCustomPagePackage : AsyncPackage
     {
         /// <summary>
-        /// CreateOptionsPagePackage GUID string.
+        /// ToolsOptionsCustomPagePackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "f75f56ae-98b7-4542-b30d-547e5ed54bb9";
-
-        public CreateOptionsPagePackage()
-        {
-            Debugger.Break();
-        }
+        public const string PackageGuidString = "3049b8ee-53bf-4c0f-aa69-af2386e143ca";
 
         #region Package Members
 
@@ -49,7 +43,6 @@ namespace CreateOptionsPage
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            Debugger.Break();
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);

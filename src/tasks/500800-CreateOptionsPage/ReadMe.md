@@ -22,6 +22,7 @@ public class OptionPageGrid : DialogPage
 }
 ```
 4. Ensure the attributes to the newly added package are as follows.
+
 ```cs
 [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
 [ProvideMenuResource("Menus.ctmenu", 1)]
@@ -30,7 +31,9 @@ public class OptionPageGrid : DialogPage
 [Guid(MyToolsOptionsPackage.PackageGuidString)]
 [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
 public sealed class MyToolsOptionsPackage : AsyncPackage
+{ ... }
 ```
+
 5. Build the project and start debugging.
 
 6. In the experimental instance of Visual Studio, on the Tools menu click Options.
@@ -41,4 +44,10 @@ public sealed class MyToolsOptionsPackage : AsyncPackage
 
 Your options page is also available through Visual Studio's search box. In the search box near the top of the IDE, type **My Category** and you'll see **My Category** -> **My Grid Page** listed in the results.
 
-8. Finally, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used.
+8. Finally, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used. Add Ctors for both of the two classes. Also add in Ctor as well as InitializeAsync(). 
+
+```cs
+Debugger.Break();
+```
+
+9. Now build, run and check. The Break() method in CreateOptionsPagePackage is never hit. This shows that this file can be removed.
