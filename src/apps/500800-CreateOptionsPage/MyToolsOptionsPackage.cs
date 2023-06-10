@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
+using System.ComponentModel;
 
 namespace CreateOptionsPage
 {
@@ -32,6 +33,13 @@ namespace CreateOptionsPage
     /// To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
     /// </para>
     /// </remarks>
+    /// 
+    // [PackageRegistration(UseManagedResourcesOnly = true)]
+    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    // [Guid(GuidList.guidMyToolsOptionsPkgString)]
+    [ProvideOptionPage(typeof(OptionPageGrid), "My Category", "My Grid Page", 0, 0, true)]
+
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(MyToolsOptionsPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
@@ -70,5 +78,19 @@ namespace CreateOptionsPage
         }
 
         #endregion
+    }
+
+    public class OptionPageGrid : DialogPage
+    {
+        private int optionInt = 256;
+
+        [Category("My Category")]
+        [DisplayName("My Integer Option")]
+        [Description("My integer option")]
+        public int OptionInteger
+        {
+            get { return optionInt; }
+            set { optionInt = value; }
+        }
     }
 }
