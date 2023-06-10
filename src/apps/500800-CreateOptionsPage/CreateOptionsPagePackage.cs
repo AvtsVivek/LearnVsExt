@@ -30,7 +30,7 @@ namespace CreateOptionsPage
         /// <summary>
         /// CreateOptionsPagePackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "29dfc361-bd5d-4b16-ba7b-049a806cbf25";
+        public const string PackageGuidString = "f75f56ae-98b7-4542-b30d-547e5ed54bb9";
 
         #region Package Members
 

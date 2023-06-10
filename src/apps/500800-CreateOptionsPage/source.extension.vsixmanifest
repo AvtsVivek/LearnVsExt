@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="CreateOptionsPage.95110c55-322d-42eb-b18b-eff2bc576a61" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <Identity Id="CreateOptionsPage.70f20f35-2e45-4318-9bdb-0417d4675c25" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
     <DisplayName>CreateOptionsPage</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>
