@@ -23,7 +23,7 @@
 		 <Icon guid="ImageCatalogGuid" id="SearchMember"/>
 		 <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
-          <ButtonText>Invoke FindOnWebCommand</ButtonText>
+          <ButtonText>Search Web</ButtonText>
         </Strings>
       </Button>
     </Buttons>

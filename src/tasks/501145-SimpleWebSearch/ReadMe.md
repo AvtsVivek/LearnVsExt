@@ -117,10 +117,24 @@ private void Execute(object sender, EventArgs e)
 }
 ```
 
-10. Now build and run. Execute the command now.
+10. Finally change the button text more appropriate string.
+```xml
+<ButtonText>Search Web</ButtonText>
+```
 
-11. Next need know more about Options and  
+11.  Now build and run. Open some file, select some text and right click. 
+
+    ![Context Menu Command](./images/51_50SearchWebFinalRun.jpg)
+
+12. Status bar text.
+
+    ![Statusbar Text](./images/52_50StatusBarText.jpg)
+
+12.  Also try without selecting any text, just rightclick anywhere on the file, and see.
+
+13.  Next need know more about Options and  
     1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
     2.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings
     3.  https://learn.microsoft.com/en-us/previous-versions/cc826083(v=vs.140)
     4.  https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages
+
