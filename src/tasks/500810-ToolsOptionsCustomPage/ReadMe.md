@@ -86,7 +86,7 @@ public partial class MyUserControl : UserControl
 ```cs
 [ProvideOptionPage(typeof(OptionPageCustom), "My Category", "My Custom Page", 0, 0, true)]
 ```
-10. Now build and run. Observe
+1.  Now build and Press F5 to start debugging. In the Exp Vs intance, Tools -> Options -> My Category observe.
 
 ![Tools Options](./images/50_50CustomOption.jpg)
 
