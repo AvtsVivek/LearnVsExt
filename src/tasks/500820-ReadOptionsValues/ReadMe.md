@@ -14,4 +14,37 @@
 
 5. In this other alternative, we will start with a VSix project, then add a command. Then add a dialog page.
 
-6. 
+6. In the package, add the following two properties which will make available the values of the options dialog pages.
+```cs
+public int OptionInteger
+{
+   get
+   {
+         var optionPageGrid = (OptionPageGrid)GetDialogPage(typeof(OptionPageGrid));
+         return optionPageGrid.OptionInteger;
+   }
+}
+
+public string OptionTextString
+{
+   get
+   {
+         var optionPageCustom = (OptionPageCustom)GetDialogPage(typeof(OptionPageCustom));
+         return optionPageCustom.OptionString;
+   }
+}
+```
+
+7. Now you can use them in the command as follows.
+
+```cs
+string message = $"The integet value is {readOptionsValuesPackage.OptionInteger}";
+message = message + Environment.NewLine;
+message = message + $"The string value is {readOptionsValuesPackage.OptionTextString}";
+```
+
+8. Build and run. In the Exp instance Tools -> Options -> My Category. Change the values in My Grid Page and My Custom Page. Restart the Exp instance. Now execute the command. Ovserve the values.
+
+
+
+9. 
