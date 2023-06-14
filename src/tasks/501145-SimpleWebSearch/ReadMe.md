@@ -4,8 +4,10 @@
 2. Prereqs
    1. 500670-AssignKeyboardShortcut. 
    2. 500705-AddingMonikerIcon. 
-   3. 501135-InsertGuidMenuCmd. This introduces DTE 
-   4. 501140-InsertGuidContextMenu. 
+   3. 500820-ReadOptionsValues
+   4. 501135-InsertGuidMenuCmd. This introduces DTE 
+   5. 501140-InsertGuidContextMenu. 
+   6. 
 
 
 3. Use IDM_VS_CTXT_CODEWIN instead of IDM_VS_MENU_TOOLS
