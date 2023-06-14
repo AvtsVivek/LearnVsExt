@@ -91,6 +91,10 @@ namespace ReadOptionsValues.Commands
             string message = $"The integet value is {readOptionsValuesPackage.OptionInteger}";
             message = message + Environment.NewLine;
             message = message + $"The string value is {readOptionsValuesPackage.OptionTextString}";
+            message = message + Environment.NewLine;
+            message = message + $"The options url is {readOptionsValuesPackage.OptionUrlString}";
+            message = message + Environment.NewLine;
+            message = message + $"Use Vs Broser is {readOptionsValuesPackage.UseVsBrowserValue}";
             string title = "ReadIntOptionCommand";
 
             // Show a message box to prove we were here

@@ -45,6 +45,15 @@ message = message + $"The string value is {readOptionsValuesPackage.OptionTextSt
 
 8. Build and run. In the Exp instance Tools -> Options -> My Category. Change the values in My Grid Page and My Custom Page. Restart the Exp instance. Now execute the command. Ovserve the values.
 
+9. Also add ExternalSearchOptionPage and also register the same with the package as follows.
+```cs
+[ProvideOptionPage(typeof(ExternalSearchOptionPage), "My Category", "General", 1, 1, true, new string[] { "External Search Options" })]
+```
 
+10. Build and Run
+   
+![Tools Options](./images/49_50ToolsOptions.jpg)
 
-9. 
+11.  Tools Options
+   
+![Command Dialog](./images/50_50ReadOptionCommand.jpg)

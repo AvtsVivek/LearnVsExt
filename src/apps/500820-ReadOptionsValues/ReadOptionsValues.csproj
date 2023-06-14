@@ -51,6 +51,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReadOptionsValuesPackage.vsct</DependentUpon>
     </Compile>
+    <Compile Include="ExternalSearchOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace ReadOptionsValues
     public class OptionPageCustom : DialogPage
     {
         private string optionValue = "alpha";
+
 
         public string OptionString
         {
