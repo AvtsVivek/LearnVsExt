@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ReadOptionsValues.3cd5d27f-1a7b-42b1-894d-98ef63998a02" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <Identity Id="ReadOptionsValues.f99f4346-79cb-4de1-890c-ca12cf511ba3" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
     <DisplayName>ReadOptionsValues</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>

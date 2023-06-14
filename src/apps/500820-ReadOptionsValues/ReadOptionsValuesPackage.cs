@@ -14,12 +14,13 @@ namespace ReadOptionsValues
     [ProvideOptionPage(typeof(OptionPageCustom), "My Category", "My Custom Page", 0, 0, true)]
     public sealed class ReadOptionsValuesPackage : AsyncPackage
     {
-        public const string PackageGuidString = "21e0a5aa-287c-44f3-82c2-a5ad0db59355";
+        public const string PackageGuidString = "27988516-9079-46fd-a438-b4b8729e3fe4";
 
         #region Package Members
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await ReadOptionsValues.Commands.ReadIntOptionCommand.InitializeAsync(this);
         }
 
         #endregion
