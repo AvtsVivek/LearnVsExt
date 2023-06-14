@@ -24,5 +24,23 @@ namespace ReadOptionsValues
         }
 
         #endregion
+
+        public int OptionInteger
+        {
+            get
+            {
+                var optionPageGrid = (OptionPageGrid)GetDialogPage(typeof(OptionPageGrid));
+                return optionPageGrid.OptionInteger;
+            }
+        }
+
+        public string OptionTextString
+        {
+            get
+            {
+                var optionPageCustom = (OptionPageCustom)GetDialogPage(typeof(OptionPageCustom));
+                return optionPageCustom.OptionString;
+            }
+        }
     }
 }

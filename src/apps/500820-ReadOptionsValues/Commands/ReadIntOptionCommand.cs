@@ -2,9 +2,6 @@
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
-using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
 namespace ReadOptionsValues.Commands
@@ -89,7 +86,11 @@ namespace ReadOptionsValues.Commands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
+            //string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
+            var readOptionsValuesPackage = (ReadOptionsValuesPackage)this.package;
+            string message = $"The integet value is {readOptionsValuesPackage.OptionInteger}";
+            message = message + Environment.NewLine;
+            message = message + $"The string value is {readOptionsValuesPackage.OptionTextString}";
             string title = "ReadIntOptionCommand";
 
             // Show a message box to prove we were here
