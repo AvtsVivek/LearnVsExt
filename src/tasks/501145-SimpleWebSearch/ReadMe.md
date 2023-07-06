@@ -55,11 +55,11 @@ and finally
 <Icon guid="guidImages" id="bmpPic1" />
 ```
 
-Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
+7. Now Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
 
 ![Context Menu Command](./images/50_50ContextMenuCommand.jpg)
 
-1. Add the following properties to the command class.
+8. Add the following properties to the command class.
 
 ```cs
 public static IVsOutputWindowPane OutputWindow
@@ -75,7 +75,7 @@ public static DTE2 DteInstance
 }
 ```
 
-8. Next populate the above prope as follows in InitializeAsync 
+9. Next populate the above prope as follows in InitializeAsync 
 
 ```cs
 OutputWindow = await package.GetServiceAsync(typeof(SVsGeneralOutputWindowPane)) as IVsOutputWindowPane;
@@ -84,7 +84,7 @@ DteInstance = await package.GetServiceAsync(typeof(DTE)) as DTE2;
 Assumes.Present(DteInstance);
 ```
 
-9. Reimpliment Execute the method
+10. Reimpliment Execute the method
 
 ```cs
 private void Execute(object sender, EventArgs e)
@@ -119,22 +119,22 @@ private void Execute(object sender, EventArgs e)
 }
 ```
 
-10. Finally change the button text more appropriate string.
+11. Finally change the button text more appropriate string.
 ```xml
 <ButtonText>Search Web</ButtonText>
 ```
 
-11.  Now build and run. Open some file, select some text and right click. 
+12.  Now build and run. Open some file, select some text and right click. 
 
     ![Context Menu Command](./images/51_50SearchWebFinalRun.jpg)
 
-12. Status bar text.
+13. Status bar text.
 
     ![Statusbar Text](./images/52_50StatusBarText.jpg)
 
-12.  Also try without selecting any text, just rightclick anywhere on the file, and see.
+14.  Also try without selecting any text, just rightclick anywhere on the file, and see.
 
-13.  Next need know more about Options and  
+15.  Next need know more about Options and  
      1. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page
      2. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-a-settings-category
      3. https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
