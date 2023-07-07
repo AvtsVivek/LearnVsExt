@@ -86,7 +86,7 @@ DteInstance = await package.GetServiceAsync(typeof(DTE)) as DTE2;
 Assumes.Present(DteInstance);
 ```
 
-10. Reimpliment Execute the method
+10. Reimpliment Execute method
 
 ```cs
 private void Execute(object sender, EventArgs e)

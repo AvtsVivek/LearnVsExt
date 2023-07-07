@@ -112,7 +112,6 @@ namespace SimpleWebSearch.Commands
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-
             var activeDocument = DteInstance?.ActiveDocument;
 
             var textSelection = activeDocument?.Selection as TextSelection;
@@ -133,13 +132,16 @@ namespace SimpleWebSearch.Commands
 
             DteInstance.StatusBar.Text = string.Empty;
 
-            
-            DteInstance.StatusBar.Text = $"Searching text: {textToBeSearched}";
-            
-            OutputWindow.OutputStringThreadSafe($"Searching text: {textToBeSearched}");
+            var searchTextMessage = $"Searching text: {textToBeSearched}";
+
+            DteInstance.StatusBar.Text = searchTextMessage;
+
+            OutputWindow.OutputStringThreadSafe(searchTextMessage);
 
             var url = $"https://www.bing.com/search?q={textToBeSearched}";
+
             var encodedText = HttpUtility.UrlEncode(textToBeSearched);
+
             var encodedUrl = string.Format(url, encodedText);
 
             System.Diagnostics.Process.Start(encodedUrl);
