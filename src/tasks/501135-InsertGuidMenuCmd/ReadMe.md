@@ -43,4 +43,9 @@ private async void ExecuteAsync(object sender, EventArgs e)
 }
 ```
 
-4. There is another way to manipulate the text of a document. See [this](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/552400-VsixCommandCommunity) and [this app](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/apps/552400-VsixCommandCommunity).
+5. Open any text file in the code window by opening, a file, project or a solution. Plece cursor any where or select some text.
+
+6. Now try the command as folllows.
+![Insert Guid in Tools Menu](./images/50_50InsertGuidInToolsMenu.jpg)
+
+7. There is another way to manipulate the text of a document. See [this](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/552400-VsixCommandCommunity) and [this app](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/apps/552400-VsixCommandCommunity).
