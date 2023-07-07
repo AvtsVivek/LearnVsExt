@@ -3,7 +3,7 @@
 
 2. Builds on 500650-AddingSimpleCommand. 
 
-3. Create a project in similar steps.
+3. Create a VSix project in similar steps.
 
 4. Now add the following KeyBindings xml to the vsct file.
 

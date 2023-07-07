@@ -44,10 +44,12 @@ public sealed class MyToolsOptionsPackage : AsyncPackage
 
 Your options page is also available through Visual Studio's search box. In the search box near the top of the IDE, type **My Category** and you'll see **My Category** -> **My Grid Page** listed in the results.
 
-8. Finally, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used. Add Ctors for both of the two classes. Also add in Ctor as well as InitializeAsync(). 
+8. Also note, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used. Add Ctors for both of the two classes. Also add in Ctor as well as InitializeAsync(). 
 
 ```cs
 Debugger.Break();
 ```
 
 9. Now build, run and check. The Break() method in CreateOptionsPagePackage is never hit. This shows that this file can be removed.
+
+10. Finally, you dont have to add a new package, just as we added **MyToolsOptionsPackage**. We can use the existing one instead. CreateOptionsPagePackage. Just ensure the attributes are added as shown above. 

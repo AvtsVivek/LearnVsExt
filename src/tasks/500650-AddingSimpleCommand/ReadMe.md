@@ -1,5 +1,5 @@
 
-1.  Create a new project.
+1.  Create a VSix new project.
 
 2.  Add new item as follows.
 
