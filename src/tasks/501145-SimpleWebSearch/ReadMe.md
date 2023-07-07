@@ -2,8 +2,8 @@
 1. Objective: 
 
 2. Prereqs
-   1. 500670-AssignKeyboardShortcut. 
-   2. 500705-AddingMonikerIcon. 
+   1. 500670-AssignKeyboardShortcut.
+   2. 500705-AddingMonikerIcon.
    3. 500800-CreateOptionsPage
    4. 500810-ToolsOptionsCustomPage
    5. 500820-ReadOptionsValues
@@ -126,11 +126,11 @@ private void Execute(object sender, EventArgs e)
 <ButtonText>Search Web</ButtonText>
 ```
 
-12.  Now build and run. Open some file, select some text and right click. 
+12. Now build and run. Open some file, select some text and right click 
 
     ![Context Menu Command](./images/51_50SearchWebFinalRun.jpg)
 
-13. Status bar text.
+14. Status bar text.
 
     ![Statusbar Text](./images/52_50StatusBarText.jpg)
 
