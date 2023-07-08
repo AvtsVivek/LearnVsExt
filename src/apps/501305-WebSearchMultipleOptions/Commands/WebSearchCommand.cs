@@ -109,32 +109,34 @@ namespace WebSearchMultipleOptions.Commands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            var activeDocument = DteInstance?.ActiveDocument;
-            var textSelection = activeDocument?.Selection as TextSelection;
-
+            var options = this.package.GetDialogPage(typeof(ExternalSearchOptionPage)) as ExternalSearchOptionPage;
+            TextSelection textSelection = DteInstance?.ActiveDocument?.Selection as TextSelection;
             if (textSelection == null)
             {
-                DteInstance.StatusBar.Text = "No Text selected";
+                DteInstance.StatusBar.Text = "The selection is null or empty";
                 return;
             }
 
-            var textToBeSearched = textSelection?.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(textToBeSearched))
+            string textToBeSearched = textSelection?.Text?.Trim();
+            if (!string.IsNullOrWhiteSpace(textToBeSearched))
             {
-                DteInstance.StatusBar.Text = "No Text selected";
-                return;
+                string encodedText = HttpUtility.UrlEncode(textToBeSearched);
+                DteInstance.StatusBar.Text = $"Searching {textToBeSearched}";
+                OutputWindow.OutputStringThreadSafe($"Searching {textToBeSearched}");
+                string url = string.Format(options.Url, encodedText);
+                if (options.UseVSBrowser)
+                {
+                    DteInstance.ItemOperations.Navigate(url, vsNavigateOptions.vsNavigateOptionsDefault);
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(url);
+                }
             }
-
-            DteInstance.StatusBar.Text = string.Empty;
-            DteInstance.StatusBar.Text = $"Searching text: {textToBeSearched}";
-            OutputWindow.OutputStringThreadSafe($"Searching text: {textToBeSearched}");
-
-            var url = $"https://www.bing.com/search?q={textToBeSearched}";
-            var encodedText = HttpUtility.UrlEncode(textToBeSearched);
-            var encodedUrl = string.Format(url, encodedText);
-
-            System.Diagnostics.Process.Start(encodedUrl);
+            else
+            {
+                DteInstance.StatusBar.Text = "The selection is null or empty";
+            }
         }
     }
 }

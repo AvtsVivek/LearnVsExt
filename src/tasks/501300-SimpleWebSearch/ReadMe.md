@@ -57,7 +57,9 @@ and finally
 <Icon guid="guidImages" id="bmpPic1" />
 ```
 
-7. Now Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
+7. Also note 500705-AddingMonikerIcon. To include an incon for the extension itself. We are not going to do that in this example.
+ 
+8. Now Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
 
 ![Context Menu Command](./images/50_50ContextMenuCommand.jpg)
 

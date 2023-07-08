@@ -51,7 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WebSearchMultipleOptionsPackage.vsct</DependentUpon>
     </Compile>
+    <Compile Include="ExternalSearchOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchEngines.cs" />
     <Compile Include="WebSearchMultipleOptionsPackage.cs" />
   </ItemGroup>
   <ItemGroup>

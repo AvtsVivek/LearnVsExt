@@ -26,6 +26,7 @@ namespace WebSearchMultipleOptions
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(WebSearchMultipleOptionsPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideOptionPage(typeof(ExternalSearchOptionPage), "External Search", "General", 1, 1, true, new string[] { "External Search Options" })]
     public sealed class WebSearchMultipleOptionsPackage : AsyncPackage
     {
         /// <summary>
