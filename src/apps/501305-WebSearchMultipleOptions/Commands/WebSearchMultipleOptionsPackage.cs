@@ -17,9 +17,6 @@ namespace WebSearchMultipleOptions.Commands
 
         public const string guidWebSearchMultipleOptionsPackageCmdSetString = "efb8b346-9d9f-446f-aac4-f8b3962f82e5";
         public static Guid guidWebSearchMultipleOptionsPackageCmdSet = new Guid(guidWebSearchMultipleOptionsPackageCmdSetString);
-
-        public const string guidImagesString = "d62ebaa9-e21b-4c77-8d23-458ca63b761a";
-        public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -28,11 +25,5 @@ namespace WebSearchMultipleOptions.Commands
     {
         public const int MyMenuGroup = 0x1020;
         public const int WebSearchCommandId = 0x0100;
-        public const int bmpPic1 = 0x0001;
-        public const int bmpPic2 = 0x0002;
-        public const int bmpPicSearch = 0x0003;
-        public const int bmpPicX = 0x0004;
-        public const int bmpPicArrows = 0x0005;
-        public const int bmpPicStrikethrough = 0x0006;
     }
 }
