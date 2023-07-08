@@ -1,5 +1,5 @@
 
-1. Objective: 
+1. Objective: Build an extension which will help search a selected text on web(bing search).
 
 2. Prereqs
    1. 500670-AssignKeyboardShortcut.
