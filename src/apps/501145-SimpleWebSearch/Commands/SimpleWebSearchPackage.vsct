@@ -29,6 +29,10 @@
     </Buttons>
   </Commands>
 
+	<KeyBindings>
+		<KeyBinding guid="guidSimpleWebSearchPackageCmdSet" id="FindOnWebCommandId" editor="guidVSStd97" key1="S" mod1="Alt"></KeyBinding>
+	</KeyBindings>
+	
   <Symbols>
     <GuidSymbol name="guidSimpleWebSearchPackage" value="{39be0c55-7747-4a50-a5b6-d9476826b89d}" />
     <GuidSymbol name="guidSimpleWebSearchPackageCmdSet" value="{da587d54-32dc-4e4f-b762-2cd5abe48811}">

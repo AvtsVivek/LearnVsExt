@@ -134,14 +134,23 @@ private void Execute(object sender, EventArgs e)
 
     ![Statusbar Text](./images/52_50StatusBarText.jpg)
 
-14.  Also try without selecting any text, just rightclick anywhere on the file, and see.
+14. Also try without selecting any text, just rightclick anywhere on the file, and see.
 
-15.  Next need know more about Options and  
+15. Finally you can add keyboard shortcut Alt + s, as follows.
+
+```xml
+<KeyBindings>
+    <KeyBinding guid="guidSimpleWebSearchPackageCmdSet" id="FindOnWebCommandId" editor="guidVSStd97" key1="S" mod1="Alt"></KeyBinding>
+</KeyBindings>
+```
+
+16. Now, once you select, you can invoke the command using Alt + S
+
+17.  Next need know more about Options and  
      1. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page
      2. https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-a-settings-category
      3. https://learn.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options
      4. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings
      5. https://learn.microsoft.com/en-us/previous-versions/cc826083(v=vs.140)
      6. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages
-
 
