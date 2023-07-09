@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace TextClassifier
 {
@@ -23,6 +24,11 @@ namespace TextClassifier
         private IClassificationTypeRegistryService classificationRegistry;
 
 #pragma warning restore 649
+
+        public EditorClassifier1Provider()
+        {
+            Debugger.Break();
+        }
 
         #region IClassifierProvider
 

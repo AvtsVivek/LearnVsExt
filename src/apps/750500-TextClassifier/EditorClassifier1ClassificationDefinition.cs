@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace TextClassifier
 {
@@ -20,5 +21,10 @@ namespace TextClassifier
         private static ClassificationTypeDefinition typeDefinition;
 
 #pragma warning restore 169
+
+        static EditorClassifier1ClassificationDefinition()
+        {
+            Debugger.Break();
+        }
     }
 }

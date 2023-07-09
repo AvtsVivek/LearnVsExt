@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Text.Classification;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TextClassifier
 {
@@ -21,6 +22,7 @@ namespace TextClassifier
         /// <param name="registry">Classification registry.</param>
         internal EditorClassifier1(IClassificationTypeRegistryService registry)
         {
+            Debugger.Break();
             this.classificationType = registry.GetClassificationType("EditorClassifier1");
         }
 

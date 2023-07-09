@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Windows.Media;
 
 namespace TextClassifier
@@ -21,6 +22,7 @@ namespace TextClassifier
         /// </summary>
         public EditorClassifier1Format()
         {
+            Debugger.Break();
             this.DisplayName = "EditorClassifier1"; // Human readable version of the name
             this.BackgroundColor = Colors.BlueViolet;
             this.TextDecorations = System.Windows.TextDecorations.Underline;

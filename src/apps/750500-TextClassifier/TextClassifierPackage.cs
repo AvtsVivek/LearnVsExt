@@ -32,6 +32,11 @@ namespace TextClassifier
         /// </summary>
         public const string PackageGuidString = "868b53c4-e47d-43aa-ba66-4fa9a8783fc7";
 
+        public TextClassifierPackage()
+        {
+            Debugger.Break();
+        }
+
         #region Package Members
 
         /// <summary>
