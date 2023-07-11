@@ -14,4 +14,4 @@
 
 ![Delete other files](./images/50_51EditorClassifierDeleteOtherFiles.jpg)
 
-4. 
+4. Follow the subsequent steps in the reference.
