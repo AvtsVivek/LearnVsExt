@@ -129,3 +129,10 @@ And the code samples are here.
    5. https://developercommunity.visualstudio.com/t/extension-knowmonikers-image-is-not-showing-in-blu/1578087
    6. https://learn.microsoft.com/en-us/answers/questions/1134844/crispimage-draws-empty-area-when-using-vs-image-se?comment=question#newest-question-comment
    7. https://github.com/jfrog/jfrog-visual-studio-extension
+
+6. Language Services
+   1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-an-lsp-extension
+   2. https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol
+   3. https://www.youtube.com/watch?v=hDSmUXK03L4
+   4. https://www.youtube.com/watch?v=9XUAGspESzQ
+   5. https://www.youtube.com/watch?v=Cw9qCsetpLU
