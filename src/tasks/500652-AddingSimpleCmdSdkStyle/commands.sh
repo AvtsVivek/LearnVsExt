@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/500650-AddingSimpleCommand
+cd src/tasks/500652-AddingSimpleCmdSdkStyle
 
-cd src/apps/500650-AddingSimpleCommand
+cd src/apps/500652-AddingSimpleCmdSdkStyle
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./AddingSimpleCommand.csproj
+dotnet build --project ./AddingSimpleCmdSdkStyle.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,12 +19,12 @@ dotnet build --project ./AddingSimpleCommand.csproj
 
 # The following three build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./AddingSimpleCommand.sln
-devenv /build Debug ./AddingSimpleCommand.csproj
+devenv /build Debug ./AddingSimpleCmdSdkStyle.sln
+devenv /build Debug ./AddingSimpleCmdSdkStyle.csproj
 devenv /rootsuffix Exp /updateconfiguration
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
+devenv.exe /RootSuffix Exp ./AddingSimpleCmdSdkStyle.sln
 
 # Now, you can see its installed in the visual studio alone.
 # Now to unstall it, just go to the Extensions(of the experimantal visual studio where you want to uninstall) -> Installed and uninstall it.
@@ -42,7 +42,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./AddingSimpleCommand.vsix
+./AddingSimpleCmdSdkStyle.vsix
 
 
 # Once installed, open the logs. You will see something like. 
