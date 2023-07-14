@@ -21,5 +21,6 @@
 
 # New Project creation
 
-1. 
+1. The starting project is [taken from here](https://github.com/microsoft/VSSDK-Extensibility-Samples/blob/master/LanguageServerProtocol/MockLanguageExtension/MockLanguageExtension.csproj). 
 
+2. 
