@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32324.617
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VSixSdkProjectIntro", "MockLanguageExtension\VSixSdkProjectIntro.csproj", "{EB360D87-8769-44A4-B837-8BC3279070C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VSixSdkProjectIntro", "VSixSdkProjectIntro.csproj", "{A4112D49-B560-4BA1-A85C-9832A8223791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EB360D87-8769-44A4-B837-8BC3279070C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB360D87-8769-44A4-B837-8BC3279070C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB360D87-8769-44A4-B837-8BC3279070C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB360D87-8769-44A4-B837-8BC3279070C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4112D49-B560-4BA1-A85C-9832A8223791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4112D49-B560-4BA1-A85C-9832A8223791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4112D49-B560-4BA1-A85C-9832A8223791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4112D49-B560-4BA1-A85C-9832A8223791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
