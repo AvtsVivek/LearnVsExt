@@ -1,5 +1,7 @@
 ## Language Server Protocol
 
+## To Do. This has no app to look into currently.
+
 1. Its a strandardized way an editor(ex vs code) talks to a language server. 
 
 2. LSP is specification of the communication between a client (editor) and a server that provides language tooling capabilities such as autocomplete, tooltips, etc. For example, instead of creating a Python VSCode plugin, a Python vim plugin, a Python Atom plugin, and Python plugins for any other potential clients, it allows developers to focus on single implementation of language server, this will be automatically supported by all clients that implement LSP.

@@ -22,12 +22,14 @@ namespace TodoGlyphTest
                 return null;
             }
 
-            System.Windows.Shapes.Ellipse ellipse = new Ellipse();
-            ellipse.Fill = Brushes.Yellow;
-            ellipse.StrokeThickness = 2;
-            ellipse.Stroke = Brushes.Red;
-            ellipse.Height = m_glyphSize;
-            ellipse.Width = m_glyphSize;
+            var ellipse = new Ellipse()
+            {
+                Fill = Brushes.Yellow,
+                StrokeThickness = 2,
+                Stroke = Brushes.Red,
+                Height = m_glyphSize,
+                Width = m_glyphSize,
+            };
 
             return ellipse;
         }

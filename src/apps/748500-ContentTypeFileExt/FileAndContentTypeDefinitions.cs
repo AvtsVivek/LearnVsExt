@@ -7,7 +7,7 @@ namespace ContentTypeFileExt
     {
         [Export]
         [Name("hid")]
-        [BaseDefinition("Code")]
+        [BaseDefinition("text")]
         internal static ContentTypeDefinition hidingContentTypeDefinition;
 
         [Export]

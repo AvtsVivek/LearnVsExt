@@ -12,17 +12,21 @@ namespace TodoGlyphTest
     [TagType(typeof(TodoTag))]
     public class TodoTaggerProvider : ITaggerProvider
     {
+        public TodoTaggerProvider()
+        {
+            
+        }
+
         [Import]
         internal IClassifierAggregatorService AggregatorService;
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
         {
             if (buffer == null)
-            {
                 throw new ArgumentNullException("buffer");
-            }
+            
+            var classifier = AggregatorService.GetClassifier(buffer);
 
-            return new TodoTagger(AggregatorService.GetClassifier(buffer)) as ITagger<T>;
+            return new TodoTagger(classifier) as ITagger<T>;
         }
     }
-
 }
