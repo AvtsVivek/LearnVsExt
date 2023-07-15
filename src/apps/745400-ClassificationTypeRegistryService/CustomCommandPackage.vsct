@@ -80,7 +80,7 @@
     <GuidSymbol name="guidCustomCommandPackage" value="{330ce502-4e1f-44b8-ab32-82a7ea71beeb}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidCustomCommandPackageCmdSet" value="{6cd448f0-2967-4e12-997c-1ee5e3942541}">
+    <GuidSymbol name="guidCustomCommandPackageCmdSet" value="{D4E06D33-CE13-49B3-81CD-2FEBF0FB433E}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="CustomCommandId" value="0x0100" />
     </GuidSymbol>

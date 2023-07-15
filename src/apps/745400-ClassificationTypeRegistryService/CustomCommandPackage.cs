@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
+using ClassificationTypeRegistryService.Commands;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
@@ -38,6 +39,8 @@ namespace ClassificationTypeRegistryService
         protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            CustomCommand.Initialize(this);
         }
 
         #endregion

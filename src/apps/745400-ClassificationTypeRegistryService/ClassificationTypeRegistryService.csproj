@@ -52,10 +52,6 @@
 		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
 		<Reference Include="System.Design" />
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Commands\" />
-	</ItemGroup>
 
 	<!-- We shouldn't package the client definition dll with the extension -->
 	<Target Name="RemoveClientDefinition" AfterTargets="GetVsixSourceItems">
