@@ -136,3 +136,6 @@ And the code samples are here.
    3. https://www.youtube.com/watch?v=hDSmUXK03L4
    4. https://www.youtube.com/watch?v=9XUAGspESzQ
    5. https://www.youtube.com/watch?v=Cw9qCsetpLU
+
+7. What next?
+   1. Need to try this. https://stackoverflow.com/questions/45863788/how-can-i-find-out-what-classification-types-are-registered-in-visual-studio
