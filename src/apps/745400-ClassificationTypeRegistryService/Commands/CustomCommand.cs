@@ -19,8 +19,6 @@ namespace ClassificationTypeRegistryService.Commands
 
         /// <summary>
         /// Command menu group (command set GUID).
-        /// [Guid("DC110C49-3FD7-4228-993B-D4A1785204D0")]
-        /// <Guid("D4E06D33-CE13-49B3-81CD-2FEBF0FB433E")>
         /// </summary>
         public static readonly Guid CommandSet = new Guid("D4E06D33-CE13-49B3-81CD-2FEBF0FB433E");
 

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using ClassificationTypeRegistryService.Commands;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
+
 
 namespace ClassificationTypeRegistryService
 {
@@ -31,6 +33,9 @@ namespace ClassificationTypeRegistryService
         }
 
         #region Package Members
+
+        //[Import]
+        //private IClassificationTypeRegistryService classificationRegistry;
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place

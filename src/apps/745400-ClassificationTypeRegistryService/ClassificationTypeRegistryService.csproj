@@ -51,6 +51,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
 		<Reference Include="System.Design" />
+		<PackageReference Include="Microsoft.VisualStudio.Text.Logic" Version="17.6.268" />
 	</ItemGroup>
 
 	<!-- We shouldn't package the client definition dll with the extension -->

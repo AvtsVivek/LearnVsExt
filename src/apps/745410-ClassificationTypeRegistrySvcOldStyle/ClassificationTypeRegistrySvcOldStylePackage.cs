@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace TextClassifier
+namespace ClassificationTypeRegistrySvcOldStyle
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -25,18 +24,14 @@ namespace TextClassifier
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(TextClassifierPackage.PackageGuidString)]
-    public sealed class TextClassifierPackage : AsyncPackage
+    [Guid(ClassificationTypeRegistrySvcOldStylePackage.PackageGuidString)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    public sealed class ClassificationTypeRegistrySvcOldStylePackage : AsyncPackage
     {
         /// <summary>
-        /// TextClassifierPackage GUID string.
+        /// ClassificationTypeRegistrySvcOldStylePackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "868b53c4-e47d-43aa-ba66-4fa9a8783fc7";
-
-        public TextClassifierPackage()
-        {
-            Debugger.Break();
-        }
+        public const string PackageGuidString = "32fa5481-ea8c-4eca-a696-fb97e113a1e7";
 
         #region Package Members
 
@@ -52,6 +47,7 @@ namespace TextClassifier
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await ClassificationTypeRegistrySvcOldStyle.Commands.Command1.InitializeAsync(this);
         }
 
         #endregion
