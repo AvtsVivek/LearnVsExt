@@ -35,4 +35,7 @@
     11. Code Lense
     12. Code Actions
     13. 
+
 12. https://github.com/david-driscoll/codefest-2018/blob/master/crazy-configuration/README.md
+13. https://github.com/david-driscoll/dotnet-conf-2020
+14. 
