@@ -15,21 +15,21 @@ public class Worker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            _logger.LogInformation("[CLIENT] Worker running at: {time}", DateTimeOffset.Now);
 
             await using var pipeClient = new NamedPipeClientStream(".", "testpipe", PipeDirection.In);
 
             // Connect to the pipe or wait until the pipe is available.
-            _logger.LogInformation("Attempting to connect to pipe...");
+            _logger.LogInformation("[CLIENT] Attempting to connect to pipe...");
             pipeClient.Connect();
 
-            _logger.LogInformation("Connected to pipe.");
+            _logger.LogInformation("[CLIENT] Connected to pipe.");
 
             using var sr = new StreamReader(pipeClient);
             string? temp;
             while ((temp = sr.ReadLine()) != null)
             {
-                _logger.LogInformation("Received from server: {0}", temp);
+                _logger.LogInformation("[CLIENT] Received from server: {0}", temp);
             }
 
             await Task.Delay(10000, stoppingToken);
