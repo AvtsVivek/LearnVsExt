@@ -40,7 +40,7 @@ public class Worker : BackgroundService
                 _logger.LogInformation("[SERVER] ERROR: {0}", e.Message);
             }
 
-            await Task.Delay(10000, stoppingToken);
+            await Task.Delay(1000, stoppingToken);
         }
     }
 }
