@@ -1,17 +1,17 @@
 cd ../../..
 
-cd src/tasks/740600-NamedPipesExOne
+cd src/tasks/740610-NamedPipesExTwo
 
-cd src/apps/740600-NamedPipesExOne
+cd src/apps/740610-NamedPipesExTwo
 
-devenv /build Debug ./NamedPipesExOne.sln
+devenv /build Debug ./NamedPipesExTwo.sln
 
-cd NamedPipesExOneClient
+cd NamedPipesExTwoClient
 
-dotnet run --project ./NamedPipesExOneClient.csproj
+dotnet run --project ./NamedPipesExTwoClient.csproj
 
-cd NamedPipesExOneServer
+cd NamedPipesExTwoServer
 
-dotnet run --project ./NamedPipesExOneServer.csproj
+dotnet run --project ./NamedPipesExTwoServer.csproj
 
 clear
