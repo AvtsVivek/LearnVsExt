@@ -10,7 +10,7 @@ public class Worker : BackgroundService
     private readonly NamedPipeServerStream _pipe;
 
     //demo-2
-    private readonly PipeServer _pipeServer;
+    // private readonly PipeServer _pipeServer;
 
 
     public Worker(ILogger<Worker> logger)
@@ -22,7 +22,7 @@ public class Worker : BackgroundService
             1);
 
         //demo-2
-        _pipeServer = new PipeServer("Demo2Pipe");
+        // _pipeServer = new PipeServer("Demo2Pipe");
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -67,9 +67,9 @@ public class Worker : BackgroundService
         _pipe.Close();
     }
 
-    private async Task Demo2()
-    {
-        _logger.LogInformation("Executing Server-Demo2!");
-        _pipeServer.WriteIfConnected($"Msg from server UTC: {DateTime.UtcNow}");
-    }
+    //private async Task Demo2()
+    //{
+    //    _logger.LogInformation("Executing Server-Demo2!");
+    //    _pipeServer.WriteIfConnected($"Msg from server UTC: {DateTime.UtcNow}");
+    //}
 }
