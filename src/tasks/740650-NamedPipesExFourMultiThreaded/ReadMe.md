@@ -8,6 +8,15 @@
 # To run the example.
 1. In Vs code, open two terminals as shown below. 
 
+2. Change diretories into client and server as shown below. 
+
 ![Start Client](./images/50_50HowToRun1.jpg)
 
-2. Then run in any way, first server and client or otherwise.
+3. Then run the proj files in any way, first server and then the client or otherwise.
+
+4. If the server is started first, it will wait for client. If the client is started first, 
+
+![Run Client Alone](./images/51_50RunningClientAlone.jpg)
+
+![Run Server Alone](./images/51_50RunningServerAlone.jpg)
+
