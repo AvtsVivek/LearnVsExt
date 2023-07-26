@@ -18,5 +18,12 @@
 
 ![Run Client Alone](./images/51_50RunningClientAlone.jpg)
 
+5. Server Alone.
+
 ![Run Server Alone](./images/52_50RunningServerAlone.jpg)
 
+6. Running both.
+
+![Run Both ](./images/53_50RunningBothServerAndClient.jpg)
+
+7. 
