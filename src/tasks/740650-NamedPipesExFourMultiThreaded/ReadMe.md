@@ -26,4 +26,8 @@
 
 ![Run Both ](./images/53_50RunningBothServerAndClient.jpg)
 
-7. 
+# Notes
+1. https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication#example-1
+2. https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication#example-2
+3. https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication#robust-programming
+4. 
