@@ -18,5 +18,5 @@
 
 ![Run Client Alone](./images/51_50RunningClientAlone.jpg)
 
-![Run Server Alone](./images/51_50RunningServerAlone.jpg)
+![Run Server Alone](./images/52_50RunningServerAlone.jpg)
 
