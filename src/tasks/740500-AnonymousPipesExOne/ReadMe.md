@@ -2,17 +2,20 @@
 
 # References
 1. https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-anonymous-pipes-for-local-interprocess-communication
+2. https://learn.microsoft.com/en-us/windows/win32/ipc/anonymous-pipes
+3. https://learn.microsoft.com/en-us/windows/win32/ipc/pipes
 
-2. Anonymous pipes provide interprocess communication on a local computer. 
+4. Pipes provide a way for interprocess communication. See [this](https://learn.microsoft.com/en-us/windows/win32/ipc/interprocess-communications). 
+5. Anonymous pipes provide interprocess communication on a local computer. 
 
-3. Understanding Pipes.
+6. Understanding Pipes.
    1. Pipes - a communication channel between two processes.
    2. Streams - a data collection that moves from a source to a destination.
    3. Just think of the actual ‘pipe’ where water flows. The actual pipe is the infrastructure to hold the water stream. The stream is what moves the water from point A to point B via gravity and force.
 
-4. We need to copy the client output to the server output directory. So do the following.
+7. We need to copy the client output to the server output directory. So do the following.
 
-5. Add a target to the AnonymousPipesClientExOne.csproj as follows. The following copies all the files in the output directory. See this [Ms build docs](https://learn.microsoft.com/en-us/visualstudio/msbuild/copy-task#example-2)
+8. Add a target to the AnonymousPipesClientExOne.csproj as follows. The following copies all the files in the output directory. See this [Ms build docs](https://learn.microsoft.com/en-us/visualstudio/msbuild/copy-task#example-2)
 
 ```xml
 <Target Name="CopyDLLs" AfterTargets="Build">

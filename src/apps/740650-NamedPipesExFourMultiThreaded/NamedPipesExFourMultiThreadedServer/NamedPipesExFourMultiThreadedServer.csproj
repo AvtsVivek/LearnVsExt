@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        
+        <UserSecretsId>dotnet-NamedPipeServerService-24914F03-4574-43BF-AFB8-98DC6440C51C</UserSecretsId>
+    </PropertyGroup>
+
+
+</Project>
