@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonRpcStdIoClient", "JsonRpcStdIoClient\JsonRpcStdIoClient.csproj", "{05B4E2B0-3CCC-4679-A005-12913D41CE52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRpcStdIoServer", "JsonRpcStdIoServer\JsonRpcStdIoServer.csproj", "{FC2B099B-73D1-4417-99D9-41F6840AD879}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05B4E2B0-3CCC-4679-A005-12913D41CE52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B4E2B0-3CCC-4679-A005-12913D41CE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B4E2B0-3CCC-4679-A005-12913D41CE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B4E2B0-3CCC-4679-A005-12913D41CE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2B099B-73D1-4417-99D9-41F6840AD879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2B099B-73D1-4417-99D9-41F6840AD879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2B099B-73D1-4417-99D9-41F6840AD879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2B099B-73D1-4417-99D9-41F6840AD879}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7408EC99-DC82-4A98-A209-45B678C69B75}
+	EndGlobalSection
+EndGlobal
