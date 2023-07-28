@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/740500-AnonymousPipesExOne
+cd src/tasks/738500-AnonymousPipesExOne
 
-cd src/apps/740500-AnonymousPipesExOne
+cd src/apps/738500-AnonymousPipesExOne
 
 
 # The following build commands does not seem to work. 
