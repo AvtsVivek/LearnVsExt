@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExConsoleServer", "WebSocketExConsoleServer\WebSocketExConsoleServer.csproj", "{1E4C9E68-6427-4CCB-B6BE-2FD3C6A04348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExConsoleClient", "WebSocketExConsoleClient\WebSocketExConsoleClient.csproj", "{8C85CFCD-3909-41AC-9AB0-50924655302A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E4C9E68-6427-4CCB-B6BE-2FD3C6A04348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4C9E68-6427-4CCB-B6BE-2FD3C6A04348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4C9E68-6427-4CCB-B6BE-2FD3C6A04348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4C9E68-6427-4CCB-B6BE-2FD3C6A04348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C85CFCD-3909-41AC-9AB0-50924655302A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C85CFCD-3909-41AC-9AB0-50924655302A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C85CFCD-3909-41AC-9AB0-50924655302A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C85CFCD-3909-41AC-9AB0-50924655302A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {572853C4-43FA-46FC-B3F6-33E44ADC300F}
+	EndGlobalSection
+EndGlobal
