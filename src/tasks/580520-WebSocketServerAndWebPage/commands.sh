@@ -14,9 +14,5 @@ cd WebSocketServerAndWebPageServer
 
 dotnet run --project ./WebSocketServerAndWebPageServer.csproj
 
-cd ..
 
-cd WebSocketExOneClient
-
-dotnet run --project ./WebSocketExOneClient.csproj
 
