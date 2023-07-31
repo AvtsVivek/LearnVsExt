@@ -15,10 +15,10 @@ while (ws.State == WebSocketState.Open)
     if (result.MessageType == WebSocketMessageType.Close)
     {
         await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, null, CancellationToken.None);
-        Console.WriteLine(result.CloseStatusDescription);
+        Console.WriteLine($"Client close {result.CloseStatusDescription}");
     }
     else
     {
-        Console.WriteLine(Encoding.ASCII.GetString(buf, 0, result.Count));
+        Console.WriteLine($"string received: {Encoding.ASCII.GetString(buf, 0, result.Count)}");
     }
 }

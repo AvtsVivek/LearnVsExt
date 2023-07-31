@@ -7,8 +7,6 @@ var app = builder.Build();
 
 app.UseWebSockets();
 
-app.MapGet("/", () => "Hello World!");
-
 app.Map("/ws", async context =>
 {
     if (context.WebSockets.IsWebSocketRequest)
@@ -19,9 +17,8 @@ app.Map("/ws", async context =>
         while (true)
         {
             var now = DateTime.Now;
-            byte[] data = Encoding.ASCII.GetBytes($"{now}");
-            await webSocket.SendAsync(data, WebSocketMessageType.Text,
-                true, CancellationToken.None);
+            byte[] dataToSend = Encoding.ASCII.GetBytes($"{now}");
+            await webSocket.SendAsync(dataToSend, WebSocketMessageType.Text, true, CancellationToken.None);
             await Task.Delay(1000);
 
             long r = rand.NextInt64(0, 10);
