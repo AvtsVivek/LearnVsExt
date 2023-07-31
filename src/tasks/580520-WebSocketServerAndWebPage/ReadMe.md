@@ -8,7 +8,10 @@
 # How to run. 
 1. Run the server and then open the index.html web page in a chrome or Edge.
 2. Click the start link of the page.
+   
 ![Runing the serer](./images/50_50_ServerRunning.jpg)
-3. Here is the page.
+
+4. Here is the page.
+
 ![Index html page in action](./images/51_50IndexHtmlPageCallingServer.jpg)
 
