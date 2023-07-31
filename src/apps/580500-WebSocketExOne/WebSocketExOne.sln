@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExOneServer", "WebSocketExOneServer\WebSocketExOneServer.csproj", "{50035BB3-FB4E-4F6C-B86D-69BC5FA3E183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExOneClient", "WebSocketExOneClient\WebSocketExOneClient.csproj", "{66EC161D-00AD-4083-B5A1-06A0CF4E8A20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{50035BB3-FB4E-4F6C-B86D-69BC5FA3E183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50035BB3-FB4E-4F6C-B86D-69BC5FA3E183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50035BB3-FB4E-4F6C-B86D-69BC5FA3E183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EC161D-00AD-4083-B5A1-06A0CF4E8A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EC161D-00AD-4083-B5A1-06A0CF4E8A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EC161D-00AD-4083-B5A1-06A0CF4E8A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EC161D-00AD-4083-B5A1-06A0CF4E8A20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
