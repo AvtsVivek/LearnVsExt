@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/739500-JsonRpcStdIo
+cd src/tasks/639500-JsonRpcStdIo
 
-cd src/apps/739500-JsonRpcStdIo
+cd src/apps/639500-JsonRpcStdIo
 
 
 # The following build commands does not seem to work. 

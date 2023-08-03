@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/738630-NamedPipesExThree
+cd src/tasks/638630-NamedPipesExThree
 
-cd src/apps/738630-NamedPipesExThree
+cd src/apps/638630-NamedPipesExThree
 
 devenv /build Debug ./NamedPipesExThree.sln
 

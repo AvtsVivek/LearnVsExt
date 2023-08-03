@@ -2,9 +2,9 @@ cd ../../..
 
 cd ../../../..
 
-cd src/tasks/739530-JsonRpcNamedPipe
+cd src/tasks/639530-JsonRpcNamedPipe
 
-cd src/apps/739530-JsonRpcNamedPipe
+cd src/apps/639530-JsonRpcNamedPipe
 
 devenv /build Debug ./JsonRpcNamedPipe.sln
 
@@ -16,9 +16,9 @@ cd ../../../..
 
 cd ../../../
 
-cd src/tasks/739530-JsonRpcNamedPipe
+cd src/tasks/639530-JsonRpcNamedPipe
 
-cd src/apps/739530-JsonRpcNamedPipe
+cd src/apps/639530-JsonRpcNamedPipe
 
 cd JsonRpcNamedPipeServer
 

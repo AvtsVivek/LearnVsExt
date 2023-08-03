@@ -2,9 +2,9 @@ cd ../../..
 
 cd ../../../..
 
-cd src/tasks/738650-NamedPipesExFourMultiThreaded
+cd src/tasks/638650-NamedPipesExFourMultiThreaded
 
-cd src/apps/738650-NamedPipesExFourMultiThreaded
+cd src/apps/638650-NamedPipesExFourMultiThreaded
 
 devenv /build Debug ./NamedPipesExFourMultiThreaded.sln
 
@@ -16,9 +16,9 @@ cd ../../../..
 
 cd ../../../
 
-cd src/tasks/738650-NamedPipesExFourMultiThreaded
+cd src/tasks/638650-NamedPipesExFourMultiThreaded
 
-cd src/apps/738650-NamedPipesExFourMultiThreaded
+cd src/apps/638650-NamedPipesExFourMultiThreaded
 
 cd NamedPipesExFourMultiThreadedServer
 
