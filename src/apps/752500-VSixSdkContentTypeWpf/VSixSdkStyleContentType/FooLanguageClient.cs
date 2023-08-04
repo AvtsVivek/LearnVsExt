@@ -65,7 +65,7 @@ namespace VSixSdkStyleContentType
         public async Task<Connection> ActivateAsync(CancellationToken token)
         {
             ProcessStartInfo info = new ProcessStartInfo();
-            var programPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Server", @"LanguageServerWithUI.exe");
+            var programPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Server", @"NetCoreWpfApp.exe");
             info.FileName = programPath;
             info.WorkingDirectory = Path.GetDirectoryName(programPath);
 
