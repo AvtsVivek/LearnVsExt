@@ -68,3 +68,5 @@ private static async Task RespondToRpcRequestsUsingConsoleAsync(Stream stream, i
    2. Console.OpenStandardInput() and Console.OpenStandardOutput()
    3. FullDuplexStream.Splice();
 
+3. Basically, we need a stream to communicate between the client and server. In this case its obtained using FullDuplexStream. We can use a named pipe as well to connect to these two client and server, there is a subsequent example with NamedPipe. 
+
