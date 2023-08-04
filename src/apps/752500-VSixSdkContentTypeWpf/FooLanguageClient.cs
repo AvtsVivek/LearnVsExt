@@ -1,11 +1,14 @@
 ﻿using Microsoft.VisualStudio.LanguageServer.Client;
 using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
+using StreamJsonRpc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Pipes;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,8 +17,24 @@ namespace VSixSdkContentTypeWpf
     [ContentType("foo")]
     [Export(typeof(ILanguageClient))]
     [RunOnContext(RunningContext.RunOnHost)]
-    public class FooLanguageClient : ILanguageClient
+    public class FooLanguageClient : ILanguageClient, ILanguageClientCustomMessage2
     {
+        public FooLanguageClient()
+        {
+            Instance = this;
+        }
+
+        internal static FooLanguageClient Instance
+        {
+            get;
+            set;
+        }
+
+        internal JsonRpc Rpc
+        {
+            get;
+            set;
+        }
         public string Name => "Foo Language Extension";
 
         public IEnumerable<string> ConfigurationSections
@@ -32,13 +51,54 @@ namespace VSixSdkContentTypeWpf
 
         public bool ShowNotificationOnInitializeFailed => true;
 
+        public object MiddleLayer
+        {
+            get;
+            set;
+        }
+
+        public object CustomMessageTarget => null;
+
         public event AsyncEventHandler<EventArgs> StartAsync;
         public event AsyncEventHandler<EventArgs> StopAsync;
 
-        public Task<Connection> ActivateAsync(CancellationToken token)
+        public async Task<Connection> ActivateAsync(CancellationToken token)
         {
-            // Here we go
+            ProcessStartInfo info = new ProcessStartInfo();
+            var programPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Server", @"LanguageServerWithUI.exe");
+            info.FileName = programPath;
+            info.WorkingDirectory = Path.GetDirectoryName(programPath);
+
+            var stdInPipeName = @"output";
+            var stdOutPipeName = @"input";
+
+            var pipeAccessRule = new PipeAccessRule("Everyone", PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
+            var pipeSecurity = new PipeSecurity();
+            pipeSecurity.AddAccessRule(pipeAccessRule);
+
+            var bufferSize = 256;
+            var readerPipe = new NamedPipeServerStream(stdInPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
+            var writerPipe = new NamedPipeServerStream(stdOutPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
+
+            Process process = new Process();
+            process.StartInfo = info;
+
+            if (process.Start())
+            {
+                await readerPipe.WaitForConnectionAsync(token);
+                await writerPipe.WaitForConnectionAsync(token);
+
+                return new Connection(readerPipe, writerPipe);
+            }
+
             return null;
+        }
+
+        public Task AttachForCustomMessageAsync(JsonRpc rpc)
+        {
+            this.Rpc = rpc;
+
+            return Task.CompletedTask;
         }
 
         public async Task OnLoadedAsync()
