@@ -14,7 +14,8 @@
 # Running the example.
 1. Just following the commands.sh steps. 
 
-# Notes
+
+# How the example is created.
 1. We need to copy the server output to the client output directory. So do the following.
 
 2. Add a target to the JsonRpcStdIoServer.csproj as follows. The following copies all the files in the output directory. See this [Ms build docs](https://learn.microsoft.com/en-us/visualstudio/msbuild/copy-task#example-2)
@@ -31,5 +32,34 @@
         DestinationFolder="..\JsonRpcStdIoClient\$(OutDir)" />
     <Message Text="Copied build files" Importance="High" />
 </Target>
+```
+
+# Notes
+1. In the server, obsere the following method.
+
+```cs
+private static async Task RespondToRpcRequestsUsingConsoleErrorAsync(Stream stream, int clientId)
+{
+    // https://stackoverflow.com/a/51760392/1977871
+    await Console.Error.WriteLineAsync($"Connection request #{clientId} received. Spinning off an async Task to cater to requests.");
+    var jsonRpc = JsonRpc.Attach(stream, new Server());
+    await Console.Error.WriteLineAsync($"JSON-RPC listener attached to #{clientId}. Waiting for requests...");
+    await jsonRpc.Completion;
+    await Console.Error.WriteLineAsync($"Connection #{clientId} terminated.");
+}
+```
+
+If you use Console.WriteLine instead of Console.Error.WriteLineAsync, the example would throw exception. Not sure why. Need to find out. So instead of the above, if I use the following, the example would **NOT** run.
+
+
+```cs
+private static async Task RespondToRpcRequestsUsingConsoleAsync(Stream stream, int clientId)
+{
+    Console.WriteLine($"Connection request #{clientId} received. Spinning off an async Task to cater to requests.");
+    var jsonRpc = JsonRpc.Attach(stream, new Server());
+    Console.WriteLine($"JSON-RPC listener attached to #{clientId}. Waiting for requests...");
+    await jsonRpc.Completion;
+    Console.WriteLine($"Connection #{clientId} terminated.");
+}
 ```
 
