@@ -5,7 +5,7 @@ using System.Threading;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
-namespace VSixSdkProjectIntro
+namespace VSixSdkStyleContentType
 {
     /// <summary>
     /// This package only loads when the FooLanguageClient.UiContextGuidString UI context is set.  This ensures that this extension is only loaded when the language server is activated.

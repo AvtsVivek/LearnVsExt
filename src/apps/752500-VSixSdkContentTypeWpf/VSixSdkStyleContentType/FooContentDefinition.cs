@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
 
-namespace VSixSdkContentTypeWpf
+namespace VSixSdkStyleContentType
 {
     public class FooContentDefinition
     {

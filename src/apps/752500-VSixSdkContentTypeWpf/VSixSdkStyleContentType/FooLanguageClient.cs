@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace VSixSdkContentTypeWpf
+namespace VSixSdkStyleContentType
 {
     [ContentType("foo")]
     [Export(typeof(ILanguageClient))]
