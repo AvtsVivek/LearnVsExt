@@ -9,8 +9,6 @@ using StreamJsonRpc;
 
 class Program
 {
-    static bool useStdIo = false;
-
     static async Task Main()
     {
 

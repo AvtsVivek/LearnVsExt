@@ -63,3 +63,8 @@ private static async Task RespondToRpcRequestsUsingConsoleAsync(Stream stream, i
 }
 ```
 
+2. Need to understand more. 
+   1. What is FullDuplexStream?
+   2. Console.OpenStandardInput() and Console.OpenStandardOutput()
+   3. FullDuplexStream.Splice();
+
