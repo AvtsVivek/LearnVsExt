@@ -64,10 +64,12 @@ namespace VSixSdkStyleContentType
 
         public async Task<Connection> ActivateAsync(CancellationToken token)
         {
-            ProcessStartInfo info = new ProcessStartInfo();
-            var programPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Server", @"NetCoreWpfApp.exe");
-            info.FileName = programPath;
-            info.WorkingDirectory = Path.GetDirectoryName(programPath);
+            var processStartInfo = new ProcessStartInfo();
+            var executingAssemblyLocation = Assembly.GetExecutingAssembly().Location;
+            var executingAssemblyDirectoryName = Path.GetDirectoryName(executingAssemblyLocation);
+            var programPath = Path.Combine(executingAssemblyDirectoryName, "WpfUiDlls", @"NetCoreWpfApp.exe");
+            processStartInfo.FileName = programPath;
+            processStartInfo.WorkingDirectory = Path.GetDirectoryName(programPath);
 
             var stdInPipeName = @"output";
             var stdOutPipeName = @"input";
@@ -81,7 +83,7 @@ namespace VSixSdkStyleContentType
             var writerPipe = new NamedPipeServerStream(stdOutPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
 
             Process process = new Process();
-            process.StartInfo = info;
+            process.StartInfo = processStartInfo;
 
             if (process.Start())
             {

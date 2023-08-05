@@ -45,15 +45,21 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Client" Version="17.6.42" />
-		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.5.4074">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Client" Version="17.1.68" />
+		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol" Version="17.1.8" />
+		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.6.36389" />
+		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
 		<Reference Include="System.Design" />
 	</ItemGroup>
-
+	
+	<ItemGroup>
+		<Content Include="WpfUiDlls\*.*">
+			<IncludeInVSIX>true</IncludeInVSIX>
+		</Content>
+	</ItemGroup>
 	<!-- We shouldn't package the client definition dll with the extension -->
 	<Target Name="RemoveClientDefinition" AfterTargets="GetVsixSourceItems">
 		<ItemGroup>

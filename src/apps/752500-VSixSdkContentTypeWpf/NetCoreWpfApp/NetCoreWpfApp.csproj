@@ -7,15 +7,15 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-
-	<Target Name="CopyDLLs" AfterTargets="Build">
+	
+	<Target Name="CopyDLLsToWpfUiDlls" AfterTargets="Build">
 		<Message Text="Executing CopyDLLs task $(TargetDir)" Importance="High" />
 		<ItemGroup>
 			<MySourceFiles Include="$(OutDir)\*.*"/>
 		</ItemGroup>
 		<Copy
 			SourceFiles="@(MySourceFiles)"
-			DestinationFolder="..\VSixSdkStyleContentType\bin\$(Configuration)\net472" />
+			DestinationFolder="..\VSixSdkStyleContentType\WpfUiDlls" />
 		<Message Text="Copied build files" Importance="High" />
 	</Target>
 
