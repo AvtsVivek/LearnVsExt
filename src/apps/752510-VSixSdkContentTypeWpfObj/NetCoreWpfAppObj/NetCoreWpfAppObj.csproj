@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+	
+	<Target Name="CopyDLLsToWpfUiDlls" AfterTargets="Build">
+		<Message Text="Executing CopyDLLs task $(TargetDir)" Importance="High" />
+		<ItemGroup>
+			<MySourceFiles Include="$(OutDir)\*.*"/>
+		</ItemGroup>
+		<Copy
+			SourceFiles="@(MySourceFiles)"
+			DestinationFolder="..\VSixSdkStyleContentTypeObj\obj\WpfUiDlls" />
+		<Message Text="Copied build files" Importance="High" />
+	</Target>
+
+</Project>

@@ -10,7 +10,11 @@
 2. https://stackoverflow.com/a/51204218/1977871
 3. https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol
 4. https://github.com/microsoft/VSSDK-Extensibility-Samples/blob/master/LanguageServerProtocol/MockLanguageExtension/MockLanguageExtension.csproj
-5. 
+5. https://www.nuget.org/packages/Microsoft.VSSDK.BuildTools/
+6. https://www.nuget.org/packages/Microsoft.VisualStudio.LanguageServer.Protocol/
+7. https://www.nuget.org/packages/Microsoft.VisualStudio.LanguageServer.Client/
+8. https://www.nuget.org/packages/Microsoft.VisualStudio.Shell.15.0/
+9. 
 
 # How the project is created.
 1. Start from 500510-VSixSdkProjectIntro
@@ -59,7 +63,7 @@
 
 12. Now clean up everthing, build the solution and run it. Open a file with .foo extension. The wpf app should now run. 
 
-13.  
+13. Note that the nuget packages are a bit old. Updating them to the latest is not working properly. So for now keep them as they are. 
 
 
 
