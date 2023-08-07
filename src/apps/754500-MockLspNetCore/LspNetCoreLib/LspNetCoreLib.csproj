@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol" Version="17.1.8" />
+		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol.Extensions" Version="17.1.8" />
+		<PackageReference Include="StreamJsonRpc" Version="2.15.29" />
+		<PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="17.6.268" />
+	</ItemGroup>
+	
+</Project>
