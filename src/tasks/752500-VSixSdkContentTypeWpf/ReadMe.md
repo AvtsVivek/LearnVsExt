@@ -65,6 +65,29 @@
 
 13. Note that the nuget packages are a bit old. Updating them to the latest is not working properly. So for now keep them as they are. 
 
+14. Note that a non null connection must be returned as follows from the **ActivateAsync(CancellationToken token)** method.
 
+```cs
+if (process.Start())
+{
+	await readerPipe.WaitForConnectionAsync(token);
+	await writerPipe.WaitForConnectionAsync(token);
 
+	return new Connection(readerPipe, writerPipe);
+}
+```
+
+Without it, we will get exception as follows. 
+
+![File Changes](./images/52_50_InvalidOperationException.jpg)
+
+The exception is because of the following code. ILanguageClient is not fully implimented as it should be and so this exception. 
+```cs
+public Task<InitializationFailureContext> OnServerInitializeFailedAsync(ILanguageClientInitializationInfo initializationState)
+{
+    Debugger.Break();
+    ...
+    return Task.FromResult(failureContext);
+}
+```
 
