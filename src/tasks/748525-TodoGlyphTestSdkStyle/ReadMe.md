@@ -5,52 +5,28 @@
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-margin-glyph
 
-## Steps:
-1. Follow the above link. 
+# How this example is created. 
+1. This is same as 748510-TodoGlyphTest but in Sdk style.
+2. The started from the 500510-VSixSdkProjectIntro
+3. Then add the following classes, similar to earlier example. 
+   1. TodoGlyphFactory
+   2. TodoGlyphFactoryProvider
+   3. TodoGlyphTestPackage
+   4. TodoTag
+   5. TodoTagger
+   6. TodoTaggerProvider
+4. Ensure the following references are added.
+```xml
+<ItemGroup>
+	<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
+	<PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" />
+	<Reference Include="System.Design" />
+</ItemGroup>
+```
 
-2. After creating the VSix project, Add Editor classifier project.
-
-![Add Editor Classifier file](./images/50_50EditorClassifierAddNewItem.jpg)
-
-3. Once you added Editor Classifier project item, you need to keep one file, that is EditorClassifier(IClassifier), and delete rest of the newly added files
-
-![Delete other files](./images/50_51EditorClassifierDeleteOtherFiles.jpg)
-
-4. I think, you can delete all the classes. Even the classifier. Not sure about this. 
-
-4. Follow the subsequent steps in the reference.
-
-5. Build and Test.
-   1. Build the solution.
-
-   2. Run the project by pressing F5. A second instance of Visual Studio starts.
-   
-   3. Make sure that the indicator margin is showing. (On the Tools menu, click Options. On the Text Editor page, make sure that Indicator margin is selected.)
-
-   4. Open a code file that has comments. Add the word "todo" to one of the comment sections. You can try a c sharp or vb.net. Make file such as SampleCShart.cs and SampleVbDotNet.vb and put code in them as follows.
-   ```vb
-   ' Here we go...
-   ' todo
-   Class Box
-      Public length As Double   ' Length of a box
-      Public breadth As Double  ' Breadth of a box
-      Public height As Double   ' Height of a box
-   End Class
-   ```
-
-   ```cs
-   
-   // tod todo
-   // todo
-
-   public class TempClass
-   { 
-   }
-   ```
-
-   5. A yellow circle with a Red outline appears in the indicator margin to the left of the code window.
-
-6. What is a classifier?
-   1. https://learn.microsoft.com/en-us/visualstudio/extensibility/language-service-and-editor-extension-points#extend-classification-types-and-classification-formats
-7. So what is a Tagger? 
-8. A Tagger needs a classifier
+# How to run.
+1. Run as before, 748510-TodoGlyphTest
