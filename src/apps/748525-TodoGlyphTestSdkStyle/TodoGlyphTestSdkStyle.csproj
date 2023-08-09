@@ -38,9 +38,7 @@
 
 	<ItemGroup>
 		<Content Include="Resources\CustomCommand.png" />
-		<VSCTCompile Include="CustomCommandPackage.vsct">
-			<ResourceName>Menus.ctmenu</ResourceName>
-		</VSCTCompile>
+
 		<None Include="source.extension.vsixmanifest" />
 	</ItemGroup>
 	
