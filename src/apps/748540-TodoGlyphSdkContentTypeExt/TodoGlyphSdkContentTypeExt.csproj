@@ -35,14 +35,6 @@
 		<StartProgram>$(DevenvDir)devenv.exe</StartProgram>
 		<StartArguments>/rootSuffix Exp</StartArguments>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Content Include="Resources\CustomCommand.png" />
-		<!--<VSCTCompile Include="CustomCommandPackage.vsct">
-			<ResourceName>Menus.ctmenu</ResourceName>
-		</VSCTCompile>
-		<None Include="source.extension.vsixmanifest" />-->
-	</ItemGroup>
 	
 <ItemGroup>
 	<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
@@ -55,6 +47,7 @@
 </ItemGroup>
 	
 <ItemGroup>
+  <Folder Include="Resources\" />
   <Folder Include="TestFiles\" />
 </ItemGroup>
 
