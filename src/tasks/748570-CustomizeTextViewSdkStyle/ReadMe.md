@@ -4,14 +4,15 @@
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view
 
 ## How this project is created. 
-1. Create a VSix project.
+1. Started from the sdk style project from 500510-VSixSdkProjectIntro.
+
+2. Added necessary references, such as presentation core etc.
 
 3. Then add the class **TestViewCreationListener**.
 
 4. Build and run. 
 
 ## Notes
-
 1. Once the exp instance is launched, open a text(TextFile1.txt for example) file. It has a text "asdfasdf".
 
 ![Open Text File](images/52_50OpeningATextFile.jpg)
