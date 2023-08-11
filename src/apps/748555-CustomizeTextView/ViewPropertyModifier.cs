@@ -9,6 +9,7 @@ namespace CustomizeTextView
 {
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("text")]
+    // [ContentType("code")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     internal class TestViewCreationListener : IWpfTextViewCreationListener
     {
