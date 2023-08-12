@@ -18,7 +18,7 @@
 
 ## How to run
 1. Build and run. In the exp instance, open a code file with has todo text in it. 
-2. 
+![Run the example](images/52_50RunTheExample.jpg)
 
 ## Notes
 1. 
