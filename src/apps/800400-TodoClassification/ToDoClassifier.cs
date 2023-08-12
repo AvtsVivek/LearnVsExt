@@ -51,5 +51,4 @@ namespace TodoClassification
             remove { }
         }
     }
-    internal class ToDoTag : IGlyphTag { }
 }

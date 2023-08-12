@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.Internal.VisualStudio.PlatformUI;
 using Microsoft.VisualStudio.Text.Formatting;
+using System.Windows;
 
 namespace TodoClassification
 {
@@ -10,7 +10,7 @@ namespace TodoClassification
     /// </summary>
     internal class ToDoGlyphFactory : IGlyphFactory
     {
-        public UIElement GenerateGlyph(IWpfTextViewLine line, IGlyphTag tag)
+        UIElement IGlyphFactory.GenerateGlyph(IWpfTextViewLine line, IGlyphTag tag)
         {
             return new TodoGlyph();
         }
