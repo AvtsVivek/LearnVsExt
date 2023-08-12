@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/748590-ColorfulEditor
+cd src/tasks/800500-ColorfulEditor
 
-cd src/apps/748590-ColorfulEditor
+cd src/apps/800500-ColorfulEditor
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
