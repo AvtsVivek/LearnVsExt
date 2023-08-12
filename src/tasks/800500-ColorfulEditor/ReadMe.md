@@ -25,4 +25,5 @@
 
 ![Run The app, open .colorful file](images/54_50RunTheApp.jpg)
 
-
+# Notes
+1. ColorfulCompletionSource and ColorfulCompletionSourceProvider can be commented out totally from this example, if you want to just see classification and not completion.

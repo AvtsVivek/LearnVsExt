@@ -140,3 +140,7 @@ And the code samples are here.
 7. What next?
    1. Need to try this. https://stackoverflow.com/questions/45863788/how-can-i-find-out-what-classification-types-are-registered-in-visual-studio
    2. https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
+
+8. What is ITextView, IVsTextView and IWpfTextView?
+9. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
+10. IVsTextViewCreationListener vs IWpfTextViewCreationListener
