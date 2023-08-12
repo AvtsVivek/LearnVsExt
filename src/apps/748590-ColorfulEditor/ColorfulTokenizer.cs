@@ -20,7 +20,7 @@ namespace ColorfulEditor
 		/// <param name="classifications">The standard classifications.</param>
 		internal ColorfulTokenizer(IStandardClassificationService classifications)
 		{
-            Debugger.Break();
+            // Debugger.Break();
             Classifications = classifications;
 		}
 		#endregion // Constructors

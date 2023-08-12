@@ -43,7 +43,7 @@ namespace ColorfulEditor
 
         public ColorfulTextViewCreationListener()
         {
-            Debugger.Break();
+            // Debugger.Break();
         }
 
         #region Public methods

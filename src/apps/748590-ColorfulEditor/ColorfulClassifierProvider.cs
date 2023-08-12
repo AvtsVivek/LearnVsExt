@@ -30,7 +30,7 @@ namespace ColorfulEditor
 
         public ColorfulClassifierProvider()
         {
-			Debugger.Break();
+			//Debugger.Break();
         }
 
         #region Public methods

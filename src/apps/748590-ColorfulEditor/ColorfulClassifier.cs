@@ -27,7 +27,7 @@ namespace ColorfulEditor
 			IStandardClassificationService classifications,
 			IClassificationTypeRegistryService classificationRegistry)
 		{
-            Debugger.Break();
+            // Debugger.Break();
             ClassificationRegistry = classificationRegistry;
 			Classifications = classifications;
 			Buffer = buffer;
