@@ -12,9 +12,17 @@
 
 ![Add Editor Classifier file](./images/50_50EditorClassifierAddNewItem.jpg)
 
-3. Once you added Editor Classifier project item, you need to keep one file, that is EditorClassifier(IClassifier), and delete rest of the newly added files
+3. Select and Delete the the Editor classifier files that get added. 
 
-![Delete other files](./images/50_51EditorClassifierDeleteOtherFiles.jpg)
+
+
+4. The reason we are adding and then deleting Editor Classifier files is the following. This adds some references to the csproj file and Assets to the .vsmanifest file.
+
+![References added to the cs proj file](images/51_50AdditionsToCsProjFile.jpg)
+
+And the following to the .vsixmanifest file.
+
+![Assets added to vsixmanifest file](images/53_50AdditionsToVSixManifest.jpg)
 
 4. I think, you can delete all the classes. Even the classifier. Not sure about this. 
 

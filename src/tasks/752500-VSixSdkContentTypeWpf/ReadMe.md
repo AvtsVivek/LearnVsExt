@@ -3,7 +3,7 @@
 1. Create a Sdk Style VSix project.
 2. Add content type def for foo(.foo)
 3. Activate a wpf application when a file with extensioin .foo(example text.foo) is opened.
-4. This can be considered a tone down version of this example. 
+4. This can be considered a tone down version of [this example](https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol). 
 
 # References
 1. https://stackoverflow.com/q/51180046/1977871

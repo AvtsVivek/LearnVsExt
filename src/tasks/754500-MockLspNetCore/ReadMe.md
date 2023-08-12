@@ -5,4 +5,4 @@
 # Notes
 1. This example is created from [LanguageServerProtocol example here](https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol)
 
-2. The wpf app there is a .net framework app. But this here, the app is .net core 7. 
+2. In there, the wpf app is a .net framework app. But this here, the app is .net core 7. 
