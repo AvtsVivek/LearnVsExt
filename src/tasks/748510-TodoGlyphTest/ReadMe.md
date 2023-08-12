@@ -5,6 +5,8 @@
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-margin-glyph
 
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix-manifest-designer
+
 ## Steps:
 1. Follow the above link. 
 
@@ -14,17 +16,16 @@
 
 3. Select and Delete the the Editor classifier files that get added. 
 
+![Select and Delete Editor classifier files](images/51_50_Select_Delete_EditorClassifierFiles.jpg)
 
+4. The reason we are adding and then deleting Editor Classifier files is the following. This adds some references to the csproj file and Assets to the .vsmanifest file. So what are assets? Take a look at [this reference here](https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix-manifest-designer#uielement-list).
 
-4. The reason we are adding and then deleting Editor Classifier files is the following. This adds some references to the csproj file and Assets to the .vsmanifest file.
-
-![References added to the cs proj file](images/51_50AdditionsToCsProjFile.jpg)
+![References added to the cs proj file](images/52_50AdditionsToCsProjFile.jpg)
 
 And the following to the .vsixmanifest file.
 
 ![Assets added to vsixmanifest file](images/53_50AdditionsToVSixManifest.jpg)
 
-4. I think, you can delete all the classes. Even the classifier. Not sure about this. 
 
 4. Follow the subsequent steps in the reference.
 
