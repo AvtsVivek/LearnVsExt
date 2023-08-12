@@ -47,6 +47,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TodoClassificationPackage.cs" />
+    <Compile Include="ToDoClassifier.cs" />
+    <Compile Include="ToDoGlyphFactory.cs" />
+    <Compile Include="ToDoGlyphFactoryProvider.cs" />
+    <Compile Include="ToDoTagger.cs" />
+    <Compile Include="ToDoTaggerProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
