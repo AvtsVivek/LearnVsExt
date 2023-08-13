@@ -1,4 +1,4 @@
-# Colorful Language Editor
+# Diff Classifier Sample
 
 ## Reference: 
 
