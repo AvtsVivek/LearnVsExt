@@ -15,12 +15,13 @@
 ![Additions to .vsixmanifest file](images/51_50AdditionsToVSixManifest.jpg)
 
 4. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
+5. Next add the remaining files.
 
 
 ## How to run
 
 1. Build and run. In the exp instance, open a code file with has todo text in it. 
-![Run the example](images/52_50RunTheExample.jpg)
+![Run the example](images/52_50RunningTheExample.jpg)
 
 ## Notes
 
