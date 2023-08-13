@@ -144,3 +144,8 @@ And the code samples are here.
 8. What is ITextView, IVsTextView and IWpfTextView?
 9. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
 10. IVsTextViewCreationListener vs IWpfTextViewCreationListener
+11. IClassifier
+    1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
+    2.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Todo_Classification
+    3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
+    4.  
