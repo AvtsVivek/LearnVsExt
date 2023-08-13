@@ -2,7 +2,7 @@
 
 ## Reference: 
 
-1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
+1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
 
 ## How this project is created. 
 
