@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.Text.Tagging;
+﻿using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
-using System.ComponentModel.Composition;
-using Microsoft.VisualStudio.Text;
 using System;
+using System.ComponentModel.Composition;
 
 namespace TodoClassification
 {
@@ -14,6 +14,10 @@ namespace TodoClassification
     [TagType(typeof(ToDoTag))]
     class ToDoTaggerProvider : ITaggerProvider
     {
+        public ToDoTaggerProvider()
+        {
+            
+        }
         /// <summary>
         /// Creates an instance of our custom TodoTagger for a given buffer.
         /// </summary>

@@ -1,12 +1,8 @@
-﻿using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Shapes;
-using System.Windows.Media;
-using System.Windows.Controls;
-using Microsoft.VisualStudio.Text.Editor;
+﻿using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Formatting;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace ToDoGlyphSdkContentTypeExt
 {
@@ -17,10 +13,11 @@ namespace ToDoGlyphSdkContentTypeExt
         public UIElement GenerateGlyph(IWpfTextViewLine line, IGlyphTag tag)
         {
             // Ensure we can draw a glyph for this marker.
-            if (tag == null || !(tag is ToDoTag))
-            {
+            if (tag == null )
                 return null;
-            }
+
+            if (!(tag is ToDoTag))
+                return null;
 
             var ellipse = new Ellipse()
             {

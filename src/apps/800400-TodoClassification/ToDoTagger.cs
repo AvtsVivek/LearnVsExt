@@ -1,13 +1,10 @@
-﻿using Microsoft.VisualStudio.Text.Tagging;
-using Microsoft.VisualStudio.Text;
+﻿using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Tagging;
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.Text.Editor;
 
 namespace TodoClassification
 {
-    internal class ToDoTag : IGlyphTag { }
-
     /// <summary>
     /// This class implements ITagger for ToDoTag.  It is responsible for creating
     /// ToDoTag TagSpans, which our GlyphFactory will then create glyphs for.
@@ -25,12 +22,12 @@ namespace TodoClassification
         IEnumerable<ITagSpan<ToDoTag>> ITagger<ToDoTag>.GetTags(NormalizedSnapshotSpanCollection spans)
         {
             //todo: implement tagging
-            foreach (SnapshotSpan curSpan in spans)
+            foreach (SnapshotSpan span in spans)
             {
-                int loc = curSpan.GetText().ToLower().IndexOf(_searchText);
-                if (loc > -1)
+                int locationIndex = span.GetText().ToLower().IndexOf(_searchText);
+                if (locationIndex > -1)
                 {
-                    SnapshotSpan todoSpan = new SnapshotSpan(curSpan.Snapshot, new Span(curSpan.Start + loc, _searchText.Length));
+                    SnapshotSpan todoSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start + locationIndex, _searchText.Length));
                     yield return new TagSpan<ToDoTag>(todoSpan, new ToDoTag());
                 }
             }

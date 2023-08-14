@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="ToDoGlyphFactory.cs" />
     <Compile Include="ToDoGlyphFactoryProvider.cs" />
+    <Compile Include="ToDoTag.cs" />
     <Compile Include="ToDoTagger.cs" />
     <Compile Include="ToDoTaggerProvider.cs" />
   </ItemGroup>
