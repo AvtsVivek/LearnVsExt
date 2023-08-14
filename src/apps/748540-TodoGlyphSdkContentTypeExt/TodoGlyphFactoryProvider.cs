@@ -3,23 +3,23 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
     [Export(typeof(IGlyphFactoryProvider))]
     [Name("TodoGlyph")]
     [Order(After = "VsTextMarker")]
     [ContentType("hid")] // This attribute is needed. Else you will get the following exception.
     // System.InvalidOperationException: TodoTag factory is not initialized.
-    [TagType(typeof(TodoTag))]
-    internal sealed class TodoGlyphFactoryProvider : IGlyphFactoryProvider
+    [TagType(typeof(ToDoTag))]
+    internal sealed class ToDoGlyphFactoryProvider : IGlyphFactoryProvider
     {
-        public TodoGlyphFactoryProvider()
+        public ToDoGlyphFactoryProvider()
         {
 
         }
         public IGlyphFactory GetGlyphFactory(IWpfTextView view, IWpfTextViewMargin margin)
         {
-            return new TodoGlyphFactory();
+            return new ToDoGlyphFactory();
         }
     }
 

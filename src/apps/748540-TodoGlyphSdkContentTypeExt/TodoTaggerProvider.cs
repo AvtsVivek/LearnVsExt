@@ -5,14 +5,14 @@ using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.VisualStudio.Text.Classification;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
     [Export(typeof(ITaggerProvider))]
     [ContentType("hid")]
-    [TagType(typeof(TodoTag))]
-    public class TodoTaggerProvider : ITaggerProvider
+    [TagType(typeof(ToDoTag))]
+    public class ToDoTaggerProvider : ITaggerProvider
     {
-        public TodoTaggerProvider()
+        public ToDoTaggerProvider()
         {
 
         }
@@ -26,7 +26,7 @@ namespace TodoGlyphSdkContentTypeExt
 
             var classifier = AggregatorService.GetClassifier(buffer);
 
-            return new TodoTagger(classifier) as ITagger<T>;
+            return new ToDoTagger(classifier) as ITagger<T>;
         }
     }
 }

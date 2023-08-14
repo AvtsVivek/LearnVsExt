@@ -21,3 +21,5 @@
 7. A .hid file is custom extension. We do not know what defines a comment. We have not defined it.
 8. How to define a comment in a custom extension, I dont know yet, need to find out.
 9. So we are simply creating a margin glyph where ever a todo is present in the text file.
+
+![Final run](images/51_50FinalTest.jpg)

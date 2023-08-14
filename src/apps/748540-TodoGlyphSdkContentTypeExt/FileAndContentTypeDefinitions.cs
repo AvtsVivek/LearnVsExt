@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
     public static class FileAndContentTypeDefinitions
     {

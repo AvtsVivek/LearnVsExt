@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="TodoGlyphSdkContentTypeExt" Version="17.1" Language="en-US" Publisher="Tina Schrepfer (LI)" />
-        <DisplayName>TodoGlyphSdkContentTypeExt</DisplayName>
+        <Identity Id="ToDoGlyphSdkContentTypeExt" Version="17.1" Language="en-US" Publisher="Tina Schrepfer (LI)" />
+        <DisplayName>ToDoGlyphSdkContentTypeExt</DisplayName>
 		<Description xml:space="preserve">TodoGlyphTestSdkStyle VSix Proj Sdk Style, built from a sample</Description>
     </Metadata>
     <Installation>

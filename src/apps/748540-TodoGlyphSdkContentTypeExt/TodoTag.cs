@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.Text.Editor;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
-    internal class TodoTag : IGlyphTag
+    internal class ToDoTag : IGlyphTag
     {
 
     }

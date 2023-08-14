@@ -4,32 +4,32 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text.Classification;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
-    internal class TodoTagger : ITagger<TodoTag>
+    internal class ToDoTagger : ITagger<ToDoTag>
     {
         private IClassifier m_classifier;
 
-        private const string m_searchText = "todo";
+        private const string _searchText = "todo";
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
 
-        internal TodoTagger(IClassifier classifier)
+        internal ToDoTagger(IClassifier classifier)
         {
             m_classifier = classifier;
         }
 
-        public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
+        public IEnumerable<ITagSpan<ToDoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
             foreach (SnapshotSpan span in spans)
             {
 
                 //if the word "todo" is in the comment,
                 //create a new TodoTag TagSpan
-                int index = span.GetText().ToLower().IndexOf(m_searchText);
+                int index = span.GetText().ToLower().IndexOf(_searchText);
                 if (index != -1)
                 {
-                    yield return new TagSpan<TodoTag>(new SnapshotSpan(span.Start + index, m_searchText.Length), new TodoTag());
+                    yield return new TagSpan<ToDoTag>(new SnapshotSpan(span.Start + index, _searchText.Length), new ToDoTag());
                 }
 
                 ////look at each classification span \

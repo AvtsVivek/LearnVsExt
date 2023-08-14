@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace TodoGlyphSdkContentTypeExt
+namespace ToDoGlyphSdkContentTypeExt
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -25,7 +25,7 @@ namespace TodoGlyphSdkContentTypeExt
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(PackageGuidString)]
-    public sealed class TodoGlyphTestPackage : AsyncPackage
+    public sealed class ToDoGlyphTestPackage : AsyncPackage
     {
         /// <summary>
         /// TodoGlyphTestPackage GUID string.

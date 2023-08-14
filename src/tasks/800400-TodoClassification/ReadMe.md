@@ -21,6 +21,6 @@
 ![Run the example](images/52_50RunTheExample.jpg)
 
 ## Notes
-1. 
+1. Need to understand the difference between this example and 748540-TodoGlyphSdkContentTypeExt
 
 
