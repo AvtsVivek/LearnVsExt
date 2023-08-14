@@ -148,4 +148,5 @@ And the code samples are here.
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
     2.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Todo_Classification
     3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
-    4.  
+12. Need to look at 
+    1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
