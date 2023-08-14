@@ -23,3 +23,6 @@
 9. So we are simply creating a margin glyph where ever a todo is present in the text file.
 
 ![Final run](images/51_50FinalTest.jpg)
+
+## Notes
+1. Need to understand the difference between 800400-TodoClassification and 748540-TodoGlyphSdkContentTypeExt
