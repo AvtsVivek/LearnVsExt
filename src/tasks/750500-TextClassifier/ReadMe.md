@@ -8,3 +8,4 @@
 2. Build the project and start debugging. The experimental instance of Visual Studio appears.
 3. If you open a text file, all the text is underlined against a violet background.
 4. Reference: https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
+5. I think, this is a todo. 
