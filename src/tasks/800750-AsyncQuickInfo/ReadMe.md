@@ -1,7 +1,7 @@
 # Colorful Language Editor
 
 ## Reference: 
-1. https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
+1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncQuickInfo
 
 ## How this project is created. 
 1. Create a VSix project.
@@ -14,16 +14,21 @@
 4. References, and adds an asset node of type MefComponent in the vsixmanifest, etc
 ![Additions to .vsixmanifest file](images/51_50AdditionsToVSixManifest.jpg)
 
-5. Then Add the files from the code download from the above reference.
-![Add color ful files](images/52_50AddColorfulFiles.jpg)
+5. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
 
-6. Ensure namespaces are corrected according to the project you created. 
+6. Then Add the files from the code download from the above reference. LineAsyncQuickInfoSource.cs and LineAsyncQuickInfoSourceProvider.cs
 
-7. Build and Run and place a break point in the ctor of ColorfulTextViewCreationListener class.
+7. Ensure namespaces are corrected according to the project you created. 
 
-8. In the exp intance of the visual studio, open a file with extension .colorful. A simple is attached along with the project.
+8. Build and Run..
 
-![Run The app, open .colorful file](images/54_50RunTheApp.jpg)
+9. In the exp intance of the visual studio, open a file with extension .cs. 
+
+![Tool tip ](images/52_50ToolTipeInAction.jpg)
+
+10. Note the [ContentType("any")] on the class **LineAsyncQuickInfoSourceProvider **
+
+So try opening any kind of file. A tool tip must appear.
 
 # Notes
-1. ColorfulCompletionSource and ColorfulCompletionSourceProvider can be commented out totally from this example, if you want to just see classification and not completion.
+1. 
