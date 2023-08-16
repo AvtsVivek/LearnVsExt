@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HighlightWordTag.cs" />
+    <Compile Include="HighlightWordTagger.cs" />
+    <Compile Include="HighlightWordTaggerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HighlightWordPackage.cs" />
   </ItemGroup>

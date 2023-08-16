@@ -31,4 +31,4 @@
 So try opening any kind of file. A tool tip must appear.
 
 # Notes
-1. 
+1. I am not sure this is working. Need to check again.
