@@ -12,7 +12,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
-using System.ComponentModel;
 
 namespace CreateOptionsPage
 {
@@ -80,19 +79,5 @@ namespace CreateOptionsPage
         }
 
         #endregion
-    }
-
-    public class OptionPageGrid : DialogPage
-    {
-        private int optionInt = 256;
-
-        [Category("My Category")]
-        [DisplayName("My Integer Option")]
-        [Description("My integer option")]
-        public int OptionInteger
-        {
-            get { return optionInt; }
-            set { optionInt = value; }
-        }
     }
 }

@@ -26,9 +26,8 @@
 
 ![Tool tip ](images/52_50ToolTipeInAction.jpg)
 
-10. Note the [ContentType("any")] on the class **LineAsyncQuickInfoSourceProvider **
+10. Note the [ContentType("text")] on the class **HighlightWordTaggerProvider**
 
-So try opening any kind of file. A tool tip must appear.
 
 # Notes
-1. I am not sure this is working. Need to check again.
+1. I am not sure this is working. Need to check again. The highlighting seems to be working the same. 
