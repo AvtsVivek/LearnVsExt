@@ -19,10 +19,10 @@ namespace ToolsOptionsCustomPage
         {
             get
             {
-                MyUserControl page = new MyUserControl();
-                page.optionsPage = this;
-                page.Initialize();
-                return page;
+                var userControl = new MyUserControl();
+                userControl.optionsPage = this;
+                userControl.Initialize();
+                return userControl;
             }
         }
     }

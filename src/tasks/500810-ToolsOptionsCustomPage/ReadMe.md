@@ -24,6 +24,14 @@ public class OptionPageGrid : DialogPage
 }
 ```
 
+Note that the attributes added are optional. Try commenting out and then running again. Its working.
+
+```cs
+// [Category("My Category")]
+// [DisplayName("My Integer Option")]
+// [Description("My integer option")]
+```
+
 5. Next ensure the following attributes decoreate the package class.
 
 ```cs
@@ -56,10 +64,10 @@ public class OptionPageCustom : DialogPage
     {
         get
         {
-            MyUserControl page = new MyUserControl();
-            page.optionsPage = this;
-            page.Initialize();
-            return page;
+            var userControl = new MyUserControl();
+            userControl.optionsPage = this;
+            userControl.Initialize();
+            return userControl;
         }
     }
 }

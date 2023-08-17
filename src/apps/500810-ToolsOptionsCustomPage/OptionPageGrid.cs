@@ -5,11 +5,11 @@ namespace ToolsOptionsCustomPage
 {
     public class OptionPageGrid : DialogPage
     {
-        private int optionInt = 256;
+        private int optionInt = 300; //256;
 
-        [Category("My Category")]
-        [DisplayName("My Integer Option")]
-        [Description("My integer option")]
+        // [Category("My Category")]
+        // [DisplayName("My Integer Option")]
+        // [Description("My integer option")]
         public int OptionInteger
         {
             get { return optionInt; }
