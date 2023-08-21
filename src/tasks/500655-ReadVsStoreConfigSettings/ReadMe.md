@@ -8,13 +8,17 @@
 
 4. Visual Studio Setting store is where Visual Studio, during and after installation, stores many of its settings. There is an excellent tool to visualize this. This tool comes in the form of [an extension and can be installed from here](https://marketplace.visualstudio.com/items?itemName=PaulHarrington.SettingsStoreExplorerPreview).
 
+5. Once installed, open visual studio and search it as follows.
+
+![Search for settings store](images/49_50SearchForSettingStoreExplorer.jpg)
+
+6. Look at installed Products.
+
 ![Settings Store Explorer](./images/50SettingsStoreExplorer50.jpg)
 
-5. Look at installed Products.
+7. Are the phone tools installed on your machine?
 
 ![Settings Store Explorer Installed Products](./images/51SettingsStoreInstalledProducts50.jpg)
-
-6. Are the phone tools installed on your machine?
 
 ```cs
 var settingsManager = new ShellSettingsManager(this.package);
@@ -22,4 +26,4 @@ var configurationSettingsStore = settingsManager.GetReadOnlySettingsStore(Settin
 var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\Microsoft Windows Phone Developer Tools");
 ```
 
-7. 
+8. 

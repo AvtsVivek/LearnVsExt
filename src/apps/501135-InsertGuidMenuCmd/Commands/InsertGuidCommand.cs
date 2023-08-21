@@ -113,11 +113,13 @@ namespace InsertGuidMenuCmd.Commands
                 return;
             }
 
-            var textDocument = (TextDocument)(dte.ActiveDocument.Object("TextDocument"));
+            var textDocument = (TextDocument)(activeDocument.Object("TextDocument"));
 
-            var textSelection = activeDocument.Selection as TextSelection;
+            var textSelection1 = textDocument.Selection;
 
-            textSelection.Text = Guid.NewGuid().ToString();
+            var textSelection2 = activeDocument.Selection as TextSelection;
+
+            textSelection2.Text = Guid.NewGuid().ToString();
 
             activeDocument.Save();
 
