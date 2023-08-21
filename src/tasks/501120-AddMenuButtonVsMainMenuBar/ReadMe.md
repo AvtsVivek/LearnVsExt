@@ -1,5 +1,5 @@
 
-1. This example extends an earlier example. 
+1. This example extends an earlier example. 501100-AddMenuVsMainMenuBar
 
 ![Test Menu Extension](./images/57TestMenuInMenuBarVs50.jpg)
 
@@ -39,4 +39,6 @@
 </GuidSymbol>
 ```
 
-8. The parent is directly the MainMenu. In the earlier example, the hierarchy is Button, the parent of which is a group. And the parent of the group is menu. And the Menu's parent is the MainMenu.  
+8. The parent is directly the MainMenu. In the earlier example, the hierarchy is Button, the parent of which is a group. And the parent of the group is menu. And the Menu's parent is the MainMenu. 
+
+9. 

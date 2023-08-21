@@ -1,4 +1,6 @@
 
+## Demos how to add a test menu directly to the main menu as follows. 
+
 1.  Create a new project.
 
 2.  Add new project as follows.
@@ -43,4 +45,4 @@ After
 
 ![Test Menu Extension](./images/57TestMenuInMenuBarVs50.jpg)
 
-1.  Take a look at the hierarchy. First the Button, the parent of which is a group. And the parent of the group is menu, or the top level menu. And the Menu's parent is the MainMenu.  
+14.  Take a look at the hierarchy. First the Button, the parent of which is a group. And the parent of the group is menu, or the top level menu. And the Menu's parent is the MainMenu.  
