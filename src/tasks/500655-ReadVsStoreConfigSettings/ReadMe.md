@@ -26,4 +26,8 @@ var configurationSettingsStore = settingsManager.GetReadOnlySettingsStore(Settin
 var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\Microsoft Windows Phone Developer Tools");
 ```
 
-8. 
+8. In the exp instance, the SettingStoreExplorer is disabled by default. So go to extensions, Manage Extensions.
+Then installed.
+![Installed Extensions in Exp instance](images/52_50SettingStoreExplorerInExpInstance.jpg)
+
+9. 
