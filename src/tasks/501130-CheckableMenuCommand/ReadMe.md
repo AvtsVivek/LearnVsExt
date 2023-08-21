@@ -11,4 +11,6 @@
 
 5. We need to make our Command to initialize at Visual Studio startup. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file CheckableMenuCommandPackage.cs
 
+6. This example is not very clear. Need to come back here again.
+
 
