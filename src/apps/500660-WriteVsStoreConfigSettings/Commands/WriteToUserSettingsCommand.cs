@@ -119,14 +119,14 @@ namespace WriteVsStoreConfigSettings.Commands
                 }
             }
 
-            var message = (hasNotepad) ? "Notepad already installed" : "Installing Notepad";
+            var hasNotepadMessage = hasNotepad ? "Notepad already installed" : "Installing Notepad";
 
             var title = "WriteToUserSettingsCommand";
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
                 this.package,
-                message,
+                hasNotepadMessage,
                 title,
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
@@ -139,8 +139,8 @@ namespace WriteVsStoreConfigSettings.Commands
                 userSettingsStore.SetString("External Tools", "ToolArg" + toolCount, "");
                 userSettingsStore.SetString("External Tools", "ToolDir" + toolCount, "$(ProjectDir)");
                 userSettingsStore.SetString("External Tools", "ToolSourceKey" + toolCount, "");
-                userSettingsStore.SetUInt32("External Tools", "ToolOpt" + toolCount, 0x00000011);
 
+                userSettingsStore.SetUInt32("External Tools", "ToolOpt" + toolCount, 0x00000011);
                 userSettingsStore.SetInt32("External Tools", "ToolNumKeys", toolCount + 1);
             }
         }

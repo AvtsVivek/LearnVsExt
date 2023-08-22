@@ -20,7 +20,7 @@
 7. Create a VSix project and add a command to it.
    
 8. Next add autoload guid and string as follows.
-   1. In the FirstTimeAfterExtensionIsInstalledPackage.vsct file look for Symbols xml tag and add GuidSymbol as follows. The guid shuld be newly genrated one.
+   1. In the FirstTimeAfterExtensionIsInstalledPackage.vsct file look for **Symbols** xml tag and add **GuidSymbol** as follows. The guid shuld be newly genrated one. Do not copy paste from somewhere else.
       ```xml
       <Symbols>
          <GuidSymbol name="autoload" value="{6c650c5a-d7d6-407b-993f-426d53ddbdde}" />
@@ -32,7 +32,7 @@
       public static Guid autoload = new Guid(autoloadString);
       ```
 
-9.  Modify the attributes to the **FirstTimeAfterExtensionIsInstalledPackage** class as follows.
+9. Modify the attributes to the **FirstTimeAfterExtensionIsInstalledPackage** class as follows.
       ```cs
       [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
       [Guid(PackageGuidString)]
@@ -79,3 +79,23 @@
 12. So from the second time on, the package is loaded only as required. Only when the command is invoked. If the command is **NOT** invoked, the package is not loaded at all!!! But after the intallatioin, the package is loaded irrespective of weather the command is invoked or not!!   
 
 13. LOAD the extension as late as you possiblly can. This is important. Loading packages can have a performance impact and loading them sooner than needed is not the best practice. 
+
+14. Visual Studio Setting store is where Visual Studio, during and after installation, stores many of its settings. There is an excellent tool to visualize this. This tool comes in the form of [an extension and can be installed from here](https://marketplace.visualstudio.com/items?itemName=PaulHarrington.SettingsStoreExplorerPreview). For this exercise, **do install this extension**. This is a requirement.
+
+![Settings Store Explorer](./images/51_50SettingsStoreExplorer.jpg)
+
+15. Also in the exp instance(not the regular intance of Visual Studio), observe that the Settings Store Explorer is disabled.
+
+![Setting Store Explorer](./images/52_50SettingStoreExplorerDisabled.jpg)
+
+18. Enable this extension and close the exp instance. Then start the debugging again. Press F5.
+
+19. Now ensure the extension is enabled.
+
+![Setting Store Explorer After](./images/53_50SettingStoreExplorerDisabledAfter.jpg)
+
+20. Now open the Setting Store Explorer in the Exp instance. View -> Other Windows -> Settings Store Explorer. Ensure you now have a setting as below.
+
+![Setting Store Explorer Opened](./images/54_50SettingsExplorerInExpInstance.jpg)
+
+21. So when you run for the first time, this setting is created. If there is no such setting, then it means Visual Studio is being run for the first time, after the installation of the extension. So based on that, we will show the message. Also we will create this setting. Next time onwords, we will check for this extension and if its there, that means this is not the first time, so we will not show the message.

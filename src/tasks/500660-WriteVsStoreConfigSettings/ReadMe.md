@@ -1,6 +1,7 @@
 
+# Demos how to read settings from settings store 
 
-1. This example is similar to the 500650-AddingSimpleCommand. 
+1. This example is similar to the 500650-AddingSimpleCommand. Expands from 500655-ReadVsStoreConfigSettings
 
 2. The project is created exactly same way.
 
@@ -42,7 +43,7 @@
 
 ![External Tools After](./images/54ExternalToolsAfter50.jpg)
 
-13. Notice the Settings Store Explorer as well.
+13. Notice the Settings Store Explorer as well. Invoke Refresh if needed.
 
 ![External Tools After](./images/52SettingStoreExplorer53AfterRefresh.jpg)
 
