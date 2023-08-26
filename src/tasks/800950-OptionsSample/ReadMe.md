@@ -16,3 +16,14 @@
 
 5. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
 
+6. Now add the following classes.
+![Adding Classes](images/52_40AddingClasses.jpg)
+
+7. My Options General
+
+![My Options General](images/52_50MyOptionsGeneral.jpg)
+
+8. My Options Other
+
+![My Options General](images/53_50MyOptionsOther.jpg)
+
