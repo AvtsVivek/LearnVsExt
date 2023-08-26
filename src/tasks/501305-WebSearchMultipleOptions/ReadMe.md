@@ -64,4 +64,23 @@ private void Execute(object sender, EventArgs e)
 
 ![Context Menu Command](./images/50_50ExternalSearch.jpg)
 
-10. 
+10. Now try with Use Visual Studio Browser as true.
+
+![Context Menu Command](./images/51_50UseVisualStudioSearch.jpg)
+
+You may get an exception as follows.
+
+![Exception](images/52_50Exception.jpg)
+
+Then go to the exception settings as follows. Find Invalid Varient and uncheck it. Then run again.
+
+![Exception Settings Invalid Varient](images/53_50ExceptionSettingsInvalidVarient.jpg)
+
+This time, you will not see the exception. Now, the visual studio browser is used instead of extenal browser.
+
+![Using Visual Studio Browser](images/54_50VisualStudioBrowser.jpg)
+
+11. Now try with Google instead of Bing and Visual Studio Browser as well. 
+
+![Visual Studio Browser and Google](images/55_50VisualStudioBrowserWithGoogle.jpg)
+

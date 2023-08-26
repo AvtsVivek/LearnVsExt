@@ -24,7 +24,7 @@ namespace WebSearchMultipleOptions
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(WebSearchMultipleOptionsPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideOptionPage(typeof(ExternalSearchOptionPage), "External Search", "General", 1, 1, true, new string[] { "External Search Options" })]
     public sealed class WebSearchMultipleOptionsPackage : AsyncPackage
@@ -48,7 +48,7 @@ namespace WebSearchMultipleOptions
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await WebSearchMultipleOptions.Commands.WebSearchCommand.InitializeAsync(this);
+            await Commands.WebSearchCommand.InitializeAsync(this);
         }
 
         #endregion
