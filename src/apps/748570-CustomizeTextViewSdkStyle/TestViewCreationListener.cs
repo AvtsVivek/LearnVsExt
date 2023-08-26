@@ -15,7 +15,7 @@ namespace CustomizeTextViewSdkStyle
     {
         [Import]
         internal IEditorFormatMapService FormatMapService = null;
-
+        // This method is executed when you open any file in the editor window
         public void TextViewCreated(IWpfTextView textView)
         {
             IEditorFormatMap formatMap = FormatMapService.GetEditorFormatMap(textView);

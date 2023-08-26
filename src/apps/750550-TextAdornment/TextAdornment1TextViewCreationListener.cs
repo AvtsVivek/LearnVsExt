@@ -32,6 +32,7 @@ namespace TextAdorment
         /// <summary>
         /// Called when a text view having matching roles is created over a text data model having a matching content type.
         /// Instantiates a TextAdornment1 manager when the textView is created.
+        /// This method is executed when you open any file in the editor window
         /// </summary>
         /// <param name="textView">The <see cref="IWpfTextView"/> upon which the adornment should be placed</param>
         public void TextViewCreated(IWpfTextView textView)

@@ -14,6 +14,7 @@ namespace CommentAdornmentTest
     [TextViewRole(PredefinedTextViewRoles.Document)]
     public sealed class Connector : IWpfTextViewCreationListener
     {
+        // This method is executed when you open any file in the editor window
         [Export(typeof(AdornmentLayerDefinition))]
         [Name("CommentAdornmentLayer")]
         [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
