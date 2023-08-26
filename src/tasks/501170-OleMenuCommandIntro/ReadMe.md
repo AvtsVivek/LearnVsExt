@@ -58,4 +58,13 @@ private async void OnBeforeQueryStatus(object sender, EventArgs e)
 { ... }
 ```
 
-8. 
+8. Run the app, and open differnt kinds of files.
+9. First cs file.
+
+![Cs file Opening](images/50_50_CsFileAddNewClass.jpg)
+
+10. Now the Any other extension file.
+
+![Other file extension](images/51_50_OtherExtensionFileNotRelevant.jpg)
+
+11. 
