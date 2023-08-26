@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using OptionsSample.Options;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -24,7 +25,10 @@ namespace OptionsSample
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(OptionsSamplePackage.PackageGuidString)]
+    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
+    [ProvideOptionPage(typeof(DialogPageProvider.General), "My Options", "General", 0, 0, true)]
+    [ProvideOptionPage(typeof(DialogPageProvider.Other), "My Options", "Other", 0, 0, true)]
+    [Guid(PackageGuidString)]
     public sealed class OptionsSamplePackage : AsyncPackage
     {
         /// <summary>
