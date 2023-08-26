@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/800950-OptionsSample
+cd src/tasks/500900-OptionsSample
 
-cd src/apps/800950-OptionsSample
+cd src/apps/500900-OptionsSample
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
