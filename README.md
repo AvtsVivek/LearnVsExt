@@ -150,3 +150,6 @@ And the code samples are here.
     3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
 12. Need to look at 
     1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
+13. To do
+    1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncToolWindow
+    2.  End of fourth chapter in the book, ToolWindow and DTE object.
