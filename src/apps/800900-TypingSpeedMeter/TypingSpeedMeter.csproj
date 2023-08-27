@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AdornmentFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeCharFilter.cs" />
     <Compile Include="TypingSpeedControl.xaml.cs">
       <DependentUpon>TypingSpeedControl.xaml</DependentUpon>
     </Compile>

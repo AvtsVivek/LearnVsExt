@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace TypingSpeedMeter
 {
@@ -14,6 +15,10 @@ namespace TypingSpeedMeter
     [TextViewRole(PredefinedTextViewRoles.Document)]
     internal sealed class AdornmentFactory : IWpfTextViewCreationListener
     {
+        public AdornmentFactory()
+        {
+            Debugger.Break();
+        }
 
         /// <summary>
         /// Defines the adornment layer for the scarlet adornment. This layer is ordered 
@@ -31,6 +36,7 @@ namespace TypingSpeedMeter
         /// <param name="textView">The <see cref="IWpfTextView"/> upon which the adornment should be placed</param>
         public void TextViewCreated(IWpfTextView textView)
         {
+            Debugger.Break();
             textView.Properties.GetOrCreateSingletonProperty(delegate { return new TypingSpeedMeter(textView); });
         }
     }
