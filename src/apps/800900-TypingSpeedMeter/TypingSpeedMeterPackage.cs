@@ -24,7 +24,7 @@ namespace TypingSpeedMeter
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(TypingSpeedMeterPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     public sealed class TypingSpeedMeterPackage : AsyncPackage
     {
         /// <summary>
