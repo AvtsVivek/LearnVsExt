@@ -153,3 +153,5 @@ And the code samples are here.
 13. To do
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncToolWindow
     2.  End of fourth chapter in the book, ToolWindow and DTE object.
+    3.  Need to understand AdornmentLayerDefinition
+    4.  Need to understand PredefinedAdornmentLayers

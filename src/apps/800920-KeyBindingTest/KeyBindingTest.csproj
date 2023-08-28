@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="KeyBindingCommandHandler.cs" />
     <Compile Include="KeyBindingTest.cs" />
-    <Compile Include="KeyBindingTestTextViewCreationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KeyBindingTestPackage.cs" />
   </ItemGroup>
