@@ -78,36 +78,42 @@ namespace KeyBindingTest
         /// <summary>
         /// Adds the scarlet box behind the 'a' characters within the given line
         /// </summary>
-        /// <param name="line">Line to add the adornments</param>
-        private void CreateVisuals(ITextViewLine line)
+        /// <param name="textViewLine">Line to add the adornments</param>
+        private void CreateVisuals(ITextViewLine textViewLine)
         {
             IWpfTextViewLineCollection textViewLines = this.view.TextViewLines;
 
-            // Loop through each character, and place a box around any 'a'
-            for (int charIndex = line.Start; charIndex < line.End; charIndex++)
+            foreach (ITextViewLine line in textViewLines)
             {
-                if (this.view.TextSnapshot[charIndex] == 'a')
+                if (line.ToString().Contains("a"))
                 {
-                    SnapshotSpan span = new SnapshotSpan(this.view.TextSnapshot, Span.FromBounds(charIndex, charIndex + 1));
-                    Geometry geometry = textViewLines.GetMarkerGeometry(span);
-                    if (geometry != null)
+                    // Loop through each character, and place a box around any 'a'
+                    for (int charIndex = line.Start; charIndex < line.End; charIndex++)
                     {
-                        var drawing = new GeometryDrawing(this.brush, this.pen, geometry);
-                        drawing.Freeze();
-
-                        var drawingImage = new DrawingImage(drawing);
-                        drawingImage.Freeze();
-
-                        var image = new Image
+                        if (this.view.TextSnapshot[charIndex] == 'a')
                         {
-                            Source = drawingImage,
-                        };
+                            SnapshotSpan span = new SnapshotSpan(this.view.TextSnapshot, Span.FromBounds(charIndex, charIndex + 1));
+                            Geometry geometry = textViewLines.GetMarkerGeometry(span);
+                            if (geometry != null)
+                            {
+                                var drawing = new GeometryDrawing(this.brush, this.pen, geometry);
+                                drawing.Freeze();
 
-                        // Align the image with the top of the bounds of the text geometry
-                        Canvas.SetLeft(image, geometry.Bounds.Left);
-                        Canvas.SetTop(image, geometry.Bounds.Top);
+                                var drawingImage = new DrawingImage(drawing);
+                                drawingImage.Freeze();
 
-                        this.layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
+                                var image = new Image
+                                {
+                                    Source = drawingImage,
+                                };
+
+                                // Align the image with the top of the bounds of the text geometry
+                                Canvas.SetLeft(image, geometry.Bounds.Left);
+                                Canvas.SetTop(image, geometry.Bounds.Top);
+
+                                this.layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
+                            }
+                        }
                     }
                 }
             }
