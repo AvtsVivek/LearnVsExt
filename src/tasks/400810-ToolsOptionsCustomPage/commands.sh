@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500810-ToolsOptionsCustomPage
+cd src/tasks/400810-ToolsOptionsCustomPage
 
-cd src/apps/500810-ToolsOptionsCustomPage
+cd src/apps/400810-ToolsOptionsCustomPage
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

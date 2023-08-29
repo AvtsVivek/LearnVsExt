@@ -7,7 +7,7 @@
 
 2. Create a new VSIX package. Then add a new folder images. 
 
-3. Then add a png to the images folder. Look at the earlier example(500725-ImageManifestToolsExten). [500725-ImageManifestToolsExten](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/500705-AddingMonikerIcon)
+3. Then add a png to the images folder. Look at the earlier example(400725-ImageManifestToolsExten). [400725-ImageManifestToolsExten](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/400705-AddingMonikerIcon)
    1. See the steps how to add a png file. See the following step.
    2. From the known monikers you can select one, and you can even export, it as png, jpg or gif to any location on the disc 
 
@@ -21,14 +21,14 @@
 
 6. Run the following command. 
 ```cmd
-ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ManifestFromResourceAssembly /manifest:MyImageManifest.imagemanifest
+ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/400735-ManifestFromResources/images/Save.png /assembly:ManifestFromResourceAssembly /manifest:MyImageManifest.imagemanifest
 ```
 
-7. The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/500735-ManifestFromResources
+7. The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/400735-ManifestFromResources
 
 8. Now run the following command. The difference from the above is the assembly. Earlier it was ManifestFromResourceAssembly. Now it is ResourceAssembly 
 ```cmd
-ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
+ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/400735-ManifestFromResources/images/Save.png /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest
 ```
 
 9. Now observe the difference in the file MyImageManifest.imagemanifest file.
@@ -55,7 +55,7 @@ After
 11. Run the command once more.
 
 ```cmd
-ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:"C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/Save.png;C:/Trials/Ex/LearnVsExt/src/apps/500735-ManifestFromResources/images/GitHub.png" 
+ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.imagemanifest /resources:"C:/Trials/Ex/LearnVsExt/src/apps/400735-ManifestFromResources/images/Save.png;C:/Trials/Ex/LearnVsExt/src/apps/400735-ManifestFromResources/images/GitHub.png" 
 
 ```
 

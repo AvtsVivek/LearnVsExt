@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500500-VSixBlankProjectAnalysis
+cd src/tasks/400500-VSixBlankProjectAnalysis
 
-cd src/apps/500500-VSixBlankProjectAnalysis
+cd src/apps/400500-VSixBlankProjectAnalysis
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

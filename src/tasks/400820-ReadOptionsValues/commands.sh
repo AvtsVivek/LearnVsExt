@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500820-ReadOptionsValues
+cd src/tasks/400820-ReadOptionsValues
 
-cd src/apps/500820-ReadOptionsValues
+cd src/apps/400820-ReadOptionsValues
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/500500-VSixBlankProjectAnalysis
+cd src/tasks/400510-VSixSdkProjectIntro
 
-cd src/apps/500500-VSixBlankProjectAnalysis
+cd src/apps/400510-VSixSdkProjectIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./VSixBlankProjectAnalysis.csproj
+dotnet build --project ./VSixSdkProjectIntro.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -17,7 +17,7 @@ dotnet build --project ./VSixBlankProjectAnalysis.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-devenv /build Debug ./VSixBlankProjectAnalysis.sln
+devenv /build Debug ./VSixSdkProjectIntro.sln
 
 pwd
 
@@ -30,7 +30,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./VSixBlankProjectAnalysis.vsix
+./VSixSdkProjectIntro.vsix
 
 
 # Once installed, open the logs. You will see something like. 

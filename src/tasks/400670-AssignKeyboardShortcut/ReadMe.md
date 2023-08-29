@@ -1,7 +1,7 @@
 
 1. Shows how to Assign key board shortcut to a command.
 
-2. Builds on 500650-AddingSimpleCommand. 
+2. Builds on 400650-AddingSimpleCommand. 
 
 3. Create a VSix project in similar steps.
 

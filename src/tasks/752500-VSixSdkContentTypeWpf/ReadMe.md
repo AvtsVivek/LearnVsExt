@@ -17,7 +17,7 @@
 9. 
 
 # How the project is created.
-1. Start from 500510-VSixSdkProjectIntro
+1. Start from 400510-VSixSdkProjectIntro
 2. Update the nuget packages.
 3. Add the FooContentDefinition
 4. Add the FooLanguageClient which impliments ILanguageClient and ILanguageClientCustomMessage2

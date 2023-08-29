@@ -3,9 +3,9 @@
 1. References 
    1. [Create a Tools Options custom page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page#create-a-tools-options-custom-page)
 
-2. This is similar to earlier example 500800-CreateOptionsPage
+2. This is similar to earlier example 400800-CreateOptionsPage
 
-3. In this example, we will not be adding another package as in the earlier example(500800-CreateOptionsPage). But instead we will be using the existing package class created by default when we use the VSixPackage template to create the project.  
+3. In this example, we will not be adding another package as in the earlier example(400800-CreateOptionsPage). But instead we will be using the existing package class created by default when we use the VSixPackage template to create the project.  
 
 4. Create a VSIX package project similar to earlier examples. Then add the following class to the project.
 ```cs

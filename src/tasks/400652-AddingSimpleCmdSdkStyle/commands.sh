@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500652-AddingSimpleCmdSdkStyle
+cd src/tasks/400652-AddingSimpleCmdSdkStyle
 
-cd src/apps/500652-AddingSimpleCmdSdkStyle
+cd src/apps/400652-AddingSimpleCmdSdkStyle
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

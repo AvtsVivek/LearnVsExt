@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500670-AssignKeyboardShortcut
+cd src/tasks/400670-AssignKeyboardShortcut
 
-cd src/apps/500670-AssignKeyboardShortcut
+cd src/apps/400670-AssignKeyboardShortcut
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

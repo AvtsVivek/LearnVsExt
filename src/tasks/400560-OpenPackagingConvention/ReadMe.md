@@ -10,7 +10,7 @@
 
 4. Now take a look at the files.
 
-5. First consider the file \500560-OpenPackagingConvention\OpenPackagingConvention\_rels\.rels
+5. First consider the file \400560-OpenPackagingConvention\OpenPackagingConvention\_rels\.rels
 
 6. Open that file in note pad plus plus. 
 

@@ -6,7 +6,7 @@
 2. A VSIX package is a .vsix file that contains **one or more** Visual Studio extensions. 
     - So can contain more extensions in one package. Not sure how. Need to check
 
-3. In the example 500500-VSixBlankProjectAnalysis, there is vs solution VSixBlankProjectAnalysis.
+3. In the example 400500-VSixBlankProjectAnalysis, there is vs solution VSixBlankProjectAnalysis.
    - When that is built, a vsix file is created on bin/debug folder. 
 
 4. A vsix file again an OPC package, that is, it follows the Open Packaging Convention.

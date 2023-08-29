@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500665-UseSVsActivityLogService
+cd src/tasks/400665-UseSVsActivityLogService
 
-cd src/apps/500665-UseSVsActivityLogService
+cd src/apps/400665-UseSVsActivityLogService
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

@@ -46,7 +46,7 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 2. If you want to reset the experimental instance, do the following.
 
-![Reset Exp Vs](./src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
+![Reset Exp Vs](./src/tasks/400500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
 3. Also ensure you install [Clear MEF Component Cache](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ClearMEFComponentCache) extension. This is a part of [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022). The current latest version is 2022, and do check for the latest version
    1. Typical errors that can be solved by clearing the component cache are:

@@ -1,6 +1,6 @@
 
 
-1. This example is similar to the 500650-AddingSimpleCommand. 
+1. This example is similar to the 400650-AddingSimpleCommand. 
 
 2. The project is created exactly same way.
 

@@ -6,7 +6,7 @@
 
 2. Create a new VSIX package. Then add a new folder images. 
 
-3. Then add a png to the images folder. Look at the earlier example(500725-ImageManifestToolsExten). [500725-ImageManifestToolsExten](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/500705-AddingMonikerIcon)
+3. Then add a png to the images folder. Look at the earlier example(400725-ImageManifestToolsExten). [400725-ImageManifestToolsExten](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/400705-AddingMonikerIcon)
    1. See the steps how to add a png file. See the following step.
    2. From the known monikers you can select one, and you can even export, it as png, jpg or gif to any location on the disc 
 

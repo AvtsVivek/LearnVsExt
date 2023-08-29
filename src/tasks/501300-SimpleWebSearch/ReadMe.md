@@ -2,11 +2,11 @@
 1. Objective: Build an extension which will help search a selected text on web(bing search).
 
 2. Prereqs
-   1. 500670-AssignKeyboardShortcut.
-   2. 500705-AddingMonikerIcon.
-   3. 500800-CreateOptionsPage
-   4. 500810-ToolsOptionsCustomPage
-   5. 500820-ReadOptionsValues
+   1. 400670-AssignKeyboardShortcut.
+   2. 400705-AddingMonikerIcon.
+   3. 400800-CreateOptionsPage
+   4. 400810-ToolsOptionsCustomPage
+   5. 400820-ReadOptionsValues
    6. 501135-InsertGuidMenuCmd. This introduces DTE 
    7. 501140-InsertGuidContextMenu. 
    8. 
@@ -57,7 +57,7 @@ and finally
 <Icon guid="guidImages" id="bmpPic1" />
 ```
 
-7. Also note 500705-AddingMonikerIcon. To include an incon for the extension itself. We are not going to do that in this example.
+7. Also note 400705-AddingMonikerIcon. To include an incon for the extension itself. We are not going to do that in this example.
  
 8. Now Build and Run. Open any document in the code windows. Rightclick and ensure a command. 
 

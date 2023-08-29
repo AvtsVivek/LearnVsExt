@@ -1,4 +1,4 @@
 ## Introduces SDK Project for VSix
 
 # Pre Reqs
-1. 500510-VSixSdkProjectIntro
+1. 400510-VSixSdkProjectIntro

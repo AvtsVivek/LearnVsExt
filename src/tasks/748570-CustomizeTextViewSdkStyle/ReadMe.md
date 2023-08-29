@@ -4,7 +4,7 @@
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view
 
 ## How this project is created. 
-1. Started from the sdk style project from 500510-VSixSdkProjectIntro.
+1. Started from the sdk style project from 400510-VSixSdkProjectIntro.
 
 2. Added necessary references, such as presentation core etc.
 

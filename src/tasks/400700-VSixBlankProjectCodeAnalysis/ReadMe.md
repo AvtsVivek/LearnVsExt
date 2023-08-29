@@ -1,6 +1,6 @@
 
 
-1. This example is similar to the 500500-VSixBlankProjectAnalysis. 
+1. This example is similar to the 400500-VSixBlankProjectAnalysis. 
 
 2. The project is created exactly same way.
 

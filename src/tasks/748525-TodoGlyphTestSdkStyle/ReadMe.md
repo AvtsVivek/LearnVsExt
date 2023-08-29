@@ -7,7 +7,7 @@
 
 # How this example is created. 
 1. This is same as 748510-TodoGlyphTest but in Sdk style.
-2. The started from the 500510-VSixSdkProjectIntro
+2. The started from the 400510-VSixSdkProjectIntro
 3. Then add the following classes, similar to earlier example. 
    1. TodoGlyphFactory
    2. TodoGlyphFactoryProvider

@@ -37,7 +37,7 @@ public sealed class ProvideAutoLoadPackage : AsyncPackage
 
 6. Try running debugging this app with and without the above attributes. Each time you run the app, ensure to reset the exp vs as follows.
 
-![Reset Visual Studio Exp](https://github.com/AvtsVivek/LearnVsExt/blob/main/src/tasks/500500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
+![Reset Visual Studio Exp](https://github.com/AvtsVivek/LearnVsExt/blob/main/src/tasks/400500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
 
 Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called.
 

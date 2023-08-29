@@ -1,13 +1,13 @@
 
 ## Rule Based UI Context.
 
-1. This example starts from the earlier example 501125-ProvideAutoLoad. This also uses concepts of writing to store settings in the example 500660-WriteVsStoreConfigSettings 
+1. This example starts from the earlier example 501125-ProvideAutoLoad. This also uses concepts of writing to store settings in the example 400660-WriteVsStoreConfigSettings 
 
 2. Scenerio: Potencially run some code to alert the user when first time Visual Studio is run after the extension is installed. So a user has installed your extension. And after the installation, the user runs Visual Studio, and now you want visual studio to pop up a message box and say Thanks to the user as has choosen to install the extension and give it a try. And this message box should pop up only this time and not bother the user again later ever. So the next time the Visual Studio is started again, that message box should not pop up again.
 
 3. Visual Studio Setting store is where Visual Studio, during and after installation, stores many of its settings. There is an excellent tool to visualize this. This tool comes in the form of [an extension and can be installed from here](https://marketplace.visualstudio.com/items?itemName=PaulHarrington.SettingsStoreExplorerPreview). For this exercise, **do install this extension**. This is a requirement.
 
-4. Also, as you starts to run or debug(F5 or Ctrl + F5), EXP instance of Visual Studio fires up, and in it, the Settings Store Explore is present but disabled. You need to enable it. See the steps in 500660-WriteVsStoreConfigSettings
+4. Also, as you starts to run or debug(F5 or Ctrl + F5), EXP instance of Visual Studio fires up, and in it, the Settings Store Explore is present but disabled. You need to enable it. See the steps in 400660-WriteVsStoreConfigSettings
 
 5. Reference: 
    1. https://www.youtube.com/watch?v=p328QcgZObs&t=760s

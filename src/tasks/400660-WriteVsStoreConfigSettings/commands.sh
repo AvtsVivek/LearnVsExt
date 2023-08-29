@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/500660-WriteVsStoreConfigSettings
+cd src/tasks/400660-WriteVsStoreConfigSettings
 
-cd src/apps/500660-WriteVsStoreConfigSettings
+cd src/apps/400660-WriteVsStoreConfigSettings
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

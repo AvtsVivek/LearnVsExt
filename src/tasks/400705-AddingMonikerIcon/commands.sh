@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/500700-VSixBlankProjectCodeAnalysis
+cd src/tasks/400705-AddingMonikerIcon
 
-cd src/apps/500700-VSixBlankProjectCodeAnalysis
+cd src/apps/400705-AddingMonikerIcon
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./VSixBlankProjectCodeAnalysis.csproj
+dotnet build --project ./AddingMonikerIcon.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -17,7 +17,7 @@ dotnet build --project ./VSixBlankProjectCodeAnalysis.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-devenv /build Debug ./VSixBlankProjectCodeAnalysis.sln
+devenv /build Debug ./AddingMonikerIcon.sln
 
 pwd
 
@@ -30,7 +30,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./VSixBlankProjectCodeAnalysis.vsix
+./AddingMonikerIcon.vsix
 
 
 # Once installed, open the logs. You will see something like. 
