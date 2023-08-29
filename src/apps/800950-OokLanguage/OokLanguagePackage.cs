@@ -24,7 +24,7 @@ namespace OokLanguage
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(OokLanguagePackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     public sealed class OokLanguagePackage : AsyncPackage
     {
         /// <summary>
