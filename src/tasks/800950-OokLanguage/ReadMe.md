@@ -16,4 +16,12 @@
 
 5. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
 
-6. To do ....
+6. Now add the other files from the above reference. 
+
+7. Build and Run.
+
+# Opening the file.
+![Open the ook file](images/52_50OpeningOokFile.jpg)
+
+1. WpfTextViewCreationListener is also available. This also works instead of VsTextViewCreationListener
+2.  

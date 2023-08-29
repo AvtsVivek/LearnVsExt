@@ -59,6 +59,7 @@
     <Compile Include="Intellisence\TemplateQuickInfoController.cs" />
     <Compile Include="Intellisence\TemplateQuickInfoControllerProvider.cs" />
     <Compile Include="Intellisence\VsTextViewCreationListener.cs" />
+    <Compile Include="Intellisence\WpfTextViewCreationListener.cs" />
     <Compile Include="OokTokenTag.cs" />
     <Compile Include="OokTokenTagger.cs" />
     <Compile Include="OokTokenTagProvider.cs" />

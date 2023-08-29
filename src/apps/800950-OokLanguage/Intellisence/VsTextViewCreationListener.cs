@@ -6,8 +6,6 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OokLanguage.Intellisence
 {
