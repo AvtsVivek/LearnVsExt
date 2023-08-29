@@ -24,7 +24,7 @@ namespace KeyBindingTest
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(KeyBindingTestPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     public sealed class KeyBindingTestPackage : AsyncPackage
     {
         /// <summary>

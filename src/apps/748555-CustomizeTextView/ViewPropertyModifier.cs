@@ -38,7 +38,8 @@ namespace CustomizeTextView
             indicatorMargin[EditorFormatDefinition.BackgroundColorId] = Colors.LightGreen;
             formatMap.SetProperties("Indicator Margin", indicatorMargin);
 
-            visibleWhitespace[EditorFormatDefinition.ForegroundColorId] = Colors.Red;
+            visibleWhitespace[EditorFormatDefinition.ForegroundColorId] = Colors.Yellow;
+            visibleWhitespace[EditorFormatDefinition.BackgroundBrushId] = Colors.Red;
             formatMap.SetProperties("Visible Whitespace", visibleWhitespace);
 
             selectedText[EditorFormatDefinition.BackgroundBrushId] = Brushes.LightPink;

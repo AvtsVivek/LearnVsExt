@@ -14,6 +14,8 @@ public interface IWpfTextViewCreationListener
 
 ## Reference: 
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Options
+2. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextview
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
 
 
 ## Futher reading

@@ -2,6 +2,8 @@
 
 ## Reference: 
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view
+2. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextview
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
 
 ## How this project is created. 
 1. Create a VSix project.
