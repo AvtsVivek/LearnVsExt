@@ -160,9 +160,15 @@ And the code samples are here.
     2.  https://devblogs.microsoft.com/visualstudio/visualstudio-extensibility-preview-3/
     3.  https://marketplace.visualstudio.com/items?itemName=vsext.gladstone
 15. Project Types to be explored. 
+    
     1.  Community Type projects.
-    2.  ![Community Project Types](images/51_50_NewProjectCommunityTypesInVs2022.jpg)
-    3.  Textmate Grammer. 
-    4.  ![Textmate Grammer Project Types](images/52_50_NewProjectTextmateGrammerTypeInVs2022.jpg)
-    5.  Visual Studio Extensibility in Visual Studio 2022 Preview 17.8.0 Preview 1.0
-    6.  ![Visual Studio Extensibility](images/53_50_NewProjectVsExtensibilityVs2022Preview.jpg)
+    
+         ![Community Project Types](images/51_50_NewProjectCommunityTypesInVs2022.jpg)
+    
+    2.  Textmate Grammer. 
+    
+         ![Textmate Grammer Project Types](images/52_50_NewProjectTextmateGrammerTypeInVs2022.jpg)
+    
+    3.  Visual Studio Extensibility in Visual Studio 2022 Preview 17.8.0 Preview 1.0
+    
+         ![Visual Studio Extensibility](images/53_50_NewProjectVsExtensibilityVs2022Preview.jpg)
