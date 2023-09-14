@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/900600-RemoveAllComments
+cd src/tasks/900800-RemoveAllComments
 
-cd src/apps/900600-RemoveAllComments
+cd src/apps/900800-RemoveAllComments
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
