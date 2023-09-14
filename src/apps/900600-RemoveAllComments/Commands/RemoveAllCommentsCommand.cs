@@ -111,9 +111,9 @@ namespace RemoveAllComments.Commands
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             
-            var view = ProjectHelpers.GetCurentWpfTextView();
+            var wpfTextView = ProjectHelpers.GetCurentWpfTextView();
             
-            if (view == null)
+            if (wpfTextView == null)
             {
                 // Show a message box to prove we were here
                 VsShellUtilities.ShowMessageBox(
@@ -126,17 +126,28 @@ namespace RemoveAllComments.Commands
                 return;
             }
 
-            var mappingSpans = GetClassificationSpans(view, "comment");
+            var mappingSpans = GetClassificationSpans(wpfTextView, "comment");
 
             if (!mappingSpans.Any())
+            {
+                // Show a message box to prove we were here
+                VsShellUtilities.ShowMessageBox(
+                    this.package,
+                    "There are no comments in this document.",
+                    "Info",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
                 return;
+            }
+
 
             try
             {
                 var button = (OleMenuCommand)sender;
                 DteInstance.UndoContext.Open(button.Text);
 
-                DeleteFromBuffer(view, mappingSpans);
+                DeleteFromBuffer(wpfTextView, mappingSpans);
             }
             catch (Exception ex)
             {
@@ -148,42 +159,42 @@ namespace RemoveAllComments.Commands
             }
         }
 
-        private static void DeleteFromBuffer(IWpfTextView view, IEnumerable<IMappingSpan> mappingSpans)
+        private static void DeleteFromBuffer(IWpfTextView wpfTextView, IEnumerable<IMappingSpan> mappingSpans)
         {
             var affectedLines = new List<int>();
 
-            RemoveCommentSpansFromBuffer(view, mappingSpans, affectedLines);
-            RemoveAffectedEmptyLines(view, affectedLines);
+            RemoveCommentSpansFromBuffer(wpfTextView, mappingSpans, affectedLines);
+            RemoveAffectedEmptyLines(wpfTextView, affectedLines);
         }
 
-        private static IEnumerable<IMappingSpan> GetClassificationSpans(IWpfTextView view, string classificationName)
+        private static IEnumerable<IMappingSpan> GetClassificationSpans(IWpfTextView wpfTextView, string classificationName)
         {
-            if (view == null)
+            if (wpfTextView == null)
             {
                 return Enumerable.Empty<IMappingSpan>();
             }
 
             var componentModel = ProjectHelpers.GetComponentModel();
-            IBufferTagAggregatorFactoryService service = componentModel.GetService<IBufferTagAggregatorFactoryService>();
-            ITagAggregator<IClassificationTag> classifier = service.CreateTagAggregator<IClassificationTag>(view.TextBuffer);
-            var snapshot = new SnapshotSpan(view.TextBuffer.CurrentSnapshot, 0, view.TextBuffer.CurrentSnapshot.Length);
+            var bufferTagAggregatorFactoryService = componentModel.GetService<IBufferTagAggregatorFactoryService>();
+            ITagAggregator<IClassificationTag> classifier = bufferTagAggregatorFactoryService.CreateTagAggregator<IClassificationTag>(wpfTextView.TextBuffer);
+            var snapshot = new SnapshotSpan(wpfTextView.TextBuffer.CurrentSnapshot, 0, wpfTextView.TextBuffer.CurrentSnapshot.Length);
 
             return from s in classifier.GetTags(snapshot).Reverse()
                    where s.Tag.ClassificationType.Classification.IndexOf(classificationName, StringComparison.OrdinalIgnoreCase) > -1
                    select s.Span;
         }
 
-        private static void RemoveCommentSpansFromBuffer(IWpfTextView view, IEnumerable<IMappingSpan> mappingSpans, IList<int> affectedLines)
+        private static void RemoveCommentSpansFromBuffer(IWpfTextView wpfTextView, IEnumerable<IMappingSpan> mappingSpans, IList<int> affectedLines)
         {
-            using (var edit = view.TextBuffer.CreateEdit())
+            using (var edit = wpfTextView.TextBuffer.CreateEdit())
             {
                 foreach (var mappingSpan in mappingSpans)
                 {
-                    var start = mappingSpan.Start.GetPoint(view.TextBuffer, PositionAffinity.Predecessor).Value;
-                    var end = mappingSpan.End.GetPoint(view.TextBuffer, PositionAffinity.Successor).Value;
+                    var start = mappingSpan.Start.GetPoint(wpfTextView.TextBuffer, PositionAffinity.Predecessor).Value;
+                    var end = mappingSpan.End.GetPoint(wpfTextView.TextBuffer, PositionAffinity.Successor).Value;
 
                     var span = new Span(start, end - start);
-                    var lines = view.TextBuffer.CurrentSnapshot.Lines.Where(l => l.Extent.IntersectsWith(span));
+                    var lines = wpfTextView.TextBuffer.CurrentSnapshot.Lines.Where(l => l.Extent.IntersectsWith(span));
 
                     foreach (var line in lines)
                     {
@@ -196,7 +207,7 @@ namespace RemoveAllComments.Commands
                             affectedLines.Add(line.LineNumber);
                     }
 
-                    var mappingText = view.TextBuffer.CurrentSnapshot.GetText(span.Start, span.Length);
+                    var mappingText = wpfTextView.TextBuffer.CurrentSnapshot.GetText(span.Start, span.Length);
                     string empty = Regex.Replace(mappingText, "([\\S]+)", string.Empty);
 
                     edit.Replace(span.Start, span.Length, empty);
