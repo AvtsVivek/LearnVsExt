@@ -56,7 +56,7 @@
         <Parent guid="guidRemoveAllCommentsPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke RemoveAllCommentsCommand</ButtonText>
+          <ButtonText>Remove the comments from the file</ButtonText>
         </Strings>
       </Button>
     </Buttons>

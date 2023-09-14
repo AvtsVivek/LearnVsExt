@@ -110,7 +110,9 @@ namespace RemoveAllComments.Commands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            var view = ProjectHelpers.GetCurentTextView();
+            
+            var view = ProjectHelpers.GetCurentWpfTextView();
+            
             if (view == null)
             {
                 // Show a message box to prove we were here

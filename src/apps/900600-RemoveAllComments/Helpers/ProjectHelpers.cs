@@ -56,7 +56,7 @@ namespace RemoveAllComments.Helpers
                     });
         }
 
-        public static IWpfTextView GetCurentTextView()
+        public static IWpfTextView GetCurentWpfTextView()
         {
             var componentModel = GetComponentModel();
             
