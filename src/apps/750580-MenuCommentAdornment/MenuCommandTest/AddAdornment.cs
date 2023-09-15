@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.Editor;
 using CommentAdornmentTest;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Text;
+using System.Windows.Forms;
 //using Microsoft.VisualStudio.ComponentModelHost;
 // https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-using-a-shell-command-with-an-editor-extension
 
@@ -112,14 +113,21 @@ namespace MenuCommandTest
 
         private async void AddAdornmentHandler(object sender, EventArgs e)
         {
-            IVsTextManager txtMgr = (IVsTextManager)await ServiceProvider.GetServiceAsync(typeof(SVsTextManager));
-            IVsTextView vTextView = null;
+            IVsTextManager vsTextManager = (IVsTextManager)await ServiceProvider.GetServiceAsync(typeof(SVsTextManager));
+            IVsTextView vsTextView = null;
             int mustHaveFocus = 1;
-            txtMgr.GetActiveView(mustHaveFocus, null, out vTextView);
-            IVsUserData userData = vTextView as IVsUserData;
-            if (userData == null)
+            vsTextManager.GetActiveView(mustHaveFocus, null, out vsTextView);
+            IVsUserData vsUserData = vsTextView as IVsUserData;
+            if (vsUserData == null)
             {
                 Console.WriteLine("No text view is currently open");
+                VsShellUtilities.ShowMessageBox(
+                    this.package,
+                    "No text view is currently open. Probably no text file is open. Open any text file and try again.",
+                    "No text view!!",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
                 return;
             }
 
@@ -127,22 +135,22 @@ namespace MenuCommandTest
             // IVsTextBufferAdapter curDocTextLiness = null;
             IVsTextLines curDocTextLines = null;
             // VsTextBufferAdapter
-            vTextView.GetBuffer(out curDocTextLines); //Getting Current Text Lines 
+            vsTextView.GetBuffer(out curDocTextLines); //Getting Current Text Lines 
             var vsTextBuffer = curDocTextLines as IVsTextBuffer;
 
-            IComponentModel componentModel = (IComponentModel)await this.ServiceProvider.GetServiceAsync(typeof(SComponentModel));
-            IVsEditorAdaptersFactoryService editor = componentModel.GetService<IVsEditorAdaptersFactoryService>();
-            ITextBuffer curDocTextBuffer = editor.GetDocumentBuffer(curDocTextLines as IVsTextBuffer);
-            // editor.GetDocumentBuffer()
+            var componentModel = (IComponentModel)await this.ServiceProvider.GetServiceAsync(typeof(SComponentModel));
+            var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
+            ITextBuffer currentDocTextBuffer = vsEditorAdaptersFactoryService.GetDocumentBuffer(curDocTextLines);
+            
             // Microsoft.VisualStudio.Text.Editor.ITextView2
             // var filePath = ((Microsoft.VisualStudio.Text.Implementation.TextDocument)((Microsoft.VisualStudio.Editor.Implementation.TextDocData)vsTextBuffer).TextDocument).FilePath;
 
-            IWpfTextViewHost viewHost;
+            IWpfTextViewHost wpfTextViewHost;
             object holder;
             Guid guidViewHost = Microsoft.VisualStudio.Editor.DefGuidList.guidIWpfTextViewHost;
-            userData.GetData(ref guidViewHost, out holder);
-            viewHost = (IWpfTextViewHost)holder;
-            Connector.Execute(viewHost);
+            vsUserData.GetData(ref guidViewHost, out holder);
+            wpfTextViewHost = (IWpfTextViewHost)holder;
+            Connector.Execute(wpfTextViewHost);
         }
     }
 }

@@ -136,30 +136,34 @@ And the code samples are here.
    3. https://www.youtube.com/watch?v=hDSmUXK03L4
    4. https://www.youtube.com/watch?v=9XUAGspESzQ
    5. https://www.youtube.com/watch?v=Cw9qCsetpLU
+7. Legacy Language Service
+   1. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/legacy-language-service-extensibility
+   2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/walkthrough-creating-a-legacy-language-service
+   3. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/implementing-a-legacy-language-service2
 
-7. What next?
+8. What next?
    1. Need to try this. https://stackoverflow.com/questions/45863788/how-can-i-find-out-what-classification-types-are-registered-in-visual-studio
    2. https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
 
-8. What is ITextView, IVsTextView and IWpfTextView?
-9. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
-10. IVsTextViewCreationListener vs IWpfTextViewCreationListener
-11. IClassifier
+9.  What is ITextView, IVsTextView and IWpfTextView?
+10. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
+11. IVsTextViewCreationListener vs IWpfTextViewCreationListener
+12. IClassifier
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
     2.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Todo_Classification
     3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
-12. Need to look at 
+13. Need to look at 
     1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
-13. To do
+14. To do
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncToolWindow
     2.  End of fourth chapter in the book, ToolWindow and DTE object.
     3.  Need to understand AdornmentLayerDefinition
     4.  Need to understand PredefinedAdornmentLayers
-14. Visual Studio Extension Preview
+15. Visual Studio Extension Preview
     1.  https://github.com/microsoft/VSExtensibility/
     2.  https://devblogs.microsoft.com/visualstudio/visualstudio-extensibility-preview-3/
     3.  https://marketplace.visualstudio.com/items?itemName=vsext.gladstone
-15. Project Types to be explored. 
+16. Project Types to be explored. 
     
     1.  Community Type projects.
     

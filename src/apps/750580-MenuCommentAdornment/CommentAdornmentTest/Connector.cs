@@ -24,21 +24,21 @@ namespace CommentAdornmentTest
             CommentAdornmentManager.Create(textView);
         }
 
-        static public void Execute(IWpfTextViewHost host)
+        static public void Execute(IWpfTextViewHost wpfTextViewHost)
         {
-            IWpfTextView view = host.TextView;
+            IWpfTextView wpfTextView = wpfTextViewHost.TextView;
             //Add a comment on the selected text. 
-            if (!view.Selection.IsEmpty)
+            if (!wpfTextView.Selection.IsEmpty)
             {
                 //Get the provider for the comment adornments in the property bag of the view.
-                CommentAdornmentProvider provider = view.Properties.GetProperty<CommentAdornmentProvider>(typeof(CommentAdornmentProvider));
+                var commentAdornmentProvider = wpfTextView.Properties.GetProperty<CommentAdornmentProvider>(typeof(CommentAdornmentProvider));
 
                 //Add some arbitrary author and comment text. 
-                string author = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                string comment = "Four score....";
+                var author = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                var comment = "Four score....";
 
                 //Add the comment adornment using the provider.
-                provider.Add(view.Selection.SelectedSpans[0], author, comment);
+                commentAdornmentProvider.Add(wpfTextView.Selection.SelectedSpans[0], author, comment);
             }
         }
     }
