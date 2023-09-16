@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/900590-VsTextManagerIntro
+cd src/tasks/402500-VsTextManagerIntro
 
-cd src/apps/900590-VsTextManagerIntro
+cd src/apps/402500-VsTextManagerIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
