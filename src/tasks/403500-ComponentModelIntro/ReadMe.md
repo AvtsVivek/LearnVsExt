@@ -22,7 +22,28 @@
    ```cs
    (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
    ```
-   4. Using this service you get access to all the components that Visual Studio make available to component developers. 
+   4. Using this **IComponentModel** object you get access to all the components that Visual Studio make available to component developers. Example, **IVsEditorAdaptersFactoryService**
+   
+   5. Now from IVsEditorAdaptersFactoryService we can get other services.
+
+   ```cs
+   // Now we can use the adapter service to get the Wpf Text View. vsEditorAdaptersFactoryService
+   var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
+
+   var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);   
+   ```
+
+# Build and Run.
+
+1. Build the solution.
+
+2. Run the project by pressing F5. A second instance of Experimental Visual Studio starts.
+
+3. Open any simple text file. And then execute the command(Tools -> Invoke TestCommand). You can see that IComponentModel object is created.
+
+4. Then IVsEditorAdaptersFactoryService. Then IWpfTextView and IWpfTextViewHost objects are also created.
+
+5. You can see them, in the message boxes.
 
 ## References
 1. Components can be visual (controls) and non-visuals.
