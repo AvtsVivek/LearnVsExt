@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/403500-ComponentModelIntro
+cd src/tasks/402600-ComponentModelIntro
 
-cd src/apps/403500-ComponentModelIntro
+cd src/apps/402600-ComponentModelIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
