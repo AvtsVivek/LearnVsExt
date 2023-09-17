@@ -29,17 +29,17 @@ namespace TodoClassification
         /// <returns>A list of every relevant tag in the given span</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
-            IList<ClassificationSpan> classifiedSpans = new List<ClassificationSpan>();
+            var classificationSpanList = new List<ClassificationSpan>();
 
             var tags = _tagger.GetTags(span);
 
             foreach (IMappingTagSpan<ToDoTag> tagSpan in tags)
             {
                 SnapshotSpan todoSpan = tagSpan.Span.GetSpans(span.Snapshot).First();
-                classifiedSpans.Add(new ClassificationSpan(todoSpan, _classificationType));
+                classificationSpanList.Add(new ClassificationSpan(todoSpan, _classificationType));
             }
 
-            return classifiedSpans;
+            return classificationSpanList;
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace TodoClassification
         /// </summary>
         /// <param name="spans">A set of spans we want to get tags for.</param>
         /// <returns>The list of ToDoTag TagSpans.</returns>
-        IEnumerable<ITagSpan<ToDoTag>> ITagger<ToDoTag>.GetTags(NormalizedSnapshotSpanCollection spans)
+        public IEnumerable<ITagSpan<ToDoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
             //todo: implement tagging
             foreach (SnapshotSpan span in spans)
