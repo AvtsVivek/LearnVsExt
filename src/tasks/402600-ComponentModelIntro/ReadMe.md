@@ -1,6 +1,9 @@
-# Introduces SComponentModel and IComponentModel
+## Objective 
 
-## What is a component. 
+1. Introduces **SComponentModel** and **IComponentModel**. 
+2. Also **IVsEditorAdaptersFactoryService**
+
+## What is a component.
 
 1. The following is a general definition of a component in dotnet. This is not directly related to Visual Studio SComponentModel and IComponentModel. This is given here, just to clear off any confustion that may arise.
 
@@ -22,16 +25,40 @@
    ```cs
    (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
    ```
-   4. Using this **IComponentModel** object you get access to all the components that Visual Studio make available to component developers. Example, **IVsEditorAdaptersFactoryService**
+4. Using this **IComponentModel** object you get access to all the components that Visual Studio make available to component developers. Example, **IVsEditorAdaptersFactoryService**
    
-   5. Now from IVsEditorAdaptersFactoryService we can get other services.
+5. **IVsEditorAdaptersFactoryService** is an important interface. 
+6. Now from **IVsEditorAdaptersFactoryService** we can get other services.
 
-   ```cs
-   // Now we can use the adapter service to get the Wpf Text View. vsEditorAdaptersFactoryService
-   var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
+```cs
+// Now we can use the adapter service to get the Wpf Text View. vsEditorAdaptersFactoryService
+var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 
-   var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);   
-   ```
+var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);   
+```
+
+7. We can even create text buffer like so. 
+```cs
+IVsTextBuffer vsTextBufferOne = vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
+```
+
+8. But note, it will not represent any data from any currently opened documents, its created from scractch.
+
+9. Also note, if there is a VsTextView representing an active view, then we can get text model(the buffer) as follows.
+
+```cs
+vsTextView.GetBuffer(out IVsTextLines currentDocTextLines); //Getting Current Text Lines 
+var vsTextBufferThree = currentDocTextLines as IVsTextBuffer;
+ITextBuffer documentTextBufferThree = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferThree);
+```
+
+10. Note its still not clear what exactly is the difference between **ITextBuffer** and **IVsTextBuffer**.
+
+11. Need to look into the following tomorrow. 
+    1.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextmanager.registerbuffer
+    2.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextbuffer
+    3.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbuffer
+    4.  https://stackoverflow.com/questions/76888423/what-is-the-difference-between-ivstextviewcreationlistener-and-iwpftextviewcreat
 
 # Build and Run.
 
@@ -39,9 +66,9 @@
 
 2. Run the project by pressing F5. A second instance of Experimental Visual Studio starts.
 
-3. Open any simple text file. And then execute the command(Tools -> Invoke TestCommand). You can see that IComponentModel object is created.
+3. Open any simple text file. And then execute the command(Tools -> Invoke TestCommand). You can see that **IComponentModel** object is created.
 
-4. Then IVsEditorAdaptersFactoryService. Then IWpfTextView and IWpfTextViewHost objects are also created.
+4. Then **IVsEditorAdaptersFactoryService**. Then **IWpfTextView** and **IWpfTextViewHost** objects are also created.
 
 5. You can see them, in the message boxes.
 

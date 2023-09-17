@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
@@ -59,7 +60,7 @@ namespace ComponentModelIntro.Commands
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
+        private IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -99,6 +100,43 @@ namespace ComponentModelIntro.Commands
 
             var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
 
+            // VsTextBufferAdapter vsTextBufferOne = vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
+            IVsTextBuffer vsTextBufferOne = vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
+
+            ITextBuffer documentTextBufferOne = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferOne);
+
+            var stringMessage = $"The {nameof(documentTextBufferOne)} retrieved from a 'Created' Text buffer is null. " + Environment.NewLine +
+                "There is no data buffered in this yet." + Environment.NewLine + 
+                "Note we used vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package) " + Environment.NewLine +
+                $"to create {nameof(vsTextBufferOne)}.";
+
+            if (documentTextBufferOne == null)
+                VsShellUtilities.ShowMessageBox(
+                    this.package,
+                    stringMessage,
+                    $"{nameof(documentTextBufferOne)} is null!!",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            VsTextBuffer vsTextBufferTwo = vsTextBufferOne as VsTextBuffer;
+
+            ITextBuffer documentTextBufferTwo = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferTwo);
+
+            stringMessage = $"The {nameof(documentTextBufferTwo)} retrieved from a 'Created' Text buffer is null. " + Environment.NewLine +
+                "There is no data buffered in this yet." + Environment.NewLine +
+                "Note we used vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package) " + Environment.NewLine +
+                $"to create {nameof(vsTextBufferTwo)}.";
+
+            if (documentTextBufferTwo == null)
+                VsShellUtilities.ShowMessageBox(
+                    this.package,
+                    stringMessage,
+                    $"{nameof(documentTextBufferTwo)} is null!!",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
             var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 
             int mustHaveFocus = 1;
@@ -118,6 +156,30 @@ namespace ComponentModelIntro.Commands
                 return;
             }
 
+            // VsTextBufferAdapter
+            vsTextView.GetBuffer(out IVsTextLines currentDocTextLines); //Getting Current Text Lines 
+            
+            var vsTextBufferThree = currentDocTextLines as IVsTextBuffer;
+
+            ITextBuffer documentTextBufferThree = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferThree);
+
+            if (documentTextBufferThree != null)
+            {
+                stringMessage = $"The {nameof(documentTextBufferThree)} retrieved from a text buffer got from 'vsTextView.GetBuffer' is NOT null. " + Environment.NewLine +
+        
+        "Note we used the current text view vsTextView.GetBuffer() " + Environment.NewLine +
+        $"to create {nameof(vsTextBufferThree)}.";
+
+                    VsShellUtilities.ShowMessageBox(
+                        this.package,
+                        stringMessage,
+                        $"{nameof(documentTextBufferThree)} is NOT null!!",
+                        OLEMSGICON.OLEMSGICON_INFO,
+                        OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+
+
             string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
             string title = "TestCommand";
 
@@ -125,8 +187,6 @@ namespace ComponentModelIntro.Commands
             var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 
             var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);
-
-            // vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
 
             if( wpfTextView != null )
                 message = message + Environment.NewLine + "IWpfTextView is created using IVsEditorAdaptersFactoryService.";
