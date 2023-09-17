@@ -17,12 +17,12 @@ namespace TodoClassification
         /// <summary>
         /// This method creates ToDoTag TagSpans over a set of SnapshotSpans.
         /// </summary>
-        /// <param name="spans">A set of spans we want to get tags for.</param>
+        /// <param name="spanCollection">A set of spans we want to get tags for.</param>
         /// <returns>The list of ToDoTag TagSpans.</returns>
-        public IEnumerable<ITagSpan<ToDoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
+        public IEnumerable<ITagSpan<ToDoTag>> GetTags(NormalizedSnapshotSpanCollection spanCollection)
         {
             //todo: implement tagging
-            foreach (SnapshotSpan span in spans)
+            foreach (SnapshotSpan span in spanCollection)
             {
                 int locationIndex = span.GetText().ToLower().IndexOf(_searchText);
                 if (locationIndex > -1)
