@@ -59,11 +59,7 @@ ITextBuffer textBufferFromWpfView = wpfTextView.TextBuffer;
 ```
 11. Note its still not clear what exactly is the difference between **ITextBuffer** and **IVsTextBuffer**.
 
-12. Need to look into the following tomorrow. 
-    1.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextmanager.registerbuffer
-    2.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextbuffer
-    3.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbuffer
-    4.  https://stackoverflow.com/questions/76888423/what-is-the-difference-between-ivstextviewcreationlistener-and-iwpftextviewcreat
+
 
 # Build and Run.
 

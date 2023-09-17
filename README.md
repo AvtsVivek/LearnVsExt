@@ -63,19 +63,22 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 
 ## A tutorial Series that I found on the net. 
 
-1. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
-2. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
-3. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-3-add-context-menu-get-selected-code/
-4. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-4-show-a-popup-window/
-5. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-highlight-code-in-editor/
-6. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-6-follow-span-code-trackingspan/
-7. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-7-insert-buttons-text-characters-adornments/
-8. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-8-add-ui-in-the-indicator-margin-with-glyphs/
+1. From michaelscodingspot
+   1. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/
+   2. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-2-add-menu-item/
+   3. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-3-add-context-menu-get-selected-code/
+   4. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-4-show-a-popup-window/
+   5. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-highlight-code-in-editor/
+   6. https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-6-follow-span-code-trackingspan/
+   7. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-7-insert-buttons-text-characters-adornments/
+   8. https://michaelscodingspot.com/visual-studio-2017-extension-tutorial-8-add-ui-in-the-indicator-margin-with-glyphs/
+   9. Code Sample is here. https://github.com/michaelscodingspot/CodyDocs
 
-And the code samples are here.
-
-1. https://github.com/michaelscodingspot/CodyDocs
-
+2. Festive Editor 
+   1. https://marketplace.visualstudio.com/items?itemName=MattLaceyLtd.FestiveEditor
+   2. https://www.mrlacey.com/2020/11/a-festive-introduction-to-visual-studio.html
+   3. https://github.com/mrlacey/FestiveEditor
+   4. 
 
 ##  YouTube Playlist
 1. https://www.youtube.com/playlist?list=PLReL099Y5nRdG2n1PrY_tbCsUznoYvqkS
