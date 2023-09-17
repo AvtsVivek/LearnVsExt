@@ -2,6 +2,7 @@
 
 1. Introduces **SComponentModel** and **IComponentModel**. 
 2. Also **IVsEditorAdaptersFactoryService**
+3. While an earlier example **402500-VsTextManagerIntro** introduces Text Manager, this introduces IComponentModel.
 
 ## What is a component.
 
@@ -42,7 +43,7 @@ var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextVi
 IVsTextBuffer vsTextBufferOne = vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
 ```
 
-8. But note, it will not represent any data from any currently opened documents, its created from scractch.
+8. But note, it will not represent any data from any currently opened documents, because its created from scractch.
 
 9. Also note, if there is a VsTextView representing an active view, then we can get text model(the buffer) as follows.
 
@@ -52,9 +53,13 @@ var vsTextBufferThree = currentDocTextLines as IVsTextBuffer;
 ITextBuffer documentTextBufferThree = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferThree);
 ```
 
-10. Note its still not clear what exactly is the difference between **ITextBuffer** and **IVsTextBuffer**.
+10. And also if we have a IWpfTextView object, we can get the ITextBuffer as follows. Note this pirticular point is not covered in this example. This will be covered in subsequent examples. 
+```cs
+ITextBuffer textBufferFromWpfView = wpfTextView.TextBuffer;
+```
+11. Note its still not clear what exactly is the difference between **ITextBuffer** and **IVsTextBuffer**.
 
-11. Need to look into the following tomorrow. 
+12. Need to look into the following tomorrow. 
     1.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextmanager.registerbuffer
     2.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextbuffer
     3.  https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbuffer

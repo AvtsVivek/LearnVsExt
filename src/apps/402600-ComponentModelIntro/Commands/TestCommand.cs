@@ -166,17 +166,17 @@ namespace ComponentModelIntro.Commands
             if (documentTextBufferThree != null)
             {
                 stringMessage = $"The {nameof(documentTextBufferThree)} retrieved from a text buffer got from 'vsTextView.GetBuffer' is NOT null. " + Environment.NewLine +
-        
-        "Note we used the current text view vsTextView.GetBuffer() " + Environment.NewLine +
-        $"to create {nameof(vsTextBufferThree)}.";
 
-                    VsShellUtilities.ShowMessageBox(
-                        this.package,
-                        stringMessage,
-                        $"{nameof(documentTextBufferThree)} is NOT null!!",
-                        OLEMSGICON.OLEMSGICON_INFO,
-                        OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                "Note we used the current text view vsTextView.GetBuffer() " + Environment.NewLine +
+                $"to create {nameof(vsTextBufferThree)}.";
+
+                VsShellUtilities.ShowMessageBox(
+                    this.package,
+                    stringMessage,
+                    $"{nameof(documentTextBufferThree)} is NOT null!!",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
             }
 
 

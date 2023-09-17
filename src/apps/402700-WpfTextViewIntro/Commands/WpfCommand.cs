@@ -108,8 +108,8 @@ namespace WpfTextViewIntro.Commands
                 return;
             }
 
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "WpfCommand";
+            var message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.WpfCommand Execute method", this.GetType().FullName);
+            var title = "WpfCommand";
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
