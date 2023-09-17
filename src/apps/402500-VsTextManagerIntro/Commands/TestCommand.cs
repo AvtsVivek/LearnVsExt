@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.Editor;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
@@ -153,7 +154,7 @@ namespace VsTextManagerIntro.Commands
                     OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
             }
 
-            var viewHostGuid = Microsoft.VisualStudio.Editor.DefGuidList.guidIWpfTextViewHost;
+            var viewHostGuid = DefGuidList.guidIWpfTextViewHost;
 
             var vsUserData = vsTextView as IVsUserData;
 
