@@ -13,4 +13,13 @@
 
 6. This example is not very clear. Need to come back here again.
 
+7. Run the app, Exp instance is launched. Go to Extensions ->  Customize Menu
+
+![Customize Menu](images/49_50CustomizeMenu.jpg)
+
+8. Uncheck it.
+![Uncheck it](images/50_50MenuItemsInExtMenu.jpg)
+
+9. Its not clear what enabling and disable does. Need to look into this. For now, ignoring it. 
+
 
