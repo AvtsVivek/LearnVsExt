@@ -1,5 +1,4 @@
-﻿
-namespace GetSelectionShowPopup
+﻿namespace GetSelectionShowPopup
 {
     public struct TextViewSelection
     {
@@ -14,5 +13,4 @@ namespace GetSelectionShowPopup
             Text = text;
         }
     }
-
 }

@@ -119,9 +119,13 @@ namespace GetSelectionShowPopup.Commands
                 return;
             }
 
-            // ShowAddDocumentationWindow(activeDocumentPath, selection);
+            ShowAddDocumentationWindow(activeDocumentPath, selection);
 
-
+        }
+        private void ShowAddDocumentationWindow(string activeDocumentPath, TextViewSelection? selection)
+        {
+            var documentationControl = new AddDocumentationWindow(activeDocumentPath, selection);
+            documentationControl.ShowDialog();
         }
 
         private async Task<TextViewSelection?> GetSelectionAsync()

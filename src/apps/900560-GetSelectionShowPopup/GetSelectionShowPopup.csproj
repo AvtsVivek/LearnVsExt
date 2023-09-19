@@ -45,12 +45,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddDocumentationWindow.xaml.cs">
+      <DependentUpon>AddDocumentationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDialogWindow.cs" />
     <Compile Include="Commands\GetSelectionCommand.cs" />
     <Compile Include="Commands\GetSelectionShowPopupPackage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GetSelectionShowPopupPackage.vsct</DependentUpon>
     </Compile>
+    <Compile Include="DocumentationFileHandler.cs" />
+    <Compile Include="DocumentationFileSerializer.cs" />
+    <Compile Include="DocumentationFragment.cs" />
+    <Compile Include="FileDocumentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetSelectionShowPopupPackage.cs" />
     <Compile Include="TextViewPosition.cs" />
@@ -63,18 +71,29 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.5.4074" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="AddDocumentationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="Commands\GetSelectionShowPopupPackage.vsct">
       <Generator>VsctGenerator</Generator>
