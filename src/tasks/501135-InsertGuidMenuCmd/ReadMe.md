@@ -49,3 +49,6 @@ private async void ExecuteAsync(object sender, EventArgs e)
 ![Insert Guid in Tools Menu](./images/50_50InsertGuidInToolsMenu.jpg)
 
 7. There is another way to manipulate the text of a document. See [this](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/552400-VsixCommandCommunity) and [this app](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/apps/552400-VsixCommandCommunity).
+
+8. Using DTE to get the document object and then getting the selection as shown in this example is one way. Without using DTE, getting this selection is more tedious. For such an example, search for an example which has  TextViewSelection and TextViewPosition in this repository. You should see GetSelection and GetSelectionShowPopup projects.
+

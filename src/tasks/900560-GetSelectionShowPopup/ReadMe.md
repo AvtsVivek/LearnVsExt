@@ -43,3 +43,5 @@ Width="500" Height="400"
 
 9. Added, DocumentationFileHandler, DocumentationFileSerializer, DocumentationFragment, FileDocumentation and so on.
 
+## Notes
+1. The other way to selecting of text is using DTE. Search for InsertGuidMenuCmd example. There the selection is obtained by using DTE objects.

@@ -117,9 +117,16 @@ namespace GetSelection.Commands
                 return;
             }
 
-            // ShowAddDocumentationWindow(activeDocumentPath, selection);
-
-
+            VsShellUtilities.ShowMessageBox(
+                this.package,
+                $"The selection is as follows." + Environment.NewLine +
+                $"{selection}" + Environment.NewLine +
+                $"The file path is as follows" + Environment.NewLine +
+                $"{activeDocumentPath}" ,
+                "The selection",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
         private async Task<TextViewSelection?> GetSelectionAsync()

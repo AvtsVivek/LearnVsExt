@@ -57,6 +57,11 @@ namespace GetSelectionShowPopup
         {
             return a > b ? a : b;
         }
+
+        public override string ToString()
+        {
+            return $"Line: {Line}, Column: {Column}";
+        }
     }
 
 }

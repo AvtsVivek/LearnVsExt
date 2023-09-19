@@ -18,5 +18,10 @@ namespace GetSelection
             EndPosition = TextViewPosition.Max(a, b);
             Text = text;
         }
+
+        public override string ToString()
+        {
+            return $"Text: {Text}, Start: {StartPosition}, End:{EndPosition}";
+        }
     }
 }
