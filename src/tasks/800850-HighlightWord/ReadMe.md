@@ -2,6 +2,7 @@
 
 ## Reference: 
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Highlight_Word
+2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-highlighting-text
 
 ## How this project is created. 
 1. Create a VSix project.
@@ -16,18 +17,73 @@
 
 5. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
 
-6. Then Add the files from the code download from the above reference. LineAsyncQuickInfoSource.cs and LineAsyncQuickInfoSourceProvider.cs
+6. Then Add the files as per the reference, [Walkthrough: Highlight text](https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-highlighting-text)
 
 7. Ensure namespaces are corrected according to the project you created. 
 
 8. Build and Run..
 
-9. In the exp intance of the visual studio, open a file with extension .cs. 
+9. In the exp intance of the visual studio, open a text file(.txt). Example open HelloHelloHello.txt file.
 
-![Tool tip ](images/52_50ToolTipeInAction.jpg)
+Ensure the ctor of HighlightWordFormatDefinition is as follows.
+```cs
+public HighlightWordFormatDefinition()
+{
+	this.BackgroundColor = Colors.LightGreen;
+	this.ForegroundColor = Colors.DarkGreen;
+	this.DisplayName = "Highlight Word";
+	this.ZOrder = 5;
+}	
+```
+
+Now run the example, 
+
+![Hello Hello Green Dark Theme](images/52_50HelloHelloGreen.jpg)
+
+Changed the theme(Tools -> Theme -> Light)
+
+![Hello Hello Green Light Theme](images/53_50HelloHelloGreenLightTheme.jpg)
+
+Ensure the ctor of HighlightWordFormatDefinition is as follows.
+
+```cs
+public HighlightWordFormatDefinition()
+{
+	this.BackgroundColor = Colors.LightBlue;
+	this.ForegroundColor = Colors.DarkBlue;
+	this.DisplayName = "Highlight Word";
+	this.ZOrder = 5;
+}
+```
+
+
+![Hello Hello Green Dark Theme](images/54_50HelloHelloBlueDarkTheme.jpg)
+
+Changed the theme(Tools -> Theme -> Light)
+
+![Hello Hello Green Light Theme](images/55_50HelloHelloBlueLightTheme.jpg)
+
+
+Ensure the ctor of HighlightWordFormatDefinition is as follows.
+
+```cs
+public HighlightWordFormatDefinition()
+{
+	this.BackgroundColor = Colors.LightPink;
+	this.ForegroundColor = Colors.DarkRed;
+	this.DisplayName = "Highlight Word";
+	this.ZOrder = 5;
+}
+```
+
+![Hello Hello Green Dark Theme](images/56_50HelloHelloPinkDarkTheme.jpg)
+
+Changed the theme(Tools -> Theme -> Light)
+
+![Hello Hello Green Light Theme](images/57_50HelloHelloPinkLightTheme.jpg)
+
 
 10. Note the [ContentType("text")] on the class **HighlightWordTaggerProvider**
 
 
-# Notes
-1. I am not sure this is working. Need to check again. The highlighting seems to be working the same. 
+

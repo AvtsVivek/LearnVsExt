@@ -26,3 +26,6 @@
 
 ## Notes
 1. The other way to selecting of text is using DTE. Search for InsertGuidMenuCmd example. There the selection is obtained by using DTE objects.
+2. This example is based on SVsTextManager and IVsTextManager2 and textManager.GetActiveView2();
+3. Should come after 402500-VsTextManagerIntro
+4. 
