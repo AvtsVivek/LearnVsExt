@@ -2,7 +2,7 @@
 
 1. Introduces the [Text View Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-view-subsystem). 
 
-2. The text view subsystem is responsible for formatting and displaying text.
+2. The text ***view*** subsystem is responsible for formatting and displaying text.
 
 3. This example helps in understanding **IWpfTextView** and **IVsTextView**. These represent the text view subsystem.
 
