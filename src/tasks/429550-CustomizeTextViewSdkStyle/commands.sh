@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/419550-CustomizeTextViewSdkStyle
+cd src/tasks/429550-CustomizeTextViewSdkStyle
 
-cd src/apps/419550-CustomizeTextViewSdkStyle
+cd src/apps/429550-CustomizeTextViewSdkStyle
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

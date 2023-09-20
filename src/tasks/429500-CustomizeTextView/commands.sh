@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/419500-CustomizeTextView
+cd src/tasks/429500-CustomizeTextView
 
-cd src/apps/419500-CustomizeTextView
+cd src/apps/429500-CustomizeTextView
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
