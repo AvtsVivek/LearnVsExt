@@ -120,13 +120,13 @@ namespace TaggerInTextModel.Commands
 
             var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 
-            var currentTextSnapShot = wpfTextView.TextBuffer.CurrentSnapshot;
-
-            var currentSnapShotSpan = new Span(0, currentTextSnapShot.Length);
-
             var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);
 
             var todoTagger = new TodoTagger(classifier);
+
+            var currentTextSnapShot = wpfTextView.TextBuffer.CurrentSnapshot;
+
+            var currentSnapShotSpan = new Span(0, currentTextSnapShot.Length);
 
             var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShot, currentSnapShotSpan);
 
