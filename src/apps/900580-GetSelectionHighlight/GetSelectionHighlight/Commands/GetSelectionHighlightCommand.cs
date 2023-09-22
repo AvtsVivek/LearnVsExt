@@ -4,15 +4,17 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
+using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace GetSelection.Commands
+namespace GetSelectionHighlight.Commands
 {
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class GetSelectionCommand
+    internal sealed class GetSelectionHighlightCommand
     {
         /// <summary>
         /// Command ID.
@@ -22,7 +24,7 @@ namespace GetSelection.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("a6094191-90aa-4614-9cf4-7aac7c37a345");
+        public static readonly Guid CommandSet = new Guid("4bd1cefd-c173-4c28-b509-4f83e0d36759");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -30,12 +32,12 @@ namespace GetSelection.Commands
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetSelectionCommand"/> class.
+        /// Initializes a new instance of the <see cref="GetSelectionHighlightCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private GetSelectionCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private GetSelectionHighlightCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -48,7 +50,7 @@ namespace GetSelection.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static GetSelectionCommand Instance
+        public static GetSelectionHighlightCommand Instance
         {
             get;
             private set;
@@ -57,7 +59,7 @@ namespace GetSelection.Commands
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private IAsyncServiceProvider ServiceProvider
+        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -71,12 +73,12 @@ namespace GetSelection.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in GetSelectionCommand's constructor requires
+            // Switch to the main thread - the call to AddCommand in GetSelectionHighlightCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new GetSelectionCommand(package, commandService);
+            Instance = new GetSelectionHighlightCommand(package, commandService);
         }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace GetSelection.Commands
         private async void Execute(object sender, EventArgs e)
         {
             TextViewSelection? selection = await GetSelectionAsync();
-            
+
             if (selection == null)
             {
                 VsShellUtilities.ShowMessageBox(
@@ -122,18 +124,17 @@ namespace GetSelection.Commands
                 $"The selection is as follows." + Environment.NewLine +
                 $"{selection}" + Environment.NewLine +
                 $"The file path is as follows" + Environment.NewLine +
-                $"{activeDocumentPath}" ,
+                $"{activeDocumentPath}",
                 "The selection",
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
-
         private async Task<TextViewSelection?> GetSelectionAsync()
         {
             var vsTextManager = await ServiceProvider.GetServiceAsync(typeof(SVsTextManager));
             var textManager = vsTextManager as IVsTextManager2;
-            
+
             int result = textManager.GetActiveView2(1, null, (uint)_VIEWFRAMETYPE.vftCodeWindow, out IVsTextView vsTextView);
 
             if (vsTextView == null)
@@ -156,7 +157,7 @@ namespace GetSelection.Commands
 
             if (applicationObject == null) return null;
 
-            if(applicationObject.ActiveDocument == null) return null;
+            if (applicationObject.ActiveDocument == null) return null;
 
             return applicationObject.ActiveDocument.FullName;
         }
