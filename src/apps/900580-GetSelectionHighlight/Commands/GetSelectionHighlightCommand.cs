@@ -119,17 +119,15 @@ namespace GetSelectionHighlight.Commands
                 return;
             }
 
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                $"The selection is as follows." + Environment.NewLine +
-                $"{selection}" + Environment.NewLine +
-                $"The file path is as follows" + Environment.NewLine +
-                $"{activeDocumentPath}",
-                "The selection",
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            ShowAddDocumentationWindow(activeDocumentPath, selection);
+
         }
+        private void ShowAddDocumentationWindow(string activeDocumentPath, TextViewSelection? selection)
+        {
+            var documentationControl = new AddDocumentationWindow(activeDocumentPath, selection);
+            documentationControl.ShowDialog();
+        }
+
         private async Task<TextViewSelection?> GetSelectionAsync()
         {
             var vsTextManager = await ServiceProvider.GetServiceAsync(typeof(SVsTextManager));
