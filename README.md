@@ -147,6 +147,7 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 8. What next?
    1. Need to try this. https://stackoverflow.com/questions/45863788/how-can-i-find-out-what-classification-types-are-registered-in-visual-studio
    2. https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
+   3. https://github.com/MicrosoftDocs/visualstudio-docs/blob/main/docs/extensibility/walkthrough-highlighting-text.md
 
 9.  What is ITextView, IVsTextView and IWpfTextView?
 10. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?

@@ -1,8 +1,4 @@
-﻿using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Text.Tagging;
-using Microsoft.VisualStudio.Utilities;
-using System.ComponentModel.Composition;
-using System.Windows.Media;
+﻿using Microsoft.VisualStudio.Text.Tagging;
 
 namespace HighlightWord
 {
@@ -13,18 +9,5 @@ namespace HighlightWord
     public class HighlightWordTag : TextMarkerTag
     {
         public HighlightWordTag() : base("MarkerFormatDefinition/HighlightWordFormatDefinition") { }
-    }
-    [Export(typeof(EditorFormatDefinition))]
-    [Name("MarkerFormatDefinition/HighlightWordFormatDefinition")]
-    [UserVisible(true)]
-    internal class HighlightWordFormatDefinition : MarkerFormatDefinition
-    {
-        public HighlightWordFormatDefinition()
-        {
-            this.BackgroundColor = Colors.LightPink;
-            this.ForegroundColor = Colors.DarkRed;
-            this.DisplayName = "Highlight Word";
-            this.ZOrder = 5;
-        }
     }
 }
