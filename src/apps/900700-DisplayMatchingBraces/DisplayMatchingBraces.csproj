@@ -46,6 +46,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BraceMatchingTagger.cs" />
+    <Compile Include="BraceMatchingTaggerProvider.cs" />
+    <Compile Include="HighlightMatchingBraceTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DisplayMatchingBracesPackage.cs" />
   </ItemGroup>

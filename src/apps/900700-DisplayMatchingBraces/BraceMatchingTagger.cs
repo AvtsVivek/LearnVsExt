@@ -18,13 +18,17 @@ namespace DisplayMatchingBraces
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
 
+        private const string colorString = "red";
+
         internal BraceMatchingTagger(ITextView view, ITextBuffer sourceBuffer)
         {
             //here the keys are the open braces, and the values are the close braces
-            m_braceList = new Dictionary<char, char>();
-            m_braceList.Add('{', '}');
-            m_braceList.Add('[', ']');
-            m_braceList.Add('(', ')');
+            m_braceList = new Dictionary<char, char>
+            {
+                { '{', '}' },
+                { '[', ']' },
+                { '(', ')' }
+            };
             this.View = view;
             this.SourceBuffer = sourceBuffer;
             this.CurrentChar = null;
@@ -61,10 +65,14 @@ namespace DisplayMatchingBraces
             {
                 char closeChar;
                 m_braceList.TryGetValue(currentText, out closeChar);
-                if (BraceMatchingTagger.FindMatchingCloseChar(currentChar, currentText, closeChar, View.TextViewLines.Count, out pairSpan) == true)
+                if (FindMatchingCloseChar(currentChar, currentText, closeChar, View.TextViewLines.Count, out pairSpan) == true)
                 {
-                    yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(currentChar, 1), new TextMarkerTag("blue"));
-                    yield return new TagSpan<TextMarkerTag>(pairSpan, new TextMarkerTag("blue"));
+                    // yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(currentChar, 1), new TextMarkerTag(colorString));
+                    // yield return new TagSpan<TextMarkerTag>(pairSpan, new TextMarkerTag(colorString));
+
+                    yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(currentChar, 1), new HighlightMatchingBraceTag());
+                    yield return new TagSpan<TextMarkerTag>(pairSpan, new HighlightMatchingBraceTag());
+
                 }
             }
             else if (m_braceList.ContainsValue(lastText))    //the value is the close brace, which is the *previous* character 
@@ -72,16 +80,20 @@ namespace DisplayMatchingBraces
                 var open = from n in m_braceList
                            where n.Value.Equals(lastText)
                            select n.Key;
-                if (BraceMatchingTagger.FindMatchingOpenChar(lastChar, (char)open.ElementAt<char>(0), lastText, View.TextViewLines.Count, out pairSpan) == true)
+                if (FindMatchingOpenChar(lastChar, (char)open.ElementAt<char>(0), lastText, View.TextViewLines.Count, out pairSpan) == true)
                 {
-                    yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(lastChar, 1), new TextMarkerTag("blue"));
-                    yield return new TagSpan<TextMarkerTag>(pairSpan, new TextMarkerTag("blue"));
+                    // yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(lastChar, 1), new TextMarkerTag(colorString));
+                    // yield return new TagSpan<TextMarkerTag>(pairSpan, new TextMarkerTag(colorString));
+
+                    yield return new TagSpan<TextMarkerTag>(new SnapshotSpan(lastChar, 1), new HighlightMatchingBraceTag());
+                    yield return new TagSpan<TextMarkerTag>(pairSpan, new HighlightMatchingBraceTag());
+
                 }
             }
         }
 
         // Why is this method static, why not simply a private instance method? Need to check
-        private static bool FindMatchingCloseChar(SnapshotPoint startPoint, char open, char close, int maxLines, out SnapshotSpan pairSpan)
+        private bool FindMatchingCloseChar(SnapshotPoint startPoint, char open, char close, int maxLines, out SnapshotSpan pairSpan)
         {
             pairSpan = new SnapshotSpan(startPoint.Snapshot, 1, 1);
             ITextSnapshotLine line = startPoint.GetContainingLine();
@@ -131,7 +143,7 @@ namespace DisplayMatchingBraces
             return false;
         }
 
-        private static bool FindMatchingOpenChar(SnapshotPoint startPoint, char open, char close, int maxLines, out SnapshotSpan pairSpan)
+        private bool FindMatchingOpenChar(SnapshotPoint startPoint, char open, char close, int maxLines, out SnapshotSpan pairSpan)
         {
             pairSpan = new SnapshotSpan(startPoint, startPoint);
 
