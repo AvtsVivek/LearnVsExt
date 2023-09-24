@@ -1,7 +1,7 @@
 
 Reference
 
-
+https://github.com/VsixCommunity/Samples/tree/master/InsertGuid
 
 Use the following.
 
