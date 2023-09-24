@@ -9,14 +9,17 @@ namespace VsixCommandCommunity
         {
             await Package.JoinableTaskFactory.SwitchToMainThreadAsync();
             
-            DocumentView documentView = await VS.Documents.GetActiveDocumentViewAsync();
-            
-            if (documentView?.TextView == null) 
+            var activeDocumentView = await VS.Documents.GetActiveDocumentViewAsync();
+
+            if (activeDocumentView?.TextView == null)
+            {
+                var messageBox = new MessageBox();
+                await messageBox.ShowErrorAsync("Active Doc null!!", "Active Document is null." + Environment.NewLine + "Likely no file is opened in the editor.");
                 return;
+            }
+            SnapshotPoint position = activeDocumentView.TextView.Caret.Position.BufferPosition;
             
-            SnapshotPoint position = documentView.TextView.Caret.Position.BufferPosition;
-            
-            documentView.TextBuffer?.Insert(position, Guid.NewGuid().ToString());
+            activeDocumentView.TextBuffer?.Insert(position, Guid.NewGuid().ToString());
         }
     }
 }

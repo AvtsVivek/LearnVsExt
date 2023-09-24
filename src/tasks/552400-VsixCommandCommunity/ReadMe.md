@@ -14,3 +14,11 @@ Solution Explorer.
 The File changes to the VSCommandTable.vsct are as follows.
 
 ![File Changes](./images/58CommandTableFileChanges50.jpg)
+
+Invoke the Command
+![Invoke the command](images/60_50InvokeCommandFromEditMenu.jpg)
+
+Message Box
+![Message Box](images/70_50MessageBox.jpg)
+
+
