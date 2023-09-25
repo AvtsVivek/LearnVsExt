@@ -5,7 +5,7 @@ global using Task = System.Threading.Tasks.Task;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace VsixCommandCommunity
+namespace VsixCommunityInsertGuid
 {
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]

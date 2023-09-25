@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Text;
 
-namespace VsixCommandCommunity
+namespace VsixCommunityInsertGuid
 {
     [Command(PackageIds.MyCommand)]
     internal sealed class MyCommand : BaseCommand<MyCommand>
