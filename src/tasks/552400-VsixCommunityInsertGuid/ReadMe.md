@@ -30,4 +30,10 @@ Now open any text file, then place the curser where you want to insert a randonl
 Insert Guid
 ![Insert Guid](images/80_50InsertGuid.jpg)
 
+## References
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/get-started/first-extension
+2. https://www.vsixcookbook.com/getting-started/your-first-extension.html
+3. https://www.vsixcookbook.com/recipes/menus-buttons-commands.html#define-the-command
+4. 
+
 
