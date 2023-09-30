@@ -29,9 +29,11 @@ Use the following.
 ## Build and Run
 
 1. The exp instance is as follows.
+
    ![The exp instance](images/70_50BuildAndRunExpInstance.jpg)
 
 2. The tool window
+
    ![The tool windows](images/80_50ToolWindow.jpg)
 
 3. 
