@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\MyToolWindowCommand.cs" />
+    <Compile Include="ToolWindows\MyToolWindowDialog.xaml.cs">
+      <DependentUpon>MyToolWindowDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VsixCommunityToolWindowGuidPackage.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
@@ -86,6 +89,10 @@
     <Compile Include="ToolWindows\MyToolWindowControl.xaml.cs">
       <DependentUpon>MyToolWindowControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="ToolWindows\MyToolWindowDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -35,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./InsertGuid.vsix
+./VsixCommunityToolWindowGuid.vsix
 
 
 # Once installed, open the logs. You will see something like. 

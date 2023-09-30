@@ -13,6 +13,9 @@ namespace VsixCommunityToolWindowGuid
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             VS.MessageBox.Show("VsixCommunityToolWindowGuid", "Button clicked");
+
+            var dialog = new MyToolWindowDialog();
+            dialog.ShowDialog();
         }
     }
 }

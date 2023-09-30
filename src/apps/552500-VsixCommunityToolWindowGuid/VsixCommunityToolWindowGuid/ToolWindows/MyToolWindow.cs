@@ -15,6 +15,8 @@ namespace VsixCommunityToolWindowGuid
         public override Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
         {
             return Task.FromResult<FrameworkElement>(new MyToolWindowControl());
+
+            // return Task.FromResult<FrameworkElement>(new MyToolWindowDialog());
         }
 
         [Guid("d32b3ede-f03b-4ff4-8366-b0d8e64b3396")]
