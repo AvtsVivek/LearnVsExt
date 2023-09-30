@@ -1,5 +1,23 @@
 
 # VsixCommunity Tool Window.
+1. Demos Tool window using community template and tool kit.
+
+2. This also shows how to use a dialog window. See the class MyToolWindowDialog that is derived from DialogWindow. 
+
+3. Showing the dialog is as simple as calling the following method.
+
+```cs
+var dialog = new MyToolWindowDialog();
+dialog.ShowDialog();
+```
+
+4. This also demoistrates Theme. Look for the following in the xaml files.
+
+```xaml
+toolkit:Themes.UseVsTheme="True"
+```
+
+5. 
 
 ## References
  
@@ -8,6 +26,12 @@
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/custom-tool-windows
 
 3. https://www.vsixcookbook.com/recipes/custom-tool-windows.html
+
+4. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/use-themes
+
+5. https://www.vsixcookbook.com/recipes/theming.html
+
+
 
 ## How this project is built.
 
