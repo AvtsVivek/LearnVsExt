@@ -3,10 +3,12 @@
 
 ## References
  
-
 https://github.com/VsixCommunity/Samples/tree/master/InsertGuid
+
 https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/get-started/first-extension
+
 https://www.vsixcookbook.com/getting-started/your-first-extension.html
+
 https://www.vsixcookbook.com/recipes/menus-buttons-commands.html#define-the-command
 
 ## How this project is built.
