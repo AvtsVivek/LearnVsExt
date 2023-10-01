@@ -15,3 +15,34 @@
 
 3. Update the nuget packages to the latest. 
 
+4. Changed MyCommand to LinqToolWindowCommand in the file VSCommandTable.cs
+```cs
+internal sealed partial class PackageIds
+{
+   public const int LinqToolWindowCommand = 0x0100;
+}
+```
+5. Changed MyToolWindow to LinqToolWindow
+
+6. Changed MyToolWindowCommand to LinqToolWindowCommand
+
+7. Changed the tool window button fromthe following
+
+```xml
+<Strings>
+   <ButtonText>My Tool Window</ButtonText>
+   <LocCanonicalName>.View.MyToolWindow</LocCanonicalName>
+</Strings>
+```
+to the following.
+```xml
+<Strings>
+   <ButtonText>LINQ Query Tool Window</ButtonText>
+   <LocCanonicalName>.View.LinqToolWindow</LocCanonicalName>
+</Strings>
+```
+
+8. Changed the MyToolWindowControl UserControl to LinqToolWindowControl.
+
+
+

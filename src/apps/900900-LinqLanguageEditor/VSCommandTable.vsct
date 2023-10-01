@@ -13,10 +13,10 @@
         <Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1"/>
         <Icon guid="ImageCatalogGuid" id="ToolWindow" />
         <CommandFlag>IconIsMoniker</CommandFlag>
-        <Strings>
-          <ButtonText>My Tool Window</ButtonText>
-          <LocCanonicalName>.View.MyToolWindow</LocCanonicalName>
-        </Strings>
+		<Strings>
+			<ButtonText>LINQ Query Tool Window</ButtonText>
+			<LocCanonicalName>.View.LinqToolWindow</LocCanonicalName>
+		</Strings>
       </Button>
     </Buttons>
   </Commands>
