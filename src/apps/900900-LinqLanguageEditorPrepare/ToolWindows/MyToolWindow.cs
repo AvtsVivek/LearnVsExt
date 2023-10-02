@@ -4,20 +4,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LinqLanguageEditorOptions
+namespace LinqLanguageEditorPrepare
 {
-    public class LinqOptionsToolWindow : BaseToolWindow<LinqOptionsToolWindow>
+    public class MyToolWindow : BaseToolWindow<MyToolWindow>
     {
-        public override string GetTitle(int toolWindowId) => Constants.LinqEditorToolWindowTitle;
+        public override string GetTitle(int toolWindowId) => "My Tool Window";
 
         public override Type PaneType => typeof(Pane);
 
         public override Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
         {
-            return Task.FromResult<FrameworkElement>(new LinqOptionsToolWindowControl());
+            return Task.FromResult<FrameworkElement>(new MyToolWindowControl());
         }
 
-        [Guid("27550092-a995-4ea8-8934-ac9d1536ae99")]
+        [Guid("fe1a23f6-6fda-4eca-885c-55c93070d0df")]
         internal class Pane : ToolkitToolWindowPane
         {
             public Pane()
