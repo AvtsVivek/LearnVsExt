@@ -5,7 +5,7 @@
 
 2. https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html
 
-## How to run.
+## How this project is built.
 
 1. Create VSix Community Project with Tool Window as follows.
    ![Visual Studio Tool Window Community Project](./images/50_50CreateProject.jpg)
@@ -38,8 +38,6 @@ internal sealed partial class PackageIds
    </GuidSymbol>
 </Symbols>
 ```
-
-
 
 5. Changed MyToolWindow to LinqToolWindow
 
