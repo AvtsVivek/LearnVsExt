@@ -1,4 +1,4 @@
-
+## Demos What?
 
 1. This example is similar to the 400650-AddingSimpleCommand. 
 
@@ -30,4 +30,7 @@ var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"Insta
 Then installed.
 ![Installed Extensions in Exp instance](images/52_50SettingStoreExplorerInExpInstance.jpg)
 
-9. 
+9. Executing the command
+![Executing the command](images/53_50_ExecuteCommand.jpg)
+10. The message box
+![The message box](images/54_50_TheMessageBox.jpg)
