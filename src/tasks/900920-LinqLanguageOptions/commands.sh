@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/900900-LinqLanguageEditorPrepare
+cd src/tasks/900920-LinqLanguageOptions
 
-cd src/apps/900900-LinqLanguageEditorPrepare
+cd src/apps/900920-LinqLanguageOptions
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./LinqLanguageEditorPrepare.csproj
+dotnet build --project ./LinqLanguageOptions.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,10 +19,10 @@ dotnet build --project ./LinqLanguageEditorPrepare.csproj
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./LinqLanguageEditorPrepare.sln
+devenv /build Debug ./LinqLanguageOptions.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./LinqLanguageEditorPrepare.sln
+devenv.exe /RootSuffix Exp ./LinqLanguageOptions.sln
 
 pwd
 
@@ -35,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./LinqLanguageEditorPrepare.vsix
+./LinqLanguageOptions.vsix
 
 
 # Once installed, open the logs. You will see something like. 
