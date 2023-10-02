@@ -1,18 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace LinqLanguageEditor
+namespace LinqLanguageEditorOptions
 {
-    public partial class LinqToolWindowControl : UserControl
+    public partial class MyToolWindowControl : UserControl
     {
-        public LinqToolWindowControl()
+        public MyToolWindowControl()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            VS.MessageBox.Show("LinqLanguageEditor", "Button clicked");
+            VS.MessageBox.Show("LinqLanguageEditorOptions", "Button clicked");
         }
     }
 }

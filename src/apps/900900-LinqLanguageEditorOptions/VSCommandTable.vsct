@@ -6,23 +6,23 @@
   <Include href="KnownImageIds.vsct"/>
   <Include href="VSGlobals.vsct"/>
 
-  <Commands package="LinqLanguageEditor">
+  <Commands package="LinqLanguageEditorOptions">
     <!--This section defines the elements the user can interact with, like a menu command or a button or combo box in a toolbar. -->
     <Buttons>
-      <Button guid="LinqLanguageEditor" id="MyCommand" priority="0x0100" type="Button">
+      <Button guid="LinqLanguageEditorOptions" id="MyCommand" priority="0x0100" type="Button">
         <Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1"/>
         <Icon guid="ImageCatalogGuid" id="ToolWindow" />
         <CommandFlag>IconIsMoniker</CommandFlag>
-		<Strings>
-			<ButtonText>LINQ Query Tool Window</ButtonText>
-			<LocCanonicalName>.View.LinqToolWindow</LocCanonicalName>
-		</Strings>
+        <Strings>
+          <ButtonText>My Tool Window</ButtonText>
+          <LocCanonicalName>.View.MyToolWindow</LocCanonicalName>
+        </Strings>
       </Button>
     </Buttons>
   </Commands>
 
   <Symbols>
-    <GuidSymbol name="LinqLanguageEditor" value="{aaec88e4-41a2-4732-9553-2e9c1b35d7e8}">
+    <GuidSymbol name="LinqLanguageEditorOptions" value="{e77924cc-f23c-463f-aece-54f6a685bf63}">
       <IDSymbol name="MyCommand" value="0x0100" />
     </GuidSymbol>
   </Symbols>

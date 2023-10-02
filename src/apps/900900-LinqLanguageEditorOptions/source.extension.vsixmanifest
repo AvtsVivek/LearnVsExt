@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="LinqLanguageEditor.e4a1796c-cbc7-4f0c-9114-0d396ff66a9d" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
-    <DisplayName>LinqLanguageEditor</DisplayName>
+    <Identity Id="LinqLanguageEditorOptions.292b7127-622d-41cc-ab8e-15612b6af83e" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <DisplayName>LinqLanguageEditorOptions</DisplayName>
     <Description>Empty VSIX Project.</Description>
     <Icon>Resources\Icon.png</Icon>
     <PreviewImage>Resources\Icon.png</PreviewImage>
