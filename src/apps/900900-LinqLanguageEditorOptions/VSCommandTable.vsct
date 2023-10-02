@@ -9,13 +9,13 @@
   <Commands package="LinqLanguageEditorOptions">
     <!--This section defines the elements the user can interact with, like a menu command or a button or combo box in a toolbar. -->
     <Buttons>
-      <Button guid="LinqLanguageEditorOptions" id="MyCommand" priority="0x0100" type="Button">
+      <Button guid="LinqLanguageEditorOptions" id="LinqOptionsToolWindowCommandId" priority="0x0100" type="Button">
         <Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1"/>
         <Icon guid="ImageCatalogGuid" id="ToolWindow" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
-          <ButtonText>My Tool Window</ButtonText>
-          <LocCanonicalName>.View.MyToolWindow</LocCanonicalName>
+			<ButtonText>LINQ Query Tool Window</ButtonText>
+			<LocCanonicalName>.View.LinqOptionsToolWindow</LocCanonicalName>
         </Strings>
       </Button>
     </Buttons>
@@ -23,7 +23,7 @@
 
   <Symbols>
     <GuidSymbol name="LinqLanguageEditorOptions" value="{e77924cc-f23c-463f-aece-54f6a685bf63}">
-      <IDSymbol name="MyCommand" value="0x0100" />
+      <IDSymbol name="LinqOptionsToolWindowCommandId" value="0x0100" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

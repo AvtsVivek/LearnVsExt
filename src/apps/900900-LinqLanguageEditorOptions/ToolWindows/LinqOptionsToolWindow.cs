@@ -6,15 +6,15 @@ using System.Windows;
 
 namespace LinqLanguageEditorOptions
 {
-    public class MyToolWindow : BaseToolWindow<MyToolWindow>
+    public class LinqOptionsToolWindow : BaseToolWindow<LinqOptionsToolWindow>
     {
-        public override string GetTitle(int toolWindowId) => "My Tool Window";
+        public override string GetTitle(int toolWindowId) => Constants.LinqEditorToolWindowTitle;
 
         public override Type PaneType => typeof(Pane);
 
         public override Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
         {
-            return Task.FromResult<FrameworkElement>(new MyToolWindowControl());
+            return Task.FromResult<FrameworkElement>(new LinqOptionsToolWindowControl());
         }
 
         [Guid("27550092-a995-4ea8-8934-ac9d1536ae99")]

@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace LinqLanguageEditorOptions
 {
-    public partial class MyToolWindowControl : UserControl
+    public partial class LinqOptionsToolWindowControl : UserControl
     {
-        public MyToolWindowControl()
+        public LinqOptionsToolWindowControl()
         {
             InitializeComponent();
         }

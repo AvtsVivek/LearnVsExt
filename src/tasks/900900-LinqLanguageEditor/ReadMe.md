@@ -15,16 +15,33 @@
 
 3. Update the nuget packages to the latest. 
 
-4. Changed MyCommand to LinqToolWindowCommand in the file VSCommandTable.cs
+4. Changed MyCommand to LinqToolOptionsWindowCommandId in the file VSCommandTable.cs and VSCommandTable.vsct
 ```cs
 internal sealed partial class PackageIds
 {
-   public const int LinqToolWindowCommand = 0x0100;
+   public const int LinqOptionsToolWindowCommandId = 0x0100;
 }
 ```
-5. Changed MyToolWindow to LinqToolWindow
 
-6. Changed MyToolWindowCommand to LinqToolWindowCommand
+```xml
+<Symbols>
+   <GuidSymbol name="LinqLanguageEditorOptions" value="{e77924cc-f23c-463f-aece-54f6a685bf63}">
+      <IDSymbol name="LinqOptionsToolWindowCommandId" value="0x0100" />
+   </GuidSymbol>
+</Symbols>
+```
+
+```xml
+<Buttons>
+    <Button guid="LinqLanguageEditorOptions" id="LinqOptionsToolWindowCommandId" priority="0x0100" type="Button">
+      ...
+    </Button>
+</Buttons>
+```
+
+5. Changed MyToolWindow to LinqOptionsToolWindow
+
+6. Changed MyToolWindowCommand to LinqOptionsToolWindowCommand
 
 7. Changed the tool window button fromthe following
 
@@ -38,11 +55,13 @@ to the following.
 ```xml
 <Strings>
    <ButtonText>LINQ Query Tool Window</ButtonText>
-   <LocCanonicalName>.View.LinqToolWindow</LocCanonicalName>
+   <LocCanonicalName>.View.LinqOptionsToolWindow</LocCanonicalName>
 </Strings>
 ```
 
 8. Changed the MyToolWindowControl UserControl to LinqToolWindowControl.
+
+9. Added a Constants file to place constants. 
 
 
 
