@@ -24,26 +24,28 @@ internal sealed partial class PackageIds
 ```
 
 ```xml
-<Symbols>
-   <GuidSymbol name="LinqLanguageEditorOptions" value="{e77924cc-f23c-463f-aece-54f6a685bf63}">
-      <IDSymbol name="LinqOptionsToolWindowCommandId" value="0x0100" />
-   </GuidSymbol>
-</Symbols>
-```
-
-```xml
 <Buttons>
-    <Button guid="LinqLanguageEditorOptions" id="LinqOptionsToolWindowCommandId" priority="0x0100" type="Button">
+    <Button guid="LinqLanguageEditorPrepare" id="LinqToolWindowCommandId" priority="0x0100" type="Button">
       ...
     </Button>
 </Buttons>
 ```
 
-5. Changed MyToolWindow to LinqOptionsToolWindow
+```xml
+<Symbols>
+   <GuidSymbol name="LinqLanguageEditorPrepare" value="{e77924cc-f23c-463f-aece-54f6a685bf63}">
+      <IDSymbol name="LinqOptionsToolWindowCommandId" value="0x0100" />
+   </GuidSymbol>
+</Symbols>
+```
+
+
+
+5. Changed MyToolWindow to LinqToolWindow
 
 6. Changed MyToolWindowCommand to LinqOptionsToolWindowCommand
 
-7. Changed the tool window button fromthe following
+7. Changed the tool window button from the following
 
 ```xml
 <Strings>
