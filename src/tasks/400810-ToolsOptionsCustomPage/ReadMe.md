@@ -1,4 +1,4 @@
-## Introducing Image Manifest Tools Extension
+## Introduces DialogPage for Options Grid with string option
 
 1. References 
    1. [Create a Tools Options custom page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page#create-a-tools-options-custom-page)
