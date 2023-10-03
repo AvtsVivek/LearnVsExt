@@ -47,4 +47,5 @@
 
 ![External Tools After](./images/52SettingStoreExplorer53AfterRefresh.jpg)
 
-14. 
+14. The key here is the [ShellSettingsManager](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.settings.shellsettingsmanager) class. This is the gateway class to reach for the settings stored inside the Visual Studio 
+

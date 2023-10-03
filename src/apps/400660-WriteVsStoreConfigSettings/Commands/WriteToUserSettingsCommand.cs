@@ -91,17 +91,6 @@ namespace WriteVsStoreConfigSettings.Commands
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            //string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            //string title = "WriteToUserSettingsCommand";
-
-            //// Show a message box to prove we were here
-            //VsShellUtilities.ShowMessageBox(
-            //    this.package,
-            //    message,
-            //    title,
-            //    OLEMSGICON.OLEMSGICON_INFO,
-            //    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-            //    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
             var settingsManager = new ShellSettingsManager(package);
             var userSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
