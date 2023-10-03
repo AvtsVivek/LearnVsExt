@@ -44,6 +44,8 @@ public sealed class MyToolsOptionsPackage : AsyncPackage
 
 Your options page is also available through Visual Studio's search box. In the search box near the top of the IDE, type **My Category** and you'll see **My Category** -> **My Grid Page** listed in the results.
 
+![Search Vs for Category](images/51_50SearchMyCategory.jpg)
+
 8. Also note, you can remove the CreateOptionsPagePackage file. For this example, we have added MyToolsOptionsPackage and only this is used. Add Ctors for both of the two classes. Also add in Ctor as well as InitializeAsync(). 
 
 ```cs
