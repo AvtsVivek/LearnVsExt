@@ -2,6 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using WpfUIElementDialogPage.Options;
 using Task = System.Threading.Tasks.Task;
 
 namespace WpfUIElementDialogPage
@@ -25,6 +26,7 @@ namespace WpfUIElementDialogPage
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(WpfUIElementDialogPagePackage.PackageGuidString)]
+    [ProvideOptionPage(typeof(LinqAdvancedOptionPage), "My Category", "My Custom Page", 0, 0, true)]
     public sealed class WpfUIElementDialogPagePackage : AsyncPackage
     {
         /// <summary>
