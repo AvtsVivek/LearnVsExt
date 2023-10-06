@@ -9,6 +9,6 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800">
     <StackPanel Orientation="Horizontal">
-        <TextBox Margin="10" BorderBrush="Red" BorderThickness="2" Height="10" Width="100" Name="textBlockStringTextInput" TextChanged="textBlockStringTextInput_TextChanged" ></TextBox>
+        <TextBox Margin="10" BorderBrush="Red" BorderThickness="2" Height="40" Width="200" Name="textBlockStringTextInput" TextChanged="textBlockStringTextInput_TextChanged" ></TextBox>
     </StackPanel>
 </UserControl>

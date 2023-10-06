@@ -6,7 +6,7 @@
    2. 400705-AddingMonikerIcon.
    3. 400800-CreateOptionsPage
    4. 400810-ToolsOptionsCustomPage
-   5. 400820-ReadOptionsValues
+   5. 400860-ReadOptionsValues
    6. 501135-InsertGuidMenuCmd. This introduces DTE 
    7. 501140-InsertGuidContextMenu. 
    8. 
