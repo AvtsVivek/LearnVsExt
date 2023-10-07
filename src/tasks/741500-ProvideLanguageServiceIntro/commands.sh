@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/900950-ProvideLanguageServiceIntro
+cd src/tasks/741500-ProvideLanguageServiceIntro
 
-cd src/apps/900950-ProvideLanguageServiceIntro
+cd src/apps/741500-ProvideLanguageServiceIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
