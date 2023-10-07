@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace ProvideLanguageServiceAttributeIntro
+namespace ProvideLanguageServiceIntro
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -29,10 +29,10 @@ namespace ProvideLanguageServiceAttributeIntro
         EnableCommenting = true, ShowCompletion = true, AutoOutlining = true, CodeSense = true)]
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(PackageGuidString)]
-    public sealed class ProvideLanguageServiceAttributeIntroPackage : AsyncPackage
+    public sealed class ProvideLanguageServiceIntroPackage : AsyncPackage
     {
         /// <summary>
-        /// ProvideLanguageServiceAttributeIntroPackage GUID string.
+        /// ProvideLanguageServiceIntroPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "44498cfd-9546-45a5-8c55-15d05f496575";
 
