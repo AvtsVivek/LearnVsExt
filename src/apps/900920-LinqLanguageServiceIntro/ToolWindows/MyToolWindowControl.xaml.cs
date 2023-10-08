@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace LinqLanguageOptions
+namespace LinqLanguageServiceIntro
 {
     public partial class LinqToolWindowControl : UserControl
     {
@@ -12,7 +12,7 @@ namespace LinqLanguageOptions
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            VS.MessageBox.Show("LinqLanguageEditorPrepare", "Button clicked");
+            VS.MessageBox.Show("LinqLanguageServiceIntro", "Button clicked");
         }
     }
 }

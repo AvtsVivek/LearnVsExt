@@ -1,4 +1,4 @@
-﻿using LinqLanguageOptions;
+﻿using LinqLanguageServiceIntro;
 using System.Reflection;
 using System.Runtime.InteropServices;
 

@@ -1,4 +1,4 @@
-﻿namespace LinqLanguageOptions
+﻿namespace LinqLanguageServiceIntro
 {
     [Command(PackageIds.LinqToolWindowCommandId)]
     internal sealed class LinqOptionsToolWindowCommand : BaseCommand<LinqOptionsToolWindowCommand>

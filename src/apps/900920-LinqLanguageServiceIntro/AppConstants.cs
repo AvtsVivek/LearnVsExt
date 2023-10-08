@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinqLanguageEditorPrepare
+namespace LinqLanguageServiceIntro
 {
 
     internal class AppConstants
     {
-
+        //Lanaguage Names
+        public const string LinqLanguageName = "LLinqq";
+        
         //ToolWindow Names
         public const string LinqEditorToolWindowTitle = "LINQ Query Tool Window";
+        
     }
 }

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LinqLanguageOptions
+namespace LinqLanguageServiceIntro
 {
     public class LinqToolWindow : BaseToolWindow<LinqToolWindow>
     {
