@@ -11,7 +11,7 @@
    ![Visual Studio Tool Window Community Project](./images/50_50CreateProject.jpg)
 
 2. Configure the project.
-   ![Configure the project](./images/60_50ConfigureNewProject.jpg)
+   ![Configure the project](./images/51_50ConfigureNewProject.jpg)
 
 3. Update the nuget packages to the latest. 
 
@@ -62,6 +62,16 @@ to the following.
 8. Changed the MyToolWindowControl UserControl to LinqToolWindowControl.
 
 9. Added a Constants file to place constants. 
+
+10. asdf
+
+## Build and Run
+1. Run and start the exp instance.
+
+![View](images/52_50ViewOtherWindows.jpg)
+
+2. View -> Other Windows. Then click the button.
+
 
 
 
