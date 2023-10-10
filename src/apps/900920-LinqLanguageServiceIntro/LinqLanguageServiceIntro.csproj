@@ -48,7 +48,7 @@
     <Compile Include="AppConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\LinqOptionsToolWindowCommand.cs" />
-    <Compile Include="LinqLanguageEditorPreparePackage.cs" />
+    <Compile Include="LinqLanguageServiceIntroPackage.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
