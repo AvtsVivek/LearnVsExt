@@ -26,7 +26,9 @@ namespace SimpleToolWindow
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(SimpleToolWindowPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(SimpleToolWindow.Commands.ToolWindowWithButton), Orientation = ToolWindowOrientation.Left, Style = VsDockStyle.Tabbed)]
+    [ProvideToolWindow(typeof(Commands.ToolWindowWithButton), Orientation = ToolWindowOrientation.Left, Style = VsDockStyle.Tabbed
+        , Window = EnvDTE.Constants.vsWindowKindOutput
+    )]
     public sealed class SimpleToolWindowPackage : AsyncPackage
     {
         /// <summary>
