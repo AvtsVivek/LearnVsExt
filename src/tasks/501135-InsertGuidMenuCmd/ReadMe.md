@@ -5,7 +5,11 @@
 
 3. Here we are using [DTE](https://learn.microsoft.com/en-us/dotnet/api/envdte) 
 
-4. Ensure the ExecuteAsync is as follows. 
+4. DTE stands from Development Tools Environment
+
+   1. https://stackoverflow.com/a/17239968/1977871
+
+5. Ensure the ExecuteAsync is as follows. 
 
 ```cs
 private async void ExecuteAsync(object sender, EventArgs e)
