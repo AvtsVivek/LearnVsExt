@@ -18,7 +18,7 @@ namespace CommunityActiveProcess
 
         public override Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
         {
-            return Task.FromResult<FrameworkElement>(new MyToolWindowControl());
+            return Task.FromResult<FrameworkElement>(new MyToolWindowView());
         }
 
         [Guid("37d33ff2-024f-483c-956b-fde0d17ae94d")]

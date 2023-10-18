@@ -1,26 +1,39 @@
-﻿using EnvDTE;
+﻿using CommunityActiveProcess.MvvmInfra;
+using EnvDTE;
 using EnvDTE100;
 using EnvDTE80;
-using Microsoft.VisualStudio.Threading;
-using System.Windows;
-using System.Windows.Controls;
+using Microsoft;
+using System.Windows.Input;
+using CommunityActiveProcess.ToolWindows;
 
 namespace CommunityActiveProcess
 {
-    public partial class MyToolWindowControl : UserControl
+    public class MyToolWindowViewModel: BaseViewModel
     {
-        public MyToolWindowControl()
+        public string Number { get; set; } = "One";
+        
+        private ICommand? _invokeButtonClick;
+
+        public ICommand InvokeButtonClick
         {
-            InitializeComponent();
+            get
+            {
+                return _invokeButtonClick ??= new RelayCommand(InvokeButtonClickExecute, CanInvokeButtonClickExecute);
+            }
         }
 
-        private async void button1_Click(object sender, RoutedEventArgs e)
+        private bool CanInvokeButtonClickExecute(object obj)
+        {
+            return true;
+        }
+
+        private async void InvokeButtonClickExecute(object obj)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var dte = ServiceProvider.GlobalProvider.GetService(typeof(DTE));
-            
-            var dte2 = dte as DTE2;
 
+            var dte = ServiceProvider.GlobalProvider.GetService(typeof(DTE));
+
+            var dte2 = dte as DTE2;
 
             ///////////////////////////////////////////////////////////////////////
             // The following currentProcess is always null.
@@ -38,9 +51,9 @@ namespace CommunityActiveProcess
             // I am not aware how to use these methods. Need to find out.
             var vsDebugger = await VS.Services.GetDebuggerAsync();
             ///////////////////////////////////////////////////////////////////////
-            
 
-            var currentModeStringAndRunningProcessTuple = GetCurrentModeAndRunningProcess(dte2);
+
+            var currentModeStringAndRunningProcessTuple = dte2.GetCurrentModeAndRunningProcess();
 
             if (currentModeStringAndRunningProcessTuple.Item2 == null)
             {
@@ -64,50 +77,5 @@ namespace CommunityActiveProcess
 
         }
 
-        private Tuple<string, Process> GetCurrentModeAndRunningProcess(DTE2 dte2) 
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-
-            var currentModeStringAndRunningProcessTuple = new Tuple<string, Process>(string.Empty, null);
-
-            if (dte2 == null) 
-                return currentModeStringAndRunningProcessTuple;
-
-            if(dte2.Debugger == null)
-                return currentModeStringAndRunningProcessTuple;
-
-            var currentModeString = string.Empty;
-            switch (dte2.Debugger.CurrentMode)
-            {
-                case dbgDebugMode.dbgDesignMode:
-                    currentModeString = "Design Mode";
-                    break;
-                case dbgDebugMode.dbgBreakMode:
-                    currentModeString = "Break Mode";
-                    break;
-                case dbgDebugMode.dbgRunMode:
-                    currentModeString = "Run Mode";
-                    break;
-            }
-
-            currentModeStringAndRunningProcessTuple = new Tuple<string, Process>(currentModeString, null);
-
-            var debugger5 = dte2.Debugger as Debugger5;
-            if (debugger5 == null)
-                return currentModeStringAndRunningProcessTuple;
-
-            var processes = debugger5.DebuggedProcesses;
-            if (processes == null)
-                return currentModeStringAndRunningProcessTuple;
-
-            if (processes.Count == 0)
-                return currentModeStringAndRunningProcessTuple;
-
-            var runningProcess = processes.Item(1);
-
-            currentModeStringAndRunningProcessTuple = new Tuple<string, Process>(currentModeString, runningProcess);
-
-            return currentModeStringAndRunningProcessTuple;
-        }
     }
 }

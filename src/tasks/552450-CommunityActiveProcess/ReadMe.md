@@ -9,7 +9,9 @@
 
 3. We then press F5 to start running the projects. 
 
-4. This example demonistrates how an extension can get more information about such apps which Visual Studio is running and debugging.
+4. This example demonistrates how an extension can get more information about such apps which Visual Studio is running and debugging. 
+
+5. This example also introduces Mvvm in the application.
 
 ## References
 1. https://stackoverflow.com/a/36260234/1977871
@@ -36,7 +38,11 @@
 
 ![Open the tool window](images/53_50View_OtherWin_MyToolWin.jpg)
 
-4. Then run the solution, and then click the button. 
+4. Added the Mvvm pattern as well. The second button now works using Mvvm command.
+
+![Mvvm Buttons](images/55_50_MvvmButtons.jpg)
+
+5. Then run the solution, and then click the button. 
 
 ![Click the button](images/54_50_Debugging_Wpf_app.jpg)
 

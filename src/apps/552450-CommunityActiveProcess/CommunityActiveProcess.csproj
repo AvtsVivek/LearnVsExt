@@ -13,8 +13,8 @@
     <ProjectGuid>{6F53A4B2-219D-40C4-8C3F-971A52495192}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GetActiveProcess</RootNamespace>
-    <AssemblyName>GetActiveProcess</AssemblyName>
+    <RootNamespace>CommunityActiveProcess</RootNamespace>
+    <AssemblyName>CommunityActiveProcess</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -53,6 +53,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
+    <Compile Include="MvvmInfra\BaseViewModel.cs" />
+    <Compile Include="MvvmInfra\EventArgs.cs" />
+    <Compile Include="MvvmInfra\EventRaiser.cs" />
+    <Compile Include="ToolWindows\DteExtensions.cs" />
+    <Compile Include="ToolWindows\MyToolWindowViewModel.cs" />
+    <Compile Include="MvvmInfra\RelayCommand.cs" />
     <Compile Include="VSCommandTable.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,12 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ToolWindows\MyToolWindow.cs" />
-    <Page Include="ToolWindows\MyToolWindowControl.xaml">
+    <Page Include="ToolWindows\MyToolWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="ToolWindows\MyToolWindowControl.xaml.cs">
-      <DependentUpon>MyToolWindowControl.xaml</DependentUpon>
+    <Compile Include="ToolWindows\MyToolWindowView.xaml.cs">
+      <DependentUpon>MyToolWindowView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
