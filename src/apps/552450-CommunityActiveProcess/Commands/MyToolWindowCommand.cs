@@ -1,4 +1,4 @@
-﻿namespace GetActiveProcess
+﻿namespace CommunityActiveProcess
 {
     [Command(PackageIds.MyCommand)]
     internal sealed class MyToolWindowCommand : BaseCommand<MyToolWindowCommand>

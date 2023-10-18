@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GetActiveProcess
+namespace CommunityActiveProcess
 {
     public class MyToolWindow : BaseToolWindow<MyToolWindow>
     {

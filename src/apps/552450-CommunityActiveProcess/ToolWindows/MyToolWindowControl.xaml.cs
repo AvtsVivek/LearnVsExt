@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GetActiveProcess
+namespace CommunityActiveProcess
 {
     public partial class MyToolWindowControl : UserControl
     {

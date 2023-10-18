@@ -1,4 +1,4 @@
-﻿using GetActiveProcess;
+﻿using CommunityActiveProcess;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
