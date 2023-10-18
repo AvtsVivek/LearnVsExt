@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/552500-VsixCommunityToolWindowGuid
+cd src/tasks/552400-VsixCommunityToolWindowGuid
 
-cd src/apps/552500-VsixCommunityToolWindowGuid
+cd src/apps/552400-VsixCommunityToolWindowGuid
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

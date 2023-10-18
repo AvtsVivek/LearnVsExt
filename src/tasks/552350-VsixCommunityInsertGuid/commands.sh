@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/552400-VsixCommunityInsertGuid
+cd src/tasks/552350-VsixCommunityInsertGuid
 
-cd src/apps/552400-VsixCommunityInsertGuid
+cd src/apps/552350-VsixCommunityInsertGuid
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
