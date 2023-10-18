@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/502520-MonikerOnToolWindow
+cd src/tasks/502530-MonikerOnToolWindow
 
-cd src/apps/502520-MonikerOnToolWindow
+cd src/apps/502530-MonikerOnToolWindow
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
