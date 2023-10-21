@@ -124,7 +124,6 @@ namespace SolutionEventsIntro
             DteTwoInstance = await GetServiceAsync(typeof(DTE)) as DTE2;
 
             SolutionEventsInstance = DteTwoInstance.Events.SolutionEvents;
-            // bldevents = CType(applicationObject.Events.BuildEvents, EnvDTE.BuildEvents)
 
             SolutionEventsInstance.AfterClosing += SolutionEvents_AfterClosing;
             SolutionEventsInstance.BeforeClosing += SolutionEvents_BeforeClosing;
