@@ -20,8 +20,8 @@
 
 ```cs
 DteTwoInstance = await GetServiceAsync(typeof(DTE)) as DTE2;
-SolutionEventsInstance = DteTwoInstance.Events.SolutionEvents;
-SolutionEventsInstance.AfterClosing += SolutionEvents_AfterClosing;
+DebuggerEventsInstance = DteTwoInstance.Events.DebuggerEvents;
+DebuggerEventsInstance.OnContextChanged += DebuggerEventsInstance_OnContextChanged;
 ```
 And ofcourse there are handler methods
 
@@ -41,7 +41,7 @@ private void SolutionEvents_AfterClosing()
 [ProvideMenuResource("Menus.ctmenu", 1)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
-public sealed class SolutionEventsIntroPackage : AsyncPackage
+public sealed class DebuggerEventsIntroPackage : AsyncPackage
 {..}
 ```
 

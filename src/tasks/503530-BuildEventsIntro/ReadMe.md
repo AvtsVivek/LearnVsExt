@@ -20,15 +20,14 @@
 
 ```cs
 DteTwoInstance = await GetServiceAsync(typeof(DTE)) as DTE2;
-SolutionEventsInstance = DteTwoInstance.Events.SolutionEvents;
-SolutionEventsInstance.AfterClosing += SolutionEvents_AfterClosing;
+BuildEventsInstance = DteTwoInstance.Events.BuildEvents;
+BuildEventsInstance.OnBuildDone += BuildEventsInstance_OnBuildDone;
 ```
 And ofcourse there are handler methods
 
 ```cs
 private void SolutionEvents_AfterClosing()
 {
-    ThreadHelper.ThrowIfNotOnUIThread();
     MessageBox.Show("After Closing");
 }
 ```
@@ -41,7 +40,7 @@ private void SolutionEvents_AfterClosing()
 [ProvideMenuResource("Menus.ctmenu", 1)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
 [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
-public sealed class SolutionEventsIntroPackage : AsyncPackage
+public sealed class BuildEventsIntroPackage : AsyncPackage
 {..}
 ```
 

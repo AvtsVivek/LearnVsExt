@@ -87,7 +87,6 @@ namespace DebuggerEventsIntro
             DebuggerEventsInstance.OnEnterBreakMode += DebuggerEventsInstance_OnEnterBreakMode;
 
 
-
         }
 
         private void DebuggerEventsInstance_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
