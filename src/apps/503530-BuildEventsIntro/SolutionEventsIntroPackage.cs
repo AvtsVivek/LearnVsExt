@@ -8,7 +8,7 @@ using System.Threading;
 using System.Windows;
 using Task = System.Threading.Tasks.Task;
 
-namespace SolutionEventsIntro
+namespace BuildEventsIntro
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -32,14 +32,14 @@ namespace SolutionEventsIntro
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
-    public sealed class SolutionEventsIntroPackage : AsyncPackage
+    public sealed class BuildEventsIntroPackage : AsyncPackage
     {
         /// <summary>
-        /// SolutionEventsIntroPackage GUID string.
+        /// BuildEventsIntroPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "9dca66b7-52d6-454c-86b0-1a3acba1b82d";
 
-        public SolutionEvents SolutionEventsInstance { 
+        public BuildEvents BuildEventsInstance { 
             [DispId(302)] 
             get;
             set;
@@ -51,50 +51,6 @@ namespace SolutionEventsIntro
             private set;
         }
 
-        public SolutionEventsIntroPackage()
-        {          
-
-        }
-
-
-        private void SolutionEvents_AfterClosing()
-        {
-            MessageBox.Show("After Closing");
-        }
-
-        private void SolutionEvents_BeforeClosing()
-        {
-            MessageBox.Show("Before Closing");
-        }
-
-        private void SolutionEvents_Opened()
-        {
-            MessageBox.Show("Opened");
-        }
-
-        private void SolutionEvents_ProjectAdded(Project Project)
-        {
-            MessageBox.Show("Project Added");
-        }
-
-        private void SolutionEvents_ProjectRemoved(Project Project)
-        {
-            MessageBox.Show("Project Removed");
-        }
-        private void SolutionEvents_ProjectRenamed(Project Project, string OldName)
-        {
-            MessageBox.Show("Project Renamed");
-        }
-
-        private void SolutionEvents_QueryCloseSolution(ref bool fCancel)
-        {
-            MessageBox.Show("Query Close Solution");
-        }
-
-        private void SolutionEvents_Renamed(string OldName)
-        {
-            MessageBox.Show("Renamed");
-        }
 
         #region Package Members
 
@@ -115,16 +71,36 @@ namespace SolutionEventsIntro
 
             DteTwoInstance = await GetServiceAsync(typeof(DTE)) as DTE2;
 
-            SolutionEventsInstance = DteTwoInstance.Events.SolutionEvents;
+            BuildEventsInstance = DteTwoInstance.Events.BuildEvents;
 
-            SolutionEventsInstance.AfterClosing += SolutionEvents_AfterClosing;
-            SolutionEventsInstance.BeforeClosing += SolutionEvents_BeforeClosing;
-            SolutionEventsInstance.Opened += SolutionEvents_Opened;
-            SolutionEventsInstance.ProjectAdded += SolutionEvents_ProjectAdded;
-            SolutionEventsInstance.ProjectRemoved += SolutionEvents_ProjectRemoved;
-            SolutionEventsInstance.ProjectRenamed += SolutionEvents_ProjectRenamed;
-            SolutionEventsInstance.QueryCloseSolution += SolutionEvents_QueryCloseSolution;
-            SolutionEventsInstance.Renamed += SolutionEvents_Renamed;
+            BuildEventsInstance.OnBuildDone += BuildEventsInstance_OnBuildDone;
+
+            BuildEventsInstance.OnBuildBegin += BuildEventsInstance_OnBuildBegin;
+
+            BuildEventsInstance.OnBuildProjConfigBegin += BuildEventsInstance_OnBuildProjConfigBegin;
+
+            BuildEventsInstance.OnBuildProjConfigDone += BuildEventsInstance_OnBuildProjConfigDone;
+
+        }
+
+        private void BuildEventsInstance_OnBuildProjConfigDone(string Project, string ProjectConfig, string Platform, string SolutionConfig, bool Success)
+        {
+            MessageBox.Show("On Build Proj Config Done");
+        }
+
+        private void BuildEventsInstance_OnBuildProjConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
+        {
+            MessageBox.Show("On Build Proj Config Begin");
+        }
+
+        private void BuildEventsInstance_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
+        {
+            MessageBox.Show("On Build Begin");
+        }
+
+        private void BuildEventsInstance_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
+        {
+            MessageBox.Show("On Build Done");
         }
 
         #endregion

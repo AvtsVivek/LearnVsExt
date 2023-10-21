@@ -1,15 +1,15 @@
-# DTE Events, Solution Events
+# DTE Events, Build Events
 
 ## Objective
 1. This example introduces DTE Events.
 
-2. Specifically introduces Solution Events.
+2. Specifically introduces Build Events.
 
 
 ## References
 1. https://learn.microsoft.com/en-us/dotnet/api/envdte.events
 
-2. https://learn.microsoft.com/en-us/dotnet/api/envdte.events.solutionevents
+2. https://learn.microsoft.com/en-us/dotnet/api/envdte.events.buildevents
 
 3. Earlier example, 501125-ProvideAutoLoad
 
@@ -51,4 +51,6 @@ public sealed class SolutionEventsIntroPackage : AsyncPackage
 
 ## Build and Run
 1. Just build, launch the exp instance. 
-2. Open any solution. See the message boxes that popup. Try removing a project, renaming it. Closing it etc.
+
+2. Open any solution. Then try building it. Etc.
+
