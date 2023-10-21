@@ -3,13 +3,13 @@
 ## Objective
 1. This example introduces DTE Events.
 
-2. Specifically introduces Build Events.
+2. Specifically introduces Debugger Events.
 
 
 ## References
 1. https://learn.microsoft.com/en-us/dotnet/api/envdte.events
 
-2. https://learn.microsoft.com/en-us/dotnet/api/envdte.events.buildevents
+2. https://learn.microsoft.com/en-us/dotnet/api/envdte.events.debuggerevents
 
 3. Earlier example, 501125-ProvideAutoLoad
 
@@ -52,5 +52,5 @@ public sealed class SolutionEventsIntroPackage : AsyncPackage
 ## Build and Run
 1. Just build, launch the exp instance. 
 
-2. Open any solution. Specifically the SimpleWpf solution. Then try building it. Observe the message box that popup.
+2. Open any solution. Specifically the SimpleWpf solution. Then try building it. The start debugging it. Observe the message box that popup.
 
