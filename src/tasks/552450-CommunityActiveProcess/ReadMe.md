@@ -28,6 +28,8 @@
 
 2. Added the method, GetCurrentModeAndRunningProcess.
 
+3. This example introduces Mvvm natively, that is, without any tool kit or Mvvm framework. So added a folder and files in MvvmInfra folder. 
+
 ## How to run
 1. Build and Press F5, and exp instance will start. 
 2. Then open a wpf solution.
