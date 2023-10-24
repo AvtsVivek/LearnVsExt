@@ -5,7 +5,7 @@
 ## Objective
 1. The earlier example 552450-CommunityActiveProcess Gets the details of active process when a button on the tool window is clicked. Also introduces Mvvm in its native form.
 
-2. This example uses Community Tool kit 
+2. This example uses Community Tool kit for Mvvm, see the references below.
 
 3. 
 
