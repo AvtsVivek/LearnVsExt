@@ -12,7 +12,8 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Margin="10" HorizontalAlignment="Center">TrialToolWindow</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+            <Button Content="Click me!" Click="button1_Click" Width="120" Height="30" Name="button1"/>
+            <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding Message}" ></TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

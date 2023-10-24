@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AutofacDIIntroPackage.vsct</DependentUpon>
     </Compile>
+    <Compile Include="Commands\GreeterService.cs" />
     <Compile Include="Commands\TrialToolWindow.cs" />
     <Compile Include="Commands\TrialToolWindowCommand.cs" />
     <Compile Include="Commands\TrialToolWindowControl.xaml.cs">

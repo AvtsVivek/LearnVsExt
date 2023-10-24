@@ -22,6 +22,7 @@ namespace AutofacDIIntro.Infra
             builder.RegisterType<TrialToolWindow>();
             builder.RegisterType<TrialToolWindowControl>();
             builder.RegisterType<TrialToolWindowViewModel>().SingleInstance();
+            builder.RegisterType<GreeterService>().As<IGreeterService>().SingleInstance();
 
             //builder.RegisterType<GistClientService>().As<IGistClientService>();
             //builder.RegisterType<WpfAuthenticationHandler>().As<IAuthenticationHandler>();
