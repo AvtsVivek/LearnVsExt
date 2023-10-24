@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Shell;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -23,7 +24,7 @@ namespace AutofacDIIntro.Infra
             containerBuilder.RegisterModule<TModule>();
         }
 
-        protected override System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+        protected override Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             container = containerBuilder.Build();
             return base.InitializeAsync(cancellationToken, progress);
@@ -31,11 +32,28 @@ namespace AutofacDIIntro.Infra
 
         protected override object GetService(Type serviceType)
         {
-            if (container?.IsRegistered(serviceType) ?? false)
+            try
             {
-                return container.Resolve(serviceType);
+                if (container?.IsRegistered(serviceType) ?? false)
+                {
+                    return container.Resolve(serviceType);
+                }
+                var service = base.GetService(serviceType);
+                if (service != null)
+                {
+                    return service;
+                }
+                else
+                {
+                    Debugger.Break();
+                    return null;
+                }
             }
-            return base.GetService(serviceType);
+            catch (Exception exception)
+            {
+                throw;
+            }
+
         }
 
         protected override WindowPane InstantiateToolWindow(Type toolWindowType) => (WindowPane)GetService(toolWindowType);

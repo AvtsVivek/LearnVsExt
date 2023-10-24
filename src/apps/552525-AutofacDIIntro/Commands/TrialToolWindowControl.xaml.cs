@@ -12,9 +12,10 @@ namespace AutofacDIIntro.Commands
         /// <summary>
         /// Initializes a new instance of the <see cref="TrialToolWindowControl"/> class.
         /// </summary>
-        public TrialToolWindowControl()
+        public TrialToolWindowControl(TrialToolWindowViewModel trialToolWindowViewModel)
         {
             this.InitializeComponent();
+            DataContext = trialToolWindowViewModel;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using AutofacDIIntro.Commands;
 using Microsoft.VisualStudio;
 using System.Net.Http;
 
@@ -18,9 +19,9 @@ namespace AutofacDIIntro.Infra
         {
             base.Load(builder);
 
-            //builder.RegisterType<GistManagerWindow>();
-            //builder.RegisterType<GistManagerWindowControl>();
-            //builder.RegisterType<GistManagerWindowViewModel>().SingleInstance();
+            builder.RegisterType<TrialToolWindow>();
+            builder.RegisterType<TrialToolWindowControl>();
+            builder.RegisterType<TrialToolWindowViewModel>().SingleInstance();
 
             //builder.RegisterType<GistClientService>().As<IGistClientService>();
             //builder.RegisterType<WpfAuthenticationHandler>().As<IAuthenticationHandler>();

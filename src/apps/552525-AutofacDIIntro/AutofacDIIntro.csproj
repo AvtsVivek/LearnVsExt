@@ -55,6 +55,7 @@
     <Compile Include="Commands\TrialToolWindowControl.xaml.cs">
       <DependentUpon>TrialToolWindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\TrialToolWindowViewModel.cs" />
     <Compile Include="Infra\AutofacEnabledAsyncPackage.cs" />
     <Compile Include="Infra\BusinessServicesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

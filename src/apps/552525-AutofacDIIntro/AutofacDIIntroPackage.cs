@@ -30,6 +30,10 @@ namespace AutofacDIIntro
     [ProvideToolWindow(typeof(AutofacDIIntro.Commands.TrialToolWindow))]
     public sealed class AutofacDIIntroPackage : AutofacEnabledAsyncPackage
     {
+        public AutofacDIIntroPackage()
+        {
+            RegisterModule<BusinessServicesModule>();
+        }
         /// <summary>
         /// AutofacDIIntroPackage GUID string.
         /// </summary>
@@ -50,6 +54,7 @@ namespace AutofacDIIntro
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await AutofacDIIntro.Commands.TrialToolWindowCommand.InitializeAsync(this);
+            await base.InitializeAsync(cancellationToken, progress);
         }
 
         #endregion
