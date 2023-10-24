@@ -13,6 +13,8 @@
 
 5. This example also introduces Mvvm in the application.
 
+6. So this example gets the details of active process when a button on the tool window is clicked. Also introduces Mvvm in its native form.
+
 ## References
 1. https://stackoverflow.com/a/36260234/1977871
    1. How to get currently running project from Visual Studio extension
