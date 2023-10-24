@@ -99,7 +99,11 @@
   <ItemGroup>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" ExcludeAssets="Runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.8.33-preview1" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.8.1104-preview2" />
+    <PackageReference Include="Microsoft.VsSDK.CompatibilityAnalyzer" Version="17.8.1105-preview2-g70c28d2f89">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
