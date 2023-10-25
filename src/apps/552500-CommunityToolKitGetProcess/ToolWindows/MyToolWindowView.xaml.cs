@@ -1,12 +1,14 @@
-﻿using System.Windows;
+﻿using CommunityToolKitGetProcess;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CommunityToolKitGetProcess
 {
-    public partial class MyToolWindowControl : UserControl
+    public partial class MyToolWindowView : UserControl
     {
-        public MyToolWindowControl()
+        public MyToolWindowView()
         {
+            // DataContext = new MyToolWindowViewModel();
             InitializeComponent();
         }
 

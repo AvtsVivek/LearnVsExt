@@ -21,4 +21,8 @@
 
 ## How this project is built.
 1. Starts from the earlier example 552450-CommunityActiveProcess
-
+2. Note the following three examples introduces events.
+   1. 503500-SolutionEventsIntro
+   2. 503530-BuildEventsIntro
+   3. 503560-DebuggerEventsIntro
+3. 
