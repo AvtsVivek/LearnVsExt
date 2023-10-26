@@ -25,6 +25,29 @@ namespace CommunityToolKitGetProcess
             }
         }
 
+        private string _buildStatus = "Build not started";
+
+        public string BuildStatus
+        {
+            get { return _buildStatus; }
+            set 
+            { 
+                _buildStatus = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        private string _buildState = "Build not started";
+
+        public string BuildState
+        {
+            get { return _buildState; }
+            set
+            {
+                _buildState = value;
+                OnPropertyChanged();
+            }
+        }
 
         public static DTE2 DteTwoInstance
         {
@@ -81,12 +104,14 @@ namespace CommunityToolKitGetProcess
             var solutionCount = DteTwoInstance.Solution.Count;
             var projectCountInSolution = DteTwoInstance.Solution.Projects.Count;
 
-            if (solutionCount == 1 && projectCountInSolution == 1)
+            if (solutionCount == 1 && projectCountInSolution == 1)            
                 IsSolutionWithProjectsOpenedInVs = true;
-            else
+            
+            else                          
                 IsSolutionWithProjectsOpenedInVs = false;
-
-            VS.MessageBox.Show($"Status: {IsSolutionWithProjectsOpenedInVs}");
+            
+            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+            //VS.MessageBox.Show($"Status: {IsSolutionWithProjectsOpenedInVs}");
 
         }
 
@@ -94,71 +119,83 @@ namespace CommunityToolKitGetProcess
         private void SolutionEventsInstance_AfterClosing()
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"After Closing: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"After Closing: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_BeforeClosing()
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Before Closing: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Before Closing: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_Opened()
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Opened. The solution count is {DteTwoInstance.Solution.Count}, : {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Opened. The solution count is {DteTwoInstance.Solution.Count}, : {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_ProjectAdded(EnvDTE.Project Project)
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Project Added: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Project Added: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_ProjectRemoved(EnvDTE.Project Project)
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show("Project Removed: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show("Project Removed: {IsSolutionWithProjectsOpenedInVs}");
         }
         private void SolutionEventsInstance_ProjectRenamed(EnvDTE.Project Project, string OldName)
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Project Renamed: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Project Renamed: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_QueryCloseSolution(ref bool fCancel)
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Query Close Solution: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Query Close Solution: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_Renamed(string OldName)
         {
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"Renamed: {IsSolutionWithProjectsOpenedInVs}");
+            //VS.MessageBox.Show($"Renamed: {IsSolutionWithProjectsOpenedInVs}");
         }
         #endregion
 
         #region Build Events
         private void BuildEventsInstance_OnBuildProjectConfigDone(string Project, string ProjectConfig, string Platform, string SolutionConfig, bool Success)
         {
-            VS.MessageBox.Show("On Build Project Config Done");
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+            BuildStatus = "Build Project Config Done";
+            //VS.MessageBox.Show("On Build Project Config Done");
         }
 
         private void BuildEventsInstance_OnBuildProjectConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
         {
-            VS.MessageBox.Show("On Build Project Config Begin");
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+            BuildStatus = "Build Project Config Begin";
+            //VS.MessageBox.Show("On Build Project Config Begin");
         }
 
         private void BuildEventsInstance_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
         {
-            VS.MessageBox.Show("On Build Begin");
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+            BuildStatus = "Build Begin";
+            //VS.MessageBox.Show("On Build Begin");
         }
 
         private void BuildEventsInstance_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
         {
-            VS.MessageBox.Show("On Build Done");
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+            BuildStatus = "Build Done";
+            //VS.MessageBox.Show("On Build Done");
         }
         #endregion
 

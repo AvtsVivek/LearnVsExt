@@ -25,7 +25,7 @@ public sealed class SimpleToolWindowPackage : AsyncPackage
 ```
 The Window is set to **EnvDTE.Constants.vsWindowKindServerExplorer**, you dock the window to left. You can set to **EnvDTE.Constants.vsWindowKindOutput** to dock it down. Or **EnvDTE.Constants.vsWindowKindSolutionExplorer** when you want to dock right.
 
-7. 
+7. https://stackoverflow.com/a/13515072/1977871
 
 
 

@@ -17,9 +17,6 @@
     <UserControl.DataContext>
         <local:MyToolWindowViewModel/>
     </UserControl.DataContext>
-
-
-    <Grid>
         <StackPanel Orientation="Vertical">
             <Label x:Name="lblHeadline"
                    Margin="10"
@@ -29,11 +26,18 @@
                     Width="120"
                     Height="80"
                     Name="button1" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="lblSolutionWithProjects" Margin="10" HorizontalAlignment="Center">Is Solution With Projects Opened In Vs</Label>
-                <TextBlock HorizontalAlignment="Center" Margin="10" Text="{Binding IsSolutionWithProjectsOpenedInVs}" />
-            </StackPanel>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblSolutionWithProjects" Margin="10" HorizontalAlignment="Center">Is Solution With Projects Opened In Vs</Label>
+            <Label x:Name="lblSolutionWithProjectsText" Margin="10" HorizontalAlignment="Center" Content="{Binding IsSolutionWithProjectsOpenedInVs}"></Label>
         </StackPanel>
-    </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblBuildStatus" Margin="10" HorizontalAlignment="Center">Build Status</Label>
+            <Label x:Name="lblBuildStatusText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildStatus}"></Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblBuildState" Margin="10" HorizontalAlignment="Center">Build State</Label>
+            <Label x:Name="lblBuildStateText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildState}"></Label>
+        </StackPanel>
+    </StackPanel>
+
 </UserControl>
