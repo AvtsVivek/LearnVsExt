@@ -1,6 +1,6 @@
 ﻿using Ardalis.SmartEnum;
 
-namespace CommunityToolKitGetProcess
+namespace CommunityToolKitGetProcess.Infra
 {
     public sealed class BuildStatus : SmartEnum<BuildStatus>
     {

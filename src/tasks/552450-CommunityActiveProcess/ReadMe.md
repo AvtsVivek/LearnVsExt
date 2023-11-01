@@ -9,15 +9,15 @@
 
 3. We then press F5 to start running the projects. 
 
-4. This example demonistrates how an extension can get more information about such apps which Visual Studio is running and debugging. 
+4. This example demonistrates how an extension can get more information about such apps(processes) which Visual Studio is running and debugging. 
 
 5. This example also introduces Mvvm in the application.
 
 6. So this example gets the details of active process when a button on the tool window is clicked. Also introduces Mvvm in its native form.
 
 ## References
-1. https://stackoverflow.com/a/36260234/1977871
-   1. How to get currently running project from Visual Studio extension
+1. How to get currently running project from Visual Studio extension
+   1. https://stackoverflow.com/a/36260234/1977871
 
 2. https://learn.microsoft.com/en-us/dotnet/api/envdte.debugger
 

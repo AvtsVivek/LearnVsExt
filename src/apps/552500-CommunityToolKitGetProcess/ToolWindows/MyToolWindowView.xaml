@@ -38,6 +38,33 @@
             <Label x:Name="lblBuildState" Margin="10" HorizontalAlignment="Center">Build State</Label>
             <Label x:Name="lblBuildStateText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildState}"></Label>
         </StackPanel>
+        <StackPanel Orientation="Vertical" IsEnabled="{Binding IsProcessBeingDebugged}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="lblProcessId" Margin="10" HorizontalAlignment="Center">Process Id</Label>
+                <Label x:Name="lblProcessIdValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessId}"></Label>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="lblProcessName" Margin="10" HorizontalAlignment="Center">Process Name</Label>
+                <Label x:Name="lblProcessNameValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessName}"></Label>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="lblProcessPath" Margin="10" HorizontalAlignment="Center">Process Path</Label>
+                <Label x:Name="lblProcessPathValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessPath}"></Label>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="lblProcessMode" Margin="10" HorizontalAlignment="Center">Process Mode</Label>
+                <Label x:Name="lblProcessModeValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessMode}"></Label>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="lblIsProcessBeingDebugged" Margin="10" HorizontalAlignment="Center">Process Is being debugged</Label>
+                <Label x:Name="lblIsProcessBeingDebuggedValue" Margin="10" HorizontalAlignment="Center" Content="{Binding IsProcessBeingDebugged}"></Label>
+            </StackPanel>
+            
+        </StackPanel>
     </StackPanel>
 
 </UserControl>

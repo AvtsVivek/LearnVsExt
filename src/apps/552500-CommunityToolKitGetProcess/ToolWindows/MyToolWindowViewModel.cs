@@ -1,14 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolKitGetProcess.Infra;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft;
-using Microsoft.Build.Framework.XamlTypes;
-using Microsoft.VisualStudio.OLE.Interop;
-using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunityToolKitGetProcess
 {
@@ -97,6 +94,7 @@ namespace CommunityToolKitGetProcess
             DebuggerEventsInstance.OnEnterRunMode += DebuggerEventsInstance_OnEnterRunMode;
             DebuggerEventsInstance.OnEnterDesignMode += DebuggerEventsInstance_OnEnterDesignMode;
             DebuggerEventsInstance.OnEnterBreakMode += DebuggerEventsInstance_OnEnterBreakMode;
+            
 
             SetSolutionWithProjectsStatus();
             VS.MessageBox.Show($"From ctor: {IsSolutionWithProjectsOpenedInVs}");
@@ -221,35 +219,125 @@ namespace CommunityToolKitGetProcess
         #region Debugger Events
         private void DebuggerEventsInstance_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
         {
+
             VS.MessageBox.Show("On Enter Break Mode ");
+            SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
             VS.MessageBox.Show("On Enter Design Mode");
+            SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnEnterRunMode(dbgEventReason Reason)
         {
             VS.MessageBox.Show("On Enter Run Mode");
+            SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnExceptionNotHandled(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
             VS.MessageBox.Show("On Exception Not Handled");
+            SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnExceptionThrown(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
             VS.MessageBox.Show("On Exception Thrown");
+            SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnContextChanged(Process NewProcess, Program NewProgram, EnvDTE.Thread NewThread, StackFrame NewStackFrame)
         {
             VS.MessageBox.Show("On Context Changed");
+            SetDebuggerProperties();
         }
         #endregion
 
+        private void SetDebuggerProperties()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            var currentModeStringAndRunningProcessTuple = DteTwoInstance.GetCurrentModeAndRunningProcess();
+
+            if (currentModeStringAndRunningProcessTuple.Item2 == null)
+            {
+                IsProcessBeingDebugged = false;
+                return;
+            }
+
+            IsProcessBeingDebugged = currentModeStringAndRunningProcessTuple.Item2.Programs.Item(1).IsBeingDebugged;
+
+            ProcessId = currentModeStringAndRunningProcessTuple.Item2.ProcessID;
+            
+            ProcessPath = currentModeStringAndRunningProcessTuple.Item2.Name;
+
+            ProcessName = Path.GetFileName(ProcessPath);
+
+            ProcessMode = currentModeStringAndRunningProcessTuple.Item1;
+
+
+        }
+
+        private bool _IsProcessBeingDebugged;
+
+        public bool IsProcessBeingDebugged
+        {
+            get { return _IsProcessBeingDebugged; }
+            set { 
+            
+                _IsProcessBeingDebugged = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
+        private int _processId;
+
+        public int ProcessId
+        {
+            get { return _processId; }
+            set { 
+                _processId = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _processName;
+
+        public string ProcessName
+        {
+            get { return _processName; }
+            set
+            {
+                _processName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _processPath;
+
+        public string ProcessPath
+        {
+            get { return _processPath; }
+            set
+            {
+                _processPath = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _processMode;
+
+        public string ProcessMode
+        {
+            get { return _processMode; }
+            set
+            {
+                _processMode = value;
+                OnPropertyChanged();
+            }
+        }
 
     }
 }

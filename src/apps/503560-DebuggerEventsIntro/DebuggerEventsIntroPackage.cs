@@ -96,7 +96,7 @@ namespace DebuggerEventsIntro
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
-            MessageBox.Show("On Enter Deisng Mode");
+            MessageBox.Show("On Enter Design Mode");
         }
 
         private void DebuggerEventsInstance_OnEnterRunMode(dbgEventReason Reason)
