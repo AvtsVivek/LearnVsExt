@@ -32,7 +32,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label x:Name="lblBuildStatus" Margin="10" HorizontalAlignment="Center">Build Status</Label>
-            <Label x:Name="lblBuildStatusText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildStatus}"></Label>
+            <Label x:Name="lblBuildStatusText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildStatusDescription}"></Label>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label x:Name="lblBuildState" Margin="10" HorizontalAlignment="Center">Build State</Label>

@@ -2,6 +2,8 @@
 using EnvDTE;
 using EnvDTE80;
 using Microsoft;
+using Microsoft.Build.Framework.XamlTypes;
+using Microsoft.VisualStudio.OLE.Interop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,27 +27,27 @@ namespace CommunityToolKitGetProcess
             }
         }
 
-        private string _buildStatus = "Build not started";
+        private string _buildStatusDescription = BuildStatus.NoSolutionWithProjectsCurrentlyOpened.Description;
 
-        public string BuildStatus
+        public string BuildStatusDescription
         {
-            get { return _buildStatus; }
-            set 
-            { 
-                _buildStatus = value; 
+            get { return _buildStatusDescription; }
+            set { 
+                _buildStatusDescription = value; 
                 OnPropertyChanged();
             }
         }
 
-        private string _buildState = "Build not started";
-
         public string BuildState
         {
-            get { return _buildState; }
-            set
-            {
-                _buildState = value;
-                OnPropertyChanged();
+            get { 
+
+                ThreadHelper.ThrowIfNotOnUIThread();
+
+                var buildStateFullString = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
+                var buildStateString = buildStateFullString.Remove(0, "vsBuildState".Length);
+                return buildStateString;
+
             }
         }
 
@@ -54,6 +56,9 @@ namespace CommunityToolKitGetProcess
             get;
             private set;
         }
+
+        private Dictionary<string, bool> _multipleProjectBuildStatus = new Dictionary<string, bool>();
+        
         public MyToolWindowViewModel()
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -104,34 +109,39 @@ namespace CommunityToolKitGetProcess
             var solutionCount = DteTwoInstance.Solution.Count;
             var projectCountInSolution = DteTwoInstance.Solution.Projects.Count;
 
-            if (solutionCount == 1 && projectCountInSolution == 1)            
+            if (solutionCount > 0 && projectCountInSolution > 0)
                 IsSolutionWithProjectsOpenedInVs = true;
-            
-            else                          
+            else
                 IsSolutionWithProjectsOpenedInVs = false;
-            
-            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
-            //VS.MessageBox.Show($"Status: {IsSolutionWithProjectsOpenedInVs}");
 
+
+            if (IsSolutionWithProjectsOpenedInVs)
+                BuildStatusDescription = BuildStatus.SolutionWithProjectsOpened_ButNoBuildEvenFiredYet.Description;
+            else
+                BuildStatusDescription = BuildStatus.NoSolutionWithProjectsCurrentlyOpened.Description;
+            
+
+            OnPropertyChanged(nameof(BuildState));
+            //VS.MessageBox.Show($"Status: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         #region Solution Events
         private void SolutionEventsInstance_AfterClosing()
         {
-            SetSolutionWithProjectsStatus();
+            SetSolutionWithProjectsStatus();            
             //VS.MessageBox.Show($"After Closing: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_BeforeClosing()
         {
-            SetSolutionWithProjectsStatus();
+            SetSolutionWithProjectsStatus();            
             //VS.MessageBox.Show($"Before Closing: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SolutionEventsInstance_Opened()
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            SetSolutionWithProjectsStatus();
+            SetSolutionWithProjectsStatus();          
             //VS.MessageBox.Show($"Opened. The solution count is {DteTwoInstance.Solution.Count}, : {IsSolutionWithProjectsOpenedInVs}");
         }
 
@@ -169,33 +179,42 @@ namespace CommunityToolKitGetProcess
         private void BuildEventsInstance_OnBuildProjectConfigDone(string Project, string ProjectConfig, string Platform, string SolutionConfig, bool Success)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
-            BuildStatus = "Build Project Config Done";
+            OnPropertyChanged(nameof(BuildState));
+            BuildStatusDescription = BuildStatus.BuildProjectConfigDone.Description;
+           
+            _multipleProjectBuildStatus.Add(Project, Success);
             //VS.MessageBox.Show("On Build Project Config Done");
         }
 
         private void BuildEventsInstance_OnBuildProjectConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
-            BuildStatus = "Build Project Config Begin";
+            OnPropertyChanged(nameof(BuildState));
+            BuildStatusDescription = BuildStatus.BuildProjectConfigBegin.Description;
             //VS.MessageBox.Show("On Build Project Config Begin");
         }
 
         private void BuildEventsInstance_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
-            BuildStatus = "Build Begin";
+            OnPropertyChanged(nameof(BuildState));
+            BuildStatusDescription = BuildStatus.BuildBegin.Description;
+            _multipleProjectBuildStatus = new();
             //VS.MessageBox.Show("On Build Begin");
         }
 
         private void BuildEventsInstance_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            BuildState = DteTwoInstance.Solution.SolutionBuild.BuildState.ToString();
-            BuildStatus = "Build Done";
-            //VS.MessageBox.Show("On Build Done");
+
+            OnPropertyChanged(nameof(BuildState));
+            var _buildFailure = _multipleProjectBuildStatus.Values.Where(projectBuildStatus => projectBuildStatus == false).Count() > 0;
+            if (_buildFailure)
+                BuildStatusDescription = BuildStatus.BuildDoneWithFailure.Description;
+            else
+                BuildStatusDescription = BuildStatus.BuildDoneWithSuccess.Description;
+
+                //VS.MessageBox.Show("On Build Done");
         }
         #endregion
 

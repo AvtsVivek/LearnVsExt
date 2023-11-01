@@ -21,6 +21,12 @@
 
 5. https://stackoverflow.com/q/2801985/1977871
 
+6. https://www.nuget.org/packages/Ardalis.SmartEnum/2.1.0
+
+7. https://www.nuget.org/packages/Ardalis.SmartEnum
+
+8. https://github.com/ardalis/SmartEnum
+
 ## How this project is built.
 1. Starts from the earlier example 552450-CommunityActiveProcess
 2. Note the following three examples introduces events.
@@ -31,7 +37,7 @@
 
 
 ## Design time issues.
-1. For design time issues, 
+1. For design time issues you see below, we need to ignore this for now.
 
 ![Design Error](images/50_50_DesignTimeError.jpg)
 
@@ -65,4 +71,9 @@
 8. This poses another problem. Behaviours need a [nuget package](https://www.nuget.org/packages/Microsoft.Xaml.Behaviors.Wpf). But as on today, the project must target either .NET 6 or .NET Framework 4.6.2. Our project targes 4.8.2. So this also wont work. 
 
 ## Notes
-1. If a solution has multiple projects, and you want to be notified when all of the projects are built, then see [this so answer.](https://stackoverflow.com/a/2802636/1977871) and then [this one](https://stackoverflow.com/a/13515072/1977871)
+1. If a solution has multiple projects, and you want to be notified when all of the projects are built, then see [this so answer.](https://stackoverflow.com/a/2802636/1977871) and then [this one](https://stackoverflow.com/a/13515072/1977871). So we added this dictionary. _multipleProjectBuildStatus
+
+2. Note that for BuildStatus, we used SmartEnum. This may be an overkill for this example.
+
+3. 
+
