@@ -60,6 +60,8 @@ namespace CommunityToolKitGetProcess
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
+            ProcessMode = "No solution open";
+
             var dte = ServiceProvider.GlobalProvider.GetService(typeof(DTE));
 
             DteTwoInstance = dte as DTE2;
@@ -103,7 +105,7 @@ namespace CommunityToolKitGetProcess
             CommunityToolKitGetProcessPackage.OnExceptionNotHandled += DebuggerEventsInstance_OnExceptionNotHandled;
 
             SetSolutionWithProjectsStatus();
-            VS.MessageBox.Show($"From ctor: {IsSolutionWithProjectsOpenedInVs}");
+            // VS.MessageBox.Show($"From ctor: {IsSolutionWithProjectsOpenedInVs}");
         }
 
         private void SetSolutionWithProjectsStatus()
@@ -122,8 +124,10 @@ namespace CommunityToolKitGetProcess
             if (IsSolutionWithProjectsOpenedInVs)
                 BuildStatusDescription = BuildStatus.SolutionWithProjectsOpened_ButNoBuildEvenFiredYet.Description;
             else
+            {
                 BuildStatusDescription = BuildStatus.NoSolutionWithProjectsCurrentlyOpened.Description;
-            
+                ProcessMode = "No solution open";
+            }
 
             OnPropertyChanged(nameof(BuildState));
             //VS.MessageBox.Show($"Status: {IsSolutionWithProjectsOpenedInVs}");
@@ -187,7 +191,7 @@ namespace CommunityToolKitGetProcess
             BuildStatusDescription = BuildStatus.BuildProjectConfigDone.Description;
            
             _multipleProjectBuildStatus.Add(Project, Success);
-            VS.MessageBox.Show("On Build Project Config Done");
+            // VS.MessageBox.Show("On Build Project Config Done");
         }
 
         private void BuildEventsInstance_OnBuildProjectConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
@@ -195,7 +199,7 @@ namespace CommunityToolKitGetProcess
             ThreadHelper.ThrowIfNotOnUIThread();
             OnPropertyChanged(nameof(BuildState));
             BuildStatusDescription = BuildStatus.BuildProjectConfigBegin.Description;
-            VS.MessageBox.Show("On Build Project Config Begin");
+            // VS.MessageBox.Show("On Build Project Config Begin");
         }
 
         private void BuildEventsInstance_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
@@ -204,7 +208,7 @@ namespace CommunityToolKitGetProcess
             OnPropertyChanged(nameof(BuildState));
             BuildStatusDescription = BuildStatus.BuildBegin.Description;
             _multipleProjectBuildStatus = new();
-            VS.MessageBox.Show("On Build Begin");
+            // VS.MessageBox.Show("On Build Begin");
         }
 
         private void BuildEventsInstance_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
@@ -218,7 +222,7 @@ namespace CommunityToolKitGetProcess
             else
                 BuildStatusDescription = BuildStatus.BuildDoneWithSuccess.Description;
 
-                VS.MessageBox.Show("On Build Done");
+                // VS.MessageBox.Show("On Build Done");
         }
         #endregion
 
@@ -232,7 +236,7 @@ namespace CommunityToolKitGetProcess
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
-            // VS.MessageBox.Show("On Enter Design Mode from VM");
+            VS.MessageBox.Show("On Enter Design Mode from VM");
             SetDebuggerProperties();
         }
 
@@ -265,12 +269,15 @@ namespace CommunityToolKitGetProcess
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             var currentModeStringAndRunningProcessTuple = DteTwoInstance.GetCurrentModeAndRunningProcess();
+            ProcessMode = currentModeStringAndRunningProcessTuple.Item1;
 
             if (currentModeStringAndRunningProcessTuple.Item2 == null)
             {
                 IsProcessBeingDebugged = false;
                 return;
             }
+            else
+                IsProcessBeingDebugged = true;
 
             var programCount = currentModeStringAndRunningProcessTuple.Item2.Programs.Count; 
             
@@ -285,7 +292,7 @@ namespace CommunityToolKitGetProcess
 
             ProcessName = Path.GetFileName(ProcessPath);
 
-            ProcessMode = currentModeStringAndRunningProcessTuple.Item1;
+            
 
 
         }

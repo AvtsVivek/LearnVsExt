@@ -22,7 +22,7 @@ namespace CommunityToolKitGetProcess
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            VS.MessageBox.Show("Tool Window activated");
+            // VS.MessageBox.Show("Tool Window activated");
 
         }
         public override string GetTitle(int toolWindowId) => "My Tool Window";

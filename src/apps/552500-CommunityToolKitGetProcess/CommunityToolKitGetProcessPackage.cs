@@ -78,7 +78,8 @@ namespace CommunityToolKitGetProcess
 
         private void DebuggerEventsInstance_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
         {
-            VS.MessageBox.Show("On Enter Break Mode from package ");
+            // VS.MessageBox.Show("On Enter Break Mode from package ");
+            OnEnterBreakMode(Reason, ref ExecutionAction);
         }
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
@@ -89,25 +90,25 @@ namespace CommunityToolKitGetProcess
 
         private void DebuggerEventsInstance_OnEnterRunMode(dbgEventReason Reason)
         {
-            VS.MessageBox.Show("On Enter Run Mode from package");
+            // VS.MessageBox.Show("On Enter Run Mode from package");
             OnEnterRunMode(Reason);
         }
 
         private void DebuggerEventsInstance_OnExceptionNotHandled(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
-            VS.MessageBox.Show("On Exception Not Handled from package");
+            // VS.MessageBox.Show("On Exception Not Handled from package");
             OnExceptionNotHandled(ExceptionType, Name, Code, Description, ref ExceptionAction);
         }
 
         private void DebuggerEventsInstance_OnExceptionThrown(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
-            VS.MessageBox.Show("On Exception Thrown from package");
+            // VS.MessageBox.Show("On Exception Thrown from package");
             OnExceptionThrown(ExceptionType, Name, Code, Description, ref ExceptionAction);
         }
 
         private void DebuggerEventsInstance_OnContextChanged(Process NewProcess, Program NewProgram, EnvDTE.Thread NewThread, StackFrame NewStackFrame)
         {
-            VS.MessageBox.Show("On Context Changed from package");
+            // VS.MessageBox.Show("On Context Changed from package");
             OnContextChanged(NewProcess, NewProgram, NewThread, NewStackFrame);
         }
     }
