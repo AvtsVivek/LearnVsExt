@@ -271,6 +271,12 @@ namespace CommunityToolKitGetProcess
             var currentModeStringAndRunningProcessTuple = DteTwoInstance.GetCurrentModeAndRunningProcess();
             ProcessMode = currentModeStringAndRunningProcessTuple.Item1;
 
+            if (DteTwoInstance.Debugger.CurrentMode == dbgDebugMode.dbgRunMode 
+                || DteTwoInstance.Debugger.CurrentMode == dbgDebugMode.dbgBreakMode)
+                IsProcessRunning = true;
+            else
+                IsProcessRunning = false;
+
             if (currentModeStringAndRunningProcessTuple.Item2 == null)
             {
                 IsProcessBeingDebugged = false;
@@ -295,6 +301,29 @@ namespace CommunityToolKitGetProcess
             
 
 
+            //var localProcesses = DteTwoInstance.Debugger.LocalProcesses;
+            //var currentProcess = DteTwoInstance.Debugger.CurrentProcess;
+
+            //var localProcessCount = localProcesses.Count;
+
+            //var currentProcessId = currentProcess.ProcessID;
+
+            //var currentProcessName = currentProcess.Name;
+
+
+        }
+
+        private bool _IsProcessRunning;
+
+        public bool IsProcessRunning
+        {
+            get { return _IsProcessRunning; }
+            set
+            {
+
+                _IsProcessRunning = value;
+                OnPropertyChanged();
+            }
         }
 
         private bool _IsProcessBeingDebugged;
