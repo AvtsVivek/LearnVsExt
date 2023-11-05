@@ -48,7 +48,7 @@ namespace CommunityToolKitGetProcess
             }
         }
 
-        public static DTE2 DteTwoInstance
+        public DTE2 DteTwoInstance
         {
             get;
             private set;
@@ -86,15 +86,21 @@ namespace CommunityToolKitGetProcess
             BuildEventsInstance.OnBuildProjConfigDone += BuildEventsInstance_OnBuildProjectConfigDone;
 
 
-            var DebuggerEventsInstance = DteTwoInstance.Events.DebuggerEvents;
-            Assumes.Present(DebuggerEventsInstance);
-            DebuggerEventsInstance.OnContextChanged += DebuggerEventsInstance_OnContextChanged;
-            DebuggerEventsInstance.OnExceptionThrown += DebuggerEventsInstance_OnExceptionThrown;
-            DebuggerEventsInstance.OnExceptionNotHandled += DebuggerEventsInstance_OnExceptionNotHandled;
-            DebuggerEventsInstance.OnEnterRunMode += DebuggerEventsInstance_OnEnterRunMode;
-            DebuggerEventsInstance.OnEnterDesignMode += DebuggerEventsInstance_OnEnterDesignMode;
-            DebuggerEventsInstance.OnEnterBreakMode += DebuggerEventsInstance_OnEnterBreakMode;
-            
+            //var debuggerEventsInstance = DteTwoInstance.Events.DebuggerEvents;
+            //Assumes.Present(debuggerEventsInstance);
+            //debuggerEventsInstance.OnContextChanged += DebuggerEventsInstance_OnContextChanged;
+            //debuggerEventsInstance.OnExceptionThrown += DebuggerEventsInstance_OnExceptionThrown;
+            //debuggerEventsInstance.OnExceptionNotHandled += DebuggerEventsInstance_OnExceptionNotHandled;
+            //debuggerEventsInstance.OnEnterRunMode += DebuggerEventsInstance_OnEnterRunMode;
+            //debuggerEventsInstance.OnEnterDesignMode += DebuggerEventsInstance_OnEnterDesignMode;
+            //debuggerEventsInstance.OnEnterBreakMode += DebuggerEventsInstance_OnEnterBreakMode;
+
+            CommunityToolKitGetProcessPackage.OnEnterRunMode += DebuggerEventsInstance_OnEnterRunMode;
+            CommunityToolKitGetProcessPackage.OnEnterDesignMode += DebuggerEventsInstance_OnEnterDesignMode;
+            CommunityToolKitGetProcessPackage.OnEnterBreakMode += DebuggerEventsInstance_OnEnterBreakMode;
+            CommunityToolKitGetProcessPackage.OnContextChanged += DebuggerEventsInstance_OnContextChanged;
+            CommunityToolKitGetProcessPackage.OnExceptionThrown += DebuggerEventsInstance_OnExceptionThrown;
+            CommunityToolKitGetProcessPackage.OnExceptionNotHandled += DebuggerEventsInstance_OnExceptionNotHandled;
 
             SetSolutionWithProjectsStatus();
             VS.MessageBox.Show($"From ctor: {IsSolutionWithProjectsOpenedInVs}");
@@ -181,7 +187,7 @@ namespace CommunityToolKitGetProcess
             BuildStatusDescription = BuildStatus.BuildProjectConfigDone.Description;
            
             _multipleProjectBuildStatus.Add(Project, Success);
-            //VS.MessageBox.Show("On Build Project Config Done");
+            VS.MessageBox.Show("On Build Project Config Done");
         }
 
         private void BuildEventsInstance_OnBuildProjectConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
@@ -189,7 +195,7 @@ namespace CommunityToolKitGetProcess
             ThreadHelper.ThrowIfNotOnUIThread();
             OnPropertyChanged(nameof(BuildState));
             BuildStatusDescription = BuildStatus.BuildProjectConfigBegin.Description;
-            //VS.MessageBox.Show("On Build Project Config Begin");
+            VS.MessageBox.Show("On Build Project Config Begin");
         }
 
         private void BuildEventsInstance_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
@@ -198,7 +204,7 @@ namespace CommunityToolKitGetProcess
             OnPropertyChanged(nameof(BuildState));
             BuildStatusDescription = BuildStatus.BuildBegin.Description;
             _multipleProjectBuildStatus = new();
-            //VS.MessageBox.Show("On Build Begin");
+            VS.MessageBox.Show("On Build Begin");
         }
 
         private void BuildEventsInstance_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
@@ -212,7 +218,7 @@ namespace CommunityToolKitGetProcess
             else
                 BuildStatusDescription = BuildStatus.BuildDoneWithSuccess.Description;
 
-                //VS.MessageBox.Show("On Build Done");
+                VS.MessageBox.Show("On Build Done");
         }
         #endregion
 
@@ -220,37 +226,37 @@ namespace CommunityToolKitGetProcess
         private void DebuggerEventsInstance_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
         {
 
-            VS.MessageBox.Show("On Enter Break Mode ");
+            // VS.MessageBox.Show("On Enter Break Mode from VM");
             SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
-            VS.MessageBox.Show("On Enter Design Mode");
+            // VS.MessageBox.Show("On Enter Design Mode from VM");
             SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnEnterRunMode(dbgEventReason Reason)
         {
-            VS.MessageBox.Show("On Enter Run Mode");
+            // VS.MessageBox.Show("On Enter Run Mode From VM");
             SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnExceptionNotHandled(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
-            VS.MessageBox.Show("On Exception Not Handled");
+            // VS.MessageBox.Show("On Exception Not Handled from VM");
             SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnExceptionThrown(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
         {
-            VS.MessageBox.Show("On Exception Thrown");
+            // VS.MessageBox.Show("On Exception Thrown from VM");
             SetDebuggerProperties();
         }
 
         private void DebuggerEventsInstance_OnContextChanged(Process NewProcess, Program NewProgram, EnvDTE.Thread NewThread, StackFrame NewStackFrame)
         {
-            VS.MessageBox.Show("On Context Changed");
+            // VS.MessageBox.Show("On Context Changed from VM");
             SetDebuggerProperties();
         }
         #endregion
@@ -266,7 +272,12 @@ namespace CommunityToolKitGetProcess
                 return;
             }
 
-            IsProcessBeingDebugged = currentModeStringAndRunningProcessTuple.Item2.Programs.Item(1).IsBeingDebugged;
+            var programCount = currentModeStringAndRunningProcessTuple.Item2.Programs.Count; 
+            
+            if (programCount > 0)
+            {
+                IsProcessBeingDebugged = currentModeStringAndRunningProcessTuple.Item2.Programs.Item(1).IsBeingDebugged;
+            }
 
             ProcessId = currentModeStringAndRunningProcessTuple.Item2.ProcessID;
             
