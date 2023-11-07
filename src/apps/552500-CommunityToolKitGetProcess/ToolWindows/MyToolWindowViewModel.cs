@@ -60,7 +60,9 @@ namespace CommunityToolKitGetProcess
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            ProcessMode = "No solution open";
+            ProcessMode = GlobalConsts.NoSolutionOpen;
+            ProcessName = GlobalConsts.NoProcessRunning;
+            ProcessPath = GlobalConsts.NoProcessRunning;
 
             var dte = ServiceProvider.GlobalProvider.GetService(typeof(DTE));
 
@@ -122,11 +124,14 @@ namespace CommunityToolKitGetProcess
 
 
             if (IsSolutionWithProjectsOpenedInVs)
+            {
                 BuildStatusDescription = BuildStatus.SolutionWithProjectsOpened_ButNoBuildEvenFiredYet.Description;
+                ProcessMode = GlobalConsts.DesignMode;
+            }
             else
             {
                 BuildStatusDescription = BuildStatus.NoSolutionWithProjectsCurrentlyOpened.Description;
-                ProcessMode = "No solution open";
+                ProcessMode = GlobalConsts.NoSolutionOpen;
             }
 
             OnPropertyChanged(nameof(BuildState));
@@ -236,7 +241,7 @@ namespace CommunityToolKitGetProcess
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
-            VS.MessageBox.Show("On Enter Design Mode from VM");
+            // VS.MessageBox.Show("On Enter Design Mode from VM");
             SetDebuggerProperties();
         }
 
@@ -271,14 +276,22 @@ namespace CommunityToolKitGetProcess
             var currentModeStringAndRunningProcessTuple = DteTwoInstance.GetCurrentModeAndRunningProcess();
             ProcessMode = currentModeStringAndRunningProcessTuple.Item1;
 
-            if (DteTwoInstance.Debugger.CurrentMode == dbgDebugMode.dbgRunMode 
+            if (DteTwoInstance.Debugger.CurrentMode == dbgDebugMode.dbgRunMode
                 || DteTwoInstance.Debugger.CurrentMode == dbgDebugMode.dbgBreakMode)
                 IsProcessRunning = true;
             else
+            {
+                ProcessId = 0;
+                ProcessName = GlobalConsts.NoProcessRunning;
+                ProcessPath = GlobalConsts.NoProcessRunning;
                 IsProcessRunning = false;
+            }
 
             if (currentModeStringAndRunningProcessTuple.Item2 == null)
             {
+                ProcessId = 0;
+                ProcessName = GlobalConsts.NoProcessRunning;
+                ProcessPath = GlobalConsts.NoProcessRunning;
                 IsProcessBeingDebugged = false;
                 return;
             }

@@ -19,15 +19,13 @@ namespace CommunityToolKitGetProcess
 
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]
-    [ProvideToolWindow(typeof(MyToolWindow.Pane), Style = VsDockStyle.Tabbed, Window = WindowGuids.SolutionExplorer)]
+    [ProvideToolWindow(typeof(MyToolWindow.Pane), Orientation = ToolWindowOrientation.Right, Style = VsDockStyle.Tabbed, Window = WindowGuids.SolutionExplorer)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageGuids.CommunityToolKitGetProcessString)]
     //[ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
     //[ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     public sealed class CommunityToolKitGetProcessPackage : ToolkitPackage
     {
-        
-
         public static event OnEnterRunModeHandler OnEnterRunMode;
         public static event OnEnterDesignModeHandler OnEnterDesignMode;
         public static event OnEnterBreakModeHandler OnEnterBreakMode;
@@ -84,7 +82,7 @@ namespace CommunityToolKitGetProcess
 
         private void DebuggerEventsInstance_OnEnterDesignMode(dbgEventReason Reason)
         {
-            VS.MessageBox.Show("On Enter Design Mode from package");
+            // VS.MessageBox.Show("On Enter Design Mode from package");
             OnEnterDesignMode(Reason);
         }
 

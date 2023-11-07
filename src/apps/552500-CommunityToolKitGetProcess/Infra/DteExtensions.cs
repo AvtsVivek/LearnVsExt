@@ -2,6 +2,7 @@
 using EnvDTE100;
 using EnvDTE80;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,13 +28,13 @@ namespace CommunityToolKitGetProcess.Infra
             switch (dte2.Debugger.CurrentMode)
             {
                 case dbgDebugMode.dbgDesignMode:
-                    currentModeString = "Design Mode";
+                    currentModeString = GlobalConsts.DesignMode;
                     break;
                 case dbgDebugMode.dbgBreakMode:
-                    currentModeString = "Break Mode";
+                    currentModeString = GlobalConsts.BreakMode;
                     break;
                 case dbgDebugMode.dbgRunMode:
-                    currentModeString = "Run Mode";
+                    currentModeString = GlobalConsts.RunMode;
                     break;
             }
 
