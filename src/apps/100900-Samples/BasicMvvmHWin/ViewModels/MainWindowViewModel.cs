@@ -1,11 +1,5 @@
-﻿using BasicMvvmHWin.ViewModels;
-using BasicMvvmHWin.Infra;
-using System.Collections.Generic;
-using System.Windows.Input;
-using System;
-using System.Diagnostics;
-using System.Reflection.Metadata;
-using System.Windows.Interop;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace BasicMvvmHWin.ViewModels
 {
@@ -13,7 +7,7 @@ namespace BasicMvvmHWin.ViewModels
     {
 
         public string Number { get; set; } = "One";
-        public string ProcessId { get; set; } = Process.GetCurrentProcess().Id.ToString();
+        public string ProcessId { get; set; } 
         public string _hWnd = string.Empty;
 
         public string HWnd
@@ -29,25 +23,21 @@ namespace BasicMvvmHWin.ViewModels
             }
         }
 
-        private ICommand? _hWinButtonClick;
-
-        // public event EventHandler<EventArgs<string>>? ViewChanged;
-
-        public ICommand HWinButtonClick
-        {
-            get
-            {
-                return _hWinButtonClick ??= new RelayCommand(x =>
-                {
-                    HWnd = Process.GetCurrentProcess().MainWindowHandle.ToString();
-                });
-            }
-        }
-
 
         public MainWindowViewModel()
         {
+            ProcessId = Process.GetCurrentProcess().Id.ToString();
+            HWnd = Process.GetCurrentProcess().MainWindowHandle.ToString();
+            Task.Run(async () => {
+                await GetAndAssignWindowHandle();
+            });
+        }
+        
+        private async Task GetAndAssignWindowHandle()
+        {
+            await Task.Delay(1000);
             HWnd = Process.GetCurrentProcess().MainWindowHandle.ToString();
         }
+
     }
 }

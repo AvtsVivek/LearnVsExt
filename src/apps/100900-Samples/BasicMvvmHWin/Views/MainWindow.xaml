@@ -14,7 +14,6 @@
     <StackPanel Orientation="Vertical">
         <TextBlock Text="{Binding Number}" />
         <TextBlock Text="{Binding ProcessId}" />
-        <Button Command="{Binding HWinButtonClick}">Get Win Handle</Button>
         <TextBlock Text="{Binding HWnd}" />
     </StackPanel>
 </Window>
