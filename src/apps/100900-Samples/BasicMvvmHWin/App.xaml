@@ -1,0 +1,10 @@
+﻿<Application x:Class="BasicMvvmHWin.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BasicMvvmHWin"
+             xmlns:localVs="clr-namespace:BasicMvvmHWin.Views"             
+             xmlns:localVms="clr-namespace:BasicMvvmHWin.ViewModels">
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>
