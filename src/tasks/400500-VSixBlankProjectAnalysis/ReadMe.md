@@ -1,9 +1,17 @@
 ## Pre Requisites
-1. The Visual Studio Extensibility Workload
+1. Look for visual studio installer as follows.
+
+![Launch Vs Installer](images/49_50_VsInstaller.jpg)
+
+Now modify it as follows.
+
+![Modify in installer](images/49_60_VsInstaller_Modify.jpg)
+
+2. The Visual Studio Extensibility Workload
 
 ![Visual Studio Extensibility Workload](./images/50_50_VsWorkload.jpg)
 
-2. The second one is a community driven extension called 
+3. The second one is a community driven extension called 
 [Extensibility Essentials for Vs 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2022)
 
 # New Project creation
