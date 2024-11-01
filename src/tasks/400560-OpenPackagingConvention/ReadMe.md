@@ -6,7 +6,7 @@
 
 3. On my machine, 7z is installed. Right click the Word document and unzip it.
 
-![UnZip word](./images/50WordDoc50.jpg) 
+![UnZip word](./images/50_50_WordDoc.jpg) 
 
 4. Now take a look at the files.
 
@@ -14,11 +14,11 @@
 
 6. Open that file in note pad plus plus. 
 
-![Open xml on note pad ++](./images/60OpenXmlDocsInNotePadPlusPlus60.jpg) 
+![Open xml on note pad ++](./images/51_50_OpenXmlDocsInNotePadPlusPlus.jpg) 
 
 7. Ensure NotePad++ has the following plugins to deal with xml files.
 
-![Plugins for notepad ++](./images/70PlugInOfNotepadPlusPlus70.jpg) 
+![Plugins for notepad ++](./images/52_50_PlugInOfNotepadPlusPlus.jpg)
 
 8. Format the xml files. 
 

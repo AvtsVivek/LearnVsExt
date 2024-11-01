@@ -19,6 +19,9 @@ dotnet build --project ./AddingSimpleCommand.csproj
 
 # The following three build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
+
+nuget restore ./AddingSimpleCommand.sln
+
 devenv /build Debug ./AddingSimpleCommand.sln
 devenv /build Debug ./AddingSimpleCommand.csproj
 devenv /rootsuffix Exp /updateconfiguration

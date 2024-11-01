@@ -3,27 +3,27 @@
 
 2.  Add new item as follows.
 
-![Add new command](./images/51AddCommand60.jpg)
+![Add new command](./images/50_50_AddCommand.jpg)
 
 3. Note before and after adding the command, the changes in the project.
 
 Before
 
-![Before adding command](./images/50StartOfTemplate50.jpg)
+![Before adding command](./images/51_50_StartOfTemplate.jpg)
 
 After
 
-![After adding command](./images/52AfterAddingCommand50.jpg)
+![After adding command](./images/52_50_AfterAddingCommand.jpg)
 
 So you see quite a few things get added as a result of the new item. 
 
 4. Once you install, open visual studio and you will see the following. 
 
-![Installed command in visual studio](./images/53InstalledCommand50.jpg)
+![Installed command in visual studio](./images/53_50_InstalledCommand.jpg)
 
 5. Once clicked, see the following.
 
-![Installed command in visual studio](./images/54CommandExecuted50.jpg)
+![Installed command in visual studio](./images/54_50_CommandExecuted.jpg)
 
 6. AddingSimpleCommandPackage.vsct - The file extension vsct stands for **Visual Studio Command Table** - **vsct**
 
@@ -42,7 +42,7 @@ that is understood by Visual Studio
 
 13. CommandTable has Extern, Commands, and Symbols as the children
 
-![Visual Studio Command Table xml file](./images/55VsCommandTable50.jpg)
+![Visual Studio Command Table xml file](./images/55_50_VsCommandTable.jpg)
 
 14. **Include**: This element specifies a file that can be included in the current file. 
 
@@ -55,17 +55,17 @@ of the compilation output. For example:
 
 16. In the following image, where does the text **Invoke SimpleCommand** command come from?
 
-![Installed command in visual studio](./images/53InstalledCommand50.jpg)
+![Installed command in visual studio](./images/53_50_InstalledCommand.jpg)
 
 17. It comes from the xml file **AddingSimpleCommandPackage.vsct**. See Buttons element. 
 
 18. Launching Visul Studio for trying out. Press the debug button as shown. A new instance of Vs is launched side by side.
 
-![Launching visual studio](./images/56LaunchVs40.jpg)
+![Launching visual studio](./images/56_50_LaunchVs.jpg)
 
 19. A new instance of Vs is launched side by side.
 
-![Visual Studio in Exp Mode](./images/56VsInExpMode50.jpg)
+![Visual Studio in Exp Mode](./images/57_50_VsInExpMode.jpg)
 
 20. If you just want to start and run visual studio in experimental mode, run the following command.
 

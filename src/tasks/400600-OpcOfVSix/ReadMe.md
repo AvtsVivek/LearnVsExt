@@ -45,8 +45,10 @@ localized text during installation.
 
 12. Visual Studio installer uses [Content_Types].xml during installation of the package but does not install it. That is why we did not see this file in the install directory.
 
-![Extension Install location](./images/90InstallLocation91.jpg)
+![Extension Install location](./images/50_50_InstallLocation.jpg)
 
 13. Catalog.json: This is a JSON file generated and packaged inside the VSIX at the time of build. This JSON file contains the manifest and packages information for the extension.
 
 14. The catalog.json file also has "extensionDir". This will indicate where the extension will be installed. 
+
+

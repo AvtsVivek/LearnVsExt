@@ -37,11 +37,11 @@ public sealed class ProvideAutoLoadPackage : AsyncPackage
 
 3. Try running debugging this app with and without the above attributes. Each time you run the app, ensure to reset the exp vs as follows.
 
-![Reset Visual Studio Exp](../400500-VSixBlankProjectAnalysis/images/110ResetVsExpIntance50.jpg)
+![Reset Visual Studio Exp](../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
-4. Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called.
+1. Visual studio doesn’t load the Command until first use. Which means, our Command’s constructor of the package won’t be called.
 
-5. If we need to make our Command to initialize at Visual Studio startup, that is, if we need our ctor to be called at start up, we need to do a bit more. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file.
+2. If we need to make our Command to initialize at Visual Studio startup, that is, if we need our ctor to be called at start up, we need to do a bit more. To do that, we need to make our VSPackage to initialize at startup. This is done with the ProvideAutoLoad attribute in the package class file.
 
 ```cs
 public ProvideAutoLoadPackage()
