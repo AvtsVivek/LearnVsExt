@@ -77,7 +77,12 @@ devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
 
 22. Now to unstall it, just go to the Extensions(of the experimantal visual studio where you want to uninstall) -> Installed and uninstall it.
 
-20. What if you want to add, a tool tip? 
+23. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+
+24. What if you want to add, a tool tip? 
     1.  Add the following below the buttonText element in the xml file **AddingSimpleCommandPackage.vsct**.
 ```xml
 <ToolTipText>Invoke SimpleCommand Tooltip</ToolTipText>
