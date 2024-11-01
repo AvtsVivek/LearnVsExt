@@ -12,12 +12,14 @@ dotnet build --project ./VSixSdkProjectIntro.csproj
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
 # On my macine, the devenv exe is available at the following location.
-# C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE
+# C:\Program Files\Microsoft Visual Studio\2022\Professional or Community or Enterprise or whatever\Common7\IDE
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
 
 devenv /build Debug ./VSixSdkProjectIntro.sln
+
+nuget restore ./VSixSdkProjectIntro.sln
 
 pwd
 

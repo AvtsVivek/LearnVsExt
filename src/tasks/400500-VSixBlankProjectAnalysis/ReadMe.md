@@ -32,7 +32,7 @@ Now modify it as follows.
 
 ![Extension installation log](./images/54_50_InstallLog.jpg)
 
-5. Once installed, open the logs. You will see something like
+5. Once installed, open the logs. You will see something like the following. The location of those logs will be - C:\Users\YourUserName\AppData\Local\Temp
 
 > The extension has been installed to C:\Users\YourUserName\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
 
@@ -67,11 +67,50 @@ Now modify it as follows.
 
 ![Reset Experimental Visual Studio](./images/57_50_ResetVsExpIntance.jpg)
 
-10.  Finally after you uninstall, do take a look at the path C:\Users\koppviv\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
+10.  Finally after you uninstall, do take a look at the path C:\Users\YourUserName\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
 
 That should be gone now, after the uninstall.
 
 11. Note the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/microsoft.visualstudio.sdk) nuget package reference. This package is a meta package and contains the Visual Studio Software Development Kit (SDK). When you installed this NuGet package in a stand-alone project, it will bring down 150+ assemblies!!!
 
 ![Solution Explorer](./images/58_50SolutionExplorer.jpg)
+
+
+## Building the project from command line.
+
+```sh
+devenv /build Debug ./VSixSdkProjectIntro.sln
+```
+
+1. You may get the following error when you run the above. 
+
+```txt
+Microsoft Visual Studio 2022 Version 17.11.5.                                                                                                                    
+Copyright (C) Microsoft Corp. All rights reserved.                                                                                                               
+Build started at 12:30 PM...                                                                                                                                     
+1>------ Build started: Project: VSixSdkProjectIntro, Configuration: Debug Any CPU ------                                                                        
+1>C:\Program Files\dotnet\sdk\8.0.403\Sdks\Microsoft.NET.Sdk\targets\Microsoft.PackageDependencyResolution.targets(266,5): 
+error NETSDK1004: Assets file 'C:\Trials\Ex\LearnVsExt\src\apps\400510-VSixSdkProjectIntro\obj\project.assets.json' not found. 
+Run a NuGet package restore to generate this file.                      
+1>Done building project "VSixSdkProjectIntro.csproj" -- FAILED.                                                                                                  
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========                                                                                      
+========== Build completed at 12:31 PM and took 01.088 seconds ==========
+```
+
+2. So we need to restore the nuget packages.
+
+```sh
+nuget restore ./VSixSdkProjectIntro.sln
+```
+
+3. If you run the above, you may get nuget not found error.
+
+4. So we need to install nuget command line as follows from powersehll(amy be elivated previlages). This will install at this location C:\Program Files\PackageManagement\NuGet\Packages on windows.
+
+```ps
+Install-Package NuGet.CommandLine
+```
+
+5. You may also have to add the nuget.exe location(in this case C:\Program Files\PackageManagement\NuGet\Packages\NuGet.CommandLine.6.11.1\tools) to the path variable. 
+
 

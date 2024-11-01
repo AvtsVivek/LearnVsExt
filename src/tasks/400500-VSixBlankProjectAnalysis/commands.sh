@@ -19,6 +19,10 @@ dotnet build --project ./VSixBlankProjectAnalysis.csproj
 
 devenv /build Debug ./VSixBlankProjectAnalysis.sln
 
+# The above command may not successifully build the solution. You may need to run the following nuget restore command.
+
+nuget restore ./VSixBlankProjectAnalysis.sln
+
 pwd
 
 Get-ChildItem
