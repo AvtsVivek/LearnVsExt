@@ -26,10 +26,10 @@ devenv /build Debug ./AddingSimpleCommand.sln
 devenv /build Debug ./AddingSimpleCommand.csproj
 devenv /rootsuffix Exp /updateconfiguration
 
-# If you just want to start and run visual studi in experimental mode, run the following command.
+# If you just want to start, run visual studio in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
 
-# Now, you can see its installed in the visual studio alone.
+# Now, you can see the installed in the visual studio alone.
 # Now to unstall it, just go to the Extensions(of the experimantal visual studio where you want to uninstall) -> Installed and uninstall it.
 
 # If you want to install on the machine, do the following. 

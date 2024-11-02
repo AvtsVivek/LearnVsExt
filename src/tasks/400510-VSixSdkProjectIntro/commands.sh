@@ -17,9 +17,9 @@ dotnet build --project ./VSixSdkProjectIntro.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-devenv /build Debug ./VSixSdkProjectIntro.sln
-
 nuget restore ./VSixSdkProjectIntro.sln
+
+devenv /build Debug ./VSixSdkProjectIntro.sln
 
 pwd
 

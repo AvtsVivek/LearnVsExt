@@ -24,8 +24,8 @@ namespace AddingSimpleCommand
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(AddingSimpleCommandPackage.PackageGuidString)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [Guid(guid: PackageGuidString)]
+    [ProvideMenuResource(resourceID: "Menus.ctmenu", version: 1)]
     public sealed class AddingSimpleCommandPackage : AsyncPackage
     {
         /// <summary>

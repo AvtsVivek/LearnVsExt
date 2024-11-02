@@ -19,6 +19,9 @@ dotnet build --project ./AddingSimpleCmdSdkStyle.csproj
 
 # The following three build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
+
+nuget restore ./AddingSimpleCmdSdkStyle.sln
+
 devenv /build Debug ./AddingSimpleCmdSdkStyle.sln
 devenv /build Debug ./AddingSimpleCmdSdkStyle.csproj
 devenv /rootsuffix Exp /updateconfiguration
