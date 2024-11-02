@@ -17,7 +17,13 @@ dotnet build --project ./ReadVsStoreConfigSettings.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
+nuget restore ./AddingSimpleCmdSdkStyle.sln
+
 devenv /build Debug ./ReadVsStoreConfigSettings.sln
+devenv /build Debug ./ReadVsStoreConfigSettings.csproj
+
+# If you just want to start and run visual studi in experimental mode, run the following command.
+devenv.exe /RootSuffix Exp ./ReadVsStoreConfigSettings.sln
 
 pwd
 

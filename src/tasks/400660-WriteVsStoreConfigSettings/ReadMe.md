@@ -9,43 +9,43 @@
 
 4. Visual Studio Setting store is where Visual Studio, during and after installation, stores many of its settings. There is an excellent tool to visualize this. This tool comes in the form of [an extension and can be installed from here](https://marketplace.visualstudio.com/items?itemName=PaulHarrington.SettingsStoreExplorerPreview). For this exercise, **do install this extension**. This is a requirement.
 
-![Settings Store Explorer](./images/50SettingsStoreExplorer50.jpg)
+![Settings Store Explorer](./images/50_50_SettingsStoreExplorer.jpg)
 
 5. Build and Run the project. Look at Tools menu.
 
-![Tools Menu](./images/51ToolsMenu50.jpg)
+![Tools Menu](./images/51_50_ToolsMenu.jpg)
 
 6. External Tools
 
-![External Tools](./images/52ExternalTools50.jpg)
+![External Tools](./images/52_50_ExternalTools.jpg)
 
 7. Also in the exp instance(not the regular intance of Visual Studio), observe that the Settings Store Explorer is disabled.
 
-![Setting Store Explorer](./images/52SettingStoreExplorerDisabled51.jpg)
+![Setting Store Explorer](./images/52_53_SettingStoreExplorerDisabled.jpg)
 
 8. Enable this extension and close the exp instance. Then start the debugging again. Press F5.
 
 9. Now ensure the extension is enabled.
 
-![Setting Store Explorer After](./images/52SettingStoreExplorerDisabled52After.jpg)
+![Setting Store Explorer After](./images/52_54_SettingStoreExplorerDisabledAfter.jpg)
 
 10. Now open the Setting Store Explorer in the Exp instance. View -> Other Windows -> Settings Store Explorer.
 
-![Setting Store Explorer Opened](./images/52SettingStoreExplorer53.jpg)
+![Setting Store Explorer Opened](./images/52_51_SettingStoreExplorer.jpg)
 
 11.  Now click the new command Tools -> Invoke WriteToUserSettingsCOmmand.  
 
-![Tools Menu After](./images/53ToolsMenuAfter50.jpg)
+![Tools Menu After](./images/53_50_ToolsMenuAfter.jpg)
 
 12. You should see a message saying Installing Notepad. Now observe again.
 
 12. External Tools After
 
-![External Tools After](./images/54ExternalToolsAfter50.jpg)
+![External Tools After](./images/54_50_ExternalToolsAfter.jpg)
 
 13. Notice the Settings Store Explorer as well. Invoke Refresh if needed.
 
-![External Tools After](./images/52SettingStoreExplorer53AfterRefresh.jpg)
+![External Tools After](./images/52_52_SettingStoreExplorerAfterRefresh.jpg)
 
 14. The key here is the [ShellSettingsManager](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.settings.shellsettingsmanager) class. This is the gateway class to reach for the settings stored inside the Visual Studio 
 
