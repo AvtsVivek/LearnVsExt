@@ -17,7 +17,12 @@ dotnet build --project ./WriteVsStoreConfigSettings.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-devenv /build Debug ./WriteVsStoreConfigSettings.sln
+nuget restore ./WriteVsStoreConfigSettings.sln
+
+devenv /Rebuild Debug ./WriteVsStoreConfigSettings.sln
+
+# If you just want to start and run visual studi in experimental mode, run the following command.
+devenv.exe /RootSuffix Exp ./WriteVsStoreConfigSettings.sln
 
 pwd
 

@@ -101,7 +101,8 @@ namespace WriteVsStoreConfigSettings.Commands
             var compareInfo = CultureInfo.InvariantCulture.CompareInfo;
             for (int i = 0; i < toolCount; i++)
             {
-                if (compareInfo.IndexOf(userSettingsStore.GetString("External Tools", "ToolCmd" + i), "Notepad", CompareOptions.IgnoreCase) >= 0)
+                var externalToolsString = userSettingsStore.GetString(collectionPath: "External Tools", propertyName: "ToolCmd" + i);
+                if (compareInfo.IndexOf(source: externalToolsString, value: "Notepad", CompareOptions.IgnoreCase) >= 0)
                 {
                     hasNotepad = true;
                     break;
@@ -114,12 +115,12 @@ namespace WriteVsStoreConfigSettings.Commands
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
-                this.package,
-                hasNotepadMessage,
+                serviceProvider: this.package,
+                message: hasNotepadMessage,
                 title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                icon: OLEMSGICON.OLEMSGICON_INFO,
+                msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
             if (!hasNotepad)
             {

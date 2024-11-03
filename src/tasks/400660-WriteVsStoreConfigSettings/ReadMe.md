@@ -29,23 +29,27 @@
 
 ![Setting Store Explorer After](./images/52_54_SettingStoreExplorerDisabledAfter.jpg)
 
-10. Now open the Setting Store Explorer in the Exp instance. View -> Other Windows -> Settings Store Explorer.
+10. Now open the Setting Store Explorer in the Exp instance of Visual Studio. View -> Other Windows -> Settings Store Explorer. Now look for `External Tools` in Users(see below)
 
 ![Setting Store Explorer Opened](./images/52_51_SettingStoreExplorer.jpg)
 
-11.  Now click the new command Tools -> Invoke WriteToUserSettingsCOmmand.  
+11. Now click the new command Tools -> Invoke WriteToUserSettingsCOmmand.  
 
 ![Tools Menu After](./images/53_50_ToolsMenuAfter.jpg)
 
 12. You should see a message saying Installing Notepad. Now observe again.
 
-12. External Tools After
+13. External Tools After
 
 ![External Tools After](./images/54_50_ExternalToolsAfter.jpg)
 
-13. Notice the Settings Store Explorer as well. Invoke Refresh if needed.
+14. Notice the Settings Store Explorer as well. Invoke Refresh if needed.
 
 ![External Tools After](./images/52_52_SettingStoreExplorerAfterRefresh.jpg)
 
-14. The key here is the [ShellSettingsManager](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.settings.shellsettingsmanager) class. This is the gateway class to reach for the settings stored inside the Visual Studio 
+15. The key here is the [ShellSettingsManager](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.settings.shellsettingsmanager) class. This is the gateway class to reach for the settings stored inside the Visual Studio 
+
+16. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
