@@ -34,8 +34,11 @@ devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml ./UseSVsActivityLogService.s
 
 7. Now check for the logs in the file C:\Temp\MyVSLog.xml.
 
-8. Some references.
-   1. https://learn.microsoft.com/en-us/visualstudio/ide/reference/devenv-command-line-switches
-   2. https://learn.microsoft.com/en-us/visualstudio/ide/reference/log-devenv-exe
-   3. https://learn.microsoft.com/en-us/visualstudio/extensibility/using-and-providing-services
-   4. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/service-essentials
+> [!TIP]
+> The activity log is always turned on. Visual Studio keeps a rolling buffer of the last 100 entries as well as the first 10 entries, which have general configuration information.
+
+## References.
+1. https://learn.microsoft.com/en-us/visualstudio/ide/reference/devenv-command-line-switches
+2. https://learn.microsoft.com/en-us/visualstudio/ide/reference/log-devenv-exe
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/using-and-providing-services
+4. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/service-essentials
