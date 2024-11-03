@@ -10,21 +10,21 @@
 
 5. Add the following code in the InitializeAsync method. This simply gets the log service and then adds information level logs.
 
-```cs
-var log = await GetServiceAsync(typeof(SVsActivityLog)) as IVsActivityLog;
+    ```cs
+    var log = await GetServiceAsync(typeof(SVsActivityLog)) as IVsActivityLog;
 
-if (log == null) return;
+    if (log == null) return;
 
-int hr = log.LogEntry((UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION,
-    this.ToString(),
-    string.Format(CultureInfo.CurrentCulture,
-    "Called for: {0}", this.ToString()));
+    int hr = log.LogEntry((UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION,
+        this.ToString(),
+        string.Format(CultureInfo.CurrentCulture,
+        "Called for: {0}", this.ToString()));
 
-hr = log.LogEntry((UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION,
-    this.ToString(),
-    string.Format(CultureInfo.CurrentCulture,
-    "Test info. asdfasdf", this.ToString()));  
-```
+    hr = log.LogEntry((UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION,
+        this.ToString(),
+        string.Format(CultureInfo.CurrentCulture,
+        "Test info. asdfasdf", this.ToString()));   
+    ```
 
 6. Now run commands something like the following(see the commands.sh file). Here we are launching the exp instance in which the extensioni is installed, and then we are also enabling logging as well. So when we invoke our extension, it logs. And you can see that logs in the file provided.
 
@@ -32,7 +32,13 @@ hr = log.LogEntry((UInt32)__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION,
 devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml ./UseSVsActivityLogService.sln
 ```
 
-7. Now check for the logs in the file C:\Temp\MyVSLog.xml.
+7. Now check for the logs in the file C:\Temp\MyVSLog.xml. Open the folder C:\Temp in vs code.
+
+![Log file in Vs Code](Images/50_50_LogFileInVsCode.png)
+
+8. 
+
+
 
 > [!TIP]
 > The activity log is always turned on. Visual Studio keeps a rolling buffer of the last 100 entries as well as the first 10 entries, which have general configuration information.

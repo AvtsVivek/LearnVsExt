@@ -17,18 +17,26 @@ dotnet build --project ./UseSVsActivityLogService.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
+nuget restore ./UseSVsActivityLogService.sln
+
 devenv /build Debug ./UseSVsActivityLogService.sln
+
+devenv /Rebuild Debug ./UseSVsActivityLogService.sln
+
 # If you just want to start and run visual studi in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./UseSVsActivityLogService.sln 
 
 # This example is about logging. If you want to see the logs run the following.
+# But before that, to start from a clean slate, just delete the temp folder, if any
+Remove-Item -LiteralPath "C:/Temp" -Force -Recurse
+
 devenv.exe /log C:\Temp\MyVSLog.xml
 
 # The problem with the above command is it will output logs. But we want to test our logging code.
 # For that we have to install the out extension in an experimental instance along with logs.
 # So run the following command. Here we are using log switch.
 # Also note this starts visual studio in experimental mode and without any solution loaded.
-devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml 
+devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml
 
 # If you want any solution to be loaded, use the following.
 devenv.exe /RootSuffix Exp /log C:\Temp\MyVSLog.xml ./UseSVsActivityLogService.sln
