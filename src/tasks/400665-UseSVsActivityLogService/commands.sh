@@ -60,5 +60,5 @@ Get-ChildItem
 # YourUserName should be replaced with your user name. 
 # The extension has been installed to C:\Users\YourUserName\AppData\Local\Microsoft\VisualStudio\17.0_c9ef2fd3\Extensions\fyp2abr3.n2t\
 
-
+Remove-Item -LiteralPath "C:/Temp" -Force -Recurse
 

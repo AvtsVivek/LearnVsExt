@@ -19,7 +19,12 @@
 
 8. Before assigning the key we need to ensure that keyboard shortcut is not already assigned already not in use. So Tools -> Options -> Keyboard as follows. We see here that Ctrl + S is already assigned. So try Alt + S.
 
-![Tools Options Keyboard](./images/50_50ToolsOptionsKeyboardShortcurChck.jpg)
+![Tools Options Keyboard](./images/50_50_ToolsOptionsKeyboardShortcurChck.jpg)
 
-1.   Reference.
-   1. https://learn.microsoft.com/en-us/visualstudio/extensibility/keybinding-element#attributes
+9. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+## References
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/keybinding-element#attributes
+

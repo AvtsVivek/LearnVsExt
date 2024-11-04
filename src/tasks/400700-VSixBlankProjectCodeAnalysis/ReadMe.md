@@ -23,17 +23,17 @@ the package that would be exposed by the assembly created by building this proje
 
 11. Note the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/microsoft.visualstudio.sdk) nuget package reference. This package is a meta package and contains the Visual Studio Software Development Kit (SDK). When you installed this NuGet package in a stand-alone project, it will bring down 150+ assemblies!!!
 
-![Solution Explorer](./images/50SolutionExplorer50.jpg)
+![Solution Explorer](./images/50_50_SolutionExplorer.jpg)
 
 Meta package is a special NuGet package that describes a group of packages that makes sense together. For example, Microsoft defined a meta package named Microsoft.NETCore.App, which contains all the NuGet packages that are needed to develop a .NET Core app. Likewise, Microsoft.VisualStudio.SDK is a meta package that groups a number of NuGet packages that are needed to develop extensions to extend Visual Studio.
 
 12. Open the vsix manifest file in Visula Studio by double clicking it.
 
-![VSix Manifest in Visual Studio](./images/60VSixManifest60.jpg)
+![VSix Manifest in Visual Studio](./images/51_50_VSixManifest.jpg)
 
 13. This is where we define the supported Visual Studio version for this product;
 
-![VSix Manifest in Visual Studio Install Targets](./images/70VSixManifestInstallTargets75.jpg)
+![VSix Manifest in Visual Studio Install Targets](./images/52_50_VSixManifestInstallTargets.jpg)
 
 
 | Version | Name               |
@@ -50,7 +50,12 @@ Meta package is a special NuGet package that describes a group of packages that 
 
 14. Also take a look at the Assets tab, as below.
 
-![VSix Manifest in Visual Studio Assets Tab](./images/71VSixManifestAssets50.jpg)
+![VSix Manifest in Visual Studio Assets Tab](./images/53_50_VSixManifestAssets.jpg)
 
 15. Take a look at this blog post. 
     1.  [Visual Studio extensions and version ranges demystified](https://devblogs.microsoft.com/visualstudio/visual-studio-extensions-and-version-ranges-demystified/)
+
+16. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+

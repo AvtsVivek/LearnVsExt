@@ -17,9 +17,12 @@ dotnet build --project ./AssignKeyboardShortcut.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
+nuget restore ./AssignKeyboardShortcut.sln
+
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
 devenv /build Debug ./AssignKeyboardShortcut.sln
+devenv /Rebuild Debug ./AssignKeyboardShortcut.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./AssignKeyboardShortcut.sln
