@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/400860-ReadOptionsValues
+cd src/tasks/419830-WpfUIElementDialogPage
 
-cd src/apps/400860-ReadOptionsValues
+cd src/apps/419830-WpfUIElementDialogPage
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./ReadOptionsValues.csproj
+dotnet build --project ./WpfUIElementDialogPage.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,10 +19,10 @@ dotnet build --project ./ReadOptionsValues.csproj
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./ReadOptionsValues.sln
+devenv /build Debug ./WpfUIElementDialogPage.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./ReadOptionsValues.sln
+devenv.exe /RootSuffix Exp ./WpfUIElementDialogPage.sln
 
 pwd
 
@@ -35,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./ReadOptionsValues.vsix
+./WpfUIElementDialogPage.vsix
 
 # Once installed, open the logs. You will see something like. 
 # YourUserName should be replaced with your user name. 

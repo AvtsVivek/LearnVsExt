@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/400725-ImageManifestToolsExten
+cd src/tasks/417725-ImageManifestToolsExten
 
-cd src/apps/400725-ImageManifestToolsExten
+cd src/apps/417725-ImageManifestToolsExten
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

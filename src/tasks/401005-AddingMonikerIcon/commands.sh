@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/400830-WpfUIElementDialogPage
+cd src/tasks/401005-AddingMonikerIcon
 
-cd src/apps/400830-WpfUIElementDialogPage
+cd src/apps/401005-AddingMonikerIcon
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./WpfUIElementDialogPage.csproj
+dotnet build --project ./AddingMonikerIcon.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -17,12 +17,11 @@ dotnet build --project ./WpfUIElementDialogPage.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-# The following build commands does not seem to work. 
-# For debugging, build using visual studio only!!!
-devenv /build Debug ./WpfUIElementDialogPage.sln
+nuget restore ./AddingMonikerIcon.sln
 
-# If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./WpfUIElementDialogPage.sln
+devenv /build Debug ./AddingMonikerIcon.sln
+
+devenv /Rebuild Debug ./AddingMonikerIcon.sln
 
 pwd
 
@@ -35,7 +34,8 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./WpfUIElementDialogPage.vsix
+./AddingMonikerIcon.vsix
+
 
 # Once installed, open the logs. You will see something like. 
 # YourUserName should be replaced with your user name. 

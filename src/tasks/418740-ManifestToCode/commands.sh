@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/400740-ManifestToCode
+cd src/tasks/418740-ManifestToCode
 
-cd src/apps/400740-ManifestToCode
+cd src/apps/418740-ManifestToCode
 
 # Run the following command. 
 ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/400740-ManifestToCode/images/Save.png /assembly:ManifestToCodeAssembly /manifest:MyImageManifest.imagemanifest
