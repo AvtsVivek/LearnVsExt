@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.Imaging;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
@@ -91,6 +92,8 @@ namespace AddingMonikerIcon.Commands
             ThreadHelper.ThrowIfNotOnUIThread();
             string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
             string title = "MainMenuCommand";
+
+            // KnownMonikers
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(

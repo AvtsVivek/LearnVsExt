@@ -17,7 +17,11 @@ dotnet build --project ./AddingMonikerIcon.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
+nuget restore ./AddingMonikerIcon.sln
+
 devenv /build Debug ./AddingMonikerIcon.sln
+
+devenv /Rebuild Debug ./AddingMonikerIcon.sln
 
 pwd
 

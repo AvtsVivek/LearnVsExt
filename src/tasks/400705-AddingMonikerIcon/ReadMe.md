@@ -8,17 +8,17 @@
 
 4. Open Visual Studio with or without code. Feature Search(Ctrl + Q) for known monikers. You will see a Known Moniker Explorer Window.
 
-![Known Moniker Explorer](./images/50FeatureSearchKnown50.jpg)
+![Known Moniker Explorer](./images/50_50_FeatureSearchKnown.jpg)
 
 5. You ccan now search for icons. There are many readly available.
 
-![Seach for existing icons in Known Moniker Explorer](./images/51KnownMonikerExplorer50.jpg)
+![Seach for existing icons in Known Moniker Explorer](./images/51_50_KnownMonikerExplorer.jpg)
 
 6. Lets create a new VSIX package.
 
 7. Add a Commands folder. Then add a command as follows.
 
-![Adding new command](./images/54NewCommand50.jpg) 
+![Adding new command](./images/54_50_NewCommand.jpg) 
 
 8. Now open VSCT file, the Visual Studio Command Table file. We dont want to use the default png file. So delete the following. I have commented them in the code.
 
@@ -66,29 +66,29 @@ and finally
 
 13. From the known monikers you can select one, and you can even export, it as png, jpg or gif to any location on the disc.
 
-![Export Save PNG](./images/52ExportSaveImage51.jpg)
+![Export Save PNG](./images/52_50_ExportSaveImage.jpg)
 
 14. Add it to resources.
 
-![Save it to resources folder](./images/53SaveImageToResourcesFolder53.jpg)
+![Save it to resources folder](./images/53_50_SaveImageToResourcesFolder.jpg)
 
 15. Then include that file in to the proiect.
 
 16. Next ensure it to be included in VSIX 
 
-![Save it to resources folder](./images/53SaveImageToResourcesFolder54IncludeInVSix.jpg)
+![Save it to resources folder](./images/53_51_SaveImageToResourcesFolder54IncludeInVSix.jpg)
 
 17. In the manifest, put this as icon.
 
-![Save it to resources folder](./images/53SaveImageToResourcesFolder55IconInManifest.jpg)
+![Save it to resources folder](./images/53_52_SaveImageToResourcesFolder55IconInManifest.jpg)
 
 18. Now Reset the exp instnace, buid and run.
 
-![Exp Instance](./images/55InstalledExtensions50.jpg)
+![Exp Instance](./images/55_50_InstalledExtensions.jpg)
 
 19.  Also look at the command in the tools menu.
 
-![Exp Instance](./images/56InstalledExtensions50.jpg)
+![Exp Instance](./images/56_50_InstalledExtensions.jpg)
 
 20.  Next. Need to understand 
      1.   [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
