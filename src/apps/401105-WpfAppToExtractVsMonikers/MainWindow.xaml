@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:WpfAppToExtractVsMonikers"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="HereWeGo" x:Name="LoadMoniker" Click="LoadMoniker_Click"></Button>
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="2" Grid.Column="2" Content="Get count of Moniker Images" x:Name="LoadMoniker" Click="LoadMoniker_Click"></Button>
+        <local:KnownMonikersExplorerControl Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" />
     </Grid>
 </Window>

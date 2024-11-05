@@ -40,9 +40,7 @@
                                             <EventSetter Event="Click" Handler="Export_Click"/>
                                         </Style>
                                     </MenuItem.Style>
-                                    <MenuItem.Icon>
-                                        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Export}" />
-                                    </MenuItem.Icon>
+
                                 </MenuItem>
                                 <MenuItem Header="Copy Name to Clipboard">
                                     <MenuItem.Style>
@@ -50,9 +48,7 @@
                                             <EventSetter Event="Click" Handler="CopyName_Click"/>
                                         </Style>
                                     </MenuItem.Style>
-                                    <MenuItem.Icon>
-                                        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Copy}" />
-                                    </MenuItem.Icon>
+
                                 </MenuItem>
                                 <MenuItem Header="Copy GUID &amp; ID to Clipboard">
                                     <MenuItem.Style>
@@ -60,9 +56,7 @@
                                             <EventSetter Event="Click" Handler="CopyGuidAndId_Click"/>
                                         </Style>
                                     </MenuItem.Style>
-                                    <MenuItem.Icon>
-                                        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Copy}" />
-                                    </MenuItem.Icon>
+
                                 </MenuItem>
                             </ContextMenu>
                         </Setter.Value>
@@ -73,8 +67,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <imaging:CrispImage MinWidth="16" MinHeight="16" Moniker="{Binding Moniker, IsAsync=True}" Margin="0,0,5,0" />
-                        <Label Content="{Binding Name}" />
+                        <Image MinHeight="16" MinWidth="16" Margin="0,0,5,0" Source="" />
+                        <Label Content="{Binding ImageMonikerName}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

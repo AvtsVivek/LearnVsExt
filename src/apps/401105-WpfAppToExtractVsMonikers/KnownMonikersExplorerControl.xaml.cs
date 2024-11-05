@@ -1,8 +1,10 @@
-﻿using Microsoft.VisualStudio.Imaging.Interop;
+﻿using Microsoft.VisualStudio.Imaging;
+using Microsoft.VisualStudio.Imaging.Interop;
 using Microsoft.VisualStudio.Shell;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,10 +27,16 @@ namespace WpfAppToExtractVsMonikers
     {
         private readonly ServicesDTO _state;
 
-        public KnownMonikersExplorerControl(ServicesDTO state)
+        public KnownMonikersExplorerControl()
         {
-            Loaded += OnLoaded;
+            PropertyInfo[] properties = typeof(KnownMonikers).GetProperties(BindingFlags.Static | BindingFlags.Public);
+
+            var state = new ServicesDTO
+            {
+                Monikers = properties.Select(p => new KnownMonikersViewModel(p.Name, (ImageMoniker)p.GetValue(null, null))).ToList()
+            };
             _state = state;
+            Loaded += OnLoaded;
             DataContext = this;
             InitializeComponent();
         }
@@ -105,7 +113,7 @@ namespace WpfAppToExtractVsMonikers
         private void CopyName_Click(object sender, RoutedEventArgs e)
         {
             var model = (KnownMonikersViewModel)list.SelectedItem;
-            Clipboard.SetText(model.Name);
+            Clipboard.SetText(model.ImageMonikerName);
         }
 
         private void CopyGuidAndId_Click(object sender, RoutedEventArgs e)
