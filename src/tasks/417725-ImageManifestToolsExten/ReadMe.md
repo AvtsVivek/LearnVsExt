@@ -30,6 +30,8 @@
 
 10. The generated .imagemanifest file should be included in and deployed as a part of a Visual Studio extension (.vsix).
 
+11. So once the imagemanifest file is created either by using ManirestFromResouces(subsequent example) or ImageManifestToolsExtension, you can go to the next step of Manifest to code in the subsequent example. Then we can aclutally use the image in the vs extension.
+
 ## References 
 
 1. [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)

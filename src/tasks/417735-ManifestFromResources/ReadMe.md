@@ -61,3 +61,7 @@ ManifestFromResources /assembly:ResourceAssembly /manifest:MyImageManifest.image
 
 12.  Now observe the imagemanifest file.   
     ![Add Git Hub](./images/51_50_AddGitHub.jpg)
+
+13. So once the imagemanifest file is created either by using ManirestFromResouces or ImageManifestToolsExtension, you can go to the next step of Manifest to code in the subsequent example. Then we can aclutally use the image in the vs extension.
+
+14.  
