@@ -17,4 +17,6 @@
 
 3. https://learn.microsoft.com/en-us/answers/questions/2115462/where-to-download-visual-studio-image-library-view
 
-4. 
+4. https://github.com/MicrosoftDocs/visualstudio-docs/blob/main/docs/extensibility/internals/image-library-viewer.md#sample-output
+
+5. 

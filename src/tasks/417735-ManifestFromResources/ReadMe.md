@@ -24,7 +24,7 @@
 ManifestFromResources /resources:C:/Trials/Ex/LearnVsExt/src/apps/400735-ManifestFromResources/images/Save.png /assembly:ManifestFromResourceAssembly /manifest:MyImageManifest.imagemanifest
 ```
 
-7. The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/400735-ManifestFromResources
+7. The above command should create a file by the name MyImageManifest.imagemanifest in the folder src/apps/417735-ManifestFromResources
 
 8. Now run the following command. The difference from the above is the assembly. Earlier it was ManifestFromResourceAssembly. Now it is ResourceAssembly 
 ```cmd

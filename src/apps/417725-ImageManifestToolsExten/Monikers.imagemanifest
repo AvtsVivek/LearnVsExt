@@ -4,7 +4,7 @@
 <ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
   <Symbols>
     <String Name="Resources" Value="/ImageManifestToolsExten;Component/images" />
-    <Guid Name="MonikersGuid" Value="{5683705a-a7e4-40a8-a7b8-f7493cda6f18}" />
+    <Guid Name="MonikersGuid" Value="{7cc36c1a-686e-46a5-9129-a3ca8b846b1f}" />
     <ID Name="Save" Value="0" />
   </Symbols>
   <Images>
