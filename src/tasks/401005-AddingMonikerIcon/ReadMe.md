@@ -95,3 +95,10 @@ and finally
      2.   Also [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
 
 
+## References
+1. https://learn.microsoft.com/en-us/users/koppulavivekanand-5066/
+
+2. https://learn.microsoft.com/en-us/answers/questions/2115462/where-to-download-visual-studio-image-library-view
+
+3. 
+  
