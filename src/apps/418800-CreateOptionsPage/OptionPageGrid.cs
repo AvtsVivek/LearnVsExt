@@ -7,9 +7,9 @@ namespace CreateOptionsPage
     {
         private int optionInt = 256;
 
-        [Category("My Category")]
+        [Category("My int Category")]
         [DisplayName("My Integer Option")]
-        [Description("My integer option")]
+        [Description("An option of the type integer")]
         public int OptionInteger
         {
             get { return optionInt; }

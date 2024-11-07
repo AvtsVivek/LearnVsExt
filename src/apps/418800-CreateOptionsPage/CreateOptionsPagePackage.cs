@@ -25,7 +25,7 @@ namespace CreateOptionsPage
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(CreateOptionsPagePackage.PackageGuidString)]
+    [Guid(guid: PackageGuidString)]
     public sealed class CreateOptionsPagePackage : AsyncPackage
     {
         /// <summary>

@@ -1,9 +1,5 @@
 ## Introducing Image Manifest Tools Extension
 
-1. References 
-   1. [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
-   2. Also [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
-   3. [Manifest from Resources](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/manifest-from-resources)
 
 2. Follow the steps from earlier example. Look at the earlier example [400735-ManifestFromResources](https://github.com/AvtsVivek/LearnVsExt/tree/main/src/tasks/400735-ManifestFromResources)
 
@@ -22,3 +18,11 @@ ManifestToCode /manifest:MyImageManifest.imagemanifest /language:CSharp /namespa
 ```
 
 6. The above command generats the cs files. Next include files in the project. Build the project and ensure that it builds.
+
+## References 
+1. [image service tools](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/image-service-tools)
+
+2. [image service and catalog](https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog)
+
+3. [Manifest from Resources](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/manifest-from-resources)
+

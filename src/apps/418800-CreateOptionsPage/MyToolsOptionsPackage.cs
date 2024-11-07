@@ -1,16 +1,9 @@
-﻿using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
+﻿using Microsoft.VisualStudio.Shell;
 using System;
-using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
 namespace CreateOptionsPage
@@ -33,15 +26,12 @@ namespace CreateOptionsPage
     /// </para>
     /// </remarks>
     /// 
-    // [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
-    // [Guid(GuidList.guidMyToolsOptionsPkgString)]
-    [ProvideOptionPage(typeof(OptionPageGrid), "My Category", "My Grid Page", 0, 0, true)]
-
+    [InstalledProductRegistration(productName: "#110", productDetails: "#112", productId: "1.0", IconResourceID = 400)]
+    [ProvideMenuResource(resourceID: "Menus.ctmenu", version: 1)]
+    [ProvideOptionPage(pageType: typeof(OptionPageGrid), categoryName: "My Category", pageName: "My Grid Page", categoryResourceID: 0, pageNameResourceID: 0, supportsAutomation: true)]
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(MyToolsOptionsPackage.PackageGuidString)]
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
+    [Guid(guid: PackageGuidString)]
+    [SuppressMessage(category: "StyleCop.CSharp.DocumentationRules", checkId: "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     public sealed class MyToolsOptionsPackage : AsyncPackage
     {
         /// <summary>
@@ -75,7 +65,7 @@ namespace CreateOptionsPage
             Debugger.Break();
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
         }
 
         #endregion

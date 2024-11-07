@@ -1,11 +1,13 @@
 ## Introduces DialogPage for Options Grid
 
-1. References 
-   1. [Create Options Page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page)
+1. This walkthrough creates a simple Tools/Options page that uses a property grid to examine and set properties.
 
 2. Create a VSIX package. Then add a Package.
 
-3. Create a class like the following derived from DialogPage.
+![Add new package](images/49_50_AddNewPackage.png)
+
+3. Create a class like the following derived from `DialogPage`.
+
 ```cs
 public class OptionPageGrid : DialogPage
 {
@@ -21,7 +23,9 @@ public class OptionPageGrid : DialogPage
    }
 }
 ```
+
 4. Ensure the attributes to the newly added package are as follows.
+
 
 ```cs
 [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
@@ -55,3 +59,11 @@ Debugger.Break();
 9. Now build, run and check. The Break() method in CreateOptionsPagePackage is never hit. This shows that this file can be removed.
 
 10. Finally, you dont have to add a new package, just as we added **MyToolsOptionsPackage**. We can use the existing one instead. CreateOptionsPagePackage. Just ensure the attributes are added as shown above. 
+
+11. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+## References 
+1. [Create Options Page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page)
+
