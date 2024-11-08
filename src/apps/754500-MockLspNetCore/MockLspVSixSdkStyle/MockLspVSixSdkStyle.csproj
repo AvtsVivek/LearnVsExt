@@ -47,7 +47,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Client" Version="17.1.68" />
 		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol" Version="17.1.8" />
-		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.8.33-preview1" />
+		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.11.439" />
 
 		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
 		<Reference Include="System.Design" />
