@@ -16,10 +16,12 @@ dotnet build --project ./ReadOptionsValues.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
+nuget restore ./ReadOptionsValues.sln
+
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./ReadOptionsValues.sln
+devenv /Rebuild Debug ./ReadOptionsValues.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./ReadOptionsValues.sln

@@ -1,11 +1,10 @@
 ## Introduces DialogPage for Options Grid with string option
 
-1. References 
-   1. [Create a Tools Options custom page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page#create-a-tools-options-custom-page)
+1. This is similar to earlier example 400800-CreateOptionsPage
 
-2. This is similar to earlier example 400800-CreateOptionsPage
+2. In this example, we will NOT be adding another package as in the earlier example(400800-CreateOptionsPage). But instead we will be using the existing package class created by default when we use the VSixPackage template to create the project.  
 
-3. In this example, we will not be adding another package as in the earlier example(400800-CreateOptionsPage). But instead we will be using the existing package class created by default when we use the VSixPackage template to create the project.  
+3. Reading of user setting values is delt in subsequent examples.
 
 4. Create a VSIX package project similar to earlier examples. Then add the following class to the project.
 ```cs
@@ -110,4 +109,12 @@ public partial class MyUserControl : UserControl
 ![Tools Options](./images/50_50CustomOption.jpg)
 
 12. Changes that text and reopen the visual studio. 
+
+13. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+
+## Reference
+1. [Create a Tools Options custom page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page#create-a-tools-options-custom-page)
 

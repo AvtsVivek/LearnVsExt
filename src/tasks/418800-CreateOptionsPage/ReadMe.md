@@ -1,8 +1,10 @@
 ## Introduces DialogPage for Options Grid
 
-1. This walkthrough creates a simple Tools/Options page that uses a property grid to examine and set properties.
+1. In Visual Studio there are two main ways to maintain user preferences. The Tools > Options pages allow users to set their own values for many different kinds of settings, both general and language-specific. User settings allow users to specify general Visual Studio configuration properties. For more information about options pages, see [Options and options pages](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages). For more information about user settings, see [Support for user settings](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/support-for-user-settings).
 
-2. Create a VSIX package. Then add a Package.
+2. This walkthrough creates a simple Tools/Options page that uses a property grid to examine and set properties. This will allow users to set values for different kinds of settings. Reading of those values is delt in subsequent examples.
+
+3. Create a VSIX package. Then add a Package.
 
 ![Add new package](images/49_50_AddNewPackage.png)
 
@@ -66,4 +68,7 @@ Debugger.Break();
 
 ## References 
 1. [Create Options Page](https://learn.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page)
+
+2. [options-and-options-pages](https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/options-and-options-pages)
+
 

@@ -7,12 +7,12 @@ using Task = System.Threading.Tasks.Task;
 namespace ReadOptionsValues
 {
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(ReadOptionsValuesPackage.PackageGuidString)]
-    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideOptionPage(typeof(OptionPageGrid), "My Category", "My Grid Page", 0, 0, true)]
-    [ProvideOptionPage(typeof(OptionPageCustom), "My Category", "My Custom Page", 0, 0, true)]
-    [ProvideOptionPage(typeof(ExternalSearchOptionPage), "My Category", "General", 1, 1, true, new string[] { "External Search Options" })]
+    [Guid(guid: PackageGuidString)]
+    [InstalledProductRegistration(productName: "#110", productDetails: "#112", productId: "1.0", IconResourceID = 400)]
+    [ProvideMenuResource(resourceID: "Menus.ctmenu", version: 1)]
+    [ProvideOptionPage(pageType: typeof(OptionPageGrid), categoryName: "My Category", pageName: "My Grid Page", categoryResourceID: 0, pageNameResourceID: 0, supportsAutomation: true)]
+    [ProvideOptionPage(pageType: typeof(OptionPageCustom), categoryName: "My Category", pageName: "My Custom Page", categoryResourceID: 0, pageNameResourceID: 0, supportsAutomation: true)]
+    [ProvideOptionPage(pageType: typeof(ExternalSearchOptionPage), categoryName: "My Category", pageName: "General", categoryResourceID: 1, pageNameResourceID: 1, supportsAutomation: true, keywords: new string[] { "External Search Options" })]
     public sealed class ReadOptionsValuesPackage : AsyncPackage
     {
         public const string PackageGuidString = "27988516-9079-46fd-a438-b4b8729e3fe4";
@@ -20,8 +20,8 @@ namespace ReadOptionsValues
         #region Package Members
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await ReadOptionsValues.Commands.ReadIntOptionCommand.InitializeAsync(this);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await Commands.ReadIntOptionCommand.InitializeAsync(package: this);
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace ReadOptionsValues
         {
             get
             {
-                var optionPageGrid = (OptionPageGrid)GetDialogPage(typeof(OptionPageGrid));
+                var optionPageGrid = (OptionPageGrid)GetDialogPage(dialogPageType: typeof(OptionPageGrid));
                 return optionPageGrid.OptionInteger;
             }
         }
@@ -39,7 +39,7 @@ namespace ReadOptionsValues
         {
             get
             {
-                var optionPageCustom = (OptionPageCustom)GetDialogPage(typeof(OptionPageCustom));
+                var optionPageCustom = (OptionPageCustom)GetDialogPage(dialogPageType: typeof(OptionPageCustom));
                 return optionPageCustom.OptionString;
             }
         }
@@ -48,7 +48,7 @@ namespace ReadOptionsValues
         {
             get
             {
-                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(typeof(ExternalSearchOptionPage));
+                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(dialogPageType: typeof(ExternalSearchOptionPage));
                 return externalSearchOptionPage.OptionUrl;
             }
         }
@@ -57,7 +57,7 @@ namespace ReadOptionsValues
         {
             get
             {
-                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(typeof(ExternalSearchOptionPage));
+                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(dialogPageType: typeof(ExternalSearchOptionPage));
                 return externalSearchOptionPage.UseVSBrowser;
             }
         }

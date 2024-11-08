@@ -4,7 +4,8 @@ using System.Windows.Forms;
 
 namespace ToolsOptionsCustomPage
 {
-    [Guid("00000000-0000-0000-0000-000000000000")]
+    // Do we need this Guid here?
+    // [Guid("00000000-0000-0000-0000-000000000000")]
     public class OptionPageCustom : DialogPage
     {
         private string optionValue = "alpha";
