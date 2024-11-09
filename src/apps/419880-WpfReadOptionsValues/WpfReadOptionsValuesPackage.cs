@@ -24,13 +24,17 @@ namespace WpfReadOptionsValues
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(WpfReadOptionsValuesPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideOptionPage(pageType: typeof(OptionPageGrid), categoryName: "My Category", pageName: "My Grid Page", categoryResourceID: 0, pageNameResourceID: 0, supportsAutomation: true)]
+    [ProvideOptionPage(pageType: typeof(OptionPageCustom), categoryName: "My Category", pageName: "My Custom Page", categoryResourceID: 0, pageNameResourceID: 0, supportsAutomation: true)]
+    [ProvideOptionPage(pageType: typeof(ExternalSearchOptionPage), categoryName: "My Category", pageName: "General", categoryResourceID: 1, pageNameResourceID: 1, supportsAutomation: true, keywords: new string[] { "External Search Options" })]
     public sealed class WpfReadOptionsValuesPackage : AsyncPackage
     {
         /// <summary>
         /// WpfReadOptionsValuesPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "b2d8969f-6e46-4804-91b0-4a571c02245e";
+        public const string PackageGuidString = "ff740541-94cc-4692-b7ae-212c229a3c80";
 
         #region Package Members
 
@@ -46,8 +50,46 @@ namespace WpfReadOptionsValues
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await ReadOptionsCommand.InitializeAsync(this);
         }
 
         #endregion
+
+        public int OptionInteger
+        {
+            get
+            {
+                var optionPageGrid = (OptionPageGrid)GetDialogPage(dialogPageType: typeof(OptionPageGrid));
+                return optionPageGrid.OptionInteger;
+            }
+        }
+
+        public string OptionTextString
+        {
+            get
+            {
+                var optionPageCustom = (OptionPageCustom)GetDialogPage(dialogPageType: typeof(OptionPageCustom));
+                return optionPageCustom.OptionString;
+            }
+        }
+
+        public string OptionUrlString
+        {
+            get
+            {
+                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(dialogPageType: typeof(ExternalSearchOptionPage));
+                return externalSearchOptionPage.OptionUrl;
+            }
+        }
+
+        public bool UseVsBrowserValue
+        {
+            get
+            {
+                var externalSearchOptionPage = (ExternalSearchOptionPage)GetDialogPage(dialogPageType: typeof(ExternalSearchOptionPage));
+                return externalSearchOptionPage.UseVSBrowser;
+            }
+        }
+
     }
 }
