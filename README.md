@@ -134,11 +134,12 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
    7. https://github.com/jfrog/jfrog-visual-studio-extension
 
 6. Language Services
-   1. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-an-lsp-extension
-   2. https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol
-   3. https://www.youtube.com/watch?v=hDSmUXK03L4
-   4. https://www.youtube.com/watch?v=9XUAGspESzQ
-   5. https://www.youtube.com/watch?v=Cw9qCsetpLU
+   1. https://learn.microsoft.com/en-us/visualstudio/extensibility/language-service-and-editor-extension-points
+   2. https://learn.microsoft.com/en-us/visualstudio/extensibility/adding-an-lsp-extension
+   3. https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/LanguageServerProtocol
+   4. https://www.youtube.com/watch?v=hDSmUXK03L4
+   5. https://www.youtube.com/watch?v=9XUAGspESzQ
+   6. https://www.youtube.com/watch?v=Cw9qCsetpLU
 7. Legacy Language Service
    1. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/legacy-language-service-extensibility
    2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/walkthrough-creating-a-legacy-language-service
