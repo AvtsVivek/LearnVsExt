@@ -50,6 +50,13 @@ persistFileFormat.GetCurFile(out string filePath, out uint pnFormatIndex);
 
 8. Also you can also get IWpfTextViewHost and IWpfTextView objects as well. There are other methods to get these objects as well. But this is not the subject of this example.  
 
+## Build and Run.
+1. Build and launch the exp instance of without any file or solution opened in it. Then Tools -> Invoke Test Command.
+
+![Without File Open Vs](Images/50_50_BlankVsStudioCommandRun.png)
+
+2. Now open a file with a few lines of text.  
+
 ## Reference.
 1. https://stackoverflow.com/questions/76888423/
 

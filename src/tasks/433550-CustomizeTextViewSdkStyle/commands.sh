@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/429500-CustomizeTextView
+cd src/tasks/433550-CustomizeTextViewSdkStyle
 
-cd src/apps/429500-CustomizeTextView
+cd src/apps/433550-CustomizeTextViewSdkStyle
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./CustomizeTextView.csproj
+dotnet build --project ./CustomizeTextViewSdkStyle.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -19,10 +19,10 @@ dotnet build --project ./CustomizeTextView.csproj
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./CustomizeTextView.sln
+devenv /build Debug ./CustomizeTextViewSdkStyle.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./CustomizeTextView.sln
+devenv.exe /RootSuffix Exp ./CustomizeTextViewSdkStyle.sln
 
 pwd
 
@@ -35,7 +35,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./CustomizeTextView.vsix
+./CustomizeTextViewSdkStyle.vsix
 
 
 # Once installed, open the logs. You will see something like. 
