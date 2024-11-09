@@ -6,7 +6,7 @@ namespace WpfReadOptionsValues
 {
     [ComVisible(true)]
     [Guid(Constants.LinqAdvancedOptionPageGuid)]
-    public class LinqAdvancedOptionPage : UIElementDialogPage
+    public class AdvancedOptionPage : UIElementDialogPage
     {
         private string optionValue = "alpha123567";
 

@@ -7,9 +7,9 @@ namespace ReadOptionsValues
     {
         private int optionInt = 256;
 
-        //[Category("My Category")]
-        //[DisplayName("My Integer Option")]
-        //[Description("My integer option")]
+        [Category(category: "My int Category")]
+        [DisplayName(displayName: "My Integer Option")]
+        [Description(description: "An option of the type integer")]
         public int OptionInteger
         {
             get { return optionInt; }

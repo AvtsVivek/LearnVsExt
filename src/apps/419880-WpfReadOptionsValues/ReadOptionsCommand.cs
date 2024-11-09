@@ -103,12 +103,12 @@ namespace WpfReadOptionsValues
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
-                this.package,
+                serviceProvider: this.package,
                 message,
                 title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                icon: OLEMSGICON.OLEMSGICON_INFO,
+                msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK, 
+                defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
     }
 }

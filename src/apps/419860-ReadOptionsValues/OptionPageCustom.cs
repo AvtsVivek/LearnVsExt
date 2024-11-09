@@ -11,7 +11,11 @@ namespace ReadOptionsValues
     {
         private string optionValue = "alpha";
 
-
+        // The following three do not seem to work.
+        // If the property had been of type int, then this seems to work. 
+        [Category(category: "My Category")]
+        [DisplayName(displayName: "My String Option")]
+        [Description(description: "An option of the type string")]
         public string OptionString
         {
             get { return optionValue; }

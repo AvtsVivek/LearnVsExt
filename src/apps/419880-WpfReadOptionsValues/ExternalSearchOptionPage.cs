@@ -19,23 +19,23 @@ namespace WpfReadOptionsValues
             {SearchEngines.StackOverflow, "https://stackoverflow.com/search?q={0}" }
         };
 
-        [DisplayName("Use Visual Studio Browser")]
-        [DefaultValue(true)]
-        [Category("General")]
-        [Description("A value indicating whether search should be displayed in Visual Studio browser or external browser")]
+        [DisplayName(displayName: "Use Visual Studio Browser")]
+        [DefaultValue(value: true)]
+        [Category(category: "General")]
+        [Description(description: "A value indicating whether search should be displayed in Visual Studio browser or external browser")]
         public bool UseVSBrowser { get; set; }
 
-        [DisplayName("Search Engine")]
-        [DefaultValue("Bing")]
-        [Category("General")]
-        [Description("The Search Engine to be used for searching")]
-        [TypeConverter(typeof(EnumConverter))]
+        [DisplayName(displayName: "Search Engine")]
+        [DefaultValue(value: "Bing")]
+        [Category(category: "General")]
+        [Description(description: "The Search Engine to be used for searching")]
+        [TypeConverter(type: typeof(EnumConverter))]
         public SearchEngines SearchEngine { get; set; } = SearchEngines.Bing;
 
-        [DisplayName("Url")]
-        [Category("General")]
-        [Description("The Search Engine url to be used for searching")]
-        [Browsable(false)]
+        [DisplayName(displayName: "Url")]
+        [Category(category: "General")]
+        [Description(description: "The Search Engine url to be used for searching")]
+        [Browsable(browsable: false)]
         public string OptionUrl
         {
             get

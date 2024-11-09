@@ -26,12 +26,10 @@ namespace WpfReadOptionsValues
             InitializeComponent();
         }
 
-        internal LinqAdvancedOptionPage AdvancedOptionsPage;
+        internal AdvancedOptionPage AdvancedOptionsPage;
 
         public void Initialize()
         {
-            // textBlockStringTextInput.Text = AdvancedOptionsPage.OptionString;
-
             var taskTemp = ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
