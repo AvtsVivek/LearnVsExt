@@ -56,7 +56,7 @@ var vsTextBufferThree = currentDocTextLines as IVsTextBuffer;
 ITextBuffer documentTextBufferThree = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferThree);
 ```
 
-10. And also if we have a IWpfTextView object, we can get the ITextBuffer as follows. Note this pirticular point is not covered in this example. This will be covered in subsequent examples. 
+10. And also if we have a `IWpfTextView` object, we can get the `ITextBuffer` as follows. Note this pirticular point is not covered in this example. This will be covered in subsequent examples. 
 ```cs
 ITextBuffer textBufferFromWpfView = wpfTextView.TextBuffer;
 ```

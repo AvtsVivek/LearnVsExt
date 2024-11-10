@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ComponentModelIntro.741f9089-d9a4-48d5-8898-9efb8d6f6e05" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+    <Identity Id="ComponentModelIntro.fec7ac22-18f2-4672-ac2c-5674c2402e31" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
     <DisplayName>ComponentModelIntro</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>

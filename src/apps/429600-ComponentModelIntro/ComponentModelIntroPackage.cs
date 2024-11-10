@@ -31,7 +31,7 @@ namespace ComponentModelIntro
         /// <summary>
         /// ComponentModelIntroPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "cd8f2b59-1dc3-41ba-9c04-6a6e1b046957";
+        public const string PackageGuidString = "33ac943f-36ea-413e-add4-a826b9d5a7c5";
 
         #region Package Members
 
@@ -47,7 +47,7 @@ namespace ComponentModelIntro
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await ComponentModelIntro.Commands.TestCommand.InitializeAsync(this);
+            await TestCommand.InitializeAsync(this);
         }
 
         #endregion

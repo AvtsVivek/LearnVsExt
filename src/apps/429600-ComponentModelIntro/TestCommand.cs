@@ -7,10 +7,11 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Globalization;
-
+using System.Threading;
+using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace ComponentModelIntro.Commands
+namespace ComponentModelIntro
 {
     /// <summary>
     /// Command handler
@@ -25,7 +26,7 @@ namespace ComponentModelIntro.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("ed6127ca-3299-4709-8de2-e58fa3955502");
+        public static readonly Guid CommandSet = new Guid("10316be7-4b9d-4dbc-9df7-a441f1c28954");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -60,7 +61,7 @@ namespace ComponentModelIntro.Commands
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private IAsyncServiceProvider ServiceProvider
+        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -98,6 +99,13 @@ namespace ComponentModelIntro.Commands
             if (componentModel == null)
                 return;
 
+            // The following is working. Its returning a non null settings manager.
+            // var vsSettingsManager = GetGlobalService<IVsSettingsManager>(typeof(SVsSettingsManager));
+
+            // But this is not.
+            // var vsSettingsManager = componentModel.GetService<IVsSettingsManager>();
+
+            // If a file is not opened, then this is also throwing exception.
             var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
 
             // VsTextBufferAdapter vsTextBufferOne = vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package);
@@ -106,7 +114,7 @@ namespace ComponentModelIntro.Commands
             ITextBuffer documentTextBufferOne = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferOne);
 
             var stringMessage = $"The {nameof(documentTextBufferOne)} retrieved from a 'Created' Text buffer is null. " + Environment.NewLine +
-                "There is no data buffered in this yet." + Environment.NewLine + 
+                "There is no data buffered in this yet." + Environment.NewLine +
                 "Note we used vsEditorAdaptersFactoryService.CreateVsTextBufferAdapter(this.package) " + Environment.NewLine +
                 $"to create {nameof(vsTextBufferOne)}.";
 
@@ -158,7 +166,7 @@ namespace ComponentModelIntro.Commands
 
             // VsTextBufferAdapter
             vsTextView.GetBuffer(out IVsTextLines currentDocTextLines); //Getting Current Text Lines 
-            
+
             var vsTextBufferThree = currentDocTextLines as IVsTextBuffer;
 
             ITextBuffer documentTextBufferThree = vsEditorAdaptersFactoryService.GetDocumentBuffer(vsTextBufferThree);
@@ -188,7 +196,7 @@ namespace ComponentModelIntro.Commands
 
             var wpfTextViewHost = vsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);
 
-            if( wpfTextView != null )
+            if (wpfTextView != null)
                 message = message + Environment.NewLine + "IWpfTextView is created using IVsEditorAdaptersFactoryService.";
 
             if (wpfTextViewHost != null)
@@ -203,9 +211,7 @@ namespace ComponentModelIntro.Commands
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
-
         }
-
         private static T GetGlobalService<T>(Type serviceType)
         {
             return (T)Package.GetGlobalService(serviceType);
