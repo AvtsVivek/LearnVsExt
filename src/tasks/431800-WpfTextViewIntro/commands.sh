@@ -16,6 +16,7 @@ dotnet build --project ./WpfTextViewIntro.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
+nuget restore ./WpfTextViewIntro.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!

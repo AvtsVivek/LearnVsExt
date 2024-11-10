@@ -37,7 +37,7 @@ if (classificationSpan.ClassificationType.Classification.ToLower().Contains("com
 
 4. So how does it work? Here it is.
 
-5. First, as usual, we need to bet the text manager. If you remember from earlier example(402500-VsTextManagerIntro), text manager helps get the current view, if any file is currently opened in visual studio.
+5. First, as usual, we need to bet the text manager. If you remember from earlier example(424500-VsTextManagerIntro), text manager helps get the current view, if any file is currently opened in visual studio.
 ```cs
 var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 ```
@@ -48,7 +48,7 @@ The GetGlobalService private methods gets the service from Package.GetGlobalServ
 vsTextManager.GetActiveView(1, null, out IVsTextView vsTextView);
 ```
 
-7. Next we need component model object. The IComponentModel object can help us get the MEF services as we need them. Take a look at 402600-ComponentModelIntro example.
+7. Next we need component model object. The IComponentModel object can help us get the MEF services as we need them. Take a look at 429600-ComponentModelIntro example.
 ```cs
 var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
 ```
@@ -63,13 +63,13 @@ var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdapters
 var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
 ```
 
-10. Now that we have adapter, we can get the wpfTextView from the vsTextView. See 402800-WpfTextViewIntro. IWpfTextView belongs to [Text View Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-view-subsystem). 
+10. Now that we have adapter, we can get the wpfTextView from the vsTextView. See 431800-WpfTextViewIntro. IWpfTextView belongs to [Text View Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-view-subsystem). 
 
 ```cs
 var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 ```
 
-11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to exlore more about classifiers.
+11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to explore more about classifiers.
 
 ```cs
 var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);
@@ -77,7 +77,7 @@ var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffe
 var todoTagger = new TodoTagger(classifier);
 ```
 
-12. From the buffer get the current snapshot. We need to exlore more about diffrent versions and snapshots.
+12. From the buffer get the current snapshot. We need to explore more about different versions and snapshots.
 
 ```cs
 var currentTextSnapShot = wpfTextView.TextBuffer.CurrentSnapshot;

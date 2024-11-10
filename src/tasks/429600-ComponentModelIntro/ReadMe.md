@@ -70,11 +70,16 @@ ITextBuffer textBufferFromWpfView = wpfTextView.TextBuffer;
 
 2. Run the project by pressing F5. A second instance of Experimental Visual Studio starts.
 
-3. Open any simple text file. And then execute the command(Tools -> Invoke TestCommand). You can see that **IComponentModel** object is created.
+3. Open any simple text file, for simplicity, open a completely blank text file. 
+4. And then execute the command(Tools -> Invoke TestCommand). You can see that **IComponentModel** object is created.
 
-4. Then **IVsEditorAdaptersFactoryService**. Then **IWpfTextView** and **IWpfTextViewHost** objects are also created.
+5. Then **IVsEditorAdaptersFactoryService**. Then **IWpfTextView** and **IWpfTextViewHost** objects are also created.
 
-5. You can see them, in the message boxes.
+6. You can see them, in the message boxes.
+
+7. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 ## References
 1. Components can be visual (controls) and non-visuals.

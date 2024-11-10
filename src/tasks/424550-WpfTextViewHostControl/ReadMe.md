@@ -16,5 +16,7 @@ var hostControlType = wpfTextViewHost.HostControl.GetType();
 
 4. The `IWpfTextViewHost` will explored more in the subsequent examples.
 
-5. 
+5. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 

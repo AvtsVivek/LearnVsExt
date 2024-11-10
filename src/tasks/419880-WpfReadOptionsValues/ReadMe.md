@@ -8,7 +8,9 @@
     ```
    2. OptionsPageCustom changes from `OptionPageCustom : DialogPage` to `OptionPageCustom : UIElementDialogPage`
 
-3. 
+3. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 ## References
 

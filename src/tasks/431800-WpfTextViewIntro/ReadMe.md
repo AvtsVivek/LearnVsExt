@@ -8,7 +8,7 @@
 
 4. The [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem) which is responsible for representing text and enabling its manipulation is the next step. 
 
-5. Text View Subsystem, **IWpfTextView** and **IVsTextView** are mentioned in earlier examples, like 402600-ComponentModelIntro and 402500-VsTextManagerIntro
+5. Text View Subsystem, **IWpfTextView** and **IVsTextView** are mentioned in earlier examples, like 429600-ComponentModelIntro and 424500-VsTextManagerIntro
 
 6. This example uses the IVsTextManager to get the active text view in the form of IVsTextView
 ```cs
@@ -26,11 +26,16 @@ var tempInt = textManager.GetActiveView(1, null, out IVsTextView activeView);
 ## Buid and Run.
 
 1. There is nothing specific this application does.
-2. Just invoke the command. Please a break point in the Execute method and observe the objects.
+2. Launch the exp instance, and then open a text file, for simplicity, open a completely blank text file. 
+3. Just invoke the command. Please a break point in the Execute method and observe the objects.
+4. If you want to reset the experimental instance, do the following.
 
-https://stackoverflow.com/questions/76888423/
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
-https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextmanager
+## References
+1. https://stackoverflow.com/questions/76888423/
+
+2. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivstextmanager
 
 
 

@@ -24,6 +24,7 @@ namespace TaggerInTextModel
         {
             foreach (SnapshotSpan span in spans)
             {
+                // Microsoft.VisualStudio.Text.Classification.Implimentation.ClassifierAggregator
                 //look at each classification span \
                 foreach (ClassificationSpan classificationSpan in m_classifier.GetClassificationSpans(span))
                 {

@@ -55,7 +55,11 @@ persistFileFormat.GetCurFile(out string filePath, out uint pnFormatIndex);
 
 ![Without File Open Vs](Images/50_50_BlankVsStudioCommandRun.png)
 
-2. Now open a file with a few lines of text.  
+2. Now open a file with a few lines of text, for simplicity, open a completely blank text file. 
+
+3. If you want to reset the experimental instance, do the following.
+
+![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 ## Reference.
 1. https://stackoverflow.com/questions/76888423/
