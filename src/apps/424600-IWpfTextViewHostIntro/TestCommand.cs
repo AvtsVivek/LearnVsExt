@@ -1,13 +1,16 @@
 ﻿using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
+using System.Globalization;
+using System.Windows.Forms;
 using Task = System.Threading.Tasks.Task;
 
-namespace VsTextManagerIntro.Commands
+namespace IWpfTextViewHostIntro
 {
     /// <summary>
     /// Command handler
@@ -22,7 +25,7 @@ namespace VsTextManagerIntro.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("0186637c-c9de-4545-af89-a9dcd12a3c97");
+        public static readonly Guid CommandSet = new Guid("540aa6b4-1981-4e6a-bb0b-8f18f7d95ced");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -57,7 +60,7 @@ namespace VsTextManagerIntro.Commands
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private IAsyncServiceProvider ServiceProvider
+        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -88,16 +91,17 @@ namespace VsTextManagerIntro.Commands
         /// <param name="e">Event args.</param>
         private void Execute(object sender, EventArgs e)
         {
-            // var vsTextManager = (IVsTextManager)await ServiceProvider.GetServiceAsync(typeof(SVsTextManager));
-            
             ThreadHelper.ThrowIfNotOnUIThread();
+
+            // Guid used to get an IWpfTextViewHost from an IWpfTextView
+            var viewHostGuid = DefGuidList.guidIWpfTextViewHost;
 
             var vsTextManager = (IVsTextManager)Package.GetGlobalService(typeof(SVsTextManager));
 
             int mustHaveFocus = 1;
 
             vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
-            
+
             if (vsTextView == null)
             {
                 VsShellUtilities.ShowMessageBox(
@@ -111,57 +115,6 @@ namespace VsTextManagerIntro.Commands
                 return;
             }
 
-            vsTextView.GetBuffer(out IVsTextLines currentDocTextLines);
-
-            var vsTextBuffer = currentDocTextLines as IVsTextBuffer;
-
-            var persistFileFormat = vsTextBuffer as IPersistFileFormat;
-
-            persistFileFormat.GetCurFile(out string filePath, out uint pnFormatIndex);
-
-            vsTextBuffer.GetLineCount(out var lineCount);
-
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                $"The number of lines: {lineCount}" + Environment.NewLine + 
-                $"The file path is as follows:" + Environment.NewLine + 
-                filePath
-                ,
-                "File Details",
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-            for (int i = 0; i < lineCount; i++)
-            {
-                currentDocTextLines.GetLengthOfLine(i, out int lineSize);
-
-                VsShellUtilities.ShowMessageBox(
-                    this.package,
-                    $"Length of line {lineSize}",
-                    $"Data of line {i}",
-                    OLEMSGICON.OLEMSGICON_INFO,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-            }
-
-            // I am not sure what this language service id is
-            vsTextBuffer.GetLanguageServiceID(out var languageServiceID);
-
-            // Need to understand iLineCount and index
-            vsTextBuffer.GetLastLineIndex(out int iLineCount, out int iLineIndex);
-
-            // What is this size?
-            vsTextBuffer.GetSize(out var size);
-
-            // What is this totalLength? How is this different from size above?
-            currentDocTextLines.GetSize(out var totalLength);
-
-            /////////////////////////////////////////////////////////////////////////////
-
-            // What the hell is this Guid?
-            var viewHostGuid = DefGuidList.guidIWpfTextViewHost;
-
             // What is this userData?
             // https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivsuserdata
             var vsUserData = vsTextView as IVsUserData;
@@ -169,40 +122,76 @@ namespace VsTextManagerIntro.Commands
             vsUserData.GetData(ref viewHostGuid, out object holder);
 
             // https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextviewhost
-            var wpfTextViewHost = (IWpfTextViewHost)holder;
+            IWpfTextViewHost wpfTextViewHost = (IWpfTextViewHost)holder;
 
-            var propertiesList = wpfTextViewHost.TextView.TextBuffer.Properties.PropertyList;
+            ITextBuffer textBuffer = wpfTextViewHost.TextView.TextBuffer;
 
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                $"There are {propertiesList.Count} properties on ITextBuffer object.",
-                $"Property count",
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-            foreach ( var property in propertiesList)
+            if (textBuffer == null)
             {
                 VsShellUtilities.ShowMessageBox(
-                    this.package,
-                    $"Property Key {property.Key}" + Environment.NewLine
-                    //+ $"Property Key type: {property.Key.GetType()}" + Environment.NewLine
-                    //+ $"Property Value type: {property.Value.GetType()}" + Environment.NewLine
-                    //+ $"Property Value type: {property.Value}"
-                    ,
-                    $"Property {property.Key}",
-                    OLEMSGICON.OLEMSGICON_INFO,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                    serviceProvider: this.package,
+                    message: "The text buffer is empty.",
+                    title: "No Text buffer!!",
+                    icon: OLEMSGICON.OLEMSGICON_INFO,
+                    msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                return;
             }
 
-            var asdfasdf = currentDocTextLines.GetType().GetInterfaces();
-            var vsTextLinesInterfaceList = typeof(IVsTextLines).GetInterfaces();
-            var vsTextBufferInterfaceList = typeof(IVsTextBuffer).GetInterfaces();
+            IWpfTextView wpfTextView = wpfTextViewHost.TextView;
+
+            var propertiesList = wpfTextView.TextBuffer.Properties.PropertyList;
+
+            VsShellUtilities.ShowMessageBox(
+                serviceProvider: this.package,
+                message: $"There are {propertiesList.Count} properties on ITextBuffer object.",
+                title: $"Property count",
+                icon: OLEMSGICON.OLEMSGICON_INFO,
+                msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            var propCount = 1;
+            var allProText = string.Empty;
+
+            foreach (var property in propertiesList)
+            {
+                var message = $"Property {propCount} of {propertiesList.Count}" + Environment.NewLine
+                    + $"Property Value type : {property.Value.GetType()}" + Environment.NewLine
+                    + $"Property Value value: {property.Value}";
+                
+                VsShellUtilities.ShowMessageBox(
+                    serviceProvider: this.package,
+                    message: message,
+                    title: $"Property Key: {property.Key}",
+                    icon: OLEMSGICON.OLEMSGICON_INFO,
+                    msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+                propCount++;
+                allProText += message + Environment.NewLine;
+            }
+
+            Clipboard.SetText(allProText);
+
+            VsShellUtilities.ShowMessageBox(
+                serviceProvider: this.package,
+                message: "All props are Copied to clip board",
+                title: "Copyed to clip board",
+                icon: OLEMSGICON.OLEMSGICON_INFO,
+                msgButton: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                defaultButton: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            // var asdfasdf = currentDocTextLines.GetType().GetInterfaces();
+
+            // var vsTextLinesInterfaceList = typeof(IVsTextLines).GetInterfaces();
+
+            // var vsTextBufferInterfaceList = typeof(IVsTextBuffer).GetInterfaces();
 
             // wpfTextViewHost.TextView.TextBuffer.Properties.TryGetProperty(typeof(IVsTextBuffer), out IVsTextBuffer bufferAdapter);
 
-            var IPersistFileFormatInterfaceList = typeof(IPersistFileFormat).GetInterfaces();
+            // var IPersistFileFormatInterfaceList = typeof(IPersistFileFormat).GetInterfaces();
+
+            ////////////////////////////////// end
 
             //var openedTextDocument = ((Microsoft.VisualStudio.Editor.Implementation.VsTextBufferAdapter)vsTextBuffer).TextDocument;
 
@@ -215,8 +204,8 @@ namespace VsTextManagerIntro.Commands
             // var openedDataTextBuffer = ((Microsoft.VisualStudio.Editor.Implementation.VsTextBufferAdapter)vsTextBuffer).DataTextBuffer;
 
             // var textSnapshot = (Microsoft.VisualStudio.Text.ITextSnapshot)openedDataTextBuffer;
-                    
-        
+
+
         }
     }
 }
