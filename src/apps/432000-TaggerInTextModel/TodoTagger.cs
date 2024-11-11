@@ -22,6 +22,18 @@ namespace TaggerInTextModel
 
         public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
+            // The following foreach loop is returning only one tag span.
+            //foreach (SnapshotSpan span in spans)
+            //{
+            //    int locationIndex = span.GetText().ToLower().IndexOf(m_searchText);
+            //    if (locationIndex > -1)
+            //    {
+            //        SnapshotSpan todoSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start + locationIndex, m_searchText.Length));
+            //        yield return new TagSpan<TodoTag>(todoSpan, new TodoTag());
+            //    }
+            //}
+
+            // And in the following, its returning zero because the m_classifier.GetClassificationSpans(span) is returning 0
             foreach (SnapshotSpan span in spans)
             {
                 // Microsoft.VisualStudio.Text.Classification.Implimentation.ClassifierAggregator
