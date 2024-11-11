@@ -16,10 +16,12 @@ dotnet build --project ./OokLanguage.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
+nuget restore ./OokLanguage.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
 devenv /build Debug ./OokLanguage.sln
+devenv /Rebuild Debug ./OokLanguage.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./OokLanguage.sln

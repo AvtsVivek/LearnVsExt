@@ -138,13 +138,13 @@ namespace TaggerInTextModel.Commands
             }
             
             // We can get the classifier from the aggregator service as follows.
-            // var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
-            // var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);
+            var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
+            var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);
 
             // But if we want to have our own custom classifier, we can define our own like as follows.
             // In the GetClassifier method, we define and instanciate a custom classifier class
-            var classifier = GetClassifier(wpfTextView.TextBuffer, 
-            classificationTypeRegistryService, tagAggregator);
+            // var classifier = GetClassifier(wpfTextView.TextBuffer, 
+            // classificationTypeRegistryService, tagAggregator);
 
             var todoTagger = new TodoTagger(classifier);
 

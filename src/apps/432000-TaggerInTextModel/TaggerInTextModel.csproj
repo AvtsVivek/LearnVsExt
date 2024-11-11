@@ -55,6 +55,7 @@
     <Compile Include="TaggerInTextModelPackage.cs" />
     <Compile Include="ToDoClassifier.cs" />
     <Compile Include="TodoTagger.cs" />
+    <Compile Include="TodoTaggerProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
@@ -38,7 +39,9 @@ namespace OokLanguage.Classification
         /// </summary>
         public IEnumerable<ITagSpan<ClassificationTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            foreach (var tagSpan in _aggregator.GetTags(spans))
+            var tags = _aggregator.GetTags(spans);
+            var tagList = tags.ToList(); // Jsut for testing. 
+            foreach (var tagSpan in tags)
             {
                 var tagSpans = tagSpan.Span.GetSpans(spans[0].Snapshot);
                 yield return
