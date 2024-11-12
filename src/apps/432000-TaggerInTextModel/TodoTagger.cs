@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TaggerInTextModel
 {
@@ -20,20 +21,45 @@ namespace TaggerInTextModel
             m_classifier = classifier;
         }
 
+        private List<int> SubstringCount(string fullText, string search_str)
+        {
+            var subStringIndexList = new List<int>();
+            // Loop through the characters of the original string
+            for (int i = 0; i < fullText.Length - search_str.Length + 1; i++)
+            {
+                // Check if the substring from the current position matches the search string
+                if (fullText.Substring(startIndex: i, length: search_str.Length) == search_str)
+                {
+                    subStringIndexList.Add(i);
+                    i = i + search_str.Length;
+                }
+            }
+
+            return subStringIndexList;
+        }
+
         public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            // The following foreach loop is returning only one tag span.
-            //foreach (SnapshotSpan span in spans)
-            //{
-            //    int locationIndex = span.GetText().ToLower().IndexOf(m_searchText);
-            //    if (locationIndex > -1)
-            //    {
-            //        SnapshotSpan todoSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start + locationIndex, m_searchText.Length));
-            //        yield return new TagSpan<TodoTag>(todoSpan, new TodoTag());
-            //    }
-            //}
+            var spanList = spans.ToList();
+            var spanCount = spanList.Count; // Just for understanding. 
 
-            // And in the following, its returning zero because the m_classifier.GetClassificationSpans(span) is returning 0
+            foreach (SnapshotSpan span in spans)
+            {
+                var spanText = span.GetText().ToLower();
+                var locationIndex = spanText.IndexOf(m_searchText);
+
+                var subStringIndexList = SubstringCount(spanText, m_searchText);
+                foreach (var subStringIndex in subStringIndexList)
+                {
+                    var todoSnapshotSpan = new SnapshotSpan(snapshot: span.Snapshot,
+                        span: new Span(start: span.Start + subStringIndex, length: m_searchText.Length));
+                    var todoSpanText = todoSnapshotSpan.GetText().ToLower(); // Just for testing.
+                    yield return new TagSpan<TodoTag>(span: todoSnapshotSpan, tag: new TodoTag());
+                }
+            }
+
+            // The following is returning zero because the m_classifier.GetClassificationSpans(span) is returning 0
+            /*
             foreach (SnapshotSpan span in spans)
             {
                 // Microsoft.VisualStudio.Text.Classification.Implimentation.ClassifierAggregator
@@ -54,6 +80,7 @@ namespace TaggerInTextModel
                     }
                 }
             }
+            */
         }
     }
 }

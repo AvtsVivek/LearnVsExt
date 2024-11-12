@@ -116,7 +116,6 @@ namespace TaggerInTextModel.Commands
             var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
 
             var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
- 
 
             var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 

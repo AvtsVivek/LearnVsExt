@@ -1,12 +1,5 @@
 ## Link a content type to a file name extension
 
-## Reference: 
-1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-linking-a-content-type-to-a-file-name-extension
-
-2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-margin-glyph
-
-3. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix-manifest-designer
-
 ## Steps:
 1. Follow the above link. 
 
@@ -61,5 +54,44 @@ And the following to the .vsixmanifest file.
 
 6. What is a classifier?
    1. https://learn.microsoft.com/en-us/visualstudio/extensibility/language-service-and-editor-extension-points#extend-classification-types-and-classification-formats
-7. So what is a Tagger? 
-8. A Tagger needs a classifier
+
+7. As of now, classifier does not seem to work. I am not sure, what classifier is, need to learn more about it. So the following(which is not working correctly) is commented out.
+
+```cs
+foreach (SnapshotSpan span in spans)
+{
+    //look at each classification span \
+    foreach (ClassificationSpan classification in m_classifier.GetClassificationSpans(span))
+    {
+        //if the classification is a comment
+        if (classification.ClassificationType.Classification.ToLower().Contains("comment"))
+        {
+            //if the word "todo" is in the comment,
+            //create a new TodoTag TagSpan
+            int index = classification.Span.GetText().ToLower().IndexOf(m_searchText);
+            if (index != -1)
+            {
+                yield return new TagSpan<TodoTag>(new SnapshotSpan(classification.Span.Start + index, m_searchText.Length), new TodoTag());
+            }
+        }
+    }
+}
+
+```
+
+So this is not used as of now.
+```cs
+var classifier = AggregatorService.GetClassifier(buffer);
+```
+
+8. So what is a Tagger? 
+
+9. A Tagger needs a classifier? Not sure, need to find out.
+
+
+## References
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-linking-a-content-type-to-a-file-name-extension
+
+2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-margin-glyph
+
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix-manifest-designer

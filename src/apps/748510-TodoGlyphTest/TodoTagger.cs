@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text.Classification;
+using System.Linq;
 
 namespace TodoGlyphTest
 {
@@ -22,6 +23,8 @@ namespace TodoGlyphTest
         public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
             //todo: implement tagging. I am not sure what this comment line means is, I just got this from the code examples. 
+            var spanList = spans.ToList(); // Just for debugging.
+            var spanCount = spanList.Count;
             foreach (SnapshotSpan span in spans)
             {
                 int locationIndex = span.GetText().ToLower().IndexOf(m_searchText);
@@ -32,6 +35,9 @@ namespace TodoGlyphTest
                 }
             }
 
+            // As of now, classifier does not seem to work. 
+            // I am not sure, what classifier is, need to learn more about it. 
+            // So the following(which does not work) is commented out.
             //foreach (SnapshotSpan span in spans)
             //{
             //    //look at each classification span \
@@ -52,5 +58,4 @@ namespace TodoGlyphTest
             //}
         }
     }
-
 }
