@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.Text.Classification;
 
 namespace TodoGlyphTest
 {
-    internal class TodoTagger : ITagger<TodoTag> 
+    internal class TodoTagger : ITagger<TodoTag>
     {
         private IClassifier m_classifier;
 
@@ -21,24 +21,35 @@ namespace TodoGlyphTest
 
         public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
+            //todo: implement tagging. I am not sure what this comment line means is, I just got this from the code examples. 
             foreach (SnapshotSpan span in spans)
             {
-                //look at each classification span \
-                foreach (ClassificationSpan classification in m_classifier.GetClassificationSpans(span))
+                int locationIndex = span.GetText().ToLower().IndexOf(m_searchText);
+                if (locationIndex > -1)
                 {
-                    //if the classification is a comment
-                    if (classification.ClassificationType.Classification.ToLower().Contains("comment"))
-                    {
-                        //if the word "todo" is in the comment,
-                        //create a new TodoTag TagSpan
-                        int index = classification.Span.GetText().ToLower().IndexOf(m_searchText);
-                        if (index != -1)
-                        {
-                            yield return new TagSpan<TodoTag>(new SnapshotSpan(classification.Span.Start + index, m_searchText.Length), new TodoTag());
-                        }
-                    }
+                    SnapshotSpan todoSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start + locationIndex, m_searchText.Length));
+                    yield return new TagSpan<TodoTag>(todoSpan, new TodoTag());
                 }
             }
+
+            //foreach (SnapshotSpan span in spans)
+            //{
+            //    //look at each classification span \
+            //    foreach (ClassificationSpan classification in m_classifier.GetClassificationSpans(span))
+            //    {
+            //        //if the classification is a comment
+            //        if (classification.ClassificationType.Classification.ToLower().Contains("comment"))
+            //        {
+            //            //if the word "todo" is in the comment,
+            //            //create a new TodoTag TagSpan
+            //            int index = classification.Span.GetText().ToLower().IndexOf(m_searchText);
+            //            if (index != -1)
+            //            {
+            //                yield return new TagSpan<TodoTag>(new SnapshotSpan(classification.Span.Start + index, m_searchText.Length), new TodoTag());
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 

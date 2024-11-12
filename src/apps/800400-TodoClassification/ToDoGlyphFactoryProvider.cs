@@ -10,11 +10,16 @@ namespace TodoClassification
     /// </summary>
     [Export(typeof(IGlyphFactoryProvider))]
     [Name("ToDoGlyph")]
-    [Order(Before = "VsTextMarker")]
-    [ContentType("code")]
+    [Order(After = "VsTextMarker")] // What is this Before and After
+    [ContentType("code")] // This attribute is needed. Else you will get the following exception.
+    // System.InvalidOperationException: TodoTag factory is not initialized.
     [TagType(typeof(ToDoTag))]
     internal sealed class ToDoGlyphFactoryProvider : IGlyphFactoryProvider
     {
+        public ToDoGlyphFactoryProvider()
+        {
+
+        }
         /// <summary>
         /// This method creates an instance of our custom glyph factory for a given text view.
         /// </summary>
