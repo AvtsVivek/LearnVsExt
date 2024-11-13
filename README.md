@@ -140,6 +140,7 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
    4. https://www.youtube.com/watch?v=hDSmUXK03L4
    5. https://www.youtube.com/watch?v=9XUAGspESzQ
    6. https://www.youtube.com/watch?v=Cw9qCsetpLU
+   7. https://stackoverflow.com/questions/77015711/popup-hover-with-markdown-from-a-language-server-protocol-lsp
 7. Legacy Language Service
    1. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/legacy-language-service-extensibility
    2. https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/extensibility/internals/walkthrough-creating-a-legacy-language-service
@@ -149,14 +150,23 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
    1. Need to try this. https://stackoverflow.com/questions/45863788/how-can-i-find-out-what-classification-types-are-registered-in-visual-studio
    2. https://www.codeproject.com/Articles/1245021/Extending-Visual-Studio-to-Provide-a-Colorful-Lang
    3. https://github.com/MicrosoftDocs/visualstudio-docs/blob/main/docs/extensibility/walkthrough-highlighting-text.md
+   4. A good set of extensions worth exploring.
+      1. https://github.com/mrlacey?tab=repositories
 
 9.  What is ITextView, IVsTextView and IWpfTextView?
+
 10. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
-11. IVsTextViewCreationListener vs IWpfTextViewCreationListener
+    1.  IVsTextViewCreationListener vs IWpfTextViewCreationListener
+
+11. [Changing "Color theme" within a Visual Studio Extension]https://www.iditect.com/faq/csharp/changing-quotcolor-themequot-within-a-visual-studio-extension.html
+
 12. IClassifier
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
     2.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Todo_Classification
     3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
+    4.  https://github.com/Connicpu/VisualRust/blob/master/VisualRust/RustClassifier.cs
+    5.  https://github.com/Connicpu/VisualRust/blob/master/VisualRust/RustClassifierProvider.cs
+
 13. Need to look at 
     1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
 14. To do

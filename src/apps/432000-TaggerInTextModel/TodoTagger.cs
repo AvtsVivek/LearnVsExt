@@ -58,6 +58,9 @@ namespace TaggerInTextModel
                 }
             }
 
+            // As of now, classifier does not seem to work. 
+            // I am not sure, what classifier is, need to learn more about it. 
+            // So the following(which does not work) is commented out.
             // The following is returning zero because the m_classifier.GetClassificationSpans(span) is returning 0
             /*
             foreach (SnapshotSpan span in spans)

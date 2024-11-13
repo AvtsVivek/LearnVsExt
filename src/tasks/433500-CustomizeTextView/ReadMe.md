@@ -1,9 +1,8 @@
 # Customizing the text view
 
-## Reference: 
-1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view
-2. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextview
-3. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
+1. Introduces [IWpfTextViewCreationListener](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextviewcreationlistener), [IEditorFormatMapService](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmapservice) and [IEditorFormatMap] (https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmap)
+
+2. `IWpfTextViewCreationListener`, a simple interface to know when an IWpfTextView is created.
 
 ## How this project is created. 
 1. Create a VSix project.
@@ -57,3 +56,9 @@ formatMap.SetProperties("Caret", regularCaretProperties);
 overwriteCaretProperties[EditorFormatDefinition.ForegroundBrushId] = Brushes.Turquoise;
 formatMap.SetProperties("Overwrite Caret", overwriteCaretProperties);
 ```
+
+## References
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view
+2. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextview
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
+

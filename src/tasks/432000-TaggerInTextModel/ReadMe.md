@@ -2,7 +2,7 @@
 
 1. Introduces **ITag** and **ITagger**.
 
-2. Also introduces **Span**, **Classifier** etc. 
+2. Also introduces **Span**. 
 
 3. Open a text file in Visual Studio. Then by invoking a command, can we get a count of any specific word(a tag, let that be **todo** for this case) be shown in a message box? Note we are not intrested in how this todo is displayed in the editor. Like we are not talking about adornments, highlighting etc. Thoese will be next steps. So are not going into Text View Subsystem. We will stick to Text Model Subsystem only. 
 
@@ -59,6 +59,8 @@ var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdapters
 ```
 
 9. Get IClassifierAggregatorService object to get classifier. We need to explore more about the classifier. 
+Update: The classifier is not used in the app. Its not working, need to find out more about classifier.
+
 ```cs
 var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
 ```
