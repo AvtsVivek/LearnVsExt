@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 using Task = System.Threading.Tasks.Task;
 using Microsoft.VisualStudio.LanguageServer.Protocol;
 using System.ComponentModel.Composition;
+using System.Security.AccessControl;
 
 namespace MockLanguageExtension
 {
@@ -69,9 +70,30 @@ namespace MockLanguageExtension
 
         public bool ShowNotificationOnInitializeFailed => true;
 
-        public async Task<Connection> ActivateAsync(CancellationToken token)
+        public async Task<Connection> ActivateAsync(CancellationToken cancellationToken)
         {
-            Debugger.Break();
+            // Debugger.Break();
+
+            //var stdInPipeName = @"output";
+            //var stdOutPipeName = @"input";
+
+            //var pipeAccessRule = new PipeAccessRule("Everyone", PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
+            //var pipeSecurity = new PipeSecurity();
+            //pipeSecurity.AddAccessRule(pipeAccessRule);
+
+            //var bufferSize = 256;
+
+            //var readerPipe = new NamedPipeServerStream(stdInPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
+            //var writerPipe = new NamedPipeServerStream(stdOutPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
+
+            //await readerPipe.WaitForConnectionAsync(cancellationToken);
+            //await writerPipe.WaitForConnectionAsync(cancellationToken);
+
+            //return new Connection(reader: readerPipe, writer: writerPipe);
+
+            // If you return null(as follows), then exception will be thrown by calling OnServerInitializeFailedAsync method.
+            // So in order to avoid that exception, comment out the following returning null.
+            // Then uncomment the above where we retunr a Connection
             return null;
         }
 

@@ -35,6 +35,7 @@
 ![VSix Project Properties](images/50_50VSixProjectProperties.jpg)
 
 7. Now a .net core project cannot be referenced by a .net framework project. So you will not be able to add a reference of the Wpf project to the VSix project. 
+
 8. Now when we create the VSix Extension package, the package must include the wpf application as well, the exes and dlls etc. Only then the extension will be able to launch the wpf app. So how to include the wpf app into the vsix package? One way is to add a reference, but this is not possible. So we need to copy at the build time.
 
 9. Add the following to the wpf proj file. This will ensure the output of the wpf project is copied to a folder(VSixSdkStyleContentType\WpfUiDlls), after its built.
@@ -50,6 +51,7 @@
 	<Message Text="Copied build files" Importance="High" />
 </Target>
 ```
+
 10. Now add the following to VSix proj file. This will ensure all the wpf output files copied into WpfUiDlls folder will be part of the final package. 
 ```xml
 <ItemGroup>
@@ -58,7 +60,9 @@
 	</Content>
 </ItemGroup>
 ```
+
 11. One final thing we need to ensure this the order in which the projects are built by Visual Studio. Open the solution properties. So in the solution explorer, right click, and select properties.
+
 ![Solution Properties](images/51_50SolutionPropertiesForBuildOrder.jpg)
 
 12. Now clean up everthing, build the solution and run it. Open a file with .foo extension. The wpf app should now run. 

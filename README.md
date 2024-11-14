@@ -152,33 +152,35 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
    3. https://github.com/MicrosoftDocs/visualstudio-docs/blob/main/docs/extensibility/walkthrough-highlighting-text.md
    4. A good set of extensions worth exploring.
       1. https://github.com/mrlacey?tab=repositories
+9. Integration with Roslyn
+   1.  https://designprincipia.com/post/writing-a-visual-studio-extension-to-automate-code-generation-with-roslyn/
 
-9.  What is ITextView, IVsTextView and IWpfTextView?
+10. What is ITextView, IVsTextView and IWpfTextView?
 
-10. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
+11. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
     1.  IVsTextViewCreationListener vs IWpfTextViewCreationListener
 
-11. [Changing "Color theme" within a Visual Studio Extension]https://www.iditect.com/faq/csharp/changing-quotcolor-themequot-within-a-visual-studio-extension.html
+12. [Changing "Color theme" within a Visual Studio Extension]https://www.iditect.com/faq/csharp/changing-quotcolor-themequot-within-a-visual-studio-extension.html
 
-12. IClassifier
+13. IClassifier
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/ErrorList
     2.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Todo_Classification
     3.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Diff_Classifier
     4.  https://github.com/Connicpu/VisualRust/blob/master/VisualRust/RustClassifier.cs
     5.  https://github.com/Connicpu/VisualRust/blob/master/VisualRust/RustClassifierProvider.cs
 
-13. Need to look at 
+14. Need to look at 
     1.  https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
-14. To do
+15. To do
     1.  https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncToolWindow
     2.  End of fourth chapter in the book, ToolWindow and DTE object.
     3.  Need to understand AdornmentLayerDefinition
     4.  Need to understand PredefinedAdornmentLayers
-15. Visual Studio Extension Preview
+16. Visual Studio Extension Preview
     1.  https://github.com/microsoft/VSExtensibility/
     2.  https://devblogs.microsoft.com/visualstudio/visualstudio-extensibility-preview-3/
     3.  https://marketplace.visualstudio.com/items?itemName=vsext.gladstone
-16. Project Types to be explored. 
+17. Project Types to be explored. 
     
     1.  Community Type projects.
     
