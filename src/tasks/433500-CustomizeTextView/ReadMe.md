@@ -1,6 +1,6 @@
 # Customizing the text view
 
-1. Introduces [IWpfTextViewCreationListener](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextviewcreationlistener), [IEditorFormatMapService](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmapservice) and [IEditorFormatMap] (https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmap)
+1. Introduces [IWpfTextViewCreationListener](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextviewcreationlistener), [IEditorFormatMapService](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmapservice) and [IEditorFormatMap](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.ieditorformatmap)
 
 2. `IWpfTextViewCreationListener`, a simple interface to know when an IWpfTextView is created.
 

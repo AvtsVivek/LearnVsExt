@@ -22,6 +22,8 @@ nuget restore ./WpfTextViewIntro.sln
 # For debugging, build using visual studio only!!!
 devenv /build Debug ./TaggerInTextModel.sln
 
+devenv /Rebuild Debug ./TaggerInTextModel.sln
+
 # If you just want to start and run visual studi in experimental mode, run the following command.
 devenv.exe /RootSuffix Exp ./TaggerInTextModel.sln
 

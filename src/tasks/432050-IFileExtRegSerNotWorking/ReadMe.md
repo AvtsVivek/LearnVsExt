@@ -4,7 +4,8 @@
 
 
 ## Notes
-
+1. This is not working as expected. 
+2. https://stackoverflow.com/q/79194608
 
 ## References
 1. https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.utilities.icontenttyperegistryservice
