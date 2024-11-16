@@ -29,6 +29,7 @@ public interface IWpfTextViewCreationListener
 5. The above two steps can be accomplished by adding a EditorClassifier new item and then deleting it.
 
 6. Now add the following classes. These you can pick from the reference.
+
 ![Adding Classes](images/52_40AddingClasses.jpg)
 
 7. My Options General

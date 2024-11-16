@@ -21,8 +21,10 @@ nuget restore ./OptionsSample.sln
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
 devenv /build Debug ./OptionsSample.sln
+devenv /Rebuild Debug ./OptionsSample.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
+devenv.exe /RootSuffix Exp 
 devenv.exe /RootSuffix Exp ./OptionsSample.sln
 
 pwd
