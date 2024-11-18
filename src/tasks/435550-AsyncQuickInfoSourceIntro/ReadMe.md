@@ -9,6 +9,8 @@
 
 ![Make the project an MEF component](Images/50_50_MakeItAnMefComponent.png)
 
+4. Add the two classes, `LineAsyncQuickInfoSource` and its provided, `LineAsyncQuickInfoSourceProvider`
+
 ## Build and Run.
 1. First Reset VS Exp instance.
 
@@ -30,4 +32,7 @@
 1. Without making it into an MEF component, this is not working. Need to undrestand more about MEF component. 
 
 ## References
-1.  
+1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncQuickInfo
+2. https://learn.microsoft.com/en-us/visualstudio/extensibility/managed-extensibility-framework-in-the-editor
+3. https://github.com/Microsoft/vs-editor-api/wiki/Modern-Quick-Info-API
+4.  

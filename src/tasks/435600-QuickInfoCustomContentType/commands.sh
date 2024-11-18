@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/435550-AsyncQuickInfoSourceIntro
+cd src/tasks/435600-QuickInfoCustomContentType
 
-cd src/apps/435550-AsyncQuickInfoSourceIntro
+cd src/apps/435600-QuickInfoCustomContentType
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./AsyncQuickInfoSourceIntro.csproj
+dotnet build --project ./QuickInfoCustomContentType.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -17,11 +17,11 @@ dotnet build --project ./AsyncQuickInfoSourceIntro.csproj
 
 # https://stackoverflow.com/a/76077904/1977871
 
-nuget restore ./AsyncQuickInfoSourceIntro.sln
+nuget restore ./QuickInfoCustomContentType.sln
 
-devenv /build Debug ./AsyncQuickInfoSourceIntro.sln
+devenv /build Debug ./QuickInfoCustomContentType.sln
 
-devenv /Rebuild Debug ./AsyncQuickInfoSourceIntro.sln
+devenv /Rebuild Debug ./QuickInfoCustomContentType.sln
 
 pwd
 
@@ -34,7 +34,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./AsyncQuickInfoSourceIntro.vsix
+./QuickInfoCustomContentType.vsix
 
 
 # Once installed, open the logs. You will see something like. 
