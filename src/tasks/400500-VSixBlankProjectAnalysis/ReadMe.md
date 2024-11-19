@@ -75,6 +75,10 @@ That should be gone now, after the uninstall.
 
 ![Solution Explorer](./images/58_50SolutionExplorer.jpg)
 
+12. If you want to make it a Mef Component as follows. Solution Explorer -> Look for source.extension.vsixmanifest, right click -> Assets -> Edit.
+
+![Make the project an MEF component](Images/50_50_MakeItAnMefComponent.png)
+
 
 ## Building the project from command line.
 

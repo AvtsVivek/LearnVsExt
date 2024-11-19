@@ -7,7 +7,7 @@
 
 3. Make it a Mef Component as follows. Solution Explorer -> Look for source.extension.vsixmanifest, right click -> Assets -> Edit.
 
-![Make the project an MEF component](Images/50_50_MakeItAnMefComponent.png)
+![Make the project an MEF component](../../tasks/400500-VSixBlankProjectAnalysis/images/59_50_MakeItAnMefComponent.png)
 
 4. Add the two classes, `LineAsyncQuickInfoSource` and its provided, `LineAsyncQuickInfoSourceProvider`
 
