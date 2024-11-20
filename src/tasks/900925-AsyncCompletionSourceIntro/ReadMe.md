@@ -34,4 +34,8 @@
 ## References
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncCompletion
 2. https://github.com/microsoft/vs-editor-api/tree/main/samples
+3. https://github.com/microsoft/vs-editor-api/wiki/Modern-completion-walkthrough
+4. https://github.com/microsoft/vs-editor-api/wiki/
+5. https://github.com/KirillOsenkov/vs-editor-api/
+
 

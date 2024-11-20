@@ -3,6 +3,7 @@
 
 1. This is based on the following You tube video.
    1. https://www.youtube.com/watch?v=u0pRDM8qW04
+   2. https://youtu.be/u0pRDM8qW04?t=1165
 
 2. Reference.
    1. https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/guids-and-ids-of-visual-studio-menus#submenus-of-visual-studio-menus
