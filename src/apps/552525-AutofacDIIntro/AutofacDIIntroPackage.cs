@@ -25,7 +25,7 @@ namespace AutofacDIIntro
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(AutofacDIIntroPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(AutofacDIIntro.Commands.TrialToolWindow))]
     public sealed class AutofacDIIntroPackage : AutofacEnabledAsyncPackage

@@ -8,12 +8,6 @@
 2. We are using Autofac as the container.
 
 
-## References
-1. https://dotnetfalcon.com/dependency-injection-for-visual-studio-extensions/
-
-2. https://github.com/conwid/GistManager/tree/master/GistManager
-
-
 ## How this project is built.
 1. Starts from regualr VSix Project.
 2. Added Autofac nuget package
@@ -28,3 +22,7 @@
 5. But the tool window class, here TrialToolWindow is instanciated by the package by calling GetService method. 
 6. This example is still not fully Mvvm, because it does not impliment INotifyPropertyChanged etc.
 7. This only demonistrates DI.
+
+## References
+1. https://dotnetfalcon.com/dependency-injection-for-visual-studio-extensions/
+2. https://github.com/conwid/GistManager/tree/master/GistManager

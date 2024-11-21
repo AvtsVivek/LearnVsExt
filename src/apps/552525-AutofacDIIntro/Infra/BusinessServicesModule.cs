@@ -7,6 +7,7 @@ namespace AutofacDIIntro.Infra
 {
     public class BusinessServicesModule : Module
     {
+        // What the hell is the following for?
         //private HttpClient CreateHttpClient()
         //{
         //    var client = new HttpClient();
