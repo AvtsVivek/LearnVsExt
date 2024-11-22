@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/503590-CommandEventsIntro
+cd src/tasks/515500-CaretPositionOnToolWindow
 
-cd src/apps/503590-CommandEventsIntro
+cd src/apps/515500-CaretPositionOnToolWindow
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./CommandEventsIntro.csproj
+dotnet build --project ./CaretPositionOnToolWindow.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,13 +16,14 @@ dotnet build --project ./CommandEventsIntro.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
+nuget restore ./CaretPositionOnToolWindow.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./CommandEventsIntro.sln
+devenv /build Debug ./CaretPositionOnToolWindow.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./CommandEventsIntro.sln
+devenv.exe /RootSuffix Exp ./CaretPositionOnToolWindow.sln
 
 pwd
 
@@ -35,7 +36,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./CommandEventsIntro.vsix
+./CaretPositionOnToolWindow.vsix
 
 
 # Once installed, open the logs. You will see something like. 
