@@ -19,6 +19,5 @@ namespace AutofacDIIntro.Commands
             get { return _message; }
             set { _message = value; }
         }
-
     }
 }

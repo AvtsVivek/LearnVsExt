@@ -10,9 +10,31 @@
 
 ## How this project is built.
 1. Starts from regualr VSix Project.
-2. Added Autofac nuget package
+2. Added [Autofac](https://www.nuget.org/packages/Autofac) nuget package
 3. Added AutofacEnabledAsyncPackage and BusinessServicesModule
-4. 
+4. The ctor of the package is modified thus
+
+```cs
+public AutofacDIIntroPackage()
+{
+    RegisterModule<BusinessServicesModule>();
+}
+```
+
+5. Ensure to call the base initialize method as follows. See the thrid line.
+
+```cs
+protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+{
+    await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+    await AutofacDIIntro.Commands.TrialToolWindowCommand.InitializeAsync(this);
+    // Ensure you add the following line. Without this, container will not be built.
+    await base.InitializeAsync(cancellationToken, progress);
+}
+```
+
+6. 
+
 
 ## Notes
 1. BusinessServicesModule is the autofac module. We configure services here.

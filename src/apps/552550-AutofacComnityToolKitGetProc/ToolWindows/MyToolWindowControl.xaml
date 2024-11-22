@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="CommunityToolKitGetProcess.MyToolWindowView"
+﻿<UserControl x:Class="AutofacComnityToolKitGetProc.MyToolWindowControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:CommunityToolKitGetProcess"
+             xmlns:local="clr-namespace:AutofacComnityToolKitGetProc"
              xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
              xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
              xmlns:util="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities"
@@ -17,12 +17,11 @@
     <UserControl.DataContext>
         <local:MyToolWindowViewModel/>
     </UserControl.DataContext>
-
     <StackPanel Orientation="Vertical">
-            <Label x:Name="lblHeadline"
+        <Label x:Name="lblHeadline"
                    Margin="10"
                    HorizontalAlignment="Center">Title</Label>
-            <Button Content="Click me!"
+        <Button Content="Click me!"
                     Click="button1_Click"
                     Width="120"
                     Height="80"
@@ -31,7 +30,7 @@
             <Label x:Name="lblSolutionWithProjects" Margin="10" HorizontalAlignment="Center">Is Solution With Projects Opened In Vs</Label>
             <Label x:Name="lblSolutionWithProjectsText" Margin="10" HorizontalAlignment="Center" Content="{Binding IsSolutionWithProjectsOpenedInVs}"></Label>
         </StackPanel>
- 
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label x:Name="lblBuildStatus" Margin="10" HorizontalAlignment="Center">Build Status</Label>
             <Label x:Name="lblBuildStatusText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildStatusDescription}"></Label>
@@ -41,18 +40,18 @@
             <Label x:Name="lblBuildState" Margin="10" HorizontalAlignment="Center">Build State</Label>
             <Label x:Name="lblBuildStateText" Margin="10" HorizontalAlignment="Center" Content="{Binding BuildState}"></Label>
         </StackPanel>
-            
+
         <StackPanel Orientation="Vertical" IsEnabled="{Binding IsProcessRunning}" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label x:Name="lblProcessId" Margin="10" HorizontalAlignment="Center">Process Id</Label>
                 <Label x:Name="lblProcessIdValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessId}"></Label>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label x:Name="lblProcessName" Margin="10" HorizontalAlignment="Center">Process Name</Label>
                 <Label x:Name="lblProcessNameValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessName}"></Label>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label x:Name="lblProcessPath" Margin="10" HorizontalAlignment="Center">Process Path</Label>
                 <Label x:Name="lblProcessPathValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessPath}"></Label>
@@ -68,11 +67,10 @@
                 <Label x:Name="lblIsProcessRunningValue" Margin="10" HorizontalAlignment="Center" Content="{Binding IsProcessRunning}"></Label>
             </StackPanel>
         </StackPanel>
-            
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label x:Name="lblProcessMode" Margin="10" HorizontalAlignment="Center">Process Mode</Label>
             <Label x:Name="lblProcessModeValue" Margin="10" HorizontalAlignment="Center" Content="{Binding ProcessMode}"></Label>
         </StackPanel>
     </StackPanel>
-
 </UserControl>
