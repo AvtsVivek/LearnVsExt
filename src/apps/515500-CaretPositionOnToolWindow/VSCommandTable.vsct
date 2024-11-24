@@ -1,17 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <Extern href="stdidcmd.h"/>
-  <Extern href="vsshlids.h"/>
-  <Include href="KnownImageIds.vsct"/>
-  <Include href="VSGlobals.vsct"/>
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
+  <Include href="VSGlobals.vsct" />
 
   <Commands package="CaretPositionOnToolWindow">
+  
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="ToolWindows\Resources\CaretPositionToolWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+    </Bitmaps>
+    <Buttons>
+      <Button guid="guidCaretPositionOnToolWindowPackageCmdSet" id="cmdidCaretPositionToolWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>CaretPositionToolWindow</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
   </Commands>
 
   <Symbols>
     <GuidSymbol name="CaretPositionOnToolWindow" value="{5cb6ad76-6c92-4a31-84e6-e57da96505b2}">
       
+    </GuidSymbol>
+  
+    <GuidSymbol value="{3d68f7e7-608e-4726-a3b8-f5ade8bf4900}" name="guidCaretPositionOnToolWindowPackageCmdSet">
+      <IDSymbol value="256" name="cmdidCaretPositionToolWindowCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{ea042806-88d6-48c1-a8b6-37a143bd0b77}" name="guidImages">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

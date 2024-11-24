@@ -2,12 +2,17 @@
 
 ## Objective
 1. Here we go ...
-2. This is a todo. As of now, this is not doing anything.
-3. There is no app for this example as of now.
-
+2. This is a todo. As of now, this is WIP.
+3. 
 
 ## How this project is built.
-1. Here we go ...
+1. Start with Community project template.
+
+![Community Template](Images/50_50_ProjectTemplate.png)
+
+2. Add regular tool window, not community one. Not the following one.
+
+3. 
 
 ## References
 1. SimpleToolWindows example.
