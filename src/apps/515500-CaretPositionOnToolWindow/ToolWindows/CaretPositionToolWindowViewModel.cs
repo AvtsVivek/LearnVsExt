@@ -2,203 +2,47 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft;
-using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.Text.Operations;
-using Microsoft.VisualStudio.TextManager.Interop;
+using System.Linq;
 using System.Windows;
-using System.Windows.Threading;
-using WpfMb = System.Windows.MessageBox;
-using Microsoft.Xaml.Behaviors;
-using System.Windows.Media;
 
 namespace CaretPositionOnToolWindow.ToolWindows
 {
     public partial class CaretPositionToolWindowViewModel : ObservableObject
     {
-        private readonly IGreeterService _greeterService;
+        private readonly IDocumentService _documentService;
 
-        public CaretPositionToolWindowViewModel(IGreeterService greeterService)
+        public CaretPositionToolWindowViewModel(IDocumentService documentService)
         {
-
-            Assumes.Present(greeterService);
-            _greeterService = greeterService;
+            Assumes.Present(documentService);
+            _documentService = documentService;
 
             OpenedFilePath = string.Empty;
-            SomeFileIsOpen = false;
-            Message = _greeterService.GetGreetingsMessage();
 
-
-            InitializeTextFileVariables();
         }
 
-        private Visibility _userControlVisibility;
+        private string _cursorPosition;
 
-        public Visibility UserControlVisibility
+        public string CursorPosition
         {
-            get { return _userControlVisibility; }
-            set { _userControlVisibility = value; }
+            get { return _cursorPosition; }
+            set { _cursorPosition = value; OnPropertyChanged(); }
         }
 
-        [RelayCommand]
-        private void UserControlLostFocus(object obj)
-        {
-            // WpfMb.Show("Lost Focus");
-            // var asdf = System.Windows.Media.Visual
-            // The following does not work.
-            // var presentationSource = PresentationSource.FromVisual(MessageBox.Show("Lost Focus"));
+        private int _windowFrameCount;
 
-            // This Visual is not connected to a PresentationSource.
-            //try
-            //{
-            //    WpfMb.Show("Lost Focus");
-            //}
-            //catch (InvalidOperationException exception)
-            //{
-            //    if (exception.Message == "This Visual is not connected to a PresentationSource.")
-            //    {
-            //        // As of now, just swallow it.
-            //    }
-            //}
+        public int WindowFrameCount
+        {
+            get { return _windowFrameCount; }
+            set { _windowFrameCount = value; OnPropertyChanged(); }
         }
 
-        [RelayCommand]
-        private void UserControlGotFocus(object obj)
+        private int _documentCount;
+
+        public int DocumentCount
         {
-            WpfMb.Show("Got Focus");
-        }
-
-        [RelayCommand]
-        private void UserControlLoaded(object obj)
-        {
-            WpfMb.Show("Loaded ..");
-        }
-
-        [RelayCommand]
-        private void UserControlUnLoaded(object obj)
-        {
-            WpfMb.Show("Un Loaded ..");
-        }
-
-        [RelayCommand]
-        public void ButtonOneClick()
-        {
-            WpfMb.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
-                "CaretPositionToolWindow");
-        }
-
-        private void InitializeTextFileVariables()
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-
-            var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
-
-            if (componentModel == null)
-                return;
-
-            // The following is working. Its returning a non null settings manager.
-            var textStructureNavigatorSelectorService = componentModel.GetService<ITextStructureNavigatorSelectorService>();
-
-            var textSearchService = componentModel.GetService<ITextSearchService>();
-
-            // Need ensure the following is not null.
-            // var vsTextManagerFromComponentModel = componentModel.GetService<IVsTextManager>();
-
-            // Is the above and (vsTextManagerFromComponentModel) and below (vsTextManager) same?
-            // Need to check
-            var vsTextManager = (IVsTextManager)Package.GetGlobalService(typeof(SVsTextManager));
-
-            int mustHaveFocus = 1;
-
-            vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
-
-            if (vsTextView == null)
-            {
-                SomeFileIsOpen = false;
-                MessageNotes = "No text view is currently open. Probably no text file is open. Open any text file and try again.";
-                return;
-            }
-            else
-            {
-                SomeFileIsOpen = true;
-            }
-
-            vsTextView.GetBuffer(out IVsTextLines currentDocTextLines);
-
-            var vsTextBuffer = currentDocTextLines as IVsTextBuffer;
-
-            var persistFileFormat = vsTextBuffer as IPersistFileFormat;
-
-            persistFileFormat.GetCurFile(out string filePath, out uint pnFormatIndex);
-
-            vsTextBuffer.GetLineCount(out var lineCount);
-
-            MessageNotes = $"The number of lines: {lineCount}" + Environment.NewLine +
-                $"The file path is as follows:" + Environment.NewLine + filePath;
-
-            //VsShellUtilities.ShowMessageBox(
-            //    this.package,
-            //    $"The number of lines: {lineCount}" + Environment.NewLine +
-            //    $"The file path is as follows:" + Environment.NewLine +
-            //    filePath
-            //    ,
-            //    "File Details",
-            //    OLEMSGICON.OLEMSGICON_INFO,
-            //    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-            //    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-            for (int i = 0; i < lineCount; i++)
-            {
-                currentDocTextLines.GetLengthOfLine(i, out int lineSize);
-
-                //VsShellUtilities.ShowMessageBox(
-                //    this.package,
-                //    $"Length of line {lineSize}",
-                //    $"Data of line {i}",
-                //    OLEMSGICON.OLEMSGICON_INFO,
-                //    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                //    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-            }
-
-            // I am not sure what this language service id is
-            vsTextBuffer.GetLanguageServiceID(out var languageServiceID);
-
-            // Need to understand iLineCount and index
-            vsTextBuffer.GetLastLineIndex(out int iLineCount, out int iLineIndex);
-
-            // What is this size?
-            vsTextBuffer.GetSize(out var size);
-
-            // What is this totalLength? How is this different from size above?
-            currentDocTextLines.GetSize(out var totalLength);
-
-            /////////////////////////////////////////////////////////////////////////////
-
-            // What the hell is this Guid?
-            var viewHostGuid = Microsoft.VisualStudio.Editor.DefGuidList.guidIWpfTextViewHost;
-
-            // What is this userData?
-            // https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.textmanager.interop.ivsuserdata
-            var vsUserData = vsTextView as IVsUserData;
-
-            vsUserData.GetData(ref viewHostGuid, out object holder);
-
-            // https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.editor.iwpftextviewhost
-            var wpfTextViewHost = (IWpfTextViewHost)holder;
-
-            var wpfTextView = wpfTextViewHost.TextView;
-
-            var textView = wpfTextView as ITextView;
-
-            var caretPosition = textView.Caret.Position;
-            textView.Caret.PositionChanged += Caret_PositionChanged;
-        }
-
-        private void Caret_PositionChanged(object sender, CaretPositionChangedEventArgs e)
-        {
-            
+            get { return _documentCount; }
+            set { _documentCount = value; OnPropertyChanged(); }
         }
 
         private string _openedFilePath;
@@ -206,15 +50,7 @@ namespace CaretPositionOnToolWindow.ToolWindows
         public string OpenedFilePath
         {
             get { return _openedFilePath; }
-            set { _openedFilePath = value; }
-        }
-
-        private bool _someFileOpen;
-
-        public bool SomeFileIsOpen
-        {
-            get { return _someFileOpen; }
-            set { _someFileOpen = value; }
+            set { _openedFilePath = value; OnPropertyChanged(); }
         }
 
         private string _message;
@@ -222,7 +58,7 @@ namespace CaretPositionOnToolWindow.ToolWindows
         public string Message
         {
             get { return _message; }
-            set { _message = value; }
+            set { _message = value; OnPropertyChanged(); }
         }
 
         private string _messageNotes;
@@ -230,7 +66,492 @@ namespace CaretPositionOnToolWindow.ToolWindows
         public string MessageNotes
         {
             get { return _messageNotes; }
-            set { _messageNotes = value; }
+            set { _messageNotes = value; OnPropertyChanged(); }
+        }
+
+        private string _filesOpenedWithoutFocus;
+
+        public string FilesOpenedWithoutFocus
+        {
+            get { return _filesOpenedWithoutFocus; }
+            set { _filesOpenedWithoutFocus = value; OnPropertyChanged(); }
+        }
+
+        private string _filesOpenedWithFocus;
+
+        public string FilesOpenedWithFocus
+        {
+            get { return _filesOpenedWithFocus; }
+            set { _filesOpenedWithFocus = value; OnPropertyChanged(); }
+        }
+
+        [RelayCommand]
+        private void UserControlLostFocus(object obj)
+        {
+            // WpfMb.Show("Lost Focus");
+            MessageNotes += Environment.NewLine + " - " + $"UserControlLostFocus: {obj}";
+        }
+
+        [RelayCommand]
+        private void UserControlGotFocus(object obj)
+        {
+            //WpfMb.Show("Got Focus");
+            var rea = (RoutedEventArgs)obj;
+            var source = rea.Source;
+            var originalSource = rea.OriginalSource;
+            var sourceDpiContect = source.GetDpiContext();
+            var originalSourceDpiContect = originalSource.GetDpiContext();
+            MessageNotes += Environment.NewLine + " - " + $"UserControlGotFocus: {obj}";
+            SetStatues();
+        }
+
+        [RelayCommand]
+        private void UserControlLoaded(object obj)
+        {
+            //WpfMb.Show("Loaded ..");
+            MessageNotes += Environment.NewLine + " - " + $"UserControlLoaded: {obj}";
+            WireupEventHandlers();
+            SetStatues();
+        }
+
+        [RelayCommand]
+        private void UserControlUnLoaded(object obj)
+        {
+            // WpfMb.Show("UserControlUnLoaded..");
+            MessageNotes += Environment.NewLine + " - " + $"UserControl-UN-Loaded : {obj}";
+            UnWireupEventHandlers();
+        }
+
+        [RelayCommand]
+        public void ButtonOneClick()
+        {
+            //WpfMb.Show(
+            //    string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
+            //    "CaretPositionToolWindow");
+
+            MessageNotes = " - Cleared - ";
+        }
+
+        private async void SetStatues()
+        {
+            var activeVsTextViewWithoutFocus = _documentService.GetActiveVsTextViewWithoutFocus();
+
+            if (activeVsTextViewWithoutFocus == null)
+            {
+                FilesOpenedWithoutFocus = false.ToString();
+            }
+            else
+            {
+                FilesOpenedWithoutFocus = true.ToString();
+            }
+
+            var activeVsTextViewWithFocus = _documentService.GetActiveVsTextViewWithFocus();
+
+            if (activeVsTextViewWithFocus == null)
+            {
+                FilesOpenedWithFocus = false.ToString();
+            }
+            else
+            {
+                FilesOpenedWithFocus = true.ToString();
+            }
+            
+            if (activeVsTextViewWithFocus == null)
+            {
+                MessageNotes = "No text view is currently open. Probably no text file is open. Open any text file and try again.";
+            }
+
+            var windowFrameArray = await VS.Windows.GetAllDocumentWindowsAsync();
+
+            var windowFrameList = windowFrameArray.ToList();
+
+            WindowFrameCount = windowFrameList.Count;
+
+            var documentCount = 0;
+
+            foreach (var documentFrame in windowFrameList)
+            {
+                var doucumentView = await documentFrame.GetDocumentViewAsync();
+                if (doucumentView != null) 
+                    documentCount++;
+            }
+
+            DocumentCount = documentCount;
+        }
+
+        private void UnWireupEventHandlers()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            UnSubscribeToDocumentEvents();
+
+            UnSubscribeToTextViewEvents();
+
+            UnSubscribeToShellEvents();
+
+            UnSubscribeToWindowEvents();
+
+            UnSubscribeToSelectionEvents();
+        }
+
+        private void WireupEventHandlers()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            SubscribeToDocumentEvents();
+
+            SubscribeToTextViewEvents();
+
+            SubscribeToShellEvents();
+
+            SubscribeToWindowEvents();
+
+            SubscribeToSelectionEvents();
+        }
+
+        private void SubscribeToTextViewEvents()
+        {
+            var wpfTextView = _documentService.GetWpfTextView();
+
+            if (wpfTextView == null)
+            {
+                MessageNotes += Environment.NewLine + " - " + $"SubscribeToTextViewEvents: wpf Text view is null";
+                // System.Diagnostics.Debugger.Break();
+                return;
+            }
+
+            var textView = wpfTextView as ITextView;
+
+            var caretPosition = textView.Caret.Position;
+
+            // https://stackoverflow.com/a/7065771/1977871
+            textView.Caret.PositionChanged -= Caret_PositionChanged;
+            textView.Caret.PositionChanged += Caret_PositionChanged;
+            textView.ViewportLeftChanged += TextView_ViewportLeftChanged;
+            textView.Closed += TextView_Closed;
+            textView.GotAggregateFocus += TextView_GotAggregateFocus;
+            textView.LayoutChanged += TextView_LayoutChanged;
+            textView.LostAggregateFocus += TextView_LostAggregateFocus;
+            textView.MouseHover += TextView_MouseHover;
+            textView.ViewportHeightChanged += TextView_ViewportHeightChanged;
+            textView.ViewportWidthChanged += TextView_ViewportWidthChanged;
+            wpfTextView.BackgroundBrushChanged += WpfTextView_BackgroundBrushChanged;
+            wpfTextView.ZoomLevelChanged += WpfTextView_ZoomLevelChanged;
+        }
+
+        private void UnSubscribeToTextViewEvents()
+        {
+            var wpfTextView = _documentService.GetWpfTextView();
+
+            if (wpfTextView == null)
+            {
+                MessageNotes += Environment.NewLine + " - " + $"Un-Sub ToTextViewEvents: wpf Text view is null";
+                System.Diagnostics.Debugger.Break();
+                return;
+            }
+
+            var textView = wpfTextView as ITextView;
+
+            var caretPosition = textView.Caret.Position;
+
+            textView.Caret.PositionChanged -= Caret_PositionChanged;
+            textView.ViewportLeftChanged -= TextView_ViewportLeftChanged;
+            textView.Closed -= TextView_Closed;
+            textView.GotAggregateFocus -= TextView_GotAggregateFocus;
+            textView.LayoutChanged -= TextView_LayoutChanged;
+            textView.LostAggregateFocus -= TextView_LostAggregateFocus;
+            textView.MouseHover -= TextView_MouseHover;
+            textView.ViewportHeightChanged -= TextView_ViewportHeightChanged;
+            textView.ViewportWidthChanged -= TextView_ViewportWidthChanged;
+
+            wpfTextView.BackgroundBrushChanged -= WpfTextView_BackgroundBrushChanged;
+            wpfTextView.ZoomLevelChanged -= WpfTextView_ZoomLevelChanged;
+        }
+
+        private void SubscribeToShellEvents()
+        {
+            VS.Events.ShellEvents.ShellAvailable += ShellEvents_ShellAvailable;
+            VS.Events.ShellEvents.EnvironmentColorChanged += ShellEvents_EnvironmentColorChanged;
+            VS.Events.ShellEvents.ShutdownStarted += ShellEvents_ShutdownStarted;
+            VS.Events.ShellEvents.MainWindowVisibilityChanged += ShellEvents_MainWindowVisibilityChanged;
+        }
+
+        private void UnSubscribeToShellEvents()
+        {
+            VS.Events.ShellEvents.ShellAvailable -= ShellEvents_ShellAvailable;
+            VS.Events.ShellEvents.EnvironmentColorChanged -= ShellEvents_EnvironmentColorChanged;
+            VS.Events.ShellEvents.ShutdownStarted -= ShellEvents_ShutdownStarted;
+            VS.Events.ShellEvents.MainWindowVisibilityChanged -= ShellEvents_MainWindowVisibilityChanged;
+        }
+
+        private void SubscribeToWindowEvents()
+        {
+            VS.Events.WindowEvents.ActiveFrameChanged += WindowEvents_ActiveFrameChanged;
+            VS.Events.WindowEvents.Destroyed += WindowEvents_Destroyed;
+            VS.Events.WindowEvents.Created += WindowEvents_Created;
+            VS.Events.WindowEvents.FrameIsOnScreenChanged += WindowEvents_FrameIsOnScreenChanged;
+            VS.Events.WindowEvents.FrameIsVisibleChanged += WindowEvents_FrameIsVisibleChanged;            
+        }
+
+        private void UnSubscribeToWindowEvents()
+        {
+            VS.Events.WindowEvents.ActiveFrameChanged -= WindowEvents_ActiveFrameChanged;
+            VS.Events.WindowEvents.Destroyed -= WindowEvents_Destroyed;
+            VS.Events.WindowEvents.Created -= WindowEvents_Created;
+            VS.Events.WindowEvents.FrameIsOnScreenChanged -= WindowEvents_FrameIsOnScreenChanged;
+            VS.Events.WindowEvents.FrameIsVisibleChanged -= WindowEvents_FrameIsVisibleChanged;
+        }
+
+        private void SubscribeToSelectionEvents()
+        {
+            VS.Events.SelectionEvents.SelectionChanged += SelectionEvents_SelectionChanged;
+            VS.Events.SelectionEvents.UIContextChanged += SelectionEvents_UIContextChanged;
+        }
+
+        private void UnSubscribeToSelectionEvents()
+        {
+            VS.Events.SelectionEvents.SelectionChanged -= SelectionEvents_SelectionChanged;
+            VS.Events.SelectionEvents.UIContextChanged -= SelectionEvents_UIContextChanged;
+        }
+
+        private void SubscribeToDocumentEvents()
+        {
+            VS.Events.DocumentEvents.Opened += DocumentEvents_Opened;
+            VS.Events.DocumentEvents.Closed += DocumentEvents_Closed;
+            VS.Events.DocumentEvents.BeforeDocumentWindowShow += DocumentEvents_BeforeDocumentWindowShow;
+            VS.Events.DocumentEvents.AfterDocumentWindowHide += DocumentEvents_AfterDocumentWindowHide;
+        }
+
+        private void UnSubscribeToDocumentEvents()
+        {
+            VS.Events.DocumentEvents.Opened -= DocumentEvents_Opened;
+            VS.Events.DocumentEvents.Closed -= DocumentEvents_Closed;
+            VS.Events.DocumentEvents.BeforeDocumentWindowShow -= DocumentEvents_BeforeDocumentWindowShow;
+            VS.Events.DocumentEvents.AfterDocumentWindowHide -= DocumentEvents_AfterDocumentWindowHide;
+        }
+
+        private void SelectionEvents_UIContextChanged(object sender, UIContextChangedEventArgs e)
+        {
+            var dpiAwarenessContext = e.GetDpiContext();
+            // MessageNotes += Environment.NewLine + " - " + $"SelectionEvents_UIContextChanged: {dpiAwarenessContext}";
+            // WpfMb.Show($"SelectionEvents_UIContextChanged: {sender}");
+        }
+
+        private void SelectionEvents_SelectionChanged(object sender, Community.VisualStudio.Toolkit.SelectionChangedEventArgs e)
+        {
+            MessageNotes += Environment.NewLine + " - " + $"SelectionEvents_SelectionChanged: {sender}";
+            // WpfMb.Show($"SelectionEvents_SelectionChanged: {sender}");
+        }
+
+        private async void WindowEvents_FrameIsVisibleChanged(FrameVisibilityEventArgs obj)
+        {
+            MessageNotes += Environment.NewLine + " - " + $"WindowEvents_FrameIsVisibleChanged: {obj}";
+            // WpfMb.Show($"WindowEvents_FrameIsVisibleChanged: {obj}");
+        }
+
+        private async void WindowEvents_FrameIsOnScreenChanged(FrameOnScreenEventArgs obj)
+        {
+            var documentView = await obj.Frame.GetDocumentViewAsync();
+            var text = "doc view is null";
+            if (documentView != null)
+            {
+                var caretPosition = documentView.TextView.Caret.Position;
+                var caretPoint = caretPosition.Point;
+                var bufferPosition = caretPosition.BufferPosition;
+                var position = bufferPosition.Position;
+                var textSnapshot = bufferPosition.Snapshot;
+                text = textSnapshot.GetText();
+            }
+
+            MessageNotes += Environment.NewLine + " - " + $"WindowEvents_FrameIsOnScreenChanged: {text}";
+            // WpfMb.Show($"WindowEvents_FrameIsOnScreenChanged: {obj}");
+        }
+
+        private async void WindowEvents_ActiveFrameChanged(ActiveFrameChangeEventArgs obj)
+        {
+            var newFrameDocView = await obj.NewFrame.GetDocumentViewAsync();
+            var oldFrameDocView = await obj.OldFrame.GetDocumentViewAsync();
+
+            var newDocFilePath = newFrameDocView?.FilePath ?? " is null";
+            var oldDocFilePath = oldFrameDocView?.FilePath ?? " is null";
+
+            MessageNotes += Environment.NewLine + " - " + $"WindowEvents_ActiveFrameChanged:";
+            MessageNotes += Environment.NewLine + " - - new doc file path: " + newDocFilePath;
+            MessageNotes += Environment.NewLine + " - - old doc file path: " + oldDocFilePath;
+
+            if (newFrameDocView != null)
+            {
+                newFrameDocView.TextView.Caret.PositionChanged -= Caret_PositionChanged;
+                newFrameDocView.TextView.Caret.PositionChanged += Caret_PositionChanged;
+                var caretPosition = newFrameDocView.TextView.Caret.Position;
+                CursorPosition = caretPosition.VirtualBufferPosition.Position.Position.ToString();
+            }
+            else
+                CursorPosition = "Not a txt file";
+            // WpfMb.Show($"WindowEvents_ActiveFrameChanged: {obj}");
+        }
+
+        private void ShellEvents_MainWindowVisibilityChanged(bool obj)
+        {
+            MessageNotes += Environment.NewLine + " - " + $"ShellEvents_MainWindowVisibilityChanged: {obj}";
+            // WpfMb.Show($"ShellEvents_MainWindowVisibilityChanged: {obj}");
+        }
+
+        private void ShellEvents_ShutdownStarted()
+        {
+            MessageNotes += Environment.NewLine + " - " + $"ShellEvents_ShutdownStarted";
+            // WpfMb.Show($"ShellEvents_ShutdownStarted");
+        }
+
+        private void ShellEvents_EnvironmentColorChanged()
+        {
+            MessageNotes += Environment.NewLine + " - " + $"ShellEvents_EnvironmentColorChanged";
+            // WpfMb.Show($"ShellEvents_EnvironmentColorChanged");
+        }
+
+        private void ShellEvents_ShellAvailable()
+        {
+            MessageNotes += Environment.NewLine + " - " + $"ShellEvents_ShellAvailable";
+            // WpfMb.Show($"ShellEvents_ShellAvailable");
+        }
+
+        private void DocumentEvents_AfterDocumentWindowHide(DocumentView documentView)
+        {
+            SetStatues();
+            documentView.TextView.Caret.PositionChanged -= Caret_PositionChanged;
+            MessageNotes += Environment.NewLine + " - " + $"DocumentEvents_AfterDocumentWindowHide: {documentView.FilePath}";
+            // WpfMb.Show($"DocumentEvents_AfterDocumentWindowHide: {documentView.Document.FilePath}");
+        }
+
+        private void DocumentEvents_BeforeDocumentWindowShow(DocumentView documentView)
+        {
+            SetStatues();
+            // https://stackoverflow.com/a/7065771/1977871
+
+            if (documentView.TextView != null)
+            {
+                documentView.TextView.Caret.PositionChanged -= Caret_PositionChanged;
+                documentView.TextView.Caret.PositionChanged += Caret_PositionChanged;
+            }
+            MessageNotes += Environment.NewLine + " - " + $"DocumentEvents_BeforeDocumentWindowShow: {documentView.FilePath}";
+            // WpfMb.Show($"DocumentEvents_BeforeDocumentWindowShow: {documentView.Document.FilePath}");
+        }
+
+        private void Caret_PositionChanged(object sender, CaretPositionChangedEventArgs e)
+        {
+            CursorPosition = e.NewPosition.VirtualBufferPosition.Position.Position.ToString();
+            MessageNotes += Environment.NewLine + " - " + $"Caret_PositionChanged: {sender.GetType()}";
+        }
+
+        private void DocumentEvents_Closed(string obj)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"DocumentEvents_Closed: {obj}";
+            // WpfMb.Show($"DocumentEvents_Closed: {obj}");
+        }
+
+        private async void WindowEvents_Destroyed(WindowFrame windowFrame)
+        {
+            SetStatues();
+            var documentView = await windowFrame.GetDocumentViewAsync();
+            if (documentView != null)
+            {
+                MessageNotes += Environment.NewLine + " - " + $"WindowEvents_Created: {documentView.FilePath}";
+            }
+            else
+                MessageNotes += Environment.NewLine + " - " + $"WindowEvents_Created: No doc is currently open";
+            // WpfMb.Show($"WindowEvents_Destroyed: {obj.Caption}");
+        }
+
+        private async void WindowEvents_Created(WindowFrame windowFrame)
+        {
+            SetStatues();
+            var documentView = await windowFrame.GetDocumentViewAsync();
+            if (documentView != null)
+            {
+                MessageNotes += Environment.NewLine + " - " + $"WindowEvents_Created: {documentView.FilePath}";
+            }
+            else
+                MessageNotes += Environment.NewLine + " - " + $"WindowEvents_Created: No doc is currently open";
+            // WpfMb.Show($"WindowEvents_Created: {obj.Caption}");
+        }
+
+        private void DocumentEvents_Opened(string obj)
+        {
+            SetStatues();
+            // CursorPosition
+            MessageNotes += Environment.NewLine + " - " + $"DocumentEvents_Opened: {obj}";
+            // WpfMb.Show($"DocumentEvents_Opened:: {obj}");
+        }
+
+        private void WpfTextView_ZoomLevelChanged(object sender, ZoomLevelChangedEventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"WpfTextView_ZoomLevelChanged: {sender}";
+            // WpfMb.Show($"WpfTextView_ZoomLevelChanged: {sender}");
+        }
+
+        private void WpfTextView_BackgroundBrushChanged(object sender, BackgroundBrushChangedEventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"WpfTextView_BackgroundBrushChanged: {sender}";
+            // WpfMb.Show($"WpfTextView_BackgroundBrushChanged: {sender}");
+        }
+
+        private void TextView_ViewportWidthChanged(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_ViewportWidthChanged: {sender}";
+            // WpfMb.Show($"TextView_ViewportWidthChanged: {sender}");
+        }
+
+        private void TextView_ViewportHeightChanged(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_ViewportHeightChanged: {sender}";
+            // WpfMb.Show($"TextView_ViewportHeightChanged: {sender}");
+        }
+
+        private void TextView_MouseHover(object sender, MouseHoverEventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_MouseHover: {sender}";
+            // WpfMb.Show($"TextView_MouseHover: {sender}");
+        }
+
+        private void TextView_LostAggregateFocus(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_LostAggregateFocus: {sender}";
+            // WpfMb.Show($"TextView_LostAggregateFocus: {sender}");
+        }
+
+        private void TextView_LayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_LayoutChanged: {sender}";
+            // WpfMb.Show($"TextView_LayoutChanged: {sender}");
+        }
+
+        private void TextView_GotAggregateFocus(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_GotAggregateFocus: {sender}";
+            // WpfMb.Show($"TextView_GotAggregateFocus: {sender}");
+        }
+
+        private void TextView_Closed(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_Closed: {sender}";
+            // WpfMb.Show($"TextView_Closed: {sender}");
+        }
+
+        private void TextView_ViewportLeftChanged(object sender, EventArgs e)
+        {
+            SetStatues();
+            MessageNotes += Environment.NewLine + " - " + $"TextView_ViewportLeftChanged: {sender}";
+            // WpfMb.Show($"TextView_ViewportLeftChanged: {sender}");
         }
 
         private static T GetGlobalService<T>(Type serviceType)

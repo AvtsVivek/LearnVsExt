@@ -6,6 +6,9 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:core="using:Microsoft.Xaml.Interactions.Core"
               
+             xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+             toolkit:Themes.UseVsTheme="True"
+              
              Visibility="{Binding UserControlVisibility,Mode=OneWayToSource}"
              
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
@@ -52,35 +55,48 @@
         </StackPanel>
         <Grid ShowGridLines="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Center">TrialToolWindow</TextBlock>
-            <Button Grid.Row="2" Grid.Column="1" Content="Click me!" Width="120"
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Left">Title </TextBlock>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding WindowFrameCount}"></TextBlock>
+                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding DocumentCount}"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithoutFocus}"></TextBlock>
+                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithFocus}"></TextBlock>
+            </StackPanel>
+            <TextBlock Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding CursorPosition}" ></TextBlock>
+            
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="subHeaderText" 
+                       TextWrapping="Wrap" 
+                       Text="{Binding MessageNotes}" />
+            <Label Margin="10" Grid.Column="0" Grid.Row="0">Label</Label>
+            <Label Margin="10" Grid.Column="0" Grid.Row="1">Win Frame &amp; Doc Count</Label>
+            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+                <TextBlock Margin="10" TextWrapping="Wrap" Width="140" Text="Files Opened With &amp; without  Focus" ></TextBlock>
+            </StackPanel>
+            <Label Margin="10" Grid.Column="0" Grid.Row="3">Cursor position</Label>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="4">
+                <Button Content="Clear Textbox!" HorizontalAlignment="Left" Width="120"
                     Height="30" Name="button1">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=button1}">
-                        <i:InvokeCommandAction x:Name="ButtonClickCommandAction" 
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=button1}">
+                            <i:InvokeCommandAction x:Name="ButtonClickCommandAction" 
                                                Command="{Binding ButtonOneClickCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <TextBlock Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center" Text="{Binding Message}" ></TextBlock>
-            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="subHeaderText" 
-                       FontSize="20" TextWrapping="Wrap" Foreground="Black"
-                       Text="{Binding Message}" />
-            <Label Grid.Column="0" Grid.Row="1">Label 1</Label>
-            <Label Grid.Column="0" Grid.Row="2">Label 2</Label>
-            <Label Grid.Column="0" Grid.Row="3">Label 3</Label>
-            <Label Grid.Column="0" Grid.Row="4">Label 4</Label>
-            <Label Grid.Column="0" Grid.Row="5">Label 5</Label>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Label Margin="10">Messages</Label>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

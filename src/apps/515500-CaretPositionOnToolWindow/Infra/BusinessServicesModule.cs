@@ -22,15 +22,7 @@ namespace CaretPositionOnToolWindow.Infra
             builder.RegisterType<CaretPositionToolWindow>();
             builder.RegisterType<CaretPositionToolWindowControl>();
             builder.RegisterType<CaretPositionToolWindowViewModel>().SingleInstance();
-            builder.RegisterType<GreeterService>().As<IGreeterService>().SingleInstance();
-
-            //builder.RegisterType<GistClientService>().As<IGistClientService>();
-            //builder.RegisterType<WpfAuthenticationHandler>().As<IAuthenticationHandler>();
-
-            //builder.RegisterType<WpfErrorHandler>().As<IErrorHandler>().SingleInstance();
-            //builder.RegisterType<AsyncOperationStatusManager>().As<IAsyncOperationStatusManager>().SingleInstance();
-
-            // builder.Register<HttpClient>(ctx => CreateHttpClient()).SingleInstance();
+            builder.RegisterType<DocumentService>().As<IDocumentService>().SingleInstance();
         }
     }
 }

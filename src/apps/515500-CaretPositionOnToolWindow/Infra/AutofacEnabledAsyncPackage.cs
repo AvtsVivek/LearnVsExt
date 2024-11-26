@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using System.Diagnostics;
 using System.Threading;
 
 namespace CaretPositionOnToolWindow.Infra

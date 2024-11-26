@@ -49,6 +49,7 @@
     <Compile Include="Infra\BusinessServicesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CaretPositionOnToolWindowPackage.cs" />
+    <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\GreeterService.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>

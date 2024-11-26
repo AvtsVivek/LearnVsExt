@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.Shell;
-using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace CaretPositionOnToolWindow.ToolWindows
 {
