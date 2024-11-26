@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/580500-WebSocketExOne
+cd src/tasks/480500-WebSocketExOne
 
-cd src/apps/580500-WebSocketExOne
+cd src/apps/480500-WebSocketExOne
 
 devenv /build Debug ./WebSocketExOne.sln
 

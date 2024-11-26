@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/552450-CommunityActiveProcess
+cd src/tasks/452450-CommunityActiveProcess
 
-cd src/apps/552450-CommunityActiveProcess
+cd src/apps/452450-CommunityActiveProcess
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

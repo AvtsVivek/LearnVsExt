@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/580300-WebSocketExConsole
+cd src/tasks/480300-WebSocketExConsole
 
-cd src/apps/580300-WebSocketExConsole
+cd src/apps/480300-WebSocketExConsole
 
 devenv /build Debug ./WebSocketExConsole.sln
 

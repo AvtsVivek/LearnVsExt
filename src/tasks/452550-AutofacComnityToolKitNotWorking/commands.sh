@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/900970-CommunityToolKitGetProcess
+cd src/tasks/452550-AutofacComnityToolKitGetProc
 
-cd src/apps/900970-CommunityToolKitGetProcess
+cd src/apps/452550-AutofacComnityToolKitGetProc
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./CommunityToolKitGetProcess.csproj
+dotnet build --project ./AutofacComnityToolKitGetProc.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,13 +16,14 @@ dotnet build --project ./CommunityToolKitGetProcess.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
+nuget restore ./AutofacComnityToolKitGetProc.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./CommunityToolKitGetProcess.sln
+devenv /build Debug ./AutofacComnityToolKitGetProc.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./CommunityToolKitGetProcess.sln
+devenv.exe /RootSuffix Exp ./AutofacComnityToolKitGetProc.sln
 
 pwd
 
@@ -35,7 +36,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./CommunityToolKitGetProcess.vsix
+./AutofacComnityToolKitGetProc.vsix
 
 
 # Once installed, open the logs. You will see something like. 

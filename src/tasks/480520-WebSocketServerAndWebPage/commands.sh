@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/580520-WebSocketServerAndWebPage
+cd src/tasks/480520-WebSocketServerAndWebPage
 
-cd src/apps/580520-WebSocketServerAndWebPage
+cd src/apps/480520-WebSocketServerAndWebPage
 
 devenv /build Debug ./WebSocketServerAndWebPage.sln
 
