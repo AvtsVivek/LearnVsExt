@@ -3,11 +3,11 @@
 
 2. Create a new project as follows.
 
-![New Project Template](../../tasks/400500-VSixBlankProjectAnalysis/images/51_50_NewProjectTemplate50.jpg)
+![New Project Template](../../tasks/200500-VSixBlankProjectAnalysis/images/51_50_NewProjectTemplate50.jpg)
 
 3. Make it a Mef Component as follows. Solution Explorer -> Look for source.extension.vsixmanifest, right click -> Assets -> Edit.
 
-![Make the project an MEF component](../../tasks/400500-VSixBlankProjectAnalysis/images/59_50_MakeItAnMefComponent.png)
+![Make the project an MEF component](../../tasks/200500-VSixBlankProjectAnalysis/images/59_50_MakeItAnMefComponent.png)
 
 4. Add the two classes, `LineAsyncQuickInfoSource` and its provided, `LineAsyncQuickInfoSourceProvider`
 

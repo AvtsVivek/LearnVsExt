@@ -8,6 +8,7 @@
 
 ![Foo Abcd file](Images/50_50_FooAbcdFile.png)
 
+2. If you try with any other file type, say .cs file, this will not work as above image shows. 
 
 ## Notes
 1. The Content type is registered with the Content Type registry.

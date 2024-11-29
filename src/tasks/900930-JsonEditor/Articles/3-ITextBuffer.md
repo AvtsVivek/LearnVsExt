@@ -261,13 +261,13 @@ As mentioned earlier, an object is created for editing that implements the inter
     </tr>
     <tr>
       <td align="left">1</td>
-      <td align="left">[ITextEdit](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextedit)</td>
+      <td align="left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextedit">ITextEdit</a></td>
       <td align="left">CreateEdit</td>
       <td align="left">Used to modify the contents of ITextBuffer: insert, delete, and replace characters</td>
     </tr>
     <tr>
       <td align="left">2</td>
-      <td align="left">[IReadOnlyRegionEdit](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.ireadonlyregionedit)</td>
+      <td align="left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.ireadonlyregionedit">IReadOnlyRegionEdit</a></td>
       <td align="left">CreateReadOnlyRegionEdit</td>
       <td align="left">Used to create or delete non-editable areas of text - any changes to these areas will fail</td>
     </tr>

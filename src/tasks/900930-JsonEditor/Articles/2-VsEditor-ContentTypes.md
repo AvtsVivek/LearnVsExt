@@ -1,6 +1,10 @@
 
 # JSON on steroids #2.1. Visual Studio Editor: Content Types
 
+## Reference
+
+JSON on steroids #2.1. [Visual Studio Editor: Content Types](https://mihailromanov.wordpress.com/2021/10/03/json-on-steroids-2-1-visual-studio-editor-content-types)
+
 ## 
 
 Before we get into the promised extensions to the JSON editor, I want to skim through the part of the VS SDK that has to do with text editor support.
@@ -138,14 +142,14 @@ The TeamsManifestContentTypeConstants class isn't particularly remarkable—it's
 
 In fact, the Content Type itself is described in the next class – **TeamsManifestContentTypeDefinition**. Pay attention to how this is done:
 
-- A static field of type ContentTypeDefinition is declared
+- A static field of type **ContentTypeDefinition** is declared
   - The name of this field, as well as its visibility, is absolutely not important, only the attributes tied to this field are important - in fact, it is created only for the sake of them
 
-- This field is declared to be exported (if the field itself is not of the ContentTypeDefinition type, but of some child type, you need to explicitly specify the exported type – ContentTypeDefinition – in the export attribute)
+- This field is declared to be exported (if the field itself is not of the **ContentTypeDefinition** type, but of some child type, you need to explicitly specify the exported type – **ContentTypeDefinition** – **in** the export attribute)
 
 - Attributes are hung on the field:
-  - [Name] (required) is the name by which this Content Type can be referenced later
-  - [BaseDefinition] (optional) – The name (or names!) of the base Content Types
+  - **[Name]** (required) is the name by which this Content Type can be referenced later
+  - **[BaseDefinition]** (optional) – The name (or names!) of the base Content Types
 
 That is, it turns out that we, in fact, declare a new name for the Content Type, and say which types are the base for it. This is an important point that a Content Type can have several basic types. For example, here's a small snippet of the Content Types hierarchy that's defined in my current version of Visual Studio.
 
@@ -208,7 +212,7 @@ internal static class TeamsManifestContentTypeDefinition
 }
 ```
 
-As in the first example, the main description should be searched in the TeamsManifestContentTypeDefinition class. Here we added 2 fields with the FileExtensionToContentTypeDefinition type – their task is to link metadata together:
+As in the first example, the main description should be searched in the **TeamsManifestContentTypeDefinition** class. Here we added 2 fields with the **FileExtensionToContentTypeDefinition** type – their task is to link metadata together:
 
 - content name and file extension (see the ManifestFileExtensionDefinition property)
 - content name and file name (ManifestFileNameDefinition property)
@@ -220,7 +224,7 @@ In principle, binding by file name or by extension almost covers all needs. Howe
 - "Any files of the manifestXXX.json type"
 - or ".tms files, but only in the configs subfolder".
 
-To support this, you can use your own implementation of the IFilePathToContentTypeProvider service:
+To support this, you can use your own implementation of the **IFilePathToContentTypeProvider** service:
 
 ```CSharp
 [Export(typeof(IFilePathToContentTypeProvider))]
@@ -255,11 +259,11 @@ internal class NumberedManifestNameProvider : IFilePathToContentTypeProvider
 
 It contains:
 
-- implements and exports the IFilePathToContentTypeProvider interface
-- the IContentTypeRegistryService service is imported (we need it to return the IContentType structure, not the type name)
+- implements and exports the **IFilePathToContentTypeProvider** interface
+- the **IContentTypeRegistryService** service is imported (we need it to return the **IContentType** structure, not the type name)
 - must (!) be marked with attributes
-  - [Name] – the name of the provider itself
-  - either [FileExtension] or [FileName] is the extension or file name for which the TryGetContentTypeForFilePath() method will be called
+  - **[Name]** – the name of the provider itself
+  - either **[FileExtension]** or **[FileName]** is the extension or file name for which the **TryGetContentTypeForFilePath()** method will be called
 
 And our provider works like this:
 
@@ -294,9 +298,9 @@ internal class TaggerProvider : ITaggerProvider
 ```
 This is a mechanism for tagging text (we'll talk about it in a moment).
 
-As you can see, the [ContentType] attribute is attached to the class (the name is the constant we declared), which means that this provider will only be used to work with "TeamsManifest" content!
+As you can see, the **[ContentType]** attribute is attached to the class (the name is the constant we declared), which means that this provider will only be used to work with "TeamsManifest" content!
 
-- The second, imperative, is to use ITextSnapshot.ContentType. Since we work with texts, it is almost certain that ITextSnapshot will be available in any scenario. Well, then we do a simple check:
+- The second, imperative, is to use **ITextSnapshot.ContentType**. Since we work with texts, it is almost certain that ITextSnapshot will be available in any scenario. Well, then we do a simple check:
 
 ```cs
 if (!context.Snapshot.ContentType
