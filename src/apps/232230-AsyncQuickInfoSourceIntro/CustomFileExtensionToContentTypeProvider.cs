@@ -5,7 +5,7 @@ namespace AsyncQuickInfoSourceIntro
 {
     [Export(typeof(IFilePathToContentTypeProvider))]
     [Name("FooAbcdFileToContentTypeProvider")] // I think, this could be any string.
-    [FileExtension(TeamsManifestContentTypeConstants.FileExtension)]
+    [FileExtension(CustomContentTypeConstants.FileExtension)]
     internal class CustomFileExtensionToContentTypeProvider : IFilePathToContentTypeProvider
     {
         [Import]
@@ -17,7 +17,7 @@ namespace AsyncQuickInfoSourceIntro
             // Just assign the content type and then return true.
             // So all that we are doing in here is, for a given extension(in this case its .csabcd
             // just assign the CSharp content type.
-            contentType = ContentTypeRegistryService.GetContentType(TeamsManifestContentTypeConstants.ContentTypeName);
+            contentType = ContentTypeRegistryService.GetContentType(CustomContentTypeConstants.ContentTypeName);
             return true;
         }
     }

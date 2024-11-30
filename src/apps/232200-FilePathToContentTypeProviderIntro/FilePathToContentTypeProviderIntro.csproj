@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomContentTypeConstants.cs" />
+    <Compile Include="CustomContentTypeDefinition.cs" />
+    <Compile Include="CustomFileExtensionToContentTypeProvider.cs" />
     <Compile Include="FilePathToContentTypeProviderIntroPackage1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

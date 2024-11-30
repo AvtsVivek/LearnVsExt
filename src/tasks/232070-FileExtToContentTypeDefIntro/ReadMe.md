@@ -21,6 +21,7 @@
 
 ## Notes
 1. The Content type is registered with the Content Type registry.
+
 2. Try by commenting out the Content type(the following lines). You will see that the content type is not registered and the above test fails.
 
 ```cs
@@ -35,16 +36,22 @@ internal static ContentTypeDefinition FooContentTypeDefinition;
 internal static FileExtensionToContentTypeDefinition FooFileExtensionDefinition;
 ```
 
-3. So in summary, to register a command type, make this a MEF component. 
+3. In the above code, the first field of type `ContentTypeDefinition` defines a ContentType of name `ContentTypeName`.
 
-4. Another important thing to understand here is, `IFileExtensionRegistryService` works correctly here. In an earlier example(IFileExtRegSerNotWorking), the `IFileExtensionRegistryService` does not return the extensions for `cs` and `txt` file extensions. This is reported in [stackoverflow](https://stackoverflow.com/q/79194608) and [microsoft questions](https://learn.microsoft.com/en-us/answers/questions/2120142/)
+4. The second field, which is of the type `FileExtensionToContentTypeDefinition` connects or associates a content type(in this case `ContentTypeName` defined by the first field above) with a file extension. The file extension in this case is `.fooabcd`(or `.FooAbcd`, case should not matter).
 
-5. 
+5. Also note that there are other ways to do the content type to file extension association. See the example of `FilePathToContentTypeProviderIntro` where `IFilePathToContentTypeProvider` is introduced. 
+
+6. Do make this project an MEF component.
+
+7. Another important thing to understand here is, `IFileExtensionRegistryService` works correctly here. In an earlier example(`IFileExtRegSerNotWorking`), the `IFileExtensionRegistryService` does not return the extensions for `cs` and `txt` file extensions. This is reported in [stackoverflow](https://stackoverflow.com/q/79194608) and [microsoft questions](https://learn.microsoft.com/en-us/answers/questions/2120142/)
+
+8. 
 
 ## References
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncQuickInfo
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/managed-extensibility-framework-in-the-editor
 3. https://github.com/Microsoft/vs-editor-api/wiki/Modern-Quick-Info-API
-4. asdf
+4. 
 
 

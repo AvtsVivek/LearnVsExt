@@ -7,7 +7,7 @@ namespace AsyncQuickInfoSourceIntro
 {
     [Export(typeof(IAsyncQuickInfoSourceProvider))]
     [Name("Line Async Quick Info Provider")]
-    [ContentType(TeamsManifestContentTypeConstants.ContentTypeName)]
+    [ContentType(CustomContentTypeConstants.ContentTypeName)]
     [Order]
     internal sealed class LineAsyncQuickInfoSourceProvider : IAsyncQuickInfoSourceProvider
     {
