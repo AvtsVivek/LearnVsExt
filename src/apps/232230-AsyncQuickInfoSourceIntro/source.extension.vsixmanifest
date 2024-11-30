@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="FilePathToContentTypeProviderIntro.57ed58ad-ad47-4e09-963b-ecd5caf39967" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
-        <DisplayName>FilePathToContentTypeProviderIntro</DisplayName>
+        <Identity Id="AsyncQuickInfoSourceIntro.2a5e4758-be0b-4958-b5d1-c6ab1cc0b730" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+        <DisplayName>AsyncQuickInfoSourceIntro</DisplayName>
         <Description>Empty VSIX Project.</Description>
     </Metadata>
     <Installation>

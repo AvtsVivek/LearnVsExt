@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace FilePathToContentTypeProviderIntro
+namespace AsyncQuickInfoSourceIntro
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace FilePathToContentTypeProviderIntro
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(FilePathToContentTypeProviderIntroPackage.PackageGuidString)]
-    public sealed class FilePathToContentTypeProviderIntroPackage : AsyncPackage
+    [Guid(AsyncQuickInfoSourceIntroPackage.PackageGuidString)]
+    public sealed class AsyncQuickInfoSourceIntroPackage : AsyncPackage
     {
         /// <summary>
-        /// FilePathToContentTypeProviderIntroPackage GUID string.
+        /// AsyncQuickInfoSourceIntroPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "ca87007b-262b-4cfb-9a82-6cb90e2b485c";
+        public const string PackageGuidString = "102cb40d-19b8-4287-acc3-9528d259f170";
 
         #region Package Members
 

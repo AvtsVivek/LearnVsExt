@@ -104,9 +104,9 @@ namespace FileExtToContentTypeDefIntro
                 return;
             }
 
-            var contentTypeRegistryServiceLocal = componentModel.GetService<IContentTypeRegistryService>();
+            var contentTypeRegistryService = componentModel.GetService<IContentTypeRegistryService>();
 
-            var contentTypeList = contentTypeRegistryServiceLocal.ContentTypes.
+            var contentTypeList = contentTypeRegistryService.ContentTypes.
                 OrderBy(contentType => contentType.TypeName).ToList();
 
             var message = $"A total of {contentTypeList.Count} content Types are found." + Environment.NewLine;

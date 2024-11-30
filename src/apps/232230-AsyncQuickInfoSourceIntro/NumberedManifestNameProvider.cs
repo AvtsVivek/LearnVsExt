@@ -1,14 +1,12 @@
 ﻿using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
-using System.IO;
-using System.Text.RegularExpressions;
 
-namespace FilePathToContentTypeProviderIntro
+namespace AsyncQuickInfoSourceIntro
 {
     [Export(typeof(IFilePathToContentTypeProvider))]
-    [Name("NumberedManifestNameProvider")]
-    [FileExtension(".csabcd")]
-    internal class NumberedManifestNameProvider : IFilePathToContentTypeProvider
+    [Name("FooAbcdFileToContentTypeProvider")] // I think, this could be any string.
+    [FileExtension(TeamsManifestContentTypeConstants.FileExtension)]
+    internal class CustomFileExtensionToContentTypeProvider : IFilePathToContentTypeProvider
     {
         [Import]
         IContentTypeRegistryService ContentTypeRegistryService { get; set; }
@@ -19,7 +17,7 @@ namespace FilePathToContentTypeProviderIntro
             // Just assign the content type and then return true.
             // So all that we are doing in here is, for a given extension(in this case its .csabcd
             // just assign the CSharp content type.
-            contentType = ContentTypeRegistryService.GetContentType("CSharp");
+            contentType = ContentTypeRegistryService.GetContentType(TeamsManifestContentTypeConstants.ContentTypeName);
             return true;
         }
     }
