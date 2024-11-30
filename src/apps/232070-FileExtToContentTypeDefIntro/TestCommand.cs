@@ -161,6 +161,53 @@ namespace FileExtToContentTypeDefIntro
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
+            var fileExtensionRegistryService = componentModel.GetService<IFileExtensionRegistryService>();
+
+            if (fileExtensionRegistryService == null)
+            {
+                VsShellUtilities.ShowMessageBox(
+                this.package,
+                "IFileExtensionRegistryService Model is null",
+                "IFileExtensionRegistryService is null",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                return;
+            }
+
+            var extensionListForFooAbcdContentType = fileExtensionRegistryService.
+                GetExtensionsForContentType(contentType: fooAbcdContentType).ToList();
+
+            if (extensionListForFooAbcdContentType.Count == 0)
+            {
+                VsShellUtilities.ShowMessageBox(
+                this.package,
+                $"No extensions found for {fooAbcdContentType.TypeName}",
+                "extensionListForFooAbcdContentType count is zero",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+            else if (extensionListForFooAbcdContentType.Count == 1)
+            {
+                VsShellUtilities.ShowMessageBox(
+                this.package,
+                $"Extensions found for {fooAbcdContentType.TypeName}, the ext is {extensionListForFooAbcdContentType[0]}",
+                "extensionListForFooAbcdContentType count is one",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+            else
+            {
+                VsShellUtilities.ShowMessageBox(
+                this.package,
+                $"More than one Extensions found for {fooAbcdContentType.TypeName}",
+                "extensionListForFooAbcdContentType count is more than one",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
         }
     }
 }

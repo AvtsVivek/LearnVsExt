@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="IFileExtRegSerNotWorking.f515cde8-9e17-4d4f-9bfc-4842863dfd06" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
-        <DisplayName>IFileExtRegSerNotWorking</DisplayName>
+        <Identity Id="FilePathToContentTypeProviderIntro.57ed58ad-ad47-4e09-963b-ecd5caf39967" Version="1.0" Language="en-US" Publisher="Baker Hughes" />
+        <DisplayName>FilePathToContentTypeProviderIntro</DisplayName>
         <Description>Empty VSIX Project.</Description>
     </Metadata>
     <Installation>

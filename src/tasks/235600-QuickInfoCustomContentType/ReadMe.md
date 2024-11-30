@@ -8,7 +8,17 @@
 
 ![Foo Abcd file](Images/50_50_FooAbcdFile.png)
 
-2. If you try with any other file type, say .cs file, this will not work as above image shows. 
+2. Open a cs file as now, and try the same as above with the cs file.
+
+![cs file](Images/51_50_CsFile.png)
+
+3. So if you try with any other file type, say .cs file, this will not work as above image shows. This is simply because the `LineAsyncQuickInfoSourceProvider` is associated with only FooAbcd content type, and not CSharp file type.
+
+```cs
+[ContentType("FooAbcd")]
+[Order]
+internal sealed class LineAsyncQuickInfoSourceProvider : IAsyncQuickInfoSourceProvider {}
+```
 
 ## Notes
 1. The Content type is registered with the Content Type registry.

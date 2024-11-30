@@ -149,10 +149,11 @@ namespace CaretPositionOnToolWindow.Services
             if (componentModel == null)
                 return null;
 
-            // The following is working. Its returning a non null settings manager.
-            var textStructureNavigatorSelectorService = componentModel.GetService<ITextStructureNavigatorSelectorService>();
+            // The following is working. Its returning a non null settings manager. 
+            // But this is not used in this example. 
+            //var textStructureNavigatorSelectorService = componentModel.GetService<ITextStructureNavigatorSelectorService>();
 
-            var textSearchService = componentModel.GetService<ITextSearchService>();
+            //var textSearchService = componentModel.GetService<ITextSearchService>();
 
             // Need ensure the following is not null.
             // var vsTextManagerFromComponentModel = componentModel.GetService<IVsTextManager>();

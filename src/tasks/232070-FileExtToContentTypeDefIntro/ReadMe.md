@@ -37,6 +37,10 @@ internal static FileExtensionToContentTypeDefinition FooFileExtensionDefinition;
 
 3. So in summary, to register a command type, make this a MEF component. 
 
+4. Another important thing to understand here is, `IFileExtensionRegistryService` works correctly here. In an earlier example(IFileExtRegSerNotWorking), the `IFileExtensionRegistryService` does not return the extensions for `cs` and `txt` file extensions. This is reported in [stackoverflow](https://stackoverflow.com/q/79194608) and [microsoft questions](https://learn.microsoft.com/en-us/answers/questions/2120142/)
+
+5. 
+
 ## References
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncQuickInfo
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/managed-extensibility-framework-in-the-editor
