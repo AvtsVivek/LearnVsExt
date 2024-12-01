@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/232250-QuickInfoSourceNoAttribute
+cd src/tasks/232275-FilterInsideQuickInfoSource
 
-cd src/apps/232250-QuickInfoSourceNoAttribute
+cd src/apps/232275-FilterInsideQuickInfoSource
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./QuickInfoSourceNoAttribute.csproj
+dotnet build --project ./FilterInsideQuickInfoSource.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,14 +16,14 @@ dotnet build --project ./QuickInfoSourceNoAttribute.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
-nuget restore ./QuickInfoSourceNoAttribute.sln
+nuget restore ./FilterInsideQuickInfoSource.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./QuickInfoSourceNoAttribute.sln
+devenv /build Debug ./FilterInsideQuickInfoSource.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./QuickInfoSourceNoAttribute.sln
+devenv.exe /RootSuffix Exp ./FilterInsideQuickInfoSource.sln
 
 pwd
 
@@ -36,7 +36,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./QuickInfoSourceNoAttribute.vsix
+./FilterInsideQuickInfoSource.vsix
 
 
 # Once installed, open the logs. You will see something like. 
