@@ -26,32 +26,30 @@ namespace AsyncQuickInfoSourceIntro
         {
             var triggerPoint = session.GetTriggerPoint(_textBuffer.CurrentSnapshot);
 
-            if (triggerPoint != null)
-            {
-                var line = triggerPoint.Value.GetContainingLine();
-                var lineNumber = triggerPoint.Value.GetContainingLine().LineNumber;
-                var lineSpan = _textBuffer.CurrentSnapshot.CreateTrackingSpan(line.Extent, SpanTrackingMode.EdgeInclusive);
+            if (triggerPoint == null)
+                return Task.FromResult<QuickInfoItem>(null);
 
-                var lineNumberElm = new ContainerElement(
-                    ContainerElementStyle.Wrapped,
-                    new ImageElement(_icon),
-                    new ClassifiedTextElement(
-                        new ClassifiedTextRun(PredefinedClassificationTypeNames.Keyword, "Line number: "),
-                        new ClassifiedTextRun(PredefinedClassificationTypeNames.Identifier, $"{lineNumber + 1}")
-                    ));
+            var line = triggerPoint.Value.GetContainingLine();
+            var lineNumber = triggerPoint.Value.GetContainingLine().LineNumber;
+            var lineSpan = _textBuffer.CurrentSnapshot.CreateTrackingSpan(line.Extent, SpanTrackingMode.EdgeInclusive);
 
-                var dateElm = new ContainerElement(
-                    ContainerElementStyle.Stacked,
-                    lineNumberElm,
-                    new ClassifiedTextElement(
-                        new ClassifiedTextRun(PredefinedClassificationTypeNames.SymbolDefinition, "The current date: "),
-                        new ClassifiedTextRun(PredefinedClassificationTypeNames.Comment, DateTime.Now.ToShortDateString())
-                    ));
+            var lineNumberElm = new ContainerElement(
+                ContainerElementStyle.Wrapped,
+                new ImageElement(_icon),
+                new ClassifiedTextElement(
+                    new ClassifiedTextRun(PredefinedClassificationTypeNames.Keyword, "Line number: "),
+                    new ClassifiedTextRun(PredefinedClassificationTypeNames.Identifier, $"{lineNumber + 1}")
+                ));
 
-                return Task.FromResult(new QuickInfoItem(lineSpan, dateElm));
-            }
+            var dateElm = new ContainerElement(
+                ContainerElementStyle.Stacked,
+                lineNumberElm,
+                new ClassifiedTextElement(
+                    new ClassifiedTextRun(PredefinedClassificationTypeNames.SymbolDefinition, "The current date: "),
+                    new ClassifiedTextRun(PredefinedClassificationTypeNames.Comment, DateTime.Now.ToShortDateString())
+                ));
 
-            return Task.FromResult<QuickInfoItem>(null);
+            return Task.FromResult(new QuickInfoItem(lineSpan, dateElm));
         }
 
         public void Dispose()

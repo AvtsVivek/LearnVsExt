@@ -1,6 +1,8 @@
+# JSON on steroids #2.2. Visual Studio Editor: ITextBuffer and related types
 
+## Reference
 
-## JSON on steroids #2.2. Visual Studio Editor: ITextBuffer and related types
+JSON on steroids #2.2. [Visual Studio Editor: ITextBuffer and related types](https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types/)
 
 Let's continue our acquaintance with the basic functionality of text editors in Visual Studio.
 
@@ -8,7 +10,6 @@ Today I want to go through the contents of the **Microsoft.VisualStudio.Text.Dat
 
 If you are more or less oriented in the topic (approximately at the level of the article [Inside the editor](https://docs.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor)), then you can skip the article with a clear conscience.
 
-If you are more or less oriented in the topic (approximately at the level of the article Inside the editor), then you can skip the article with a clear conscience.
 
 ## Basic Types and Operations
 
@@ -22,7 +23,7 @@ Next, let's briefly analyze their functions and roles.
 
 Those who have carefully studied the diagram, of course, will object "what about the Delete(), Insert() and Replace() methods" - that's right, such methods exist, but they behave a little unusually... However, more on this later.
 
-The main idea behind the mechanics of ITextBuffer (we're talking about the exposed API now – how it works internally is not important to us) is the implementation of the "multiple readers, single writer" approach. This is achieved in the following way.
+The main idea behind the mechanics of **ITextBuffer** (we're talking about the exposed API now – how it works internally is not important to us) is the implementation of the **multiple readers, single writer** approach. This is achieved in the following way.
 
 - The current state of ITextBuffer is represented as an immutable snapshot. It implements the ITextSnapshot interface, which can be retrieved through the CurrentSnapshot property of ITextBuffer
 

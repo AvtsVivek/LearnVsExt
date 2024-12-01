@@ -77,3 +77,13 @@ internal class CustomFileExtensionToContentTypeProvider : IFilePathToContentType
 
 2. For a full overview refer to [this article](Articles/2-VsEditor-ContentTypes.md)
 
+3. Open a file with the extension .fooabcd.
+![Open file with ext fooabcd](images/45_50_OpenFileWithExtFooAbcd.png)
+
+4. Ensure the break point is hit. The press F5 to continue.
+
+5. So we see that the method `TryGetContentTypeForFilePath` is called, when a file with extension `.fooabcd` is opened. 
+
+6. Now open any other kind of file, say Class1.cs. Now observe that the above method is NOT called by the api. 
+
+7. 

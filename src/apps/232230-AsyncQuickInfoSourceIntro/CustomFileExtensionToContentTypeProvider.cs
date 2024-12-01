@@ -15,8 +15,8 @@ namespace AsyncQuickInfoSourceIntro
                   out IContentType contentType)
         {
             // Just assign the content type and then return true.
-            // So all that we are doing in here is, for a given extension(in this case its .csabcd
-            // just assign the CSharp content type.
+            // So all that we are doing in here is, for a given extension(in this case its .fooabcd
+            // just assign the CustomContentTypeConstants.ContentTypeName content type.
             contentType = ContentTypeRegistryService.GetContentType(CustomContentTypeConstants.ContentTypeName);
             return true;
         }

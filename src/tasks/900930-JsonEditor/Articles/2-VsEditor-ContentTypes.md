@@ -305,7 +305,7 @@ As you can see, the **[ContentType]** attribute is attached to the class (the na
 ```cs
 if (!context.Snapshot.ContentType
   .IsOfType(TeamsManifestContentTypeConstants.ContentTypeName))
-  // 
+  // We return control and do nothing
 ```
 
 Yes, this method still causes some excessive resource usage, compared to the declarative option (there you can just get a list of extensions 1 time and call sequentially only those that have the desired Content Type, and here we still refer to the extension every time), but this is a much better option than doing some kind of separate check!
