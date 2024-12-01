@@ -31,7 +31,12 @@ internal sealed class LineAsyncQuickInfoSourceProvider : IAsyncQuickInfoSourcePr
 internal class CustomFileExtensionToContentTypeProvider : IFilePathToContentTypeProvider {}
 ```
 
-6. 
+6. Place the break point as follows.
 
+![Place break point at the start of the method](images/51_50_BreakPoint.png)
+
+7.  Now open a text file. Each time a text file is opened and the mouse is howered over the text, the break point is hit.
+
+8.  Say two files are opened, and mouse is hovered over each one of the two files. Then the break point is hit for both the cases. Next when you switch between the two files using Alt + Tab, the break point is NOT hit. So after a file is opened, the break point is hit only once per file. If the file is closed and reopened, then the break point is hit again. 
 
 

@@ -1,13 +1,12 @@
 ﻿using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace AsyncQuickInfoSourceIntro
+namespace QuickInfoSourceNoAttribute
 {
     [Export(typeof(IFilePathToContentTypeProvider))]
     [Name("FooAbcdFileToContentTypeProvider")] // I think, this could be any string.
     [FileExtension(CustomContentTypeConstants.FileExtension)]
-    internal class CustomFileExtensionToContentTypeProvider 
-        : IFilePathToContentTypeProvider
+    internal class CustomFileExtensionToContentTypeProvider : IFilePathToContentTypeProvider
     {
         [Import]
         IContentTypeRegistryService ContentTypeRegistryService { get; set; }
