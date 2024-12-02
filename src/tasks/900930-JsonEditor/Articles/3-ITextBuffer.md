@@ -21,23 +21,25 @@ Next, let's briefly analyze their functions and roles.
 
 ## ITextBuffer
 
+As the name implies, this is a type designed to store and manipulate text, but you won't find any properties or methods for retrieving or modifying text.
+
 Those who have carefully studied the diagram, of course, will object "what about the Delete(), Insert() and Replace() methods" - that's right, such methods exist, but they behave a little unusually... However, more on this later.
 
 The main idea behind the mechanics of **ITextBuffer** (we're talking about the exposed API now – how it works internally is not important to us) is the implementation of the **multiple readers, single writer** approach. This is achieved in the following way.
 
-- The current state of ITextBuffer is represented as an immutable snapshot. It implements the ITextSnapshot interface, which can be retrieved through the CurrentSnapshot property of ITextBuffer
+- The current state of **ITextBuffer** is represented as an immutable snapshot. It implements the **ITextSnapshot** interface, which can be retrieved through the **CurrentSnapshot** property of **ITextBuffer**
 
-- To make changes to ITextBuffer:
+- To make changes to **ITextBuffer**:
 
-  - the ITextBufferEdit interface is created (or rather, one of its successors, depending on what kind of changes are required)
+  - the [**ITextBufferEdit**](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbufferedit) interface is created (or rather, one of its successors, depending on what kind of changes are required)
 
-  - the buffer itself is marked as editable (EditInProgress property == true) and all attempts to create a second instance of ITextBufferEdit are blocked
+  - the buffer itself is marked as editable ([**EditInProgress**](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbuffer.editinprogress#microsoft-visualstudio-text-itextbuffer-editinprogress) property == true) and all attempts to create a second instance of **ITextBufferEdit** are blocked
 
-- All changes are committed via ITextBufferEdit. In this case, the current snapshot does not change
+- All changes are committed via **ITextBufferEdit**. In this case, the current snapshot does not change
 
-- When editing is complete, one of the ITextBufferEdit methods is called:
-  - Cancel() - all accumulated changes are lost, ITextBuffer is unlocked (EditInProgress property == false)
-  - Apply() – all accumulated changes are applied and a new snapshot is created. It replaces CurrentSnapshot and unlocks the buffer
+- When editing is complete, one of the **ITextBufferEdit** methods is called:
+  - **Cancel()** - all accumulated changes are lost, **ITextBuffer** is unlocked (**EditInProgress** property == false)
+  - **Apply()** – all accumulated changes are applied and a new snapshot is created. It replaces **CurrentSnapshot** and unlocks the buffer
 
 
 ![Snapshot graph](../Images/3-TextBuffer/57_50_Snapshot_Graph.png)
@@ -89,7 +91,7 @@ By and large, the process of creating ITextBuffer/ITextDocument does not have an
 
 - both ITextBufferFactoryService and ITextDocumentFactoryService are MEF components
 
-almost all methods of creating/retrieving ITextBuffer/ITextDocument require the IContentType (we talked about content types earlier, last article), and where it is not required, it is either predefined (for example, [this variant of the CreateTextBuffer() method](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbufferfactoryservice.createtextbuffer#Microsoft_VisualStudio_Text_ITextBufferFactoryService_CreateTextBuffer) creates a buffer with ContentType == "text") or is taken from the context (as in [CreateTextDocument(ITextBuffer, String)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextdocumentfactoryservice.createtextdocument) – here the ContentType is already set in ITextBuffer)
+- almost all methods of creating/retrieving ITextBuffer/ITextDocument require the IContentType (we talked about content types earlier, the previous article in this series), and where it is not required, it is either predefined (for example, [this variant of the CreateTextBuffer() method](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbufferfactoryservice.createtextbuffer#Microsoft_VisualStudio_Text_ITextBufferFactoryService_CreateTextBuffer) creates a buffer with ContentType == "text") or is taken from the context (as in [CreateTextDocument(ITextBuffer, String)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextdocumentfactoryservice.createtextdocument) – here the ContentType is already set in ITextBuffer)
 
 Below is a small example of using both factories, as well as an example of working with ITextDocument events and methods (the example is somewhat far-fetched – you should not look for a serious grain of benefit in it)
 
