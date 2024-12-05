@@ -1,8 +1,19 @@
 ## Objective
 
-1. Introduces `ITextBuffer`, `ITextBufferFactoryService`, `ITextSnapshot`, `SnapshotSpan` and `Span`
+1. Introduces `ITextSnapshot` 
 
 2. For the full article, [click here](1-ITextBuffer.md)
+
+## Build and Run
+1. Launch the Exp instance.
+
+2. Tools -> Options -> Text Editor -> All Languages -> General
+
+![Enable Line numbers](Images/50_50_EnableLineNumbers.png)
+
+3. Here we go...
+
+4. 
 
 ## Notes
 

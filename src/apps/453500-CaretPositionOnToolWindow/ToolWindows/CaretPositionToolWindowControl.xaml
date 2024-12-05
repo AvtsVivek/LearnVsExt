@@ -1,20 +1,16 @@
-﻿<UserControl  x:Class="CaretPositionOnToolWindow.ToolWindows.CaretPositionToolWindowControl"
+﻿<UserControl x:Class="CaretPositionOnToolWindow.ToolWindows.CaretPositionToolWindowControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"            
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-              
              xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
              toolkit:Themes.UseVsTheme="True"
-              
-             Visibility="{Binding UserControlVisibility,Mode=OneWayToSource}"
-             
+             Visibility="{Binding UserControlVisibility,Mode=OneWayToSource}"             
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
-
              mc:Ignorable="d"             
                 d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
@@ -49,54 +45,46 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid x:Name="MainGrid">
-        <StackPanel Orientation="Vertical">
-
+    <Grid ShowGridLines="True" x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"   />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Left">Title</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding WindowFrameCount}"></TextBlock>
+            <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding DocumentCount}"></TextBlock>
         </StackPanel>
-        <Grid ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Left">Title </TextBlock>
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding WindowFrameCount}"></TextBlock>
-                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding DocumentCount}"></TextBlock>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithoutFocus}"></TextBlock>
-                <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithFocus}"></TextBlock>
-            </StackPanel>
-            <TextBlock Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding CursorPosition}" ></TextBlock>
-            
-            <TextBox Grid.Row="4" Grid.Column="1" x:Name="subHeaderText" 
-                       TextWrapping="Wrap" 
-                       Text="{Binding MessageNotes}" />
-            <Label Margin="10" Grid.Column="0" Grid.Row="0">Label</Label>
-            <Label Margin="10" Grid.Column="0" Grid.Row="1">Win Frame &amp; Doc Count</Label>
-            <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
-                <TextBlock Margin="10" TextWrapping="Wrap" Width="140" Text="Files Opened With &amp; without  Focus" ></TextBlock>
-            </StackPanel>
-            <Label Margin="10" Grid.Column="0" Grid.Row="3">Cursor position</Label>
-            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="4">
-                <Button Content="Clear Textbox!" HorizontalAlignment="Left" Width="120"
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithoutFocus}"></TextBlock>
+            <TextBlock Margin="10" HorizontalAlignment="Center" Text="{Binding FilesOpenedWithFocus}"></TextBlock>
+        </StackPanel>
+        <TextBlock Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding CursorPosition}" ></TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="subHeaderText" TextWrapping="Wrap" Text="{Binding MessageNotes}" />
+        <Label Margin="10" Grid.Column="0" Grid.Row="0">Label</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="1">Win Frame &amp; Doc Count</Label>
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Margin="10" TextWrapping="Wrap" Width="140" Text="Files Opened With &amp; without  Focus" ></TextBlock>
+        </StackPanel>
+        <Label Margin="10" Grid.Column="0" Grid.Row="3">Cursor position</Label>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="4">
+            <Button Content="Clear Textbox!" HorizontalAlignment="Left" Width="120"
                     Height="30" Name="button1">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=button1}">
-                            <i:InvokeCommandAction x:Name="ButtonClickCommandAction" 
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=button1}">
+                        <i:InvokeCommandAction x:Name="ButtonClickCommandAction" 
                                                Command="{Binding ButtonOneClickCommand}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                <Label Margin="10">Messages</Label>
-            </StackPanel>
-        </Grid>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Label Margin="10">Messages</Label>
+        </StackPanel>
     </Grid>
 </UserControl>

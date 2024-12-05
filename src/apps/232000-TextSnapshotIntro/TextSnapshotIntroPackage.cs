@@ -24,9 +24,11 @@ namespace TextSnapshotIntro
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(TextSnapshotIntroPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(ToolWindowForTextSnapshot))]
+    [ProvideToolWindow(typeof(ToolWindowForTextSnapshot),
+        Orientation = ToolWindowOrientation.Left, Style = VsDockStyle.Tabbed,
+        Window = EnvDTE.Constants.vsWindowKindServerExplorer)]
     public sealed class TextSnapshotIntroPackage : AsyncPackage
     {
         /// <summary>

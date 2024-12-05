@@ -9,10 +9,23 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">ToolWindowForTextSnapshot</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
-        </StackPanel>
+    <Grid ShowGridLines="True" x:Name="MainGrid" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Margin="10" Grid.Column="0" Grid.Row="1" Foreground="White" >Lines in file</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="2" Foreground="White" >Line no.</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="3" Foreground="White" >Line Text</Label>
+        <Button Margin="10"     Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Refresh!" HorizontalAlignment="Left" Click="button1_Click" Width="220" Height="25" Name="button1"/>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="1" Name="lineCountInOpenedFileTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="2" Name="caretLineNumberTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="3" Name="caretLineTextBlock" HorizontalAlignment="Left"></TextBlock>
     </Grid>
 </UserControl>
