@@ -2,8 +2,11 @@
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.VisualStudio.Text.Formatting;
 using Microsoft.VisualStudio.TextManager.Interop;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows;
@@ -33,7 +36,7 @@ namespace TextSnapshotIntro
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            var wpfTextView = GetCurentWpfTextView();
+            IWpfTextView wpfTextView = GetCurentWpfTextView();
 
             if (wpfTextView == null)
             {
@@ -44,7 +47,7 @@ namespace TextSnapshotIntro
                 return;
             }
 
-            var textBuffer = wpfTextView.TextBuffer;
+            ITextBuffer textBuffer = wpfTextView.TextBuffer;
 
             if (textBuffer == null)
             {
@@ -55,25 +58,23 @@ namespace TextSnapshotIntro
                 return;
             }
 
-            var textSnapshot = textBuffer.CurrentSnapshot;
+            ITextSnapshot textSnapshot = textBuffer.CurrentSnapshot;
 
-            var lines = textSnapshot.Lines.ToList();
+            List<ITextSnapshotLine> lines = textSnapshot.Lines.ToList();
 
             lineCountInOpenedFileTextBlock.Text = lines.Count.ToString();
 
-            var caret = wpfTextView.Caret;
+            ITextCaret caret = wpfTextView.Caret;
 
-            var caretPosition = caret.Position;
+            CaretPosition caretPosition = caret.Position;
 
-            var caretBufferPosition = caretPosition.BufferPosition;
+            List<IWpfTextViewLine> wpfTextViewLines = wpfTextView.TextViewLines.WpfTextViewLines.ToList();
 
-            var wpfTextViewLines = wpfTextView.TextViewLines.WpfTextViewLines.ToList();
+            SnapshotPoint caretPositionSnapshotPoint = caretPosition.BufferPosition;
 
-            var caretSnapshotPoint = caretPosition.BufferPosition;
+            ITextSnapshotLine caretLine = caretPositionSnapshotPoint.GetContainingLine();
 
-            var caretLine = caretSnapshotPoint.GetContainingLine();
-
-            var caretLineNumber = caretLine.LineNumber;
+            int caretLineNumber = caretLine.LineNumber;
             
             caretLineNumberTextBlock.Text = caretLineNumber.ToString();
 

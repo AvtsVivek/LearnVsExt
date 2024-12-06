@@ -5,32 +5,52 @@
 2. For the full article, [click here](1-ITextBuffer.md)
 
 ## Build and Run
-1. Launch the Exp instance.
+1. Reset Visual Studio Exp instance and then Launch it.
 
-2. Tools -> Options -> Text Editor -> All Languages -> General
+2. Ensure the line numbers are enabled for text files as follows.
+   1. Tools -> Options -> Text Editor -> All Languages -> General
 
-![Enable Line numbers](Images/50_50_EnableLineNumbers.png)
+   ![Enable Line numbers](Images/50_50_EnableLineNumbers.png)
 
-3. Here we go...
+3. Now open the tool window. View -> Other Windows -> ToolWindowForTextSnapShot
 
-4. 
+![Open tool window](Images/51_50_ToolWindow.png)
+
+4. Open a file say Class1.cs, then click Refresh button on the tool window. Observe line no fields etc.
+
+![Click Refresh button](Images/52_50_RefreshClass1CsFile.png)
+
+5. Next click any where in side the text file say on the line `public Class()`. Then click the Refresh button again and observe. 
 
 ## Notes
 
-1. A [Microsoft.Visualstudio.Text.Span](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.span) is a very simple concept. Its a struct.
+1. From `wpfTextView`, we get the `textBuffer`, and then from it, we can get the `textSanpshot`. The textSnapshot is a collection of lines(`ITextSnapshotLine`). The `ITextSnapshotLine` has the line number as a property.
 
-2. An immutable integer interval that describes a range of values from Start to End that is closed on the left and open on the right: [Start .. End). A span is usually applied to an [ITextSnapshot](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextsnapshot) to denote a span of text, but it is independent of any particular text buffer or snapshot.
+```cs
+IWpfTextView wpfTextView = GetCurentWpfTextView();
 
-3. Its simply a number range. Thats all. The problem with using such types (Span and Simple Int) is that they are detached from the specific text, and if we have calculated the position or interval for one snapshot, they may indicate something completely different or be invalid for another. In other words, a Position or Span only makes sense in the *context* of a particular [ITextSnapshot](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextsnapshot). 
+ITextBuffer textBuffer = wpfTextView.TextBuffer;
 
-4. Therefore, the following two types have been added:
+ITextSnapshot textSnapshot = textBuffer.CurrentSnapshot;
 
-   1. [SnapshotPoint](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.snapshotpoint)
-   2. [SnapshotSpan](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.snapshotspan)
+List<ITextSnapshotLine> lines = textSnapshot.Lines.ToList();
+```
 
-Essentially, these are structures that contain the position (or interval) and the pointer to the Snapshot for which they were obtained. In addition, they implement methods of comparison and manipulation (for example, to shift a position by a given distance) with a check for admissibility (for example, for not going beyond the border of the Snapshot).
+2. If you want to get the details of a line where the caret is currently present, you can get it as follows.
 
-5. 
+```cs
+ITextCaret caret = wpfTextView.Caret;
+
+CaretPosition caretPosition = caret.Position;
+
+List<IWpfTextViewLine> wpfTextViewLines = wpfTextView.TextViewLines.WpfTextViewLines.ToList();
+
+SnapshotPoint caretPositionSnapshotPoint = caretPosition.BufferPosition;
+
+ITextSnapshotLine caretLine = caretPositionSnapshotPoint.GetContainingLine();
+```
 
 ## Reference.
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
+
+
