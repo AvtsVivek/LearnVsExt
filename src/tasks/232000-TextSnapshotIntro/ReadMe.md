@@ -2,7 +2,9 @@
 
 1. Introduces `ITextSnapshot` 
 
-2. For the full article, [click here](1-ITextBuffer.md)
+2. For the full article, [click here](..\221500-TextBufferIntro\1-ITextBuffer.md)
+
+3. 
 
 ## Build and Run
 1. Reset Visual Studio Exp instance and then Launch it.
