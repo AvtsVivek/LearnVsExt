@@ -14,7 +14,7 @@
 ## Build and Run.
 1. First Reset VS Exp instance.
 
-![Reset Exp Vs](../../tasks/400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+![Reset Exp Vs](../../tasks/200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 2. Do a full rebuild.
 

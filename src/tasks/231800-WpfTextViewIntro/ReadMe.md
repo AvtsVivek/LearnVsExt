@@ -30,7 +30,7 @@ var tempInt = textManager.GetActiveView(1, null, out IVsTextView activeView);
 3. Just invoke the command. Please a break point in the Execute method and observe the objects.
 4. If you want to reset the experimental instance, do the following.
 
-![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+![Reset Exp Vs](./../200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 ## References
 1. https://stackoverflow.com/questions/76888423/

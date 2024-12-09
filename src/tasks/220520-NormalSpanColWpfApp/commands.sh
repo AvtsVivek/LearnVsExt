@@ -1,9 +1,8 @@
 cd ../../..
 
-cd src/tasks/232030-NormalSpanColWpfApp
+cd src/tasks/220520-NormalSpanColWpfApp
 
-cd src/apps/232030-NormalSpanColWpfApp
-
+cd src/apps/220520-NormalSpanColWpfApp
 
 dotnet build NormalSpanColWpfApp.sln
 # or
@@ -14,7 +13,7 @@ dotnet run NormalSpanColWpfApp.csproj
 
 ## The following is not relevant. 
 
-## I dont think we can build using the following dotnet command. 
+## I dont think we can build using the following dotnet command.
 ## The project is not a dotnet core project. 
 
 dotnet build --project ./NormalSpanColWpfApp.csproj

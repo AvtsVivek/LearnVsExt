@@ -13,7 +13,7 @@ var temp = IVsEditorAdaptersFactoryService.GetWpfTextViewHost(vsTextView);
 
 3. If you want to reset the experimental instance, do the following.
 
-![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+![Reset Exp Vs](./../200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 4. The properties on the control are as follows. We may have to explore the following as we go along
 

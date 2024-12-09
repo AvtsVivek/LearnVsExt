@@ -24,6 +24,10 @@
 
 5. Next click any where in side the text file say on the line `public Class()`. Then click the Refresh button again and observe. 
 
+![Full data](Images/53_50_RefreshClass1CsFileFull.png)
+
+
+
 ## Notes
 
 1. From `wpfTextView`, we get the `textBuffer`, and then from it, we can get the `textSanpshot`. The textSnapshot is a collection of lines(`ITextSnapshotLine`). The `ITextSnapshotLine` has the line number as a property.

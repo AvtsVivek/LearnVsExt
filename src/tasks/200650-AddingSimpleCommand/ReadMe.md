@@ -79,7 +79,7 @@ devenv.exe /RootSuffix Exp ./AddingSimpleCommand.sln
 
 23. If you want to reset the experimental instance, do the following.
 
-![Reset Exp Vs](./../400500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+![Reset Exp Vs](./../200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
 
 
 24. What if you want to add, a tool tip? 

@@ -72,10 +72,32 @@ namespace TextSnapshotIntro
 
             SnapshotPoint caretPositionSnapshotPoint = caretPosition.BufferPosition;
 
+            ITextSnapshot textSnapShot = caretPositionSnapshotPoint.Snapshot;
+
+            caretTextBlock.Text = textSnapShot.GetText();
+
+            int caretPositionInt = caretPositionSnapshotPoint.Position;
+
+            caretPositionAbsoluteTextBlock.Text = caretPositionInt.ToString();
+
             ITextSnapshotLine caretLine = caretPositionSnapshotPoint.GetContainingLine();
 
+            SnapshotPoint startOfCaretLine = caretLine.Start;
+
+            int startOfCaretLinePosition = startOfCaretLine.Position;
+
+            caretPositionFromStartTextBlock.Text = (caretPositionInt - startOfCaretLinePosition).ToString();
+
             int caretLineNumber = caretLine.LineNumber;
-            
+
+            int caretLineNumberTwo = caretPositionSnapshotPoint.GetContainingLineNumber();
+
+            SnapshotSpan extentOfLineOfCaret = caretLine.Extent;
+
+            caretSpanTextBlock.Text = extentOfLineOfCaret.Span.ToString();
+
+            caretLengthTextBlock.Text = extentOfLineOfCaret.Length.ToString();
+
             caretLineNumberTextBlock.Text = caretLineNumber.ToString();
 
             caretLineTextBlock.Text = caretLine.GetText();

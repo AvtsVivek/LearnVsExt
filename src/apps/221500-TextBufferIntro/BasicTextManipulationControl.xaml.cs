@@ -50,7 +50,7 @@ namespace TextBufferIntro
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            var text = textBox1.Text;
+            string text = textBox1.Text;
 
             if (string.IsNullOrEmpty(text))
             {
@@ -60,11 +60,11 @@ namespace TextBufferIntro
             }
 
             // Create the text buffer
-            var textBuffer = _textBufferFactoryService.CreateTextBuffer(text, contentType: _textBufferFactoryService.PlaintextContentType);
+            ITextBuffer textBuffer = _textBufferFactoryService.CreateTextBuffer(text, contentType: _textBufferFactoryService.PlaintextContentType);
 
-            var snapshot = textBuffer.CurrentSnapshot;
+            ITextSnapshot snapshot = textBuffer.CurrentSnapshot;
 
-            var resultNumberSubString = Regex.Match(snapshot.GetText(), @"\d+").Value;
+            string resultNumberSubString = Regex.Match(snapshot.GetText(), @"\d+").Value;
 
             if (string.IsNullOrEmpty(resultNumberSubString))
             {
@@ -73,10 +73,10 @@ namespace TextBufferIntro
                 return;
             }
 
-            var resultNumberSubStringIndex = snapshot.GetText().IndexOf(resultNumberSubString, 0, 
+            int resultNumberSubStringIndex = snapshot.GetText().IndexOf(resultNumberSubString, 0, 
                 snapshot.GetText().Length, StringComparison.CurrentCulture);
 
-            var numberSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
+            SnapshotSpan numberSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
                length: resultNumberSubString.Length));
 
             finalNumberText.Text = numberSpan.GetText();

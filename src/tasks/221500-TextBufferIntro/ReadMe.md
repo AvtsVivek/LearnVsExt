@@ -1,6 +1,6 @@
 ## Objective
 
-1. Introduces `ITextBuffer`, `ITextBufferFactoryService`, `ITextSnapshot`, `SnapshotSpan` and `Span`
+1. Introduces `ITextBuffer`, `ITextBufferFactoryService`, `ITextSnapshot`, `SnapshotSpan`
 
 2. For the full article, [click here](1-ITextBuffer.md)
 
@@ -19,7 +19,24 @@
 
 Essentially, these are structures that contain the position (or interval) and the pointer to the Snapshot for which they were obtained. In addition, they implement methods of comparison and manipulation (for example, to shift a position by a given distance) with a check for admissibility (for example, for not going beyond the border of the Snapshot).
 
-5. 
+## Build and Run
+1. Reset Visual Studio Exp instance and then Launch it.
+
+![Reset Visual Studio Exp](../200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+2. View -> Other Windows -> BasicTextManipulation
+
+![Extract Numbers](Images/69_50_BuildAndRun.png)
+
+3. Key in some text with some digits and click the button.
+
+## Notes
+
+1. We get `ITextBuffer`, from `ITextBufferFactoryService`, 
+2. And `ITextSnapshot`, from `ITextBuffer`.
+3. `SnapshotSpan` is a subset of `Snapshot`.
+4. In this example, we get the `ITextBuffer` from `ITextBufferFactoryService`. In a subsequent example, we get the same ITextBuffer from `IWpfTextView`. So in the examples that follow, TextViews are introduced. Then we will revisit these TextBuffer, snapshot and so on. 
+
 
 ## Reference.
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
