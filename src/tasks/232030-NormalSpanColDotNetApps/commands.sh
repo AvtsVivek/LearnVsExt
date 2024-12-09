@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/224500-NormaliseSpanColVisualiseCodeBehind
+cd src/tasks/232030-NormalSpanColDotNetApps
 
-cd src/apps/224500-NormaliseSpanColVisualiseCodeBehind
+cd src/apps/232030-NormalSpanColDotNetApps
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./NormaliseSpanColVisualiseCodeBehind.csproj
+dotnet build --project ./NormalSpanColDotNetApps.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,15 +16,15 @@ dotnet build --project ./NormaliseSpanColVisualiseCodeBehind.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
-nuget restore ./NormaliseSpanColVisualiseCodeBehind.sln
+nuget restore ./NormalSpanColDotNetApps.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./NormaliseSpanColVisualiseCodeBehind.sln
-devenv /Rebuild Debug ./NormaliseSpanColVisualiseCodeBehind.sln
+devenv /build Debug ./NormalSpanColDotNetApps.sln
+devenv /Rebuild Debug ./NormalSpanColDotNetApps.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./NormaliseSpanColVisualiseCodeBehind.sln
+devenv.exe /RootSuffix Exp ./NormalSpanColDotNetApps.sln
 
 pwd
 
@@ -37,7 +37,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./VsTextManagerIntro.vsix
+./NormalSpanColDotNetApps.vsix
 
 
 # Once installed, open the logs. You will see something like. 

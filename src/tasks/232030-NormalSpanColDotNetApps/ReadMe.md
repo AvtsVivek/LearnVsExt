@@ -10,4 +10,3 @@
 ## Reference.
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
 
-
