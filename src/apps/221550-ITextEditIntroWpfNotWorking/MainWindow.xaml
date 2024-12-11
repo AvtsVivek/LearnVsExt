@@ -1,0 +1,58 @@
+﻿<Window x:Class="ITextEditIntroWpfNotWorking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ITextEditIntroWpfNotWorking"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="MainGrid" ShowGridLines="True" Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Name="stringManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"> String Manipulation</Label>
+        <Label Grid.Row="0" Grid.Column="1" Name="ITextEditManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="5">ITextEdit Manipulation</Label>
+        <TextBox Grid.Row="1" Grid.Column="0" Name="stringInputTextBox" Text="Your text input here "  Margin="5" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="ITextEditInputTextBox" Text="Your text input here"  Margin="5" ></TextBox>
+        <Grid Grid.Row="2" Grid.Column="0" Name="stringInputGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="stringInputPosionInsertTxtBox">Position(int)</TextBox>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="stringInputLengthInsertTxtBox">Length(int)</TextBox>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="stringInputTextInsertTxtBox"></TextBox>
+            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="stringInsertButton" Click="stringInsertButton_Click" >Insert</Button>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Name="ITextEditInputGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputPosionInsertTxtBox">Position(int)</TextBox>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="ITextEditInputLengthInsertTxtBox">Length(int)</TextBox>
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="ITextEditInputTextInsertTxtBox"></TextBox>
+            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditInsertButton" Click="ITextEditInsertButton_Click" >Insert</Button>
+        </Grid>
+        <Label Grid.Row="3" Grid.Column="0" Name="stringOutputLabel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></Label>
+        <Label Grid.Row="3" Grid.Column="1" Name="ITextEditOutputLabel" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5"></Label>
+    </Grid>
+</Window>

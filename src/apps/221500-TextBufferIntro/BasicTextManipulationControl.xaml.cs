@@ -17,16 +17,6 @@ namespace TextBufferIntro
         private ITextBufferFactoryService _textBufferFactoryService = null;
 
         /// <summary>
-        /// VS Package that provides this command, not null.
-        /// </summary>
-        private static AsyncPackage _package;
-
-        internal static void Initialize(AsyncPackage package)
-        {
-            _package = package;
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="BasicTextManipulationControl"/> class.
         /// </summary>
         public BasicTextManipulationControl()

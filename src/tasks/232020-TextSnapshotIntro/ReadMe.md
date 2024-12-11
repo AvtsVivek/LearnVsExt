@@ -56,6 +56,19 @@ SnapshotPoint caretPositionSnapshotPoint = caretPosition.BufferPosition;
 ITextSnapshotLine caretLine = caretPositionSnapshotPoint.GetContainingLine();
 ```
 
+3. And from the caretLine we can get the `SnapshotPoint` representing the current exact position of the caret and also the `SnapshotSpan` representing the entire line. 
+
+```cs
+SnapshotPoint caretPositionSnapshotPoint = caretPosition.BufferPosition;
+
+SnapshotPoint startOfCaretLine = caretLine.Start;
+
+SnapshotSpan extentOfLineOfCaret = caretLine.Extent;
+
+SnapshotPoint endOfCaretLine = caretLine.End;
+```
+
+
 ## Reference.
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
 

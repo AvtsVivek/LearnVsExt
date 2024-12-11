@@ -84,6 +84,8 @@ namespace TextSnapshotIntro
 
             SnapshotPoint startOfCaretLine = caretLine.Start;
 
+            SnapshotPoint endOfCaretLine = caretLine.End;
+
             int startOfCaretLinePosition = startOfCaretLine.Position;
 
             caretPositionFromStartTextBlock.Text = (caretPositionInt - startOfCaretLinePosition).ToString();
