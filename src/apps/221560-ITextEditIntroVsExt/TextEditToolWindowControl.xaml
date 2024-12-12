@@ -1,0 +1,316 @@
+﻿<UserControl x:Class="ITextEditIntroVsExt.TextEditToolWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
+             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Name="MyToolWindow">
+    <Grid x:Name="MainGrid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="5" Padding="5">
+            Instructions for string manipulation <LineBreak/>
+        1. Input the main text. Then click Start button <LineBreak/>
+        2. You can insert as many times as you wish. <LineBreak/>
+        3. You can delete as many times as you wish. <LineBreak/>
+        4. If you want to try all over again, click Reset button<LineBreak/>
+        5. Apply button is disabled. Every time, insert or delete is clicked, 
+            you can see that text in the final label below instantly.
+        </TextBlock>
+        <TextBlock Foreground="Green" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="5" Padding="5">
+            Instructions for ITextEdit Manipulation <LineBreak/>
+        1. Input the main text. Then click Start button <LineBreak/>
+        2. You can insert as many times as you wish. <LineBreak/>
+        3. You can delete as many times as you wish. <LineBreak/>
+        4. Once you are done, click Apply button. . <LineBreak/>
+        5. If you want to try all over again, click Reset button
+        6. First, Reset, put some text in the top text box, then click start.
+        7. Then do the operation.
+        </TextBlock>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="SubGrid" ShowGridLines="True" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Name="stringManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">String Manipulation</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" Name="ITextEditManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="5">ITextEdit Manipulation</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="0" Name="stringInputTextBox" Margin="5" ></TextBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=stringInputTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
+            <TextBlock Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Grid Grid.Row="2" Grid.Column="0" Name="stringInputForInsertGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="stringInputPosionInsertTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text=" Position(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=stringInputPosionInsertTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="stringInputLengthInsertTxtBox" IsEnabled="False" ></TextBox>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="stringInputTextInsertTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="2" IsHitTestVisible="False" Text=" Insert Text" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=stringInputTextInsertTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="stringInsertButton" Click="stringInsertButton_Click" >Insert</Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1" Name="ITextEditInputForInsertGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputPositionInsertTxtBox" Tag="Position(int) of ITextEdit for Insert" ></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text=" Position(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputPositionInsertTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="ITextEditInputLengthInsertTxtBox" Tag="Lenght(int) of ITextEdit for Insert" IsEnabled="False"></TextBox>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="ITextEditInputTextInsertTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="2" IsHitTestVisible="False" Text=" Insert text" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextInsertTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditInsertButton" Click="ITextEditInsertButton_Click" >Insert</Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0" Name="stringInputForDeleteGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="stringInputPositionDeleteTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text=" Position(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=stringInputPositionDeleteTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="stringInputLengthDeleteTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" Text=" Length(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=stringInputPositionDeleteTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="stringInputTextDeleteTxtBox" IsEnabled="False"></TextBox>
+                <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="stringDeleteButton" Click="stringDeleteButton_Click" >Delete</Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1" Name="ITextEditInputForDeleteGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputPositionDeleteTxtBox" Tag="Position(int) of ITextEdit for Insert" ></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text=" Position(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputPositionDeleteTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="ITextEditInputLengthDeleteTxtBox" Tag="Lenght(int) of ITextEdit for Insert" ></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" Text=" Length(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputPositionDeleteTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="ITextEditInputTextDeleteTxtBox" IsEnabled="False"></TextBox>
+                <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditDeleteButton" Click="ITextEditDeleteButton_Click" >Delete</Button>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1" Name="ITextEditInputForReplaceGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputPositionReplaceTxtBox" Tag="Position(int) of ITextEdit for Insert" ></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" Text=" Position(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputPositionReplaceTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="1" x:Name="ITextEditInputLengthReplaceTxtBox" Tag="Lenght(int) of ITextEdit for Insert" ></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" Text=" Length(int)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputLengthReplaceTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBox Margin="5" Grid.Row="0" Grid.Column="2" x:Name="ITextEditInputTextReplaceTxtBox"></TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="2" IsHitTestVisible="False" Text=" Replace text" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextReplaceTxtBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditReplaceButton" Click="ITextEditReplaceButton_Click" >Replace</Button>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="1" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Margin="5" Grid.Column="0" HorizontalAlignment="Stretch" x:Name="ITextEditStartButton" Click="ITextEditStartButton_Click" >Start</Button>
+                <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="ITextEditApplyButton" Click="ITextEditApplyButton_Click" >Apply</Button>
+                <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="0" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Margin="5" Grid.Column="0" HorizontalAlignment="Stretch" x:Name="stringStartButton" Click="stringStartButton_Click" >Start</Button>
+                <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="stringApplyButton" Click="stringApplyButton_Click" IsEnabled="False" >Apply</Button>
+                <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="stringResetButton" Click="stringResetButton_Click" >Reset</Button>
+            </Grid>
+            <TextBlock Grid.Row="6" Grid.Column="0" Name="stringOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"></TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="1" Name="ITextEditOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5">asdf</TextBlock>
+            <ListView Grid.Row="7" Grid.Column="1" x:Name="ITextInputListView">
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

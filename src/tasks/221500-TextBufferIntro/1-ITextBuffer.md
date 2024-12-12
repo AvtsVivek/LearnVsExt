@@ -339,6 +339,9 @@ If you refer to the [ITextEdit, TextVersion, and text change notifications](http
 
 > The content of a text buffer can be changed by using an ITextEdit object. Creating such an object (by using one of the CreateEdit() methods of ITextBuffer) starts a text transaction that consists of text edits. Every edit is a replacement of some span of text in the buffer by a string. The coordinates and content of every edit are expressed relative to the snapshot of the buffer when the transaction was started. The ITextEdit object adjusts the coordinates of edits that are affected by other edits in the same transaction.
 
+
+> The content of a text buffer can be changed by using an [ITextEdit](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextedit) object. Creating such an object (by using one of the `CreateEdit()` methods of [ITextBuffer](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextbuffer)) starts a text transaction that consists of text edits. Every edit is a replacement of some span of text in the buffer by a string. The coordinates and content of every edit are expressed relative to the snapshot of the buffer when the transaction was started. The [ITextEdit](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextedit) object adjusts the coordinates of edits that are affected by other edits in the same transaction.
+
 In general, it is already clear that the editing process is significantly different from what we are used to seeing for normal operations with strings, however, to understand how editing still works in ITextEdit, I suggest digging a little deeper.
 
 For starters, the calls to the **Delete()/Insert()/Replace()** methods don't instantly change the contents of the ITextBuffer, instead they simply generate a list of modification operations. Moreover, deleting and inserting are converted to a replacement operation:
