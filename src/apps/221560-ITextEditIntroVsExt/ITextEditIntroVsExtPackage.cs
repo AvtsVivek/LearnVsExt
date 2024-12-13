@@ -28,7 +28,7 @@ namespace ITextEditIntroVsExt
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(TextEditToolWindow),
         Orientation = ToolWindowOrientation.Left, Style = VsDockStyle.Tabbed,
-        Window = EnvDTE.Constants.vsWindowKindServerExplorer)]
+        Window = EnvDTE.Constants.vsWindowKindWebBrowser)]
     public sealed class ITextEditIntroVsExtPackage : AsyncPackage
     {
         /// <summary>

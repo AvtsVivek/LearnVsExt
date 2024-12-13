@@ -76,7 +76,21 @@ namespace ITextEditIntroVsExt
                 return;
             }
 
-            _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
+            try
+            {
+                _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
+            }
+            catch (Exception exception)
+            {
+                if (exception.Message == "Attempted to reuse an already applied edit.")
+                {
+                    MessageBox.Show(messageBoxText: $"{exception.Message} So restart by clicking the Reset button, then start and then the opration insert, delete or reset. " +
+                        $"{Environment.NewLine}Click the Apply button at the end.",
+                    caption: "Start again");
+                    return;
+                }
+            }
+
             ITextEditApply();
             AddItemToListView(startPosition: position, 0, operationText: ITextEditInputTextInsertTxtBox.Text, operation: "Insert");
         }
@@ -167,15 +181,20 @@ namespace ITextEditIntroVsExt
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(value: ITextEditInputTextReplaceTxtBox.Text))
+            var replaceString = string.Empty;
+            if (!string.IsNullOrEmpty(value: ITextEditInputTextReplaceTxtBox.Text))
             {
-                MessageBox.Show(
-                messageBoxText: "Text to replace is empty. Cannot continue",
-                caption: "No input");
-                return;
+
+                //MessageBox.Show(
+                //messageBoxText: "Text to replace is empty. Cannot continue",
+                //caption: "No input");
+                //return;
+
+                replaceString = ITextEditInputTextReplaceTxtBox.Text;
             }
 
-            _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: ITextEditInputTextReplaceTxtBox.Text);
+
+            _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
             ITextEditApply();
             AddItemToListView(position, length, ITextEditInputTextReplaceTxtBox.Text, "Replace");
 
