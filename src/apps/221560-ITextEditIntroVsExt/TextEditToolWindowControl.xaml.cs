@@ -28,6 +28,7 @@ namespace ITextEditIntroVsExt
         public TextEditToolWindowControl()
         {
             this.InitializeComponent();
+
             var componentModel = (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
 
             _textBufferFactoryService = componentModel.GetService<ITextBufferFactoryService>();
@@ -212,6 +213,7 @@ namespace ITextEditIntroVsExt
                 MessageBox.Show(
                     messageBoxText: "Source text of ITextEdit Manipulationi for Insert is empty. Please input some text",
                     caption: "No input");
+                return;
             }
 
             _textBuffer = _textBufferFactoryService
@@ -292,7 +294,7 @@ namespace ITextEditIntroVsExt
 
         #endregion
 
-        private void AddItemToListView(int startPosition, int length,string operationText, string operation)
+        private void AddItemToListView(int startPosition, int length, string operationText, string operation)
         {
             var itemString = string.Empty;
             if (operation == "Insert")

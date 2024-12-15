@@ -81,6 +81,39 @@ Insert(position, “text”) –> Replace(position, 0, “text”)
 
 ![Insert using replace](Images/55_50_InsertReplace.png)
 
+11. Understand and try the following as well.
+
+```cs
+Replace(5, 2, “ABC”);
+Replace(1, 3, “DEF”);
+```
+
+![The order is reversed, but the intervals do not overlap](../221500-TextBufferIntro/Images/59_50_OrderReversedIntervalsNotOverlap.png)
+
+```cs
+Replace(1, 2, “ABC”);
+Replace(1, 3, “DEF”);
+```
+
+![Intervals start at a single position and are combined in order of addition](../221500-TextBufferIntro/Images/60_50_IntervalsSinglePosCombinedInOrder.png)
+
+```cs	
+Replace(1, 3, “DEF”);
+Replace(1, 2, “ABC”);
+```
+
+![And if you change the order of the operations, the result will be as follows](../221500-TextBufferIntro/Images/61_50_ChangeOrderOfOperation.png)
+
+```cs
+Replace(5, 2, “ABC”);
+Replace(1, 3, “DEF”);
+Replace(4, 2, “ZXY”);
+```
+
+![Multiple totally contiguous and/or overlapping intervals](../221500-TextBufferIntro/Images/62_50_MultipleContiguouseOverlappingIntervals.png)
+
+
+
 ## Reference.
 
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types

@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/224500-ITextEditIntroVsExt
+cd src/tasks/221580-IReadOnlyRegionEditIntro
 
-cd src/apps/224500-ITextEditIntroVsExt
+cd src/apps/221580-IReadOnlyRegionEditIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./ITextEditIntroVsExt.csproj
+dotnet build --project ./IReadOnlyRegionEditIntro.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,15 +16,15 @@ dotnet build --project ./ITextEditIntroVsExt.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
-nuget restore ./ITextEditIntroVsExt.sln
+nuget restore ./IReadOnlyRegionEditIntro.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./ITextEditIntroVsExt.sln
-devenv /Rebuild Debug ./ITextEditIntroVsExt.sln
+devenv /build Debug ./IReadOnlyRegionEditIntro.sln
+devenv /Rebuild Debug ./IReadOnlyRegionEditIntro.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./ITextEditIntroVsExt.sln
+devenv.exe /RootSuffix Exp ./IReadOnlyRegionEditIntro.sln
 
 pwd
 
@@ -37,7 +37,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./ITextEditIntroVsExt.vsix
+./IReadOnlyRegionEditIntro.vsix
 
 
 # Once installed, open the logs. You will see something like. 
