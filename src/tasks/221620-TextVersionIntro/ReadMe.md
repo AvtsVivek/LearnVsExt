@@ -1,6 +1,14 @@
 ## Objective
 
-1. Introduces IReadOnlyRegionEdit
+1. Introduces ITextVersion
+
+2. Take a look at [this link](https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types/), enable google translate from Russian to English. Then look for "Versioning, history of changes and tracking". And check out the following.
+
+```txt
+It turns out that you can't just access the history of changes at any time – if you need it, then you need to save a link to the reference point you need in advance. On the other hand, this model (at least in theory – if no one else references the history) is to clear the memory occupied by the history in the GC.
+
+Another important point is read-only history, i.e. these interfaces do not offer you an API for performing Undo. You won't even be able to change CurrentSnapshot to your previously saved CurrentSnapshot.
+```
 
 ## Build and Run
 
@@ -10,27 +18,11 @@
 
 1. View -> Other Windows -> Look for ReadOnlyEditToolWindow
 
-2. Enter text say `01234567890123456789` 20 chars in the top text box. Click the `Get Read Only Extents` button. You should now see 0 read only extents.
+2. Enter text say `0123456789` 10 chars in the top text box. 
 
-![Get Readonly Extents](Images/50_50_GetReadOnlyExents.png)
+![Try This](Images/50_50_TryIt.png)
 
-3. Then click the Start button. Then put 0 and lenght 10 and click `Create ReadOnly Region` button. 
-
-![Create Read Only Extent](Images/51_50_CreateReadOnlyRegion.png)
-
-4. Now try to edit by replacing some text, whose span overlaps with the Readonly region. So put the position as say 7 and lenght say 5, and replace text say ABC, click `Replace` and then click `Apply`. Notice that there is no change to the text. This is because the edit overlaps with ReadOnly region. Read only regions do not allow edits.
-
-![Replace in read only regions](Images/52_50_ReplaceInReadonlyRegion.png)
-
-5. Now try an edit in 11 till 20 space. 
-
-![Edit in editable space](Images/53_50_EditInEditableSpace.png)
-
-6. Reset, and start over again. This time, create three readonly regions of which, the second and third overlap as follows. So although there are three regions, only two are readonly regions.
-
-![Three Read only regions](Images/54_50_OnlyTwoReadonlyRegions.png)
-
-1. 
+3. 
 
 ## Reference.
 
@@ -38,4 +30,4 @@
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#itextedit-textversion-and-text-change-notifications
 
-3. Here we go...
+

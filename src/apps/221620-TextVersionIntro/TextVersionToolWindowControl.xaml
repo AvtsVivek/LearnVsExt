@@ -203,7 +203,6 @@
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditReplaceButton" Click="ITextEditReplaceButton_Click" >Replace</Button>
         </Grid>
 
-
         <Grid Grid.Row="4" Grid.Column="0" x:Name="StartApplyResetButtonGrid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -215,11 +214,32 @@
             <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
         </Grid>
 
-        <TextBlock FontSize="20" Grid.Row="5" Grid.Column="0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5"></TextBlock>
+        <TextBlock FontSize="20" Padding="5, 0, 0, 0" Grid.Row="5" Grid.Column="0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
 
-        <ListView Grid.Row="6" Grid.Column="0" x:Name="applyListView">
+        <Grid Grid.Row="6" x:Name="textVersionLinkedListGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="5" Padding="5, 0, 0, 0" Grid.Column="0" Grid.ColumnSpan="6" FontSize="20" HorizontalAlignment="Stretch" x:Name="specificVersionTextTextBloc" ></TextBlock>
+            <TextBlock Margin="5" Padding="5, 0, 0, 0" Grid.Column="6" FontSize="20" HorizontalAlignment="Stretch" x:Name="specificVersionTextBloc" ></TextBlock>
+            <Button Margin="0,5,5,5" Grid.Column="7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" x:Name="previousTextVersionButton" Click="previousTextVersionButton_Click" >Previous</Button>
+            <Button Margin="0,5,5,5" Grid.Column="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" x:Name="nextTextVersionButton" Click="nextTextVersionButton_Click" >Next</Button>
+        </Grid>
+
+        <ListView Grid.Row="7" Grid.Column="0" x:Name="applyListView">
+
         </ListView>
 
     </Grid>
-
 </UserControl>

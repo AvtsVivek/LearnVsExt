@@ -1,21 +1,13 @@
-﻿using EnvDTE80;
-using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Package;
+﻿using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Classification;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Web.UI.Design;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace TextVersionIntro
@@ -31,7 +23,11 @@ namespace TextVersionIntro
 
         private ITextEdit _textEdit = null;
 
+        private Dictionary<int, ITextSnapshot> _versionSnapshotDictionary;
+
         private List<OperationData> _textOperationList;
+
+        private int _currentDisplayVersion = 0;
         /// <summary>
         /// Initializes a new instance of the <see cref="TextVersionToolWindowControl"/> class.
         /// </summary>
@@ -47,6 +43,8 @@ namespace TextVersionIntro
                 throw new Exception($"{nameof(_textBufferFactoryService)} is null. Cannot continue!!!");
 
             _textOperationList = new List<OperationData>();
+
+            _versionSnapshotDictionary = new Dictionary<int, ITextSnapshot>();
         }
 
         /// <summary>
@@ -151,8 +149,6 @@ namespace TextVersionIntro
 
             // _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
 
-
-
             try
             {
                 _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
@@ -211,6 +207,7 @@ namespace TextVersionIntro
             {
                 _textEdit = _textBuffer.CreateEdit();
             }
+
             _textEdit.Delete(startPosition: position, charsToDelete: length);
 
             PublishCurrentSnapshotAfterOperation();
@@ -234,11 +231,13 @@ namespace TextVersionIntro
             }
 
             _textBuffer = _textBufferFactoryService
+                .CreateTextBuffer(inputText, _textBufferFactoryService.PlaintextContentType);
 
-            .CreateTextBuffer(inputText, _textBufferFactoryService.PlaintextContentType);
+            AddVersionAfterApplyClick(_textBuffer.CurrentSnapshot);
 
-            applyListView.Items.Clear();
-            //AddVersionAfterApplyClick(_textBuffer.CurrentSnapshot);
+            if(!_versionSnapshotDictionary.ContainsKey(0))
+                _versionSnapshotDictionary.Add(0, _textBuffer.CurrentSnapshot);
+
         }
 
         private StackPanel CreateStackPanelAndAddToListView()
@@ -285,9 +284,15 @@ namespace TextVersionIntro
 
                 throw exception;
             }
-            
+
+            _versionSnapshotDictionary.Add(textSnapshot.Version.VersionNumber, textSnapshot);
             AddVersionAfterApplyClick(textSnapshot);
             PublishCurrentSnapshotAfterOperation();
+
+            _currentDisplayVersion = textSnapshot.Version.VersionNumber;
+            
+            UpdateStateTextVersion();
+
             _textOperationList.Clear();
         }
 
@@ -296,17 +301,24 @@ namespace TextVersionIntro
 
             var versionInfoString = string.Empty;
 
-            ITextVersion versionInfo;
+            // ITextVersion versionInfo;
 
-            if (_textEdit != null)
-            {
-                versionInfo = _textEdit.Snapshot.Version;
-            }
-            else
-            {
-                versionInfo = textSnapshot.Version;
-            }
+            //if (_textEdit != null)
+            //{
+                // versionInfo = _textEdit.Snapshot.Version;
+            ITextVersion versionInfo = textSnapshot.Version;
+            //}
+            //else
+            //{
+            //    // versionInfo = textSnapshot.Version;
+            //    Debugger.Break();
+            //}
 
+            //if (versionInfo.VersionNumber == 0)
+            //    _startTextVersion = _stateTextVersion = versionInfo;
+
+            // UpdateStateTextVersion(_startTextVersion);
+            
             versionInfoString = $"Version: {versionInfo.VersionNumber}";
 
             var stackPanel = CreateStackPanelAndAddToListView();
@@ -316,10 +328,11 @@ namespace TextVersionIntro
 
             AddOprationsToListView(stackPanel);
 
-            if (versionInfo.Changes == null)
+            if (_textEdit == null)
                 return;
+            
 
-            foreach (ITextChange change in _textEdit.Snapshot.Version.Changes)
+            foreach (ITextChange change in _textEdit?.Snapshot?.Version.Changes)
             {
                 textBlock = new TextBlock();
                 textBlock.Text = $"Old Text: {change.OldText} - New Text: {change.NewText}";
@@ -333,15 +346,29 @@ namespace TextVersionIntro
             _textEdit = null;
 
             ITextEditInputTextBox.Text = string.Empty;
-            //ITextEditInputSpanLengthTextBox.Text = string.Empty;
-            //ITextEditInputSpanStartTextBox.Text = string.Empty;
+
             ITextEditInputPositionReplaceTxtBox.Text = string.Empty;
             ITextEditInputLengthReplaceTxtBox.Text = string.Empty;
             ITextEditInputTextReplaceTxtBox.Text = string.Empty;
 
-            ITextEditOutputTextBlock.Text = string.Empty;
-            //readonlyExtentsTextBlock.Text = string.Empty;
+            ITextEditInputPositionInsertTxtBox.Text = string.Empty;
+            ITextEditInputLengthInsertTxtBox.Text = string.Empty;
+            ITextEditInputTextInsertTxtBox.Text = string.Empty;
 
+            ITextEditInputPositionDeleteTxtBox.Text = string.Empty;
+            ITextEditInputLengthDeleteTxtBox.Text = string.Empty;
+            ITextEditInputTextDeleteTxtBox.Text = string.Empty;
+
+            ITextEditOutputTextBlock.Text = string.Empty;
+
+            specificVersionTextTextBloc.Text = string.Empty;
+            specificVersionTextBloc.Text = string.Empty;
+
+
+
+            _currentDisplayVersion = -1;
+
+            _versionSnapshotDictionary.Clear();
 
             applyListView.Items.Clear();
         }
@@ -375,7 +402,7 @@ namespace TextVersionIntro
                 else
                 {
                     MessageBox.Show($"Unknown operation: {textOperation.Operation}", "Invalid operation", MessageBoxButton.OK, MessageBoxImage.Information);
-                    System.Diagnostics.Debugger.Break();
+                    Debugger.Break();
                 }
 
                 textBlock.Text = itemString;
@@ -408,6 +435,35 @@ namespace TextVersionIntro
                 return true;
             }
             return false;
+        }
+
+        private void nextTextVersionButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentDisplayVersion++;
+            if (_versionSnapshotDictionary.ContainsKey(_currentDisplayVersion))
+                UpdateStateTextVersion();
+            else
+                _currentDisplayVersion--;
+        }
+
+        private void previousTextVersionButton_Click(object sender, RoutedEventArgs e)
+        {
+            _currentDisplayVersion--;
+            if (_versionSnapshotDictionary.ContainsKey(_currentDisplayVersion))
+                UpdateStateTextVersion();
+            else
+                _currentDisplayVersion++;
+        }
+
+        private void UpdateStateTextVersion()
+        {
+            _versionSnapshotDictionary.TryGetValue(_currentDisplayVersion, out ITextSnapshot textSnapshot);
+
+            if (textSnapshot != null)
+            {
+                specificVersionTextTextBloc.Text = textSnapshot.GetText();
+                specificVersionTextBloc.Text = _currentDisplayVersion.ToString();
+            }
         }
     }
 }
