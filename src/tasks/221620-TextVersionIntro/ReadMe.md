@@ -10,6 +10,11 @@ It turns out that you can't just access the history of changes at any time – i
 Another important point is read-only history, i.e. these interfaces do not offer you an API for performing Undo. You won't even be able to change CurrentSnapshot to your previously saved CurrentSnapshot.
 ```
 
+3. In the above find the following diagram.
+
+![Here we ](../221500-TextBufferIntro/Images/65_50_SnapshotVersion.png)
+
+
 ## Build and Run
 
 1. Reset Visual Studio Exp instance and then Launch it.
@@ -18,11 +23,13 @@ Another important point is read-only history, i.e. these interfaces do not offer
 
 1. View -> Other Windows -> Look for ReadOnlyEditToolWindow
 
-2. Enter text say `0123456789` 10 chars in the top text box. 
+2. Enter text say `0123456789` 10 chars in the top text box. Then do as the following diagram suggests.
 
 ![Try This](Images/50_50_TryIt.png)
 
-3. 
+4. Try redo and undo. 
+
+
 
 ## Reference.
 

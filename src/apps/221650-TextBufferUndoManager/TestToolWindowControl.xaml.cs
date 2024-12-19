@@ -1,40 +1,39 @@
 ﻿using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Operations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
-namespace TextVersionIntro
+namespace TextBufferUndoManager
 {
     /// <summary>
-    /// Interaction logic for TextVersionToolWindowControl.
+    /// Interaction logic for TestToolWindowControl.
     /// </summary>
-    public partial class TextVersionToolWindowControl : UserControl
+    public partial class TestToolWindowControl : UserControl
     {
         private ITextBufferFactoryService _textBufferFactoryService = null;
+
+        private ITextBufferUndoManagerProvider _textBufferUndoManagerProvider = null;
+
+        private ITextBufferUndoManager _textBufferUndoManager = null;
 
         private ITextBuffer _textBuffer = null;
 
         private ITextEdit _textEdit = null;
 
-        private Dictionary<int, ITextSnapshot> _versionSnapshotDictionary;
-
         private List<OperationData> _textOperationList;
 
-        private int _currentDisplayVersion = 0;
         /// <summary>
-        /// Initializes a new instance of the <see cref="TextVersionToolWindowControl"/> class.
+        /// Initializes a new instance of the <see cref="TestToolWindowControl"/> class.
         /// </summary>
-        public TextVersionToolWindowControl()
+        public TestToolWindowControl()
         {
             this.InitializeComponent();
-
             var componentModel = (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
 
             _textBufferFactoryService = componentModel.GetService<ITextBufferFactoryService>();
@@ -44,21 +43,12 @@ namespace TextVersionIntro
 
             _textOperationList = new List<OperationData>();
 
-            _versionSnapshotDictionary = new Dictionary<int, ITextSnapshot>();
-        }
+            _textBufferUndoManagerProvider = 
+                componentModel.GetService<ITextBufferUndoManagerProvider>();
 
-        /// <summary>
-        /// Handles click on the button by displaying a message box.
-        /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event args.</param>
-        [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
-        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
-                "TextVersionToolWindow");
+            if (_textBufferUndoManagerProvider == null)
+                throw new Exception($"{nameof(_textBufferUndoManagerProvider)} is null. Cannot continue!!!");
+
         }
 
         private void ITextEditReplaceButton_Click(object sender, RoutedEventArgs e)
@@ -137,6 +127,7 @@ namespace TextVersionIntro
             }
 
             var insertString = string.Empty;
+
             if (!string.IsNullOrEmpty(value: ITextEditInputTextReplaceTxtBox.Text))
             {
                 insertString = ITextEditInputTextReplaceTxtBox.Text;
@@ -146,8 +137,6 @@ namespace TextVersionIntro
             {
                 _textEdit = _textBuffer.CreateEdit();
             }
-
-            // _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
 
             try
             {
@@ -167,10 +156,6 @@ namespace TextVersionIntro
             PublishCurrentSnapshotAfterOperation();
 
             _textOperationList.Add(new OperationData { Position = position, Operation = TextOperation.Insert, OperationText = insertString });
-
-
-            // ITextEditApply();
-            // AddItemToListView(startPosition: position, 0, operationText: ITextEditInputTextInsertTxtBox.Text, operation: "Insert");
         }
 
         private void ITextEditDeleteButton_Click(object sender, RoutedEventArgs e)
@@ -212,10 +197,8 @@ namespace TextVersionIntro
 
             PublishCurrentSnapshotAfterOperation();
 
-            _textOperationList.Add(new OperationData { Position = position, Length = length, Operation = TextOperation.Delete});
+            _textOperationList.Add(new OperationData { Position = position, Length = length, Operation = TextOperation.Delete });
 
-            // ITextEditApply();
-            // AddItemToListView(startPosition: position, length, operationText: string.Empty, operation: "Delete");
         }
 
         private void ITextEditStartButton_Click(object sender, RoutedEventArgs e)
@@ -234,9 +217,13 @@ namespace TextVersionIntro
 
             AddVersionAfterApplyClick(_textBuffer.CurrentSnapshot);
 
-            if(!_versionSnapshotDictionary.ContainsKey(0))
-                _versionSnapshotDictionary.Add(0, _textBuffer.CurrentSnapshot);
+            _textBufferUndoManager = _textBufferUndoManagerProvider.GetTextBufferUndoManager(_textBuffer);
 
+            _textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened += TextBufferUndoHistory_UndoRedoHappened;
+
+            _textBufferUndoManager.TextBufferUndoHistory.UndoTransactionCompleted += TextBufferUndoHistory_UndoTransactionCompleted;
+
+            return;
         }
 
         private StackPanel CreateStackPanelAndAddToListView()
@@ -251,7 +238,7 @@ namespace TextVersionIntro
             stackBorder.Child = stackPanel;
             applyListView.Items.Add(stackBorder);
             return stackPanel;
-        }      
+        }
 
         private void ITextEditApplyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -263,7 +250,7 @@ namespace TextVersionIntro
             }
             catch (Exception exception)
             {
-                if (exception is InvalidOperationException 
+                if (exception is InvalidOperationException
                     && exception.Message == "Attempted to reuse an already applied edit.")
                 {
                     MessageBox.Show(
@@ -272,7 +259,7 @@ namespace TextVersionIntro
                     return;
                 }
 
-                if (exception is InvalidOperationException 
+                if (exception is InvalidOperationException
                     && exception.Message == "Operation is not valid due to the current state of the object.")
                 {
                     MessageBox.Show(
@@ -284,13 +271,9 @@ namespace TextVersionIntro
                 throw exception;
             }
 
-            _versionSnapshotDictionary.Add(textSnapshot.Version.VersionNumber, textSnapshot);
             AddVersionAfterApplyClick(textSnapshot);
-            PublishCurrentSnapshotAfterOperation();
 
-            _currentDisplayVersion = textSnapshot.Version.VersionNumber;
-            
-            UpdateStateTextVersion();
+            PublishCurrentSnapshotAfterOperation();
 
             _textOperationList.Clear();
         }
@@ -300,36 +283,22 @@ namespace TextVersionIntro
 
             var versionInfoString = string.Empty;
 
-            // ITextVersion versionInfo;
-
-            //if (_textEdit != null)
-            //{
-                // versionInfo = _textEdit.Snapshot.Version;
             ITextVersion versionInfo = textSnapshot.Version;
-            //}
-            //else
-            //{
-            //    // versionInfo = textSnapshot.Version;
-            //    Debugger.Break();
-            //}
 
-            //if (versionInfo.VersionNumber == 0)
-            //    _startTextVersion = _stateTextVersion = versionInfo;
-
-            // UpdateStateTextVersion(_startTextVersion);
-            
             versionInfoString = $"Version: {versionInfo.VersionNumber}";
 
-            var stackPanel = CreateStackPanelAndAddToListView();
-            var textBlock = new TextBlock();
+            StackPanel stackPanel = CreateStackPanelAndAddToListView();
+
+            TextBlock textBlock = new TextBlock();
+
             textBlock.Text = versionInfoString;
+
             stackPanel.Children.Add(textBlock);
 
             AddOprationsToListView(stackPanel);
 
             if (_textEdit == null)
                 return;
-            
 
             foreach (ITextChange change in _textEdit?.Snapshot?.Version.Changes)
             {
@@ -360,16 +329,35 @@ namespace TextVersionIntro
 
             ITextEditOutputTextBlock.Text = string.Empty;
 
-            specificVersionTextTextBloc.Text = string.Empty;
-            specificVersionTextBloc.Text = string.Empty;
-
-
-
-            _currentDisplayVersion = -1;
-
-            _versionSnapshotDictionary.Clear();
+            undoRedoTextTextBloc.Text = string.Empty;
 
             applyListView.Items.Clear();
+
+            // _textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened += TextBufferUndoHistory_UndoRedoHappened;
+            // The reason we are first subscribing(above, now uncommented), and then unsubscribing(below) is the
+            // below can sometimes throw exception.
+            // If say the user clicks the Reset button twice successively, then the following throws exception.
+            // So just to be sure, first subscribe and then unsubscribe. 
+            _textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened -= TextBufferUndoHistory_UndoRedoHappened;
+
+            _textBufferUndoManager.TextBufferUndoHistory.UndoTransactionCompleted += TextBufferUndoHistory_UndoTransactionCompleted;
+            _textBufferUndoManager.TextBufferUndoHistory.UndoTransactionCompleted -= TextBufferUndoHistory_UndoTransactionCompleted;
+
+            _textBufferUndoManager = null;
+
+            messagesListView.Items.Clear();
+        }
+
+        private void TextBufferUndoHistory_UndoRedoHappened(object sender, TextUndoRedoEventArgs e)
+        {
+            messagesListView.Items.Add($"{e.State}");
+        }
+
+        private void TextBufferUndoHistory_UndoTransactionCompleted(object sender, TextUndoTransactionCompletedEventArgs e)
+        {
+            ITextUndoTransaction textUndoTransaction = e.Transaction;
+            TextUndoTransactionCompletionResult textUndoTransactionCompletionResult = e.Result;
+            messagesListView.Items.Add($"Transaction - {textUndoTransactionCompletionResult}");
         }
 
         private void PublishCurrentSnapshotAfterOperation()
@@ -436,33 +424,18 @@ namespace TextVersionIntro
             return false;
         }
 
-        private void nextTextVersionButton_Click(object sender, RoutedEventArgs e)
+        private void undoTextVersionButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentDisplayVersion++;
-            if (_versionSnapshotDictionary.ContainsKey(_currentDisplayVersion))
-                UpdateStateTextVersion();
-            else
-                _currentDisplayVersion--;
+            var textBufferUndoHistory = _textBufferUndoManager.TextBufferUndoHistory;
+            textBufferUndoHistory.Undo(1);
+            undoRedoTextTextBloc.Text = _textBuffer.CurrentSnapshot.GetText();
         }
 
-        private void previousTextVersionButton_Click(object sender, RoutedEventArgs e)
+        private void redoTextVersionButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentDisplayVersion--;
-            if (_versionSnapshotDictionary.ContainsKey(_currentDisplayVersion))
-                UpdateStateTextVersion();
-            else
-                _currentDisplayVersion++;
-        }
-
-        private void UpdateStateTextVersion()
-        {
-            _versionSnapshotDictionary.TryGetValue(_currentDisplayVersion, out ITextSnapshot textSnapshot);
-
-            if (textSnapshot != null)
-            {
-                specificVersionTextTextBloc.Text = textSnapshot.GetText();
-                specificVersionTextBloc.Text = _currentDisplayVersion.ToString();
-            }
+            var textBufferUndoHistory = _textBufferUndoManager.TextBufferUndoHistory;
+            textBufferUndoHistory.Redo(1);
+            undoRedoTextTextBloc.Text = _textBuffer.CurrentSnapshot.GetText();
         }
     }
 }
