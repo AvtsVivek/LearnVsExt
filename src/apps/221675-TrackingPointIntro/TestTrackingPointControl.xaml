@@ -18,7 +18,8 @@
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
         <!-- ComboBox, RadioButton, CheckBox, etc... -->
-
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"></Style>
+        
     </UserControl.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>

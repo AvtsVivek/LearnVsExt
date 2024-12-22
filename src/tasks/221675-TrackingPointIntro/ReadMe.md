@@ -35,7 +35,7 @@
 
 Here we go...
 
-![Positive Tracking Point Insertion](Images/52_50_NegtiveTrackingPointInsertion.png)
+![Positive Tracking Point Insertion](Images/53_50_PositiveTrackingPointInsertion.png)
 
 ## Reference.
 

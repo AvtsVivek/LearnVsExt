@@ -348,6 +348,8 @@ namespace TrackingSpanIntro
 
             //undoRedoTextTextBloc.Text = string.Empty;
 
+            textBufferSnapshotAfterOperationTextBlock.Text = string.Empty;
+            newTrackingPointTextBlock.Text = string.Empty;
 
             TrackingSpanStartTextBox.Text = string.Empty;
             TrackingSpanLengthTextBox.Text = string.Empty;
@@ -365,6 +367,8 @@ namespace TrackingSpanIntro
             // _textBufferUndoManager.TextBufferUndoHistory.UndoTransactionCompleted -= TextBufferUndoHistory_UndoTransactionCompleted;
 
             // _textBufferUndoManager = null;
+
+            _textOperationList.Clear();
 
             messagesListView.Items.Clear();
         }
@@ -384,8 +388,10 @@ namespace TrackingSpanIntro
         private void PublishCurrentSnapshotAfterOperation()
         {
             var currentTextSnapshot = _textBuffer.CurrentSnapshot;
+            textBufferSnapshotAfterOperationTextBlock.Text = currentTextSnapshot.GetText();
 
-            ITextEditOutputTextBlock.Text = currentTextSnapshot.GetText();
+            if (_trackingSpan != null)
+                newTrackingPointTextBlock.Text = $"New span: {_trackingSpan.GetSpan(currentTextSnapshot).Span}";
         }
 
         private void AddOprationsToListView(StackPanel stackPanel)

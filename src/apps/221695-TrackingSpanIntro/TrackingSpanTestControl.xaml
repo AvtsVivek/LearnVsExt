@@ -17,11 +17,13 @@
         <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource baseStyle}"></Style>
         <!-- ComboBox, RadioButton, CheckBox, etc... -->
 
     </UserControl.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -251,8 +253,9 @@
             <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="ITextEditApplyButton" Click="ITextEditApplyButton_Click" >Apply</Button>
             <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
         </Grid>
-        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <Grid Grid.Row="7" Grid.Column="0" x:Name="listViewGrid">
+        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="textBufferSnapshotAfterOperationTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="newTrackingPointTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <Grid Grid.Row="8" Grid.Column="0" x:Name="listViewGrid">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -260,7 +263,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ListView Grid.Row="0" Grid.Column="0" x:Name="applyListView">
+            <ListView Grid.Row="0" Grid.Column="0" x:Name="applyListView" >
 
             </ListView>
             <ListView Grid.Row="0" Grid.Column="1" x:Name="messagesListView">
