@@ -41,4 +41,11 @@ Here we go...
 
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
 
-
+## ToDo
+1. .CreateTrackingPoint is available in the following. So need to check. 
+   1. 800950-OokLanguage\
+      1. Intellisence\TemplateQuickInfoController.cs
+      2. Intellisence\CommandFilter.cs
+   2. 800500-ColorfulEditor\
+      1. ColorfulOleCommandTarget.cs
+2. 
