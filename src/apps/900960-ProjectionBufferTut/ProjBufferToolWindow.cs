@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -28,8 +29,12 @@ namespace ProjectionBufferTut
     public class ProjBufferToolWindow : ToolWindowPane, IOleCommandTarget
     {
         //CHANGE ME TO A FILE THAT YOU HAVE OPENED IN VISUAL STUDIO WHEN LAUNCHING THE TOOL WINDOW
-        //CHANGE ME TO A FILE THAT YOU HAVE OPENED IN VISUAL STUDIO WHEN LAUNCHING THE TOOL WINDOW
+        //CHANGE ME TO A FILE THAT YOU HAVE OPENED IN VISUAL STUDIO WHEN LAUNCHING THE TOOL WINDOW 
+
         private string filePath = @"C:\Users\koppviv\source\repos\LargeCsFile.cs";
+        // private string filePath = @"C:\Users\UserName\source\repos\LargeCsFile.cs";
+        // private string filePath = @"C:\Trials\Ex\LearnVsExt\src\apps\900960-ProjectionBufferTut\ProjectionBufferTut\ProjBufferToolWindow.cs";
+
         //CHANGE ME TO A FILE THAT YOU HAVE OPENED IN VISUAL STUDIO WHEN LAUNCHING THE TOOL WINDOW
         //CHANGE ME TO A FILE THAT YOU HAVE OPENED IN VISUAL STUDIO WHEN LAUNCHING THE TOOL WINDOW
 
@@ -53,16 +58,31 @@ namespace ProjectionBufferTut
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
             // the object returned by the Content property.
 
-            // We need to take care of the following.
-            // this.Content = new ProjBufferToolWindowControl();
 
             this.BitmapResourceID = 301;
             this.BitmapIndex = 1;
 
             _componentModel = (IComponentModel)Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SComponentModel));
+            
             _invisibleEditorManager = (IVsInvisibleEditorManager)Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SVsInvisibleEditorManager));
+            
+            // var invisibleEditorManager2 = _componentModel.GetService<IVsInvisibleEditorManager>();
             _editorAdapter = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
             _editorFactoryService = _componentModel.GetService<ITextEditorFactoryService>();
+
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                MessageBox.Show(
+                text: "File path is invalid. First set this to a large file(with lines more than say 200). Cannot continue",
+                caption: "Invalid File path");
+            }
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show(
+                text: $"File path {filePath} is invalid. First set this to any large file. Cannot continue",
+                caption: "Invalid File path");
+            }
         }
 
         /// <summary>
@@ -90,20 +110,34 @@ namespace ProjectionBufferTut
             IntPtr docData;
             uint docCookie;
             IVsHierarchy hierarchy;
+
             var runningDocTable = (IVsRunningDocumentTable)Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SVsRunningDocumentTable));
 
-            ErrorHandler.ThrowOnFailure(runningDocTable.FindAndLockDocument(
+            try
+            {
+                ErrorHandler.ThrowOnFailure(runningDocTable.FindAndLockDocument(
                 dwRDTLockType: (uint)_VSRDTFLAGS.RDT_EditLock,
                 pszMkDocument: targetFile,
                 ppHier: out hierarchy,
                 pitemid: out itemID,
                 ppunkDocData: out docData,
                 pdwCookie: out docCookie));
-
-            return docCookie;
+                return docCookie;
+            }
+            catch (COMException comException)
+            {
+                if (comException.Message.Contains("Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))"))
+                {
+                    MessageBox.Show(
+                    text: "First Open a file, then View -> Other Windows -> ProjBufferToolWindow",
+                    caption: "No File Open");
+                    return 0;
+                }
+                throw comException;
+            }
         }
 
-        public IWpfTextViewHost CreateEditor(string filePath, int start = 0, int end = 0, bool createProjectedEditor = false)
+        private IWpfTextViewHost CreateEditor(string filePath, int start = 0, int end = 0, bool createProjectedEditor = false)
         {
             //IVsInvisibleEditors are in-memory represenations of typical Visual Studio editors.
             //Language services, highlighting and error squiggles are hooked up to these editors
@@ -182,7 +216,7 @@ namespace ProjectionBufferTut
             {
                 if (_projectedTextViewHost == null)
                 {
-                    _projectedTextViewHost = CreateEditor(filePath, start: 0, end: 50, createProjectedEditor: true);
+                    _projectedTextViewHost = CreateEditor(filePath, start: 0, end: 10, createProjectedEditor: true);
                 }
                 return _projectedTextViewHost;
             }
@@ -196,7 +230,7 @@ namespace ProjectionBufferTut
                 if (_myControl == null)
                 {
                     _myControl = new ProjBufferToolWindowControl();
-                    _myControl.fullFile.Content = CompleteTextViewHost.HostControl;     // Don't rely on the IWpfTextViewHost implementation being a FrameworkElement
+                    _myControl.fullFile.Content = CompleteTextViewHost.HostControl; 
                     _myControl.partialFile.Content = ProjectedTextViewHost.HostControl;
                 }
                 return _myControl;

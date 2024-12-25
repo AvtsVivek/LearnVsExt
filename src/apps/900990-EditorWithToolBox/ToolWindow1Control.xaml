@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ProjectionBufferTut.ProjBufferToolWindowControl"
+﻿<UserControl x:Class="EditorWithToolBox.ToolWindow1Control"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,19 +7,12 @@
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
              mc:Ignorable="d"
-             d:DesignHeight="900" d:DesignWidth="900"
+             d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions >
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="filePathTextBox" Margin="5" />
-        <ContentControl Grid.Row="1" Grid.Column="0" Name="fullFile" />
-        <ContentControl Grid.Row="1" Grid.Column="1" Name="partialFile" />
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="10" HorizontalAlignment="Center">ToolWindow1</TextBlock>
+            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+        </StackPanel>
     </Grid>
 </UserControl>
