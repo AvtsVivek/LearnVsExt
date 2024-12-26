@@ -145,6 +145,8 @@ namespace TaggerInTextModel.Commands
             // var classifier = GetClassifier(wpfTextView.TextBuffer, 
             // classificationTypeRegistryService, tagAggregator);
 
+            // In the below line, we are creating the TodoTagger class passing in on a classifier.
+            // This classifier is assigned to a member variable during object construction, but in that used no where.
             var todoTagger = new TodoTagger(classifier);
 
             var tagList = todoTagger.GetTags(normalizedSnapshotSpanCollection).ToList();

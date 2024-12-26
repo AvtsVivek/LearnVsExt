@@ -37,7 +37,7 @@ if (classificationSpan.ClassificationType.Classification.ToLower().Contains("com
 
 4. So how does it work? Here it is.
 
-5. First, as usual, we need to bet the text manager. If you remember from earlier example(424500-VsTextManagerIntro), text manager helps get the current view, if any file is currently opened in visual studio.
+5. First, as usual, we need to get the text manager. If you remember from earlier example(224500-VsTextManagerIntro), text manager helps get the current view, if any file is currently opened in visual studio.
 ```cs
 var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 ```
@@ -48,7 +48,7 @@ The GetGlobalService private methods gets the service from Package.GetGlobalServ
 vsTextManager.GetActiveView(1, null, out IVsTextView vsTextView);
 ```
 
-7. Next we need component model object. The IComponentModel object can help us get the MEF services as we need them. Take a look at 429600-ComponentModelIntro example.
+7. Next we need component model object. The IComponentModel object can help us get the MEF services as we need them. Take a look at 229600-ComponentModelIntro example.
 ```cs
 var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
 ```
@@ -65,7 +65,7 @@ Update: The classifier is not used in the app. Its not working, need to find out
 var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
 ```
 
-10. Now that we have adapter, we can get the wpfTextView from the vsTextView. See 431800-WpfTextViewIntro. IWpfTextView belongs to [Text View Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-view-subsystem). 
+10. Now that we have adapter, we can get the wpfTextView from the vsTextView. See 231800-WpfTextViewIntro. IWpfTextView belongs to [Text View Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-view-subsystem). 
 
 ```cs
 var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
