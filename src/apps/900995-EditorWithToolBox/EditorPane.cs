@@ -135,7 +135,7 @@ namespace EditorWithToolBox
                     // This method call is not working correctly.
                     // Both the RemoveItem as well as AddItem are not working correclty. 
                     // Not sure why.
-                    var removeStatus = toolbox.RemoveItem(toolboxData);
+                    // var removeStatus = toolbox.RemoveItem(toolboxData);
                     toolbox.AddItem(toolboxData, itemInfo, "Toolbox Test");
                 }
                 catch (Exception exception)

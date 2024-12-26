@@ -33,7 +33,12 @@ private void AddToToolBox_Click(object sender, RoutedEventArgs e)
     toolbox.UpdateToolboxUI();
 }
 ```
-3. But this is not working. Tried commenting out the line `toolbox.UpdateToolboxUI();`. But still its not working. Not clear why. There is no changed in the tool box.
+3. But this is not working. Tried commenting out the line `toolbox.UpdateToolboxUI();`. But still its not working. Not clear why. There is no changed in the tool box. 
+
+4. This example is same as previous one, This is step as a step by step guide.
+
+5. I try to break it down to just deal with the tool box, so created another example `901010-ToolboxTrailOne` but even that is having problem
+
 
 ## References
 1.  

@@ -7,26 +7,12 @@
 1. See the article in the refernces.
 
 ## Build and Run.
-1. This is currently not working. This is throwning exception.
+1. This is currently not working. The next example(900995-EditorWithToolBox) is also exactly same, only a few changes like try catch block that added around suspecious code. The next example is ment as a step by step guide. 
 
-
-```txt
-System.Runtime.InteropServices.COMException
-  HResult=0x8000FFFF
-  Message=Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
-  Source=mscorlib
-  StackTrace:
-   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
-```
-
-![Exception](Images/50_50_Exception.png)
-
+3. I try to break it down to just deal with the tool box, so created another example `901010-ToolboxTrailOne` but even that is having problem
 
 ## References
-1. https://joshvarty.com/2014/08/01/ripping-the-visual-studio-editor-apart-with-projection-buffers/
+1. 
 
-2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
+2.  
 
-3. https://github.com/JoshVarty/ProjectionBufferTutorial
-
-4. 

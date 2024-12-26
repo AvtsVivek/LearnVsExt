@@ -70,26 +70,21 @@ namespace EditorWithToolBox
 
 
 ## Build and Run.
-1. This is currently not working. This is throwning exception.
+1. This is not working. In the EditorPane.cs file, look for `Initialize` method. In that, look for the following.
 
-
-```txt
-System.Runtime.InteropServices.COMException
-  HResult=0x8000FFFF
-  Message=Catastrophic failure (Exception from HRESULT: 0x8000FFFF (E_UNEXPECTED))
-  Source=mscorlib
-  StackTrace:
-   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+```cs
+try
+{
+    // There is some problem here.
+    // This method call is not working correctly.
+    // Both the RemoveItem as well as AddItem are not working correclty. 
+    // Not sure why.
+    // var removeStatus = toolbox.RemoveItem(toolboxData);
+    toolbox.AddItem(toolboxData, itemInfo, "Toolbox Test");
+}
 ```
 
-![Exception](Images/50_50_Exception.png)
-
+That line is causing the problem. Its not clear why.
 
 ## References
-1. https://joshvarty.com/2014/08/01/ripping-the-visual-studio-editor-apart-with-projection-buffers/
-
-2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor
-
-3. https://github.com/JoshVarty/ProjectionBufferTutorial
-
-4. 
+1. 
