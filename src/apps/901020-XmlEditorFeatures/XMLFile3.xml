@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Test Xml File-->
+<employee xmlns="urn:empl-hire">
+	<ID>125</ID>
+	<hire-date>2024-12-23</hire-date>
+</employee>

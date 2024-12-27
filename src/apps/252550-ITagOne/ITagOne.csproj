@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
@@ -10,11 +10,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{71861A7C-E765-4EF4-AF32-DD5766C044B8}</ProjectGuid>
+    <ProjectGuid>{9CAC26A6-DBB7-454B-BEF0-F276F1830F33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TaggerInTextModel</RootNamespace>
-    <AssemblyName>TaggerInTextModel</AssemblyName>
+    <RootNamespace>ITagOne</RootNamespace>
+    <AssemblyName>ITagOne</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -45,15 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\ShowTagCountCommand.cs" />
-    <Compile Include="Commands\TaggerInTextModelPackage.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TaggerInTextModelPackage.vsct</DependentUpon>
-    </Compile>
+    <Compile Include="HelloUrlTagger.cs" />
+    <Compile Include="HelloUrlTaggerThree.cs" />
+    <Compile Include="HelloUrlTaggerTwo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaggerInTextModelPackage.cs" />
-    <Compile Include="TodoTagger.cs" />
+    <Compile Include="ITagOnePackage.cs" />
+    <Compile Include="TaggersToolWindow.cs" />
+    <Compile Include="TaggersToolWindowCommand.cs" />
+    <Compile Include="TaggersToolWindowControl.xaml.cs">
+      <DependentUpon>TaggersToolWindowControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -70,24 +71,25 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.11.439" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069" />
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="Commands\TaggerInTextModelPackage.vsct">
-      <Generator>VsctGenerator</Generator>
+    <Page Include="TaggersToolWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <VSCTCompile Include="ITagOnePackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
-      <LastGenOutput>TaggerInTextModelPackage.cs</LastGenOutput>
     </VSCTCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Commands\Resources\ShowTagCountCommand.png" />
+    <Content Include="Resources\TaggersToolWindowCommand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

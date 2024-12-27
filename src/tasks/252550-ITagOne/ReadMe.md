@@ -1,6 +1,6 @@
 ## Objective 
 
-1. Introduces **ITag** and **ITagger**.
+1. Introduces **ITextSearchService2** and **ITagger**.
 
 2. Also introduces **Span**. 
 
@@ -59,7 +59,7 @@ var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdapters
 ```
 
 9. Get IClassifierAggregatorService object to get classifier. We need to explore more about the classifier. 
-Update: The classifier is not used in the app. Its not working, need to find out more about classifier. Removed the classifier code.
+Update: The classifier is not used in the app. Its not working, need to find out more about classifier.
 
 ```cs
 var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
@@ -71,7 +71,7 @@ var classifierAggregatorService = componentModel.GetService<IClassifierAggregato
 var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 ```
 
-11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to explore more about classifiers. Removed the classifier code.
+11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to explore more about classifiers.
 
 ```cs
 var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);

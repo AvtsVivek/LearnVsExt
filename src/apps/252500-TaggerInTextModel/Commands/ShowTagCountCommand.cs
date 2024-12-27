@@ -164,14 +164,14 @@ namespace TaggerInTextModel.Commands
             return (T)Package.GetGlobalService(serviceType);
         }
 
-        public IClassifier GetClassifier(ITextBuffer buffer, 
-            IClassificationTypeRegistryService classificationTypeRegistryService,
-            // IBufferTagAggregatorFactoryService tagAggregatorFactoryService,
-            ITagAggregator<TodoTag> tagAggregator
-            )
-        {
-            IClassificationType classificationType = classificationTypeRegistryService.GetClassificationType("todo");
-            return new ToDoClassifier(tagAggregator, classificationType);
-        }
+        //public IClassifier GetClassifier(ITextBuffer buffer, 
+        //    IClassificationTypeRegistryService classificationTypeRegistryService,
+        //    // IBufferTagAggregatorFactoryService tagAggregatorFactoryService,
+        //    ITagAggregator<TodoTag> tagAggregator
+        //    )
+        //{
+        //    IClassificationType classificationType = classificationTypeRegistryService.GetClassificationType("todo");
+        //    return new ToDoClassifier(tagAggregator, classificationType);
+        //}
     }
 }

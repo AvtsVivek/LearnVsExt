@@ -20,6 +20,8 @@
 1. Build and run. In the exp instance, open a code file with has todo text in it. 
 ![Run the example](images/52_50RunTheExample.jpg)
 
+2. Highlight any instances of the text 'ToDo' in the Visual Studio Editor and display a glyph in the corresponding line.
+
 ## Notes
 1. Need to understand the difference between 800400-TodoClassification and 748540-TodoGlyphSdkContentTypeExt
 
