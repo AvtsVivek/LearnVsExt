@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Contact>
+	<Name>Vivek</Name>
+	<Title>Mr</Title>
+	<Phone>
+		<Number>1234567890</Number>
+		<Type>Voice</Type>
+	</Phone>
+</Contact>

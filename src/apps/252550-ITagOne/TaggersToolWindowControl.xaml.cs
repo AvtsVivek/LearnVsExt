@@ -190,6 +190,5 @@ namespace ITagOne
         {
             return (T)Microsoft.VisualStudio.Shell.Package.GetGlobalService(serviceType);
         }
-
     }    
 }

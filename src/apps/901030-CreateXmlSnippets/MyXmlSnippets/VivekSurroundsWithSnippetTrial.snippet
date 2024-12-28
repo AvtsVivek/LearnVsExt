@@ -1,0 +1,31 @@
+﻿<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>Example of SurroundsWith snippet</Title>
+		<Author>Vivek</Author>
+		<Shortcut>shortcutdontwork</Shortcut>
+		<Description>
+			complete example of SurroundsWith
+			will put para tag on the line above selected text
+			and /para end tag on the line below selected text
+			will positon the cursor immediately after the
+			closing angle bracket of the end tag
+		</Description>
+		<SnippetTypes>
+			<SnippetType>SurroundsWith</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>nameThree</ID>
+				<Default>value</Default>
+			</Literal>
+		</Declarations>
+		<Code Language="XML">
+			<![CDATA[<para>
+        $selected$
+        </para>
+		$end$]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="phoneType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Voice"/>
+      <xs:enumeration value="Fax"/>
+      <xs:enumeration value="Pager"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Contact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name">
+          <xs:simpleType>
+            <xs:restriction base="xs:string"></xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Title"
+                    type="xs:string" />
+        <xs:element name="Phone"
+                    minOccurs="1"
+                    maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Number"
+                          minOccurs="1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"></xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Type"
+                          default="Voice"
+                          minOccurs="1"
+                          type="phoneType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

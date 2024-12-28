@@ -158,7 +158,7 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
 9. Integration with Roslyn
    1.  https://designprincipia.com/post/writing-a-visual-studio-extension-to-automate-code-generation-with-roslyn/
 
-10. What is ITextView, IVsTextView and IWpfTextView?
+10. What is ITextView, IVsTextView and IWpfTextView? - Done
 
 11. What is IVsTextViewCreationListener and IWpfTextViewCreationListener?
     1.  IVsTextViewCreationListener vs IWpfTextViewCreationListener
@@ -196,3 +196,17 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
     3.  Visual Studio Extensibility in Visual Studio 2022 Preview 17.8.0 Preview 1.0
     
          ![Visual Studio Extensibility](images/53_50_NewProjectVsExtensibilityVs2022Preview.jpg)
+
+
+18. How to create xml schema from xml files. This is needed to be understood before I start to develope the extension for office work
+    1.  https://learn.microsoft.com/en-us/dotnet/standard/data/xml/inferring-an-xml-schema
+    2.  
+
+19. 
+
+20. 
+
+21. 
+
+22. 
+
