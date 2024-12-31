@@ -1,16 +1,17 @@
 ﻿using Microsoft.VisualStudio.Text.Operations;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text;
-using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Utilities;
+using System.ComponentModel.Composition;
 using System.Diagnostics;
+using TagVarieties.Taggers;
 
-namespace ITagTwo
+namespace TagVarieties.TaggerProviders
 {
     [Export(typeof(ITaggerProvider))]
-    [TagType(typeof(IUrlTag))]
-    [ContentType(ContentDefinitions.ContentTypeTwoName)]
-    public class HelloUrlTaggerTwoProvider : ITaggerProvider
+    [TagType(typeof(IOverviewMarkTag))]
+    [ContentType(ContentTypeDefsAndExtAssociations.ContentTypeOverviewMarkTag)]
+    public class OverviewMarkTaggerProvider : ITaggerProvider
     {
         [Import]
         public ITextSearchService2 TextSearchService { get; set; }
@@ -18,8 +19,7 @@ namespace ITagTwo
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
         {
             Debug.WriteLine(GetType().FullName + " is called");
-            return (ITagger<T>)new HelloUrlTaggerTwo(TextSearchService);
+            return (ITagger<T>)new OverviewMarkTagger(TextSearchService);
         }
     }
-
 }

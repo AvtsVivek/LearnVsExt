@@ -88,6 +88,7 @@ var classifier = AggregatorService.GetClassifier(buffer);
 
 9. A Tagger needs a classifier? Not sure, need to find out.
 
+![Todo Final](images/54_50_TodoClassifcationFinal.png)
 
 ## References
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-linking-a-content-type-to-a-file-name-extension
@@ -95,3 +96,4 @@ var classifier = AggregatorService.GetClassifier(buffer);
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-creating-a-margin-glyph
 
 3. https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix-manifest-designer
+

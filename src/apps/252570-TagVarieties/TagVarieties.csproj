@@ -3,6 +3,7 @@
   <PropertyGroup>
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -10,12 +11,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{533EEE1C-EA75-4CC9-A1F0-0C0C57664CAD}</ProjectGuid>
+    <ProjectGuid>{F89015C2-E974-447E-9B9D-DC060918AAB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITagTwo</RootNamespace>
-    <AssemblyName>ITagTwo</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>TagVarieties</RootNamespace>
+    <AssemblyName>TagVarieties</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
@@ -45,15 +46,41 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContentDefinitions.cs" />
-    <Compile Include="HelloUrlTaggerOne.cs" />
-    <Compile Include="HelloUrlTaggerOneProvider.cs" />
-    <Compile Include="HelloUrlTaggerThree.cs" />
-    <Compile Include="HelloUrlTaggerThreeProvider.cs" />
-    <Compile Include="HelloUrlTaggerTwo.cs" />
-    <Compile Include="HelloUrlTaggerTwoProvider.cs" />
+    <Compile Include="TaggerProviders\ChangeTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\ClassificationTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\CompilerErrorTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\ErrorTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\HintedSuggestionTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\InformationTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\InterLineAdornmentViewTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\IntraTextAdornmentTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\OtherErrorTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\OutliningRegionTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\OverviewMarkTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\SpaceNegotiatingAdornmentTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\StructureTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\SuggestionTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\SyntaxErrorTaggerProvider.cs" />
+    <Compile Include="TaggerProviders\TextMarkerTaggerProvider.cs" />
+    <Compile Include="Taggers\ChangeTagger.cs" />
+    <Compile Include="Taggers\ClassificationTagger.cs" />
+    <Compile Include="Taggers\ErrorTagger.cs" />
+    <Compile Include="Taggers\HintedSuggestionTagger.cs" />
+    <Compile Include="Taggers\CompilerErrorTagger.cs" />
+    <Compile Include="ContentTypeDefsAndExtAssociations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ITagTwoPackage.cs" />
+    <Compile Include="Taggers\InformationTagger.cs" />
+    <Compile Include="Taggers\InterLineAdornmentTagger.cs" />
+    <Compile Include="Taggers\IntraTextAdornmentTagger.cs" />
+    <Compile Include="Taggers\OtherErrorTagger.cs" />
+    <Compile Include="Taggers\OutliningRegionTagger.cs" />
+    <Compile Include="Taggers\OverviewMarkTagger.cs" />
+    <Compile Include="Taggers\SpaceNegotiatingAdornmentTagger.cs" />
+    <Compile Include="Taggers\StructureTagger.cs" />
+    <Compile Include="Taggers\SuggestionTagger.cs" />
+    <Compile Include="Taggers\SyntaxErrorTagger.cs" />
+    <Compile Include="Taggers\TextMarkerTagger.cs" />
+    <Compile Include="TagVarietiesPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -61,13 +88,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf">
+      <Version>17.12.215</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

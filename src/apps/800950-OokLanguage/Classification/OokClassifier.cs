@@ -43,7 +43,7 @@ namespace OokLanguage.Classification
             var tagList = tags.ToList(); // Jsut for testing. 
             foreach (var tagSpan in tags)
             {
-                var tagSpans = tagSpan.Span.GetSpans(spans[0].Snapshot);
+                NormalizedSnapshotSpanCollection tagSpans = tagSpan.Span.GetSpans(spans[0].Snapshot);
                 yield return
                     new TagSpan<ClassificationTag>(tagSpans[0],
                                                    new ClassificationTag(_ookTypes[tagSpan.Tag.type]));

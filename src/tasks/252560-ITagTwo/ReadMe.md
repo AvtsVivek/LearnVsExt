@@ -23,6 +23,12 @@
 
 3. Try with `HelloTagTwo.TagTwo` and `HelloTagThree.TagThree` as well.
 
-1. 
+## Todo
 
-2. 
+1. Need to understand the GetTags method in all the tagger classes. Its explained here.
+
+![Explanation of Tagger](images/52_50_TaggerClass.png)
+
+2. https://mihailromanov.wordpress.com/2022/06/19/json-on-steroids-2-3-visual-studio-editor-tags-classifiers-and-text-formating-part-1/
+
+3.  

@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.LanguageServer.Client;
-using Microsoft.VisualStudio.Utilities;
+﻿using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
 namespace ITagTwo
 {
-    public class ContentDefinitions
+    public class ContentTypeDefsAndExtAssociations
     {
         // One
 
@@ -16,7 +15,7 @@ namespace ITagTwo
         internal static ContentTypeDefinition TagOneContentTypeDefinition;
 
         [Export]
-        [FileExtension(".TagOne")]
+        [FileExtension("." + ContentTypeOneName)]
         [ContentType(ContentTypeOneName)]
         internal static FileExtensionToContentTypeDefinition TagOneFileExtensionDefinition;
 
@@ -30,7 +29,7 @@ namespace ITagTwo
         internal static ContentTypeDefinition TagTwoContentTypeDefinition;
 
         [Export]
-        [FileExtension(".TagTwo")]
+        [FileExtension("." + ContentTypeTwoName)]
         [ContentType(ContentTypeTwoName)]
         internal static FileExtensionToContentTypeDefinition TagTwoFileExtensionDefinition;
 
@@ -44,7 +43,7 @@ namespace ITagTwo
         internal static ContentTypeDefinition TagThreeContentTypeDefinition;
 
         [Export]
-        [FileExtension(".TagThree")]
+        [FileExtension("." + ContentTypeThreeName)]
         [ContentType(ContentTypeThreeName)]
         internal static FileExtensionToContentTypeDefinition TagThreeFileExtensionDefinition;
     }
