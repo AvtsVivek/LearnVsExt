@@ -1,4 +1,4 @@
-﻿#define HIDING_TEXT
+﻿// #define HIDING_TEXT
 
 using IntraTextAdornmentIntro.Support;
 using Microsoft.VisualStudio.Text.Editor;

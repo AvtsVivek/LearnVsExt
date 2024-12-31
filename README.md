@@ -80,6 +80,9 @@ C:\"Program Files"\"Microsoft Visual Studio"\2022\Professional\VSSDK\VisualStudi
    3. https://github.com/mrlacey/FestiveEditor
    4. 
 
+3. https://xakpc.info/extending-visual-studio-2022
+   1. https://github.com/xakpc/HtmxPal
+
 ##  YouTube Playlist
 1. https://www.youtube.com/playlist?list=PLReL099Y5nRdG2n1PrY_tbCsUznoYvqkS
 

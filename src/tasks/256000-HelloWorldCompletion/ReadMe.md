@@ -12,11 +12,8 @@
 
 2. https://github.com/microsoft/vs-editor-api/tree/main/samples
    
-3. Todo: Need to explore this. https://xakpc.info/extending-visual-studio-2022
-   1. https://github.com/xakpc/HtmxPal
+3. https://github.com/microsoft/vs-editor-api/wiki/Modern-completion-walkthrough
 
-4. https://github.com/microsoft/vs-editor-api/wiki/Modern-completion-walkthrough
-
-5. https://github.com/KirillOsenkov/vs-editor-api/
+4. https://github.com/KirillOsenkov/vs-editor-api/
 
 
