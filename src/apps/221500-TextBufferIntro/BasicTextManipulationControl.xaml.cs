@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.Text.Operations;
 
 namespace TextBufferIntro
 {
@@ -53,6 +54,15 @@ namespace TextBufferIntro
             ITextBuffer textBuffer = _textBufferFactoryService.CreateTextBuffer(text, contentType: _textBufferFactoryService.PlaintextContentType);
 
             ITextSnapshot snapshot = textBuffer.CurrentSnapshot;
+
+
+            ITextSearchService2 _textSearchService;
+            var fullSnapshotSpan = new SnapshotSpan(snapshot, new Span(0, snapshot.Length));
+            var helloWords = _textSearchService.FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
+            
+
+
+
 
             string resultNumberSubString = Regex.Match(snapshot.GetText(), @"\d+").Value;
 

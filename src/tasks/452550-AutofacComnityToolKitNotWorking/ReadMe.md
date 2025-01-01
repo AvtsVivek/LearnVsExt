@@ -10,7 +10,7 @@
 ## How this project is built.
 1. Starting Again
 
-![Community with Tool](Images/54_50_CommunityTool.png)
+![Community with Tool](Images/50_50_CommunityTool.png)
 
 2. Add Autofac 
 3. 

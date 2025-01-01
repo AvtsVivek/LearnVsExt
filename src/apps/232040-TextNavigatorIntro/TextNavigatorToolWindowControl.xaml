@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="TextNavigatorIntro.TextNavigatorToolWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
+             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+             mc:Ignorable="d"
+             d:DesignHeight="900" d:DesignWidth="300"
+             Name="MyToolWindow">
+    <Grid ShowGridLines="True" x:Name="MainGrid" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Margin="10" Grid.Column="0" Grid.Row="1" Foreground="White" >Lines in file</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="2" Foreground="White" >Line no.</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="3" Foreground="White" >Caret Position Absolute</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="4" Foreground="White" >Caret Position from Start</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="5" Foreground="White" >Line Text</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="6" Foreground="White" >Line span</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="7" Foreground="White" >Line length</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="8" Foreground="White" >Word text</Label>
+        <Label Margin="10" Grid.Column="0" Grid.Row="9" Foreground="White" >Caret Text</Label>
+
+        <Button Margin="10"     Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Refresh!" HorizontalAlignment="Left" Click="button1_Click" Width="220" Height="25" Name="button1"/>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="1" Name="lineCountInOpenedFileTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="2" Name="caretLineNumberTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="3" Name="caretPositionAbsoluteTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="4" Name="caretPositionFromStartTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="5" Name="caretLineTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="6" Name="caretSpanTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="7" Name="caretLengthTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="8" Name="wordTextBlock" HorizontalAlignment="Left"></TextBlock>
+        <TextBlock Margin="10"  Grid.Column="1" Grid.Row="9" Name="caretTextBlock" HorizontalAlignment="Left"></TextBlock>
+    </Grid>
+</UserControl>
