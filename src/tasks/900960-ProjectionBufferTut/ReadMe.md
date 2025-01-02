@@ -107,4 +107,5 @@ public override object Content
 
 3. https://github.com/JoshVarty/ProjectionBufferTutorial
 
-4. 
+4. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#projection
+

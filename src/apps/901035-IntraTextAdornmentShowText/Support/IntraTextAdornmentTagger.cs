@@ -12,9 +12,8 @@ using System.Windows;
 
 namespace IntraTextAdornmentShowText.Support
 {
-    internal abstract class IntraTextAdornmentTagger<TData, TAdornment>
-            : ITagger<IntraTextAdornmentTag>
-            where TAdornment : System.Windows.UIElement
+    internal abstract class IntraTextAdornmentTagger<TData, TAdornment> 
+        : ITagger<IntraTextAdornmentTag> where TAdornment : System.Windows.UIElement
     {
         protected readonly IWpfTextView view;
         private Dictionary<SnapshotSpan, TAdornment> adornmentCache = new Dictionary<SnapshotSpan, TAdornment>();

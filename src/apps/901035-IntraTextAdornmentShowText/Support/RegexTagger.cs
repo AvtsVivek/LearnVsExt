@@ -56,8 +56,11 @@ namespace IntraTextAdornmentShowText.Support
         {
             if (spans.Count == 0)
                 yield break;
+
             int lastVisitedLineNumber = -1;
+
             ITextSnapshot snapshot = spans[0].Snapshot;
+
             foreach (var span in spans)
             {
                 int firstLine = snapshot.GetLineNumberFromPosition(span.Start);
