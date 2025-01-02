@@ -45,7 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ColorAdornment.cs" />
+    <Compile Include="ColorAdornmentTagger.cs" />
+    <Compile Include="ColorAdornmentTaggerProvider.cs" />
+    <Compile Include="ColorTag.cs" />
+    <Compile Include="ColorTagger.cs" />
+    <Compile Include="ColorTaggerProvider.cs" />
+    <Compile Include="IntraTextAdornmentTagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexTagger.cs" />
     <Compile Include="SimpleIntraTextAdornmentPackage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +62,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />

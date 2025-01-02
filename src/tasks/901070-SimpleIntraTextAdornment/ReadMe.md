@@ -5,9 +5,11 @@
 
 ## How this project is built.
 
-1. Start with regular VSix project, and make it a MEF component.
+1. Start with regular VSix project.
 
-2. 
+2. Add new item EditorClassifier. This adds many references and also makes this an MEF component. Now just delete the set of files added in this step.
+
+3. 
 
 ## References
 1. 
