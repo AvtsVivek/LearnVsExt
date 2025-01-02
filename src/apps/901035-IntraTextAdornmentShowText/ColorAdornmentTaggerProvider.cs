@@ -5,7 +5,7 @@ using System;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentShowText
 {
     [Export(typeof(IViewTaggerProvider))]
     [ContentType("text")]

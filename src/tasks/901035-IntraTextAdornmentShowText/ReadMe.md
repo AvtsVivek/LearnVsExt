@@ -32,6 +32,19 @@
 
 ![Colors Before the code](Images/53_50_ColorsBeforeTheCode.png)
 
+
+# Notes
+
+1. In the ColorTaggerProvider class, look for the following.
+
+```cs
+// return buffer.Properties.GetOrCreateSingletonProperty(() => new ColorTagger(buffer)) as ITagger<T>;
+// Instead of the above, the following also works. Not sure which is correct. 
+return new ColorTagger(buffer) as ITagger<T>;
+```
+
+2. Not sure what this `buffer.Properties` is about. Asked an [SO question](https://stackoverflow.com/q/79322867/1977871). Need to wait for the answer.  
+
 ## References
 1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Intra-text_Adornment
 

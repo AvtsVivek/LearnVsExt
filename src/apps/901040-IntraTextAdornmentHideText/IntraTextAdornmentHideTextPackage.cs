@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentHideText
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,11 +24,11 @@ namespace IntraTextAdornmentIntro
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(IntraTextAdornmentIntroPackage.PackageGuidString)]
-    public sealed class IntraTextAdornmentIntroPackage : AsyncPackage
+    [Guid(PackageGuidString)]
+    public sealed class IntraTextAdornmentHideTextPackage : AsyncPackage
     {
         /// <summary>
-        /// IntraTextAdornmentIntroPackage GUID string.
+        /// IntraTextAdornmentHideTextPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "e9d2fdd4-c671-4bf4-97f6-1c5dd617eedc";
 

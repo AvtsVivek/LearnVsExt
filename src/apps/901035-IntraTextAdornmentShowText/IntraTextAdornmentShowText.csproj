@@ -53,8 +53,7 @@
     <Compile Include="ColorTaggerProvider.cs" />
     <Compile Include="Support\IntraTextAdornmentTagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IntraTextAdornmentIntroPackage.cs" />
-    <Compile Include="Support\IntraTextAdornmentTagTransformer.cs" />
+    <Compile Include="IntraTextAdornmentShowTextPackage.cs" />
     <Compile Include="Support\RegexTagger.cs" />
   </ItemGroup>
   <ItemGroup>

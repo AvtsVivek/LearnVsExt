@@ -81,3 +81,6 @@ internal class TestSmartTag : ErrorTag
 
 2. 
 
+## Todo
+1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-displaying-light-bulb-suggestions
+2. 

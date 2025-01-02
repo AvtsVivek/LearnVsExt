@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Utilities;
 using System;
 using System.ComponentModel.Composition;
 
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentHideText
 {
     [Export(typeof(ITaggerProvider))]
     [ContentType("text")]

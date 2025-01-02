@@ -3,11 +3,8 @@ using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace IntraTextAdornmentIntro.Support
+namespace IntraTextAdornmentHideText.Support
 {
     /// <summary>
     /// Helper class for producing intra-text adornments from data tags.

@@ -1,16 +1,13 @@
-﻿using Microsoft.Internal.VisualStudio.PlatformUI;
-using Microsoft.VisualStudio.Text.Editor;
+﻿using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 
-namespace IntraTextAdornmentIntro.Support
+namespace IntraTextAdornmentHideText.Support
 {
     internal abstract class IntraTextAdornmentTagger<TData, TAdornment>
             : ITagger<IntraTextAdornmentTag>

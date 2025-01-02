@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace IntraTextAdornmentIntro.Support
+namespace IntraTextAdornmentShowText.Support
 {
     internal abstract class RegexTagger<T> : ITagger<T> where T : ITag
     {

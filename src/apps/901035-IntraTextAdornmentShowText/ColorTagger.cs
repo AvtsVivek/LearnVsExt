@@ -1,4 +1,4 @@
-﻿using IntraTextAdornmentIntro.Support;
+﻿using IntraTextAdornmentShowText.Support;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentShowText
 {
     /// <summary>
     /// Determines which spans of text likely refer to color values.

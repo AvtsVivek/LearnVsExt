@@ -1,15 +1,11 @@
-﻿// #define HIDING_TEXT
-
-using IntraTextAdornmentIntro.Support;
+﻿using IntraTextAdornmentShowText.Support;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
 
-
-
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentShowText
 {
     /// <summary>
     /// Provides color swatch adornments in place of color constants.
@@ -19,13 +15,7 @@ namespace IntraTextAdornmentIntro
     /// This is a sample usage of the <see cref="IntraTextAdornmentTagTransformer"/> utility class.
     /// </para>
     /// </remarks>
-    internal sealed class ColorAdornmentTagger
-
-#if HIDING_TEXT
-        : IntraTextAdornmentTagTransformer<ColorTag, ColorAdornment>
-#else
-        : IntraTextAdornmentTagger<ColorTag, ColorAdornment>
-#endif
+    internal sealed class ColorAdornmentTagger : IntraTextAdornmentTagger<ColorTag, ColorAdornment>
 
     {
         internal static ITagger<IntraTextAdornmentTag> GetTagger(IWpfTextView view, Lazy<ITagAggregator<ColorTag>> colorTagger)
@@ -34,17 +24,6 @@ namespace IntraTextAdornmentIntro
                 () => new ColorAdornmentTagger(view, colorTagger.Value));
         }
 
-#if HIDING_TEXT
-        private ColorAdornmentTagger(IWpfTextView view, ITagAggregator<ColorTag> colorTagger)
-            : base(view, colorTagger)
-        {
-        }
-
-        public override void Dispose()
-        {
-            base.view.Properties.RemoveProperty(typeof(ColorAdornmentTagger));
-        }
-#else
         private ITagAggregator<ColorTag> colorTagger;
 
         private ColorAdornmentTagger(IWpfTextView view, ITagAggregator<ColorTag> colorTagger)
@@ -86,7 +65,6 @@ namespace IntraTextAdornmentIntro
                 yield return Tuple.Create(adornmentSpan, (PositionAffinity?)PositionAffinity.Successor, dataTagSpan.Tag);
             }
         }
-#endif
 
         protected override ColorAdornment CreateAdornment(ColorTag dataTag, SnapshotSpan span)
         {

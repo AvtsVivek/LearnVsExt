@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.Text.Tagging;
 using System.Windows.Media;
 
-namespace IntraTextAdornmentIntro
+namespace IntraTextAdornmentHideText
 {
     /// <summary>
     /// Data tag indicating that the tagged text represents a color.
