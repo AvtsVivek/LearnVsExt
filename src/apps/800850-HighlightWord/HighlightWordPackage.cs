@@ -24,7 +24,7 @@ namespace HighlightWord
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(HighlightWordPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     public sealed class HighlightWordPackage : AsyncPackage
     {
         /// <summary>

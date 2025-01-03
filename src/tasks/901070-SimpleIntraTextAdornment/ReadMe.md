@@ -17,4 +17,4 @@
 
 ## Todo
 1. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-displaying-light-bulb-suggestions
-2. 
+2. Need to relook into 800850-HighlightWord

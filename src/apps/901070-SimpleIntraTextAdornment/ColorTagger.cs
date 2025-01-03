@@ -1,7 +1,10 @@
 ﻿using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Tagging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 
@@ -19,14 +22,39 @@ namespace SimpleIntraTextAdornment
     /// This class is a sample usage of the <see cref="RegexTagger"/> utility base class.
     /// </para>
     /// </remarks>
-    internal sealed class ColorTagger : RegexTagger<ColorTag>
+    internal class ColorTagger<T> : ITagger<T> where T : ITag  // : RegexTagger<ColorTag>
     {
-        internal ColorTagger(ITextBuffer buffer) : base(buffer, new[] { new Regex(@"\b(0[xX])?([0-9a-fA-F])+\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase) })
+        private readonly IEnumerable<Regex> matchExpressions;
+        internal ColorTagger(ITextBuffer buffer) // : base(buffer, new[] { new Regex(@"\b(0[xX])?([0-9a-fA-F])+\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase) })
         //: base(buffer, new[] { new Regex(@"\b[\dA-F]{6}\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase) })
         {
+            this.matchExpressions = new[] { new Regex(@"\b(0[xX])?([0-9a-fA-F])+\b", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase) };
         }
 
-        protected override ColorTag TryCreateTagForMatch(Match match)
+        public IEnumerable<ITagSpan<T>> GetTags(NormalizedSnapshotSpanCollection spans)
+        {
+            // Here we grab whole lines so that matches that only partially fall inside the spans argument are detected.
+            // Note that the spans argument can contain spans that are sub-spans of lines or intersect multiple lines.
+            foreach (var line in GetIntersectingLines(spans))
+            {
+                string text = line.GetText();
+
+                foreach (var regex in matchExpressions)
+                {
+                    foreach (var match in regex.Matches(text).Cast<Match>())
+                    {
+                        T tag = (T)(TryCreateTagForMatch(match) as ITag);
+                        if (tag != null)
+                        {
+                            SnapshotSpan span = new SnapshotSpan(line.Start + match.Index, match.Length);
+                            yield return new TagSpan<T>(span, tag);
+                        }
+                    }
+                }
+            }
+        }
+
+        private ColorTag TryCreateTagForMatch(Match match)
         {
             Color color = ParseColor(match.ToString());
 
@@ -37,6 +65,33 @@ namespace SimpleIntraTextAdornment
 
             return null;
         }
+
+        public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
+
+        IEnumerable<ITextSnapshotLine> GetIntersectingLines(NormalizedSnapshotSpanCollection spans)
+        {
+            if (spans.Count == 0)
+                yield break;
+
+            int lastVisitedLineNumber = -1;
+
+            ITextSnapshot snapshot = spans[0].Snapshot;
+
+            foreach (var span in spans)
+            {
+                int firstLine = snapshot.GetLineNumberFromPosition(span.Start);
+                int lastLine = snapshot.GetLineNumberFromPosition(span.End);
+
+                for (int i = Math.Max(lastVisitedLineNumber, firstLine); i <= lastLine; i++)
+                {
+                    yield return snapshot.GetLineFromLineNumber(i);
+                }
+
+                lastVisitedLineNumber = lastLine;
+            }
+        }
+
+
 
         private static Color ParseColor(string hexColor)
         {

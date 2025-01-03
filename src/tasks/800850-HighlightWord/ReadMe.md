@@ -85,7 +85,7 @@ Changed the theme(Tools -> Theme -> Light)
 
 10. Note the [ContentType("text")] on the class **HighlightWordTaggerProvider**
 
-## To do.
+## To do, Todo
 1. Need to learn more about ITextMarkerTag and [TextMarkerTag](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.tagging.textmarkertag)
 
 2. Need to learn more about MarkerFormatDefinition and [EditorFormatDefinition](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.markerformatdefinition#remarks)
