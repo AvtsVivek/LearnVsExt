@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace TaggerInTextModel
 {
@@ -40,6 +41,7 @@ namespace TaggerInTextModel
 
         public IEnumerable<ITagSpan<TodoTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
+            Debug.WriteLine("           GetTags is called ..... ");
             var spanList = spans.ToList();
             var spanCount = spanList.Count; // Just for understanding. 
 

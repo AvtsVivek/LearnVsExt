@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace ITagTwo
 {
@@ -14,8 +16,14 @@ namespace ITagTwo
         private ITextSnapshot _lastTaggedSnapshot = null;
         private IReadOnlyCollection<ITagSpan<IUrlTag>> _tagSpans = null;
 
+        private static int _helloUrlTaggerTwoCtorCallCount = 0;
+        private static int _helloUrlTaggerTwoGetTagsCallCount = 0;
+
+
         public HelloUrlTaggerTwo(ITextSearchService2 textSearchService)
         {
+            _helloUrlTaggerTwoCtorCallCount++;
+            Debug.WriteLine(GetType().FullName + " Constructor is called. Call count: " + _helloUrlTaggerTwoCtorCallCount);
             this._textSearchService = textSearchService;
         }
 
@@ -23,6 +31,9 @@ namespace ITagTwo
 
         public IEnumerable<ITagSpan<IUrlTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
+            _helloUrlTaggerTwoGetTagsCallCount++;
+            Debug.WriteLine(MethodBase.GetCurrentMethod().Name + " GetTags is called. Count is: " + _helloUrlTaggerTwoGetTagsCallCount);
+
             if (spans.Count == 0)
                 return Enumerable.Empty<ITagSpan<IUrlTag>>();
 

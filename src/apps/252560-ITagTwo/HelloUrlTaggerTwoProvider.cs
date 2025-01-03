@@ -12,14 +12,21 @@ namespace ITagTwo
     [ContentType(ContentTypeDefsAndExtAssociations.ContentTypeTwoName)]
     public class HelloUrlTaggerTwoProvider : ITaggerProvider
     {
+        private static int _helloUrlTaggerTwoProviderCreateTaggerCallCount = 0;
+        private static int _helloUrlTaggerTwoProviderCtorCallCount = 0;
+        public HelloUrlTaggerTwoProvider()
+        {
+            _helloUrlTaggerTwoProviderCtorCallCount++;
+            Debug.WriteLine(GetType().FullName + " Constructor is called. Count: " + _helloUrlTaggerTwoProviderCtorCallCount);
+        }
         [Import]
         public ITextSearchService2 TextSearchService { get; set; }
 
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
         {
-            Debug.WriteLine(GetType().FullName + " is called");
+            _helloUrlTaggerTwoProviderCreateTaggerCallCount++;
+            Debug.WriteLine(GetType().FullName + " CreateTagger is called. Count is: " + _helloUrlTaggerTwoProviderCreateTaggerCallCount);
             return (ITagger<T>)new HelloUrlTaggerTwo(TextSearchService);
         }
     }
-
 }

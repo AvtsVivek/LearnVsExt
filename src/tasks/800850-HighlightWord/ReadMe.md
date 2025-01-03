@@ -36,7 +36,7 @@ public HighlightWordFormatDefinition()
 }	
 ```
 
-Now run the example, 
+## Now run the example
 
 ![Hello Hello Green Dark Theme](images/52_50HelloHelloGreen.jpg)
 
