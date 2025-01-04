@@ -18,10 +18,16 @@ namespace TagVarieties.Taggers
     {
         protected TextMarkTaggerFormatDefinition()
         {
-            BackgroundColor = Colors.Bisque; // Try with Colors.Bisque as well
-            ForegroundColor = Colors.Black;
+            this.BackgroundColor = Colors.Bisque; // Try with Colors.Bisque as well
+            this.ForegroundColor = Colors.Black;
 
             DisplayName = "Text Mark Tag Format";
+
+            // Try with other colors as well like the following.
+            this.BackgroundColor = Colors.LightPink;
+            this.ForegroundColor = Colors.DarkRed;
+            this.DisplayName = "Highlight Word";
+            // this.ZOrder = 5;
         }
     }
 
@@ -38,11 +44,12 @@ namespace TagVarieties.Taggers
 
         public IEnumerable<ITagSpan<ITextMarkerTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            var snapshot = spans[0].Snapshot;
-            var fullSnapshotSpan = new SnapshotSpan(snapshot,
+            ITextSnapshot snapshot = spans[0].Snapshot;
+
+            SnapshotSpan fullSnapshotSpan = new SnapshotSpan(snapshot,
                     new Span(0, snapshot.Length));
 
-            var helloWords = _textSearchService
+            IEnumerable<SnapshotSpan> helloWords = _textSearchService
                     .FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
 
             return helloWords

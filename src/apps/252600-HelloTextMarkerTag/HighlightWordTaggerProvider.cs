@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace TextMarkerTagIntro
+namespace HelloTextMarkerTag
 {
     /// <summary>
     /// Export a <see cref="IViewTaggerProvider"/>
@@ -21,9 +21,6 @@ namespace TextMarkerTagIntro
         [Import]
         internal ITextSearchService2 TextSearchService { get; set; }
 
-        [Import]
-        internal ITextStructureNavigatorSelectorService TextStructureNavigatorSelector { get; set; }
-
         /// <summary>
         /// This method is called by VS to generate the tagger
         /// </summary>
@@ -37,10 +34,7 @@ namespace TextMarkerTagIntro
             if (textView.TextBuffer != buffer)
                 return null;
 
-            ITextStructureNavigator textStructureNavigator =
-                TextStructureNavigatorSelector.GetTextStructureNavigator(buffer);
-
-            return new HighlightWordTagger(textView, buffer, TextSearchService, textStructureNavigator) as ITagger<T>;
+            return new HighlightWordTagger(textView, buffer, TextSearchService) as ITagger<T>;
         }
 
         #endregion

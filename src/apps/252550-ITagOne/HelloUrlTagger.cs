@@ -20,11 +20,11 @@ namespace ITagOne
 
         public IEnumerable<ITagSpan<IUrlTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            var snapshot = spans[0].Snapshot;
-            var fullSnapshotSpan = new SnapshotSpan(snapshot,
+            ITextSnapshot snapshot = spans[0].Snapshot;
+            SnapshotSpan fullSnapshotSpan = new SnapshotSpan(snapshot,
                     new Span(0, snapshot.Length));
 
-            var helloWords = _textSearchService
+            IEnumerable<SnapshotSpan> helloWords = _textSearchService
                     .FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
 
             return helloWords

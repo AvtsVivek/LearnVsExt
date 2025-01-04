@@ -18,7 +18,7 @@ namespace TextMarkerTagIntro
     {
         private ITextView View { get; set; }
         private ITextBuffer SourceBuffer { get; set; }
-        private ITextSearchService TextSearchService { get; set; }
+        private ITextSearchService2 TextSearchService2 { get; set; }
         private ITextStructureNavigator TextStructureNavigator { get; set; }
         private object updateLock = new object();
 
@@ -29,12 +29,12 @@ namespace TextMarkerTagIntro
         // The current request, from the last cursor movement or view render
         private SnapshotPoint RequestedPoint { get; set; }
 
-        public HighlightWordTagger(ITextView view, ITextBuffer sourceBuffer, ITextSearchService textSearchService,
+        public HighlightWordTagger(ITextView view, ITextBuffer sourceBuffer, ITextSearchService2 textSearchService,
                                    ITextStructureNavigator textStructureNavigator)
         {
             View = view;
             SourceBuffer = sourceBuffer;
-            TextSearchService = textSearchService;
+            TextSearchService2 = textSearchService;
             TextStructureNavigator = textStructureNavigator;
 
             WordSpans = new NormalizedSnapshotSpanCollection();
@@ -146,8 +146,22 @@ namespace TextMarkerTagIntro
             // Find the new spans
             FindData findData = new FindData(currentWord.GetText(), currentWord.Snapshot);
             findData.FindOptions = FindOptions.WholeWord | FindOptions.MatchCase;
+            IEnumerable<SnapshotSpan> wordSnapShotSpans = TextSearchService2.FindAll(findData);
 
-            wordSpans.AddRange(TextSearchService.FindAll(findData));
+
+            //ITextSnapshot snapshot = spans[0].Snapshot;
+            //SnapshotSpan fullSnapshotSpan = new SnapshotSpan(snapshot,
+            //        new Span(0, snapshot.Length));
+
+            //IEnumerable<SnapshotSpan> helloWords = TextSearchService2
+            //        .FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
+
+            //return helloWords
+            //    .Where(s => spans.IntersectsWith(s))
+            //    .Select(s => new TagSpan<HighlightWordTag>(s, new HighlightWordTag()));
+
+
+            wordSpans.AddRange(wordSnapShotSpans);
 
             // If we are still up-to-date (another change hasn't happened yet), do a real update
             if (currentRequest == RequestedPoint)
