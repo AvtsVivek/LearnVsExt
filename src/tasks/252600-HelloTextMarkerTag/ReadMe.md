@@ -5,12 +5,14 @@
 
 ## How this project is built.
 
-1. Start with regular VSix project.
+1. The starting project is [HighlightWordTagger](https://github.com/microsoft/VSSDK-Extensibility-Samples/blob/master/Highlight_Word/C%23/HighlightWordTagger.cs)
 
-2. Add an Editor Classifier project item. For more information, see Create an extension with an editor item template.
+2. Start with regular VSix project.
 
-3. Delete the existing class files. [Take a look at this](https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view#create-a-mef-project).
-4. Then add the classes as in the example.
+3. Add an Editor Classifier project item. For more information, see Create an extension with an editor item template.
+
+4. Delete the existing class files. [Take a look at this](https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-customizing-the-text-view#create-a-mef-project).
+5. Then add the classes as in the example.
 
 ## Build and Run.
 

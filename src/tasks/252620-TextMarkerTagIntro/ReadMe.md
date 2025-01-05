@@ -1,8 +1,7 @@
-# Colorful Language Editor
+# Trails With ToolBox
 
-## Reference: 
-1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Highlight_Word
-2. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-highlighting-text
+## Objective
+1. To understand TextMarkerTag. This also uses MarkerFormatDefinition
 
 ## How this project is created. 
 1. Create a VSix project.
@@ -29,10 +28,10 @@ Ensure the ctor of HighlightWordFormatDefinition is as follows.
 ```cs
 public HighlightWordFormatDefinition()
 {
-	this.BackgroundColor = Colors.LightGreen;
-	this.ForegroundColor = Colors.DarkGreen;
-	this.DisplayName = "Highlight Word";
-	this.ZOrder = 5;
+    this.BackgroundColor = Colors.LightGreen;
+    this.ForegroundColor = Colors.DarkGreen;
+    this.DisplayName = "Highlight Word";
+    this.ZOrder = 5;
 }	
 ```
 
@@ -49,10 +48,10 @@ Ensure the ctor of HighlightWordFormatDefinition is as follows.
 ```cs
 public HighlightWordFormatDefinition()
 {
-	this.BackgroundColor = Colors.LightBlue;
-	this.ForegroundColor = Colors.DarkBlue;
-	this.DisplayName = "Highlight Word";
-	this.ZOrder = 5;
+    this.BackgroundColor = Colors.LightBlue;
+    this.ForegroundColor = Colors.DarkBlue;
+    this.DisplayName = "Highlight Word";
+    this.ZOrder = 5;
 }
 ```
 
@@ -69,10 +68,10 @@ Ensure the ctor of HighlightWordFormatDefinition is as follows.
 ```cs
 public HighlightWordFormatDefinition()
 {
-	this.BackgroundColor = Colors.LightPink;
-	this.ForegroundColor = Colors.DarkRed;
-	this.DisplayName = "Highlight Word";
-	this.ZOrder = 5;
+    this.BackgroundColor = Colors.LightPink;
+    this.ForegroundColor = Colors.DarkRed;
+    this.DisplayName = "Highlight Word";
+    this.ZOrder = 5;
 }
 ```
 
@@ -84,13 +83,6 @@ Changed the theme(Tools -> Theme -> Light)
 
 
 10. Note the [ContentType("text")] on the class **HighlightWordTaggerProvider**
-
-## To do, Todo
-1. Need to learn more about ITextMarkerTag and [TextMarkerTag](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.tagging.textmarkertag)
-
-2. Need to learn more about MarkerFormatDefinition and [EditorFormatDefinition](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.classification.markerformatdefinition#remarks)
-
-3. Need to learn more about [IViewTaggerProvider](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.tagging.iviewtaggerprovider)
-
-4. 
-
+## References
+1. https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/Highlight_Word
+3. https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-highlighting-text
