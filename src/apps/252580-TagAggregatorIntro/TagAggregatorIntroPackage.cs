@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text.Tagging;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace TaggerInTextModel
+namespace TagAggregatorIntro
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -26,12 +27,12 @@ namespace TaggerInTextModel
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    public sealed class TaggerInTextModelPackage : AsyncPackage
+    public sealed class TagAggregatorIntroPackage : AsyncPackage
     {
         /// <summary>
-        /// TaggerInTextModelPackage GUID string.
+        /// TagAggregatorIntroPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "6cdf45df-c9df-4d50-ba01-9a8dc5753c1d";
+        public const string PackageGuidString = "4ca8bfbe-b8e8-43e9-b7f4-70c5b233a131";
 
         #region Package Members
 
@@ -46,8 +47,8 @@ namespace TaggerInTextModel
         {
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await TaggerInTextModel.Commands.ShowTagCountCommand.InitializeAsync(this);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await ShowTagsCountCommand.InitializeAsync(this);
         }
 
         #endregion

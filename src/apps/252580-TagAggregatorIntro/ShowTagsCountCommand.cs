@@ -2,21 +2,25 @@
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.TextManager.Interop;
 using System;
 using System.ComponentModel.Design;
-using System.Linq;
+using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace TaggerInTextModel.Commands
+namespace TagAggregatorIntro
 {
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class ShowTagCountCommand
+    internal sealed class ShowTagsCountCommand
     {
         /// <summary>
         /// Command ID.
@@ -26,7 +30,7 @@ namespace TaggerInTextModel.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("a721e47c-6b19-4e59-bf12-a49ff3c32522");
+        public static readonly Guid CommandSet = new Guid("9eb4e394-4fa4-4935-950c-77d031308bf3");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -34,12 +38,12 @@ namespace TaggerInTextModel.Commands
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShowTagCountCommand"/> class.
+        /// Initializes a new instance of the <see cref="ShowTagsCountCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private ShowTagCountCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private ShowTagsCountCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -52,7 +56,7 @@ namespace TaggerInTextModel.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static ShowTagCountCommand Instance
+        public static ShowTagsCountCommand Instance
         {
             get;
             private set;
@@ -61,7 +65,7 @@ namespace TaggerInTextModel.Commands
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private IAsyncServiceProvider ServiceProvider
+        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
         {
             get
             {
@@ -75,12 +79,12 @@ namespace TaggerInTextModel.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in ShowTagCountCommand's constructor requires
+            // Switch to the main thread - the call to AddCommand in ShowTagsCountCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new ShowTagCountCommand(package, commandService);
+            Instance = new ShowTagsCountCommand(package, commandService);
         }
 
         /// <summary>
@@ -126,26 +130,27 @@ namespace TaggerInTextModel.Commands
             var currentSnapShotSpan = new Span(0, currentTextSnapShot.Length);
 
             var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShot, currentSnapShotSpan);
-          
-            // We can get the classifier from the aggregator service as follows.
-            var classifierAggregatorService = componentModel.GetService<IClassifierAggregatorService>();
 
-            var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);
+            var tagAggregatorFactoryService = componentModel.GetService<IBufferTagAggregatorFactoryService>();
 
-            // But if we want to have our own custom classifier, we can define our own like as follows.
-            // In the GetClassifier method, we define and instanciate a custom classifier class
-            // var classifier = GetClassifier(wpfTextView.TextBuffer, 
-            // classificationTypeRegistryService, tagAggregator);
+            var tagAggregator = tagAggregatorFactoryService.CreateTagAggregator<HelloTagOne>(wpfTextView.TextBuffer);
 
-            // In the below line, we are creating the TodoTagger class passing in on a classifier.
-            // This classifier is assigned to a member variable during object construction, but in that used no where.
-            var todoTagger = new TodoTagger(classifier);
+            var mappingTagSpanList = new List<IMappingTagSpan<HelloTagOne>>();
 
-            var tagList = todoTagger.GetTags(normalizedSnapshotSpanCollection).ToList();
+            foreach (SnapshotSpan span in normalizedSnapshotSpanCollection)
+            {
+                var tags = tagAggregator.GetTags(span);
+                mappingTagSpanList.AddRange(tags);
+            }
+
+            //// We can get the tag list from the following as well, where in we directly instanciate the tagger object.
+            //// This we have seen in earlier example.
+            //var todoTagger = new HelloTagOneTagger();
+            //var tagList = todoTagger.GetTags(normalizedSnapshotSpanCollection).ToList();
 
             VsShellUtilities.ShowMessageBox(
                 package,
-                $"Todo count in this current document is {tagList.Count}",
+                $"Todo count in this current document is {mappingTagSpanList.Count}",
                 "Show Todo Word Count",
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
@@ -155,15 +160,5 @@ namespace TaggerInTextModel.Commands
         {
             return (T)Package.GetGlobalService(serviceType);
         }
-
-        //public IClassifier GetClassifier(ITextBuffer buffer, 
-        //    IClassificationTypeRegistryService classificationTypeRegistryService,
-        //    // IBufferTagAggregatorFactoryService tagAggregatorFactoryService,
-        //    ITagAggregator<TodoTag> tagAggregator
-        //    )
-        //{
-        //    IClassificationType classificationType = classificationTypeRegistryService.GetClassificationType("todo");
-        //    return new ToDoClassifier(tagAggregator, classificationType);
-        //}
     }
 }
