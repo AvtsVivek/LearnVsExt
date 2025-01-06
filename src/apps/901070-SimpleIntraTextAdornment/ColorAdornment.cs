@@ -23,16 +23,16 @@ namespace SimpleIntraTextAdornment
             Content = rect;
         }
 
+        internal void Update(ColorTag colorTag)
+        {
+            rect.Fill = MakeBrush(colorTag.Color);
+        }
+
         private Brush MakeBrush(Color color)
         {
             var brush = new SolidColorBrush(color);
             brush.Freeze();
             return brush;
-        }
-
-        internal void Update(ColorTag colorTag)
-        {
-            rect.Fill = MakeBrush(colorTag.Color);
         }
     }
 }

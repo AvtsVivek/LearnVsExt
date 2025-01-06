@@ -1,71 +1,63 @@
-﻿using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Tagging;
-using System.Collections.Generic;
-using System;
+﻿//using Microsoft.VisualStudio.Text.Editor;
+//using Microsoft.VisualStudio.Text;
+//using Microsoft.VisualStudio.Text.Tagging;
+//using System.Collections.Generic;
+//using System;
 
-namespace SimpleIntraTextAdornment
-{
-    internal sealed class ColorAdornmentTagger : IntraTextAdornmentTagger<ColorTag, ColorAdornment>
+//namespace SimpleIntraTextAdornment
+//{
+//    internal sealed class ColorAdornmentTagger : IntraTextAdornmentTagger<ColorTag, ColorAdornment>
+//    {
+//        private ITagAggregator<ColorTag> _colorTagAggregator;
 
-    {
-        internal static ITagger<IntraTextAdornmentTag> GetTagger(IWpfTextView view, Lazy<ITagAggregator<ColorTag>> colorTagger)
-        {
-            return view.Properties.GetOrCreateSingletonProperty<ColorAdornmentTagger>(
-                () => new ColorAdornmentTagger(view, colorTagger.Value));
-        }
+//        public ColorAdornmentTagger(IWpfTextView view, ITagAggregator<ColorTag> colorTagAggregator) : base(view)
+//        {
+//            this._colorTagAggregator = colorTagAggregator;
+//        }
 
-        private ITagAggregator<ColorTag> colorTagger;
+//        public void Dispose()
+//        {
+//            _colorTagAggregator.Dispose();
 
-        private ColorAdornmentTagger(IWpfTextView view, ITagAggregator<ColorTag> colorTagger)
-            : base(view)
-        {
-            this.colorTagger = colorTagger;
-        }
+//            view.Properties.RemoveProperty(typeof(ColorAdornmentTagger));
+//        }
 
-        public void Dispose()
-        {
-            colorTagger.Dispose();
+//        // To produce adornments that don't obscure the text, the adornment tags
+//        // should have zero length spans. Overriding this method allows control
+//        // over the tag spans.
+//        protected override IEnumerable<Tuple<SnapshotSpan, PositionAffinity?, ColorTag>> GetAdornmentData(NormalizedSnapshotSpanCollection spans)
+//        {
+//            if (spans.Count == 0)
+//                yield break;
 
-            view.Properties.RemoveProperty(typeof(ColorAdornmentTagger));
-        }
+//            ITextSnapshot snapshot = spans[0].Snapshot;
 
-        // To produce adornments that don't obscure the text, the adornment tags
-        // should have zero length spans. Overriding this method allows control
-        // over the tag spans.
-        protected override IEnumerable<Tuple<SnapshotSpan, PositionAffinity?, ColorTag>> GetAdornmentData(NormalizedSnapshotSpanCollection spans)
-        {
-            if (spans.Count == 0)
-                yield break;
+//            IEnumerable<IMappingTagSpan<ColorTag>> colorTags = _colorTagAggregator.GetTags(spans);
 
-            ITextSnapshot snapshot = spans[0].Snapshot;
+//            foreach (IMappingTagSpan<ColorTag> dataTagSpan in colorTags)
+//            {
+//                NormalizedSnapshotSpanCollection colorTagSpans = dataTagSpan.Span.GetSpans(snapshot);
 
-            var colorTags = colorTagger.GetTags(spans);
+//                // Ignore data tags that are split by projection.
+//                // This is theoretically possible but unlikely in current scenarios.
+//                if (colorTagSpans.Count != 1)
+//                    continue;
 
-            foreach (IMappingTagSpan<ColorTag> dataTagSpan in colorTags)
-            {
-                NormalizedSnapshotSpanCollection colorTagSpans = dataTagSpan.Span.GetSpans(snapshot);
+//                SnapshotSpan adornmentSpan = new SnapshotSpan(colorTagSpans[0].Start, 0);
 
-                // Ignore data tags that are split by projection.
-                // This is theoretically possible but unlikely in current scenarios.
-                if (colorTagSpans.Count != 1)
-                    continue;
+//                yield return Tuple.Create(adornmentSpan, (PositionAffinity?)PositionAffinity.Successor, dataTagSpan.Tag);
+//            }
+//        }
 
-                SnapshotSpan adornmentSpan = new SnapshotSpan(colorTagSpans[0].Start, 0);
+//        protected override ColorAdornment CreateAdornment(ColorTag dataTag, SnapshotSpan span)
+//        {
+//            return new ColorAdornment(dataTag);
+//        }
 
-                yield return Tuple.Create(adornmentSpan, (PositionAffinity?)PositionAffinity.Successor, dataTagSpan.Tag);
-            }
-        }
-
-        protected override ColorAdornment CreateAdornment(ColorTag dataTag, SnapshotSpan span)
-        {
-            return new ColorAdornment(dataTag);
-        }
-
-        protected override bool UpdateAdornment(ColorAdornment adornment, ColorTag dataTag)
-        {
-            adornment.Update(dataTag);
-            return true;
-        }
-    }
-}
+//        protected override bool UpdateAdornment(ColorAdornment adornment, ColorTag dataTag)
+//        {
+//            adornment.Update(dataTag);
+//            return true;
+//        }
+//    }
+//}

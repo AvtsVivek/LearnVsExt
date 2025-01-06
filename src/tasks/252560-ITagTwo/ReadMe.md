@@ -1,8 +1,8 @@
 ## Objective 
 
-1. This example is similar to ITagOne. This example has ITaggerProvider also.
-2. 
+1. This example is similar to ITagOne. This example has `ITaggerProvider` also. Introduces `ITaggerProvider`
 
+2. 
 
 ## How the project is created. 
 

@@ -71,7 +71,7 @@ var classifierAggregatorService = componentModel.GetService<IClassifierAggregato
 var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
 ```
 
-11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to explore more about classifiers. Removed the classifier code.
+11. Now what we need to get into is [Text Model Subsystem](https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#text-model-subsystem). The text buffer is what we need now. We will get the classifier from the text buffer. The tagger needs classifier. We need to explore more about classifiers. Note, we removed the classifier code.
 
 ```cs
 var classifier = classifierAggregatorService.GetClassifier(wpfTextView.TextBuffer);

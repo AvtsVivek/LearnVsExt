@@ -4,12 +4,13 @@ using Microsoft.VisualStudio.Text.Tagging;
 using System;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using EnvDTE;
 
 namespace SimpleIntraTextAdornment
 {
     [Export(typeof(IViewTaggerProvider))]
     [ContentType("text")]
-    [ContentType("projection")]
+    // [ContentType("projection")]
     [TagType(typeof(IntraTextAdornmentTag))]
     internal sealed class ColorAdornmentTaggerProvider : IViewTaggerProvider
     {
@@ -29,11 +30,26 @@ namespace SimpleIntraTextAdornment
             if (buffer != textView.TextBuffer)
                 return null;
 
-            return ColorAdornmentTagger.GetTagger(
-                (IWpfTextView)textView,
-                new Lazy<ITagAggregator<ColorTag>>(
-                    () => BufferTagAggregatorFactoryService.CreateTagAggregator<ColorTag>(textView.TextBuffer)))
-                as ITagger<T>;
+            //return GetTagger(
+            //    (IWpfTextView)textView,
+            //    new Lazy<ITagAggregator<ColorTag>>(
+            //        () => BufferTagAggregatorFactoryService.CreateTagAggregator<ColorTag>(textView.TextBuffer)))
+            //    as ITagger<T>;
+
+            // var lazyColorTagAggregator = new Lazy<ITagAggregator<ColorTag>>(() => BufferTagAggregatorFactoryService.CreateTagAggregator<ColorTag>(textView.TextBuffer));
+            
+            var view = (IWpfTextView)textView;
+
+            // var colorAdornmentTagger = view.Properties.GetOrCreateSingletonProperty(() => new ColorAdornmentTagger(view, BufferTagAggregatorFactoryService.CreateTagAggregator<ColorTag>(textView.TextBuffer)));
+            
+            var colorAdornmentTagger = new SimpleColorAdornmentTagger(view, BufferTagAggregatorFactoryService.CreateTagAggregator<ColorTag>(textView.TextBuffer));
+            
+            return colorAdornmentTagger as ITagger<T>;
         }
+
+        //internal static ITagger<IntraTextAdornmentTag> GetTagger(IWpfTextView view, Lazy<ITagAggregator<ColorTag>> colorTagger)
+        //{
+        //    return view.Properties.GetOrCreateSingletonProperty(() => new ColorAdornmentTagger(view, colorTagger.Value));
+        //}
     }
 }

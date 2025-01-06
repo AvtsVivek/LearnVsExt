@@ -91,8 +91,6 @@ namespace SimpleIntraTextAdornment
             }
         }
 
-
-
         private static Color ParseColor(string hexColor)
         {
             int number;
