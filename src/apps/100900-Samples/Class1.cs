@@ -12,3 +12,5 @@ public class Class1
 		
 	}
 }
+///////////////
+// The end of the class. Here we go   /// 
