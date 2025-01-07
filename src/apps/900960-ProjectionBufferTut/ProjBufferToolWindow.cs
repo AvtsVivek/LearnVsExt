@@ -65,9 +65,11 @@ namespace ProjectionBufferTut
             _componentModel = (IComponentModel)Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SComponentModel));
             
             _invisibleEditorManager = (IVsInvisibleEditorManager)Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SVsInvisibleEditorManager));
-            
+
             // var invisibleEditorManager2 = _componentModel.GetService<IVsInvisibleEditorManager>();
+
             _editorAdapter = _componentModel.GetService<IVsEditorAdaptersFactoryService>();
+
             _editorFactoryService = _componentModel.GetService<ITextEditorFactoryService>();
 
             if (string.IsNullOrWhiteSpace(filePath))
@@ -105,7 +107,30 @@ namespace ProjectionBufferTut
 
         uint RegisterDocument(string targetFile)
         {
-            //Then when creating the IVsInvisibleEditor, find and lock the document 
+            //RunningDocumentTable rdt = new RunningDocumentTable(VisualStudioServices.ServiceProvider);
+
+            //IVsHierarchy vsHierarchy = rdt.GetHierarchyItem(targetFile);
+
+            //IEnumerator<RunningDocumentInfo> runningDocumentInfoEnumerator = rdt.GetEnumerator();
+
+            //List<RunningDocumentInfo> runningDocumentInfoList = runningDocumentInfoEnumerator.ToIEnumerable().ToList();
+
+            //RunningDocumentInfo documentInfo = rdt.GetDocumentInfo(targetFile);
+
+            //var returnInt = rdt.FindAndLockDocumentEx(lockType: _VSRDTFLAGS.RDT_EditLock, moniker: targetFile,
+            //    hierPreferred: documentInfo.Hierarchy, itemidPreferred: documentInfo.ItemId, 
+            //    hierActual: out IVsHierarchy ppHierActual,
+            //    itemidActual: out uint pitemidActual, out uint pdwCookie);
+
+            //uint itemID1;
+            //IntPtr docData1;
+            //uint docCookie1;
+            //IVsHierarchy hierarchy1;
+
+            //var t = rdt.FindDocument(targetFile, out hierarchy1, out itemID1, out docCookie1);
+            //var tttt = rdt.GetDocumentInfo(targetFile);
+            //object docData3 = documentInfo.DocData;
+
             uint itemID;
             IntPtr docData;
             uint docCookie;
@@ -115,6 +140,8 @@ namespace ProjectionBufferTut
 
             try
             {
+                //Then when creating the IVsInvisibleEditor, find and lock the document 
+
                 ErrorHandler.ThrowOnFailure(runningDocTable.FindAndLockDocument(
                 dwRDTLockType: (uint)_VSRDTFLAGS.RDT_EditLock,
                 pszMkDocument: targetFile,

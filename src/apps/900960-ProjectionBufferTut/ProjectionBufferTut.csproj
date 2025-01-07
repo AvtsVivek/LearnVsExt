@@ -50,6 +50,7 @@
     <Compile Include="ProjBufferToolWindowControl.xaml.cs">
       <DependentUpon>ProjBufferToolWindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectionTextViewModel.cs" />
     <Compile Include="ProjectionTextViewModelProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProjectionBufferTutPackage.cs" />
