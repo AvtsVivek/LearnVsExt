@@ -35,7 +35,7 @@ Essentially, these are structures that contain the position (or interval) and th
 1. We get `ITextBuffer`, from `ITextBufferFactoryService`, 
 2. And `ITextSnapshot`, from `ITextBuffer`.
 3. `SnapshotSpan` is a subset of `Snapshot`.
-4. In this example, we get the `ITextBuffer` from `ITextBufferFactoryService`. In a subsequent example, we get the same ITextBuffer from `IWpfTextView`. So in the examples that follow, TextViews are introduced. Then we will revisit these TextBuffer, snapshot and so on. 
+4. In this example, we get the `ITextBuffer` from `ITextBufferFactoryService`. In a subsequent example, we get the same `ITextBuffer` from `IWpfTextView`. So in the examples that follow, `TextViews` are introduced. Then we will revisit these `TextBuffer`, snapshot and so on. 
 
 
 ## Reference.

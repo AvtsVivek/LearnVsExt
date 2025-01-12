@@ -56,13 +56,9 @@ namespace TextBufferIntro
             ITextSnapshot snapshot = textBuffer.CurrentSnapshot;
 
 
-            ITextSearchService2 _textSearchService;
-            var fullSnapshotSpan = new SnapshotSpan(snapshot, new Span(0, snapshot.Length));
-            var helloWords = _textSearchService.FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
-            
-
-
-
+            //ITextSearchService2 _textSearchService;
+            //var fullSnapshotSpan = new SnapshotSpan(snapshot, new Span(0, snapshot.Length));
+            //var helloWords = _textSearchService.FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
 
             string resultNumberSubString = Regex.Match(snapshot.GetText(), @"\d+").Value;
 
