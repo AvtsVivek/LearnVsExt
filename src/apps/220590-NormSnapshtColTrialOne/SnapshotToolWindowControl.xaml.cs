@@ -1,38 +1,72 @@
 ﻿using Microsoft.VisualStudio.Text;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace NormalSpanColOpesWpfApp
+namespace NormSnapshtColTrialOne
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    internal enum LineSelection
     {
-        private List<Span> _spanListOne = [];
+        One,
+        Two,
+        Union,
+        UnionReverse,
+        Overlap,
+        OverlapReverse,
+        Intersect,
+        IntersectReverse,
+        Difference,
+        DifferenceReverse
+    }
+    /// <summary>
+    /// Interaction logic for SnapshotToolWindowControl.
+    /// </summary>
+    public partial class SnapshotToolWindowControl : UserControl
+    {
+        private List<Span> _spanListOne = new List<Span> ();
 
-        private List<Span> _spanListTwo = [];
+        private List<Span> _spanListTwo = new List<Span>();
 
-        private List<Span> _currentSpanList = [];
+        private List<Span> _currentSpanList = new List<Span>();
 
-        private NormalizedSpanCollection _spansCollectionOne = new();
-        private NormalizedSpanCollection _spansCollectionTwo = new();
+        private NormalizedSpanCollection _spansCollectionOne = new NormalizedSpanCollection ();
+        private NormalizedSpanCollection _spansCollectionTwo = new NormalizedSpanCollection ();
 
         private LineSelection _lineSelection;
 
-        public MainWindow()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SnapshotToolWindowControl"/> class.
+        /// </summary>
+        public SnapshotToolWindowControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             SetLineAsPerRadioButtonSelected();
+        }
+
+        /// <summary>
+        /// Handles click on the button by displaying a message box.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event args.</param>
+        [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
+        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
+                "SnapshotToolWindow");
         }
 
         private void buttonClearCanvas_Click(object sender, RoutedEventArgs e)
         {
             lineCanvas.Children.Clear();
             spanListView.Items.Clear();
-            
+
 
             _spanListOne.Clear();
             _spanListTwo.Clear();
@@ -84,7 +118,7 @@ namespace NormalSpanColOpesWpfApp
                 return;
             }
 
-            AddSpanToListView(span!.Value);
+            AddSpanToListView(span.Value);
             ReDrawCanvas();
         }
 
@@ -130,7 +164,7 @@ namespace NormalSpanColOpesWpfApp
                 verticalDisanceFromBottom: 500, seperateLines: true);
         }
 
-        private void DrawLinesFromSpanList(List<Span> spanList, Brush lineColorBrush, 
+        private void DrawLinesFromSpanList(List<Span> spanList, Brush lineColorBrush,
             int verticalDisanceFromBottom, bool seperateLines = false)
         {
             int lineStrokeThickness = 20;
@@ -178,12 +212,12 @@ namespace NormalSpanColOpesWpfApp
             if (spanString.Length > 6)
                 leftAdjustment = 10;
 
-            Canvas.SetLeft(textBlock, (line.X1 + line.X2)/2 - leftAdjustment);
+            Canvas.SetLeft(textBlock, (line.X1 + line.X2) / 2 - leftAdjustment);
             Canvas.SetTop(textBlock, line.Y1 + 10);
             lineCanvas.Children.Add(textBlock);
         }
 
-        private void ConvertSpanCollectionToLineSetAndAddToCanvas(NormalizedSpanCollection normalizedSpanCollection, 
+        private void ConvertSpanCollectionToLineSetAndAddToCanvas(NormalizedSpanCollection normalizedSpanCollection,
             LineSelection lineSelection)
         {
             Brush lineColorBrush = Brushes.Red;
@@ -251,7 +285,7 @@ namespace NormalSpanColOpesWpfApp
         private void radioButton_Click(object sender, RoutedEventArgs e)
         {
             var radioButton = sender as RadioButton;
-            
+
             if (radioButton == null)
             {
                 // Something is wrong. Just get out from here.
@@ -293,7 +327,7 @@ namespace NormalSpanColOpesWpfApp
                 return;
             }
 
-            if (oneRadioButton.IsChecked!.Value)
+            if (oneRadioButton.IsChecked.Value)
             {
                 twoRadioButton.IsChecked = false;
                 _lineSelection = LineSelection.One;
@@ -302,7 +336,7 @@ namespace NormalSpanColOpesWpfApp
                 return;
             }
 
-            if (twoRadioButton.IsChecked!.Value)
+            if (twoRadioButton.IsChecked.Value)
             {
                 oneRadioButton.IsChecked = false;
                 _lineSelection = LineSelection.Two;
@@ -316,72 +350,72 @@ namespace NormalSpanColOpesWpfApp
         {
             CheckSpanCollections();
 
-            var _spansCollectionUnion = NormalizedSpanCollection.Union(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionUnion = NormalizedSpanCollection.Union(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnion!, LineSelection.Union);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnion, LineSelection.Union);
         }
 
         private void buttonUnionReverse_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionUnionReverse = NormalizedSpanCollection.Union(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionUnionReverse = NormalizedSpanCollection.Union(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnionReverse!, LineSelection.UnionReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnionReverse, LineSelection.UnionReverse);
         }
 
         private void buttonOverlap_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionOverlap = NormalizedSpanCollection.Overlap(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionOverlap = NormalizedSpanCollection.Overlap(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlap!, LineSelection.Overlap);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlap, LineSelection.Overlap);
         }
 
         private void buttonOverlapReverse_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionOverlapReverse = NormalizedSpanCollection.Overlap(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionOverlapReverse = NormalizedSpanCollection.Overlap(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlapReverse!, LineSelection.OverlapReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlapReverse, LineSelection.OverlapReverse);
         }
 
         private void buttonIntersect_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionIntersect = NormalizedSpanCollection.Intersection(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionIntersect = NormalizedSpanCollection.Intersection(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersect!, LineSelection.Intersect);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersect, LineSelection.Intersect);
         }
 
         private void buttonIntersectReverse_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionIntersectReverse = NormalizedSpanCollection.Intersection(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionIntersectReverse = NormalizedSpanCollection.Intersection(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersectReverse!, LineSelection.IntersectReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersectReverse, LineSelection.IntersectReverse);
         }
 
         private void buttonDifference_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionDifference = NormalizedSpanCollection.Difference(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionDifference = NormalizedSpanCollection.Difference(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifference!, LineSelection.Difference);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifference, LineSelection.Difference);
         }
 
         private void buttonDifferenceReverse_Click(object sender, RoutedEventArgs e)
         {
             CheckSpanCollections();
 
-            var _spansCollectionDifferenceReverse = NormalizedSpanCollection.Difference(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionDifferenceReverse = NormalizedSpanCollection.Difference(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifferenceReverse!, LineSelection.DifferenceReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifferenceReverse, LineSelection.DifferenceReverse);
         }
 
         private void buttonRedraw_Click(object sender, RoutedEventArgs e)
@@ -408,37 +442,37 @@ namespace NormalSpanColOpesWpfApp
         {
             CheckSpanCollections();
 
-            var _spansCollectionUnion = NormalizedSpanCollection.Union(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionUnion = NormalizedSpanCollection.Union(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnion!, LineSelection.Union);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnion, LineSelection.Union);
 
-            var _spansCollectionUnionReverse = NormalizedSpanCollection.Union(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionUnionReverse = NormalizedSpanCollection.Union(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnionReverse!, LineSelection.UnionReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionUnionReverse, LineSelection.UnionReverse);
 
-            var _spansCollectionOverlap = NormalizedSpanCollection.Overlap(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionOverlap = NormalizedSpanCollection.Overlap(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlap!, LineSelection.Overlap);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlap, LineSelection.Overlap);
 
-            var _spansCollectionOverlapReverse = NormalizedSpanCollection.Overlap(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionOverlapReverse = NormalizedSpanCollection.Overlap(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlapReverse!, LineSelection.OverlapReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionOverlapReverse, LineSelection.OverlapReverse);
 
-            var _spansCollectionIntersect = NormalizedSpanCollection.Intersection(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionIntersect = NormalizedSpanCollection.Intersection(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersect!, LineSelection.Intersect);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersect, LineSelection.Intersect);
 
-            var _spansCollectionIntersectReverse = NormalizedSpanCollection.Intersection(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionIntersectReverse = NormalizedSpanCollection.Intersection(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersectReverse!, LineSelection.IntersectReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionIntersectReverse, LineSelection.IntersectReverse);
 
-            var _spansCollectionDifference = NormalizedSpanCollection.Difference(_spansCollectionOne!, _spansCollectionTwo!);
+            var _spansCollectionDifference = NormalizedSpanCollection.Difference(_spansCollectionOne, _spansCollectionTwo);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifference!, LineSelection.Difference);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifference, LineSelection.Difference);
 
-            var _spansCollectionDifferenceReverse = NormalizedSpanCollection.Difference(_spansCollectionTwo!, _spansCollectionOne!);
+            var _spansCollectionDifferenceReverse = NormalizedSpanCollection.Difference(_spansCollectionTwo, _spansCollectionOne);
 
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifferenceReverse!, LineSelection.DifferenceReverse);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollectionDifferenceReverse, LineSelection.DifferenceReverse);
         }
     }
 }
