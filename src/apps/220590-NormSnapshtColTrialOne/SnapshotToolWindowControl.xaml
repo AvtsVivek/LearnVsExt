@@ -41,8 +41,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Grid.Column="0"  Name="border1" Background="LightGray" Padding="5" CornerRadius="5">
             <StackPanel Orientation="Vertical">
-                <Button Margin="5" Padding="3" Content="Clear Canvas" Click="buttonClearCanvas_Click" Height="25" Name="buttonClearCanvas"/>
-                <Button Margin="5" Padding="3" Content="Redraw" Click="buttonRedraw_Click" Height="25" Name="buttonRedraw"/>
+                <Button Margin="5" Padding="3" Content="Clear Canvas" Click="buttonClearCanvas_Click" Height="30" Name="buttonClearCanvas"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Start:" Margin="5, 0, 0, 0" Width="50" />
                     <TextBox x:Name="startTextBox" Text="0" Width="20" Margin="0, 5, 0, 0"></TextBox>
@@ -51,28 +50,10 @@
                     <Label Content="End:" Margin="5, 0, 0, 0" Width="50"  />
                     <TextBox x:Name="endTextBox" Text="1" Width="20" Margin="0, 5, 0, 0"></TextBox>
                 </StackPanel>
-                <Button Margin="5" Name="buttonAddSpan" Padding="3" Content="Add Span" Click="buttonAddSpan_Click" Height="25" />
+                <TextBox Name="txtSnapshotText" Margin="5" Padding="3" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" 
+                         VerticalScrollBarVisibility="Auto" AcceptsTab="True" SpellCheck.IsEnabled="True" TextChanged="txtSnapshotText_TextChanged" />
+                <Button Margin="5" Padding="3" Content="Add SpanhotSpan" Click="buttonAddSpanshotSpan_Click" Height="30" Name="buttonAddSpan"/>
                 <ListView Margin="10" Name="spanListView" HorizontalAlignment="Left" VerticalAlignment="Top" ></ListView>
-                <Border Name="borderForRbOne" Background="Red">
-                    <RadioButton Name="oneRadioButton" Margin="10 0 0 0" GroupName="linegroup" Click="radioButton_Click">One</RadioButton>
-                </Border>
-                <Border Name="borderForRbTwo" Background="Orange">
-                    <RadioButton Name="twoRadioButton" Margin="10 0 0 0" GroupName="linegroup" Click="radioButton_Click" >Two</RadioButton>
-                </Border>
-
-                <Button Margin="5" Name="buttonUnion" Background="LightBlue" Padding="3" Content="Union" Click="buttonUnion_Click"  Height="25" />
-                <Button Margin="5" Name="buttonUnionReverse" Background="Blue" Padding="3" Content="Union Reverse" Click="buttonUnionReverse_Click"  Height="25" />
-                <Button Margin="5" Name="buttonOverlap" Background="LightGreen"  Padding="3" Content="Overlap" Click="buttonOverlap_Click" Height="25" />
-                <Button Margin="5" Name="buttonOverlapReverse" Background="Green" Padding="3" Content="Overlap Reverse" Click="buttonOverlapReverse_Click" Height="25" />
-
-                <Button Margin="5" Name="buttonIntersect" Background="LightPink" Padding="3" Content="Intersect" Click="buttonIntersect_Click"  Height="25" />
-                <Button Margin="5" Name="buttonIntersectReverse" Background="HotPink" Padding="3" Content="Intersect Reverse" Click="buttonIntersectReverse_Click"  Height="25" />
-
-                <Button Margin="5" Name="buttonDifference" Background="BlueViolet" Padding="3" Content="Difference" Click="buttonDifference_Click"  Height="25" />
-                <Button Margin="5" Name="buttonDifferenceReverse" Background="Violet" Padding="3" Content="Diff Reverse" Click="buttonDifferenceReverse_Click"  Height="25" />
-
-                <Button Margin="5" Name="buttonAll" Padding="3" Content="Run All Ops" Click="buttonAll_Click"  Height="25" />
-
             </StackPanel>
         </Border>
         <Border Grid.Row="0" Grid.Column="1" Name="border2" Style="{StaticResource MyGridBorderStyle}">

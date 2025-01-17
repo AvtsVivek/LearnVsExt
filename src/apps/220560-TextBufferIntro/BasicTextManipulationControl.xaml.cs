@@ -23,7 +23,7 @@ namespace TextBufferIntro
         public BasicTextManipulationControl()
         {
             this.InitializeComponent();
-            
+
             var componentModel = (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
 
             _textBufferFactoryService = componentModel.GetService<ITextBufferFactoryService>();
@@ -45,7 +45,7 @@ namespace TextBufferIntro
 
             if (string.IsNullOrEmpty(text))
             {
-                MessageBox.Show("Enter some valid text", "No text entered", MessageBoxButton.OK, 
+                MessageBox.Show("Enter some valid text", "No text entered", MessageBoxButton.OK,
                     MessageBoxImage.Exclamation);
                 return;
             }
@@ -64,18 +64,29 @@ namespace TextBufferIntro
 
             if (string.IsNullOrEmpty(resultNumberSubString))
             {
-                MessageBox.Show("Text does not contain number", "No number", MessageBoxButton.OK, 
+                MessageBox.Show("Text does not contain number", "No number", MessageBoxButton.OK,
                     MessageBoxImage.Exclamation);
                 return;
             }
 
-            int resultNumberSubStringIndex = snapshot.GetText().IndexOf(resultNumberSubString, 0, 
+            int resultNumberSubStringIndex = snapshot.GetText().IndexOf(resultNumberSubString, 0,
                 snapshot.GetText().Length, StringComparison.CurrentCulture);
 
             SnapshotSpan numberSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
                length: resultNumberSubString.Length));
 
             finalNumberText.Text = numberSpan.GetText();
+
+            var newSnapshotText = numberSpan.Snapshot.GetText();
+
+            finalSnapshotText.Text = newSnapshotText;
+
+            // The following throws exception. 
+            // The range or the span should be a subset of the text range.
+            //SnapshotSpan largerSnapshotSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
+            //    length: resultNumberSubString.Length + 5));
+
+            //var largerText = largerSnapshotSpan.GetText();
         }
     }
 }

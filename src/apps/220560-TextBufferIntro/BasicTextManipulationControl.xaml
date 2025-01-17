@@ -18,6 +18,8 @@
 
             <TextBlock x:Name="finalNumberText" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Width="300"></TextBlock>
 
+            <TextBlock x:Name="finalSnapshotText" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Width="300"></TextBlock>
+
         </StackPanel>
     </Grid>
 </UserControl>

@@ -33,10 +33,29 @@ Essentially, these are structures that contain the position (or interval) and th
 ## Notes
 
 1. We get `ITextBuffer`, from `ITextBufferFactoryService`, 
+
 2. And `ITextSnapshot`, from `ITextBuffer`.
+
 3. `SnapshotSpan` is a subset of `Snapshot`.
+
 4. In this example, we get the `ITextBuffer` from `ITextBufferFactoryService`. In a subsequent example, we get the same `ITextBuffer` from `IWpfTextView`. So in the examples that follow, `TextViews` are introduced. Then we will revisit these `TextBuffer`, snapshot and so on. 
+
+5. When you create a SnapshotSpan, the range or the span should be a subset of the text range. If not, then it will throw an exception as follows.
+
+![Exception](Images/70_50_Exception.png)
+
+6. So here the span overflows the last char of the sttring and so the exception.
+
+```cs
+SnapshotSpan largerSnapshotSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
+    length: resultNumberSubString.Length + 5));
+
+var largerText = largerSnapshotSpan.GetText();
+```
+
+7. 
 
 
 ## Reference.
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
+
