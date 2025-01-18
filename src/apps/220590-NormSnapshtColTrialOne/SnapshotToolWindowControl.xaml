@@ -54,6 +54,7 @@
                          VerticalScrollBarVisibility="Auto" AcceptsTab="True" SpellCheck.IsEnabled="True" TextChanged="txtSnapshotText_TextChanged" />
                 <Button Margin="5" Padding="3" Content="Add SpanhotSpan" Click="buttonAddSpanshotSpan_Click" Height="30" Name="buttonAddSpan"/>
                 <ListView Margin="10" Name="spanListView" HorizontalAlignment="Left" VerticalAlignment="Top" ></ListView>
+                <Button Margin="5" Padding="3" Content="Different Buffers Trail" Height="30" Name="buttonDifferntBufferTrial" Click="buttonDifferntBufferTrial_Click" ></Button>
             </StackPanel>
         </Border>
         <Border Grid.Row="0" Grid.Column="1" Name="border2" Style="{StaticResource MyGridBorderStyle}">

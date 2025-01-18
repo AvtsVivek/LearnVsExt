@@ -22,5 +22,5 @@
 
 ## Notes
 
-1. When the buffers differ, then exception is throw. 
+1. When the buffers differ, then exception is thrown. 
 

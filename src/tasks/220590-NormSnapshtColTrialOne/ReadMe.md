@@ -30,9 +30,11 @@ Span spanTemp = (Span)(snapShotSpan);
 
 3. Here we have it.
 
-![App Running](Images/50_50_SnapshotToolWindow.png)
+![App Running](Images/51_50_TheAppRunning.png)
 
-4. 
+4. Click the Different Buffer Trail.
+
+![App Running](Images/52_50_DiffereBuffer.png)
 
 ## Notes
 

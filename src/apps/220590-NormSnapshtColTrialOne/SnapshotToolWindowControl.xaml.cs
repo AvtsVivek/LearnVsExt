@@ -291,5 +291,31 @@ namespace NormSnapshtColTrialOne
         {
             _textBuffer = null;
         }
+
+        private void buttonDifferntBufferTrial_Click(object sender, RoutedEventArgs e)
+        {
+            var snapshotTextOne = "Here we go..text one";
+            var snapshotTextTwo = "Here we go..text two";
+            var textBufferOne = _textBufferFactoryService.CreateTextBuffer(snapshotTextOne, contentType: _textBufferFactoryService.PlaintextContentType);
+            var textBufferTwo = _textBufferFactoryService.CreateTextBuffer(snapshotTextTwo, contentType: _textBufferFactoryService.PlaintextContentType);
+            var spanOne = new Span(3, 10);
+            var spanTwo = new Span(5, 13);
+
+            SnapshotSpan snapshotSpanOne = new SnapshotSpan(textBufferOne.CurrentSnapshot, spanOne);
+            SnapshotSpan snapshotSpanTwo = new SnapshotSpan(textBufferTwo.CurrentSnapshot, spanTwo);
+
+            List<SnapshotSpan> snapshotSpanList = new List<SnapshotSpan>();
+            snapshotSpanList.Add(snapshotSpanOne);
+            snapshotSpanList.Add(snapshotSpanTwo);
+
+            try
+            {
+                var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(snapshotSpanList);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"{exception.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+         }
     }
 }
