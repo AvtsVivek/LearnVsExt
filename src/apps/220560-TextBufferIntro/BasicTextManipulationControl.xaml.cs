@@ -53,14 +53,14 @@ namespace TextBufferIntro
             // Create the text buffer
             ITextBuffer textBuffer = _textBufferFactoryService.CreateTextBuffer(text, contentType: _textBufferFactoryService.PlaintextContentType);
 
-            ITextSnapshot snapshot = textBuffer.CurrentSnapshot;
+            ITextSnapshot fullTextCurrentSnapshot = textBuffer.CurrentSnapshot;
 
 
             //ITextSearchService2 _textSearchService;
             //var fullSnapshotSpan = new SnapshotSpan(snapshot, new Span(0, snapshot.Length));
             //var helloWords = _textSearchService.FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
 
-            string resultNumberSubString = Regex.Match(snapshot.GetText(), @"\d+").Value;
+            string resultNumberSubString = Regex.Match(fullTextCurrentSnapshot.GetText(), @"\d+").Value;
 
             if (string.IsNullOrEmpty(resultNumberSubString))
             {
@@ -69,10 +69,10 @@ namespace TextBufferIntro
                 return;
             }
 
-            int resultNumberSubStringIndex = snapshot.GetText().IndexOf(resultNumberSubString, 0,
-                snapshot.GetText().Length, StringComparison.CurrentCulture);
+            int resultNumberSubStringIndex = fullTextCurrentSnapshot.GetText().IndexOf(resultNumberSubString, 0,
+                fullTextCurrentSnapshot.GetText().Length, StringComparison.CurrentCulture);
 
-            SnapshotSpan numberSpan = new SnapshotSpan(snapshot, span: new Span(start: resultNumberSubStringIndex,
+            SnapshotSpan numberSpan = new SnapshotSpan(fullTextCurrentSnapshot, span: new Span(start: resultNumberSubStringIndex,
                length: resultNumberSubString.Length));
 
             finalNumberText.Text = numberSpan.GetText();

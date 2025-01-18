@@ -24,10 +24,10 @@ namespace ITagOne
             SnapshotSpan fullSnapshotSpan = new SnapshotSpan(snapshot,
                     new Span(0, snapshot.Length));
 
-            IEnumerable<SnapshotSpan> helloWords = _textSearchService
+            IEnumerable<SnapshotSpan> helloWordSnapshotSpans = _textSearchService
                     .FindAll(fullSnapshotSpan, "hello", FindOptions.WholeWord);
 
-            return helloWords
+            return helloWordSnapshotSpans
                 .Where(s => spans.IntersectsWith(s))
                 .Select(s => new TagSpan<IUrlTag>(s,
                     new UrlTag(new Uri("https://en.wikipedia.org/wiki/Hello"))));
