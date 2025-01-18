@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.Text.Tagging;
 using System;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
-using EnvDTE;
 
 namespace SimpleIntraTextAdornment
 {

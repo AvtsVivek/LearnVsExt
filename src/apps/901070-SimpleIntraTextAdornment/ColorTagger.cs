@@ -35,9 +35,9 @@ namespace SimpleIntraTextAdornment
         {
             // Here we grab whole lines so that matches that only partially fall inside the spans argument are detected.
             // Note that the spans argument can contain spans that are sub-spans of lines or intersect multiple lines.
-            foreach (var line in GetIntersectingLines(spans))
+            foreach (ITextSnapshotLine textSnapshotLine in GetIntersectingLines(spans))
             {
-                string text = line.GetText();
+                string text = textSnapshotLine.GetText();
 
                 foreach (var regex in matchExpressions)
                 {
@@ -46,8 +46,8 @@ namespace SimpleIntraTextAdornment
                         T tag = (T)(TryCreateTagForMatch(match) as ITag);
                         if (tag != null)
                         {
-                            SnapshotSpan span = new SnapshotSpan(line.Start + match.Index, match.Length);
-                            yield return new TagSpan<T>(span, tag);
+                            SnapshotSpan snapshotSpan = new SnapshotSpan(textSnapshotLine.Start + match.Index, match.Length);
+                            yield return new TagSpan<T>(snapshotSpan, tag);
                         }
                     }
                 }
@@ -68,7 +68,7 @@ namespace SimpleIntraTextAdornment
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
 
-        IEnumerable<ITextSnapshotLine> GetIntersectingLines(NormalizedSnapshotSpanCollection spans)
+        private IEnumerable<ITextSnapshotLine> GetIntersectingLines(NormalizedSnapshotSpanCollection spans)
         {
             if (spans.Count == 0)
                 yield break;
@@ -84,7 +84,8 @@ namespace SimpleIntraTextAdornment
 
                 for (int i = Math.Max(lastVisitedLineNumber, firstLine); i <= lastLine; i++)
                 {
-                    yield return snapshot.GetLineFromLineNumber(i);
+                    ITextSnapshotLine textSnapshotLine = snapshot.GetLineFromLineNumber(i);
+                    yield return textSnapshotLine;
                 }
 
                 lastVisitedLineNumber = lastLine;
