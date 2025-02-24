@@ -51,94 +51,162 @@ namespace ITagOne
 
         private void buttonVersion1_Click(object sender, RoutedEventArgs e)
         {
-            var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
+            //var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 
-            int mustHaveFocus = 1;
+            //int mustHaveFocus = 1;
 
-            vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
+            //vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
 
-            if (vsTextView == null)
+            //if (vsTextView == null)
+            //{
+            //    VsShellUtilities.ShowMessageBox(
+            //        (AsyncPackage)_toolWindowPane.Package,
+            //        "No text view is currently open. Probably no text file is open. Open any text file and try again.",
+            //        "No text view!!",
+            //        OLEMSGICON.OLEMSGICON_INFO,
+            //        OLEMSGBUTTON.OLEMSGBUTTON_OK,
+            //        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            //    return;
+            //}
+
+            //var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
+
+            //var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
+
+            //var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
+
+            //var textBuffer = wpfTextView.TextBuffer;
+
+            //var currentTextSnapShot = textBuffer.CurrentSnapshot;
+
+            //var currentTextSnapShotSpan = new SnapshotSpan(currentTextSnapShot, 0, currentTextSnapShot.Length);
+
+            //var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShotSpan);
+
+            //var textSearchService2 = componentModel.GetService<ITextSearchService2>();
+
+            Tuple<ITextBuffer, ITextSearchService2, NormalizedSnapshotSpanCollection> textBufferSearchSnapshotCollectionTuple = default;
+
+            if (!TryGetTextBufferSearchServiceSnapshotCollection(out textBufferSearchSnapshotCollectionTuple))
             {
-                VsShellUtilities.ShowMessageBox(
-                    (AsyncPackage)_toolWindowPane.Package,
-                    "No text view is currently open. Probably no text file is open. Open any text file and try again.",
-                    "No text view!!",
-                    OLEMSGICON.OLEMSGICON_INFO,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
                 return;
             }
 
-            var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
-           
-            var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
-
-            var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
-
-            var textBuffer = wpfTextView.TextBuffer;
-
-            var currentTextSnapShot = textBuffer.CurrentSnapshot;
-
-            var currentTextSnapShotSpan = new SnapshotSpan(currentTextSnapShot, 0, currentTextSnapShot.Length);
-
-            var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShotSpan);
-
-            var textSearchService2 = componentModel.GetService<ITextSearchService2>();
-
-            var helloUrlTagger = new HelloUrlTagger(textSearchService2);
+            var helloUrlTagger = new HelloUrlTagger(textBufferSearchSnapshotCollectionTuple.Item2);
             
-            var tagList = helloUrlTagger.GetTags(normalizedSnapshotSpanCollection).ToList();
+            var tagList = helloUrlTagger.GetTags(textBufferSearchSnapshotCollectionTuple.Item3).ToList();
 
             tagCountTextBlock.Text = tagList.Count.ToString();
         }
 
         private void buttonVersion2_Click(object sender, RoutedEventArgs e)
         {
-            var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
+            //var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 
-            int mustHaveFocus = 1;
+            //int mustHaveFocus = 1;
 
-            vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
+            //vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
 
-            if (vsTextView == null)
+            //if (vsTextView == null)
+            //{
+            //    VsShellUtilities.ShowMessageBox(
+            //        (AsyncPackage)_toolWindowPane.Package,
+            //        "No text view is currently open. Probably no text file is open. Open any text file and try again.",
+            //        "No text view!!",
+            //        OLEMSGICON.OLEMSGICON_INFO,
+            //        OLEMSGBUTTON.OLEMSGBUTTON_OK,
+            //        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            //    return;
+            //}
+
+            //var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
+
+            //var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
+
+            //var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
+
+            //var textBuffer = wpfTextView.TextBuffer;
+
+            //var currentTextSnapShot = textBuffer.CurrentSnapshot;
+
+            //var currentTextSnapShotSpan = new SnapshotSpan(currentTextSnapShot, 0, currentTextSnapShot.Length);
+
+            //var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShotSpan);
+
+            //var textSearchService2 = componentModel.GetService<ITextSearchService2>();
+
+            Tuple<ITextBuffer, ITextSearchService2, NormalizedSnapshotSpanCollection> textBufferSearchSnapshotCollectionTuple = default;
+
+            if (!TryGetTextBufferSearchServiceSnapshotCollection(out textBufferSearchSnapshotCollectionTuple))
             {
-                VsShellUtilities.ShowMessageBox(
-                    (AsyncPackage)_toolWindowPane.Package,
-                    "No text view is currently open. Probably no text file is open. Open any text file and try again.",
-                    "No text view!!",
-                    OLEMSGICON.OLEMSGICON_INFO,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
                 return;
             }
 
-            var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
+            var helloUrlTagger = new HelloUrlTaggerTwo(textBufferSearchSnapshotCollectionTuple.Item2);
 
-            var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
-
-            var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
-
-            var textBuffer = wpfTextView.TextBuffer;
-
-            var currentTextSnapShot = textBuffer.CurrentSnapshot;
-
-            var currentTextSnapShotSpan = new SnapshotSpan(currentTextSnapShot, 0, currentTextSnapShot.Length);
-
-            var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShotSpan);
-
-            var textSearchService2 = componentModel.GetService<ITextSearchService2>();
-
-            var helloUrlTagger = new HelloUrlTaggerTwo(textSearchService2);
-
-            var tagList = helloUrlTagger.GetTags(normalizedSnapshotSpanCollection).ToList();
+            var tagList = helloUrlTagger.GetTags(textBufferSearchSnapshotCollectionTuple.Item3).ToList();
 
             tagCountTextBlock.Text = tagList.Count.ToString();
         }
 
         private void buttonVersion3_Click(object sender, RoutedEventArgs e)
         {
+            //var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
+
+            //int mustHaveFocus = 1;
+
+            //vsTextManager.GetActiveView(mustHaveFocus, null, out IVsTextView vsTextView);
+
+            //if (vsTextView == null)
+            //{
+            //    VsShellUtilities.ShowMessageBox(
+            //        (AsyncPackage)_toolWindowPane.Package,
+            //        "No text view is currently open. Probably no text file is open. Open any text file and try again.",
+            //        "No text view!!",
+            //        OLEMSGICON.OLEMSGICON_INFO,
+            //        OLEMSGBUTTON.OLEMSGBUTTON_OK,
+            //        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+
+            //    return;
+            //}
+
+            //var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
+
+            //var vsEditorAdaptersFactoryService = componentModel.GetService<IVsEditorAdaptersFactoryService>();
+
+            //var wpfTextView = vsEditorAdaptersFactoryService.GetWpfTextView(vsTextView);
+
+            //var textBuffer = wpfTextView.TextBuffer;
+
+            //var currentTextSnapShot = textBuffer.CurrentSnapshot;
+
+            //var currentTextSnapShotSpan = new SnapshotSpan(currentTextSnapShot, 0, currentTextSnapShot.Length);
+
+            //var normalizedSnapshotSpanCollection = new NormalizedSnapshotSpanCollection(currentTextSnapShotSpan);
+
+            //var textSearchService2 = componentModel.GetService<ITextSearchService2>();
+
+            Tuple<ITextBuffer, ITextSearchService2, NormalizedSnapshotSpanCollection> textBufferSearchSnapshotCollectionTuple = default;
+
+            if (!TryGetTextBufferSearchServiceSnapshotCollection(out textBufferSearchSnapshotCollectionTuple))
+            {
+                return;
+            }
+
+            var helloUrlTagger = new HelloUrlTaggerThree(textBufferSearchSnapshotCollectionTuple.Item1, textBufferSearchSnapshotCollectionTuple.Item2);
+
+            var tagList = helloUrlTagger.GetTags(textBufferSearchSnapshotCollectionTuple.Item3).ToList();
+
+            tagCountTextBlock.Text = tagList.Count.ToString();
+        }
+
+        private bool TryGetTextBufferSearchServiceSnapshotCollection(out 
+            Tuple<ITextBuffer, ITextSearchService2, NormalizedSnapshotSpanCollection> textBufferSearchSnapshotCollectionTuple)
+        {
+            textBufferSearchSnapshotCollectionTuple = default;
+
             var vsTextManager = GetGlobalService<IVsTextManager>(typeof(SVsTextManager));
 
             int mustHaveFocus = 1;
@@ -155,7 +223,7 @@ namespace ITagOne
                     OLEMSGBUTTON.OLEMSGBUTTON_OK,
                     OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
-                return;
+                return false;
             }
 
             var componentModel = GetGlobalService<IComponentModel>(typeof(SComponentModel));
@@ -174,11 +242,9 @@ namespace ITagOne
 
             var textSearchService2 = componentModel.GetService<ITextSearchService2>();
 
-            var helloUrlTagger = new HelloUrlTaggerThree(textBuffer, textSearchService2);
+            textBufferSearchSnapshotCollectionTuple = new Tuple<ITextBuffer, ITextSearchService2, NormalizedSnapshotSpanCollection>(textBuffer, textSearchService2, normalizedSnapshotSpanCollection);
 
-            var tagList = helloUrlTagger.GetTags(normalizedSnapshotSpanCollection).ToList();
-
-            tagCountTextBlock.Text = tagList.Count.ToString();
+            return true;
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)

@@ -39,9 +39,9 @@ namespace SimpleIntraTextAdornment
             {
                 string text = textSnapshotLine.GetText();
 
-                foreach (var regex in matchExpressions)
+                foreach (Regex regex in matchExpressions)
                 {
-                    foreach (var match in regex.Matches(text).Cast<Match>())
+                    foreach (Match match in regex.Matches(text).Cast<Match>())
                     {
                         T tag = (T)(TryCreateTagForMatch(match) as ITag);
                         if (tag != null)

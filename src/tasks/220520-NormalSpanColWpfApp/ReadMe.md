@@ -2,7 +2,7 @@
 
 1. Introduces `Span` and `NormalizedSpanCollection` 
 
-2. For the full article, [click here](..\221500-TextBufferIntro\1-ITextBuffer.md)
+2. For the full article, [click here](..\220560-TextBufferIntro\1-ITextBuffer.md)
 
 3. This example, is a wpf example and not an extension.
 

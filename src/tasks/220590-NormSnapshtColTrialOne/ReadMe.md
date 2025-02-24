@@ -2,7 +2,9 @@
 
 1. Introduces `ITextSnapshot`, `SnapshotSpan`, 
 
-2. For the full article, [click here](1-ITextBuffer.md)
+2. For the full article, [click here](..\220560-TextBufferIntro\1-ITextBuffer.md)
+
+
 
 ## Notes
 
