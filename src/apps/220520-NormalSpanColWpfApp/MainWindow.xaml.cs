@@ -49,7 +49,7 @@ namespace NormalSpanColWpfApp
 
             if (endValue <= startValue)
             {
-                MessageBox.Show("Start value cannot be greater than end value. Please End value is always greater than start value ", "End value is less than the start value", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Start value cannot be greater than end value. Please ensure End value is always greater than start value ", "End value is less than the start value", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
@@ -63,8 +63,6 @@ namespace NormalSpanColWpfApp
 
             return true;
         }
-
-
 
         private void buttonAddSpan_Click(object sender, RoutedEventArgs e)
         {
@@ -100,8 +98,10 @@ namespace NormalSpanColWpfApp
         {
             lineCanvas.Children.Clear();
             _spansCollection = new NormalizedSpanCollection(spans: _spans);
-            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollection, lineColorBrush: Brushes.Red);
-            DrawLinesFromSpanList(spanList: _spans.ToList(), lineColorBrush: Brushes.Green, lineStrokeThickness: 20, verticalDisanceFromBottom: 60, seperateLines: true);
+            ConvertSpanCollectionToLineSetAndAddToCanvas(normalizedSpanCollection: _spansCollection, 
+                lineColorBrush: Brushes.Red);
+            DrawLinesFromSpanList(spanList: _spans.ToList(), lineColorBrush: Brushes.Green, 
+                lineStrokeThickness: 20, verticalDisanceFromBottom: 60, seperateLines: true);
 
         }
 
@@ -166,7 +166,8 @@ namespace NormalSpanColWpfApp
             lineCanvas.Children.Add(textBlock);
         }
 
-        private void ConvertSpanCollectionToLineSetAndAddToCanvas(NormalizedSpanCollection normalizedSpanCollection, Brush lineColorBrush)
+        private void ConvertSpanCollectionToLineSetAndAddToCanvas(NormalizedSpanCollection normalizedSpanCollection, 
+            Brush lineColorBrush)
         {
             List<Span> spanList = normalizedSpanCollection.ToList();
             

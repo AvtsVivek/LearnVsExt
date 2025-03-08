@@ -1,13 +1,13 @@
 cd ../../..
 
-cd src/tasks/224500-VsTextManagerIntro
+cd src/tasks/220560-TextBufferIntro
 
-cd src/apps/224500-VsTextManagerIntro
+cd src/apps/220560-TextBufferIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./VsTextManagerIntro.csproj
+dotnet build --project ./TextBufferIntro.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -16,15 +16,15 @@ dotnet build --project ./VsTextManagerIntro.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
-nuget restore ./VsTextManagerIntro.sln
+nuget restore ./TextBufferIntro.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./VsTextManagerIntro.sln
-devenv /Rebuild Debug ./VsTextManagerIntro.sln
+devenv /build Debug ./TextBufferIntro.sln
+devenv /Rebuild Debug ./TextBufferIntro.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./VsTextManagerIntro.sln
+devenv.exe /RootSuffix Exp ./TextBufferIntro.sln
 
 pwd
 
@@ -37,7 +37,7 @@ Get-ChildItem
 # Now to install the extension, first ensure all the instances of Visual Studio are closed.
 # Now simply run the following command to install the extension
 
-./VsTextManagerIntro.vsix
+./TextBufferIntro.vsix
 
 
 # Once installed, open the logs. You will see something like. 
