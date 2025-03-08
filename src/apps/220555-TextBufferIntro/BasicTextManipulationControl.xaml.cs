@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Text.Operations;
 
 namespace TextBufferIntro
 {
