@@ -12,7 +12,6 @@
     <Grid>
         <Border Grid.Row="0" Grid.Column="0"  Name="border1" Background="LightGray" Padding="5" CornerRadius="5">
             <StackPanel Orientation="Vertical">
-                <Button Margin="5" Padding="3" Content="Clear Canvas" Click="buttonClearCanvas_Click"  Height="30" Name="buttonClearCanvas"/>
                 <TextBox Name="txtFullSnapshotText" Margin="5" Padding="3" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" 
                  VerticalScrollBarVisibility="Auto" AcceptsTab="True" SpellCheck.IsEnabled="True"  />
                 <Grid >

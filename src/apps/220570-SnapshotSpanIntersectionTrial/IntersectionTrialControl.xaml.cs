@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -42,13 +43,8 @@ namespace SnapshotSpanIntersectionTrial
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
+                string.Format(CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
                 "IntersectionTrial");
-        }
-
-        private void buttonClearCanvas_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private bool TryCreateSnapshotSpanThree()
@@ -164,13 +160,20 @@ namespace SnapshotSpanIntersectionTrial
 
             bool doTheyIntersect = _snapShotSpanOne.IntersectsWith(_snapShotSpanTwo);
 
+            var _snapShotSpanOneText = _snapShotSpanOne.GetText();
+
+            var _snapShotSpanTwoText = _snapShotSpanTwo.GetText();
+
+            var spantexts = Environment.NewLine + $"First SnapshotSpan text: {_snapShotSpanOneText}" +
+                    Environment.NewLine + $"Second SnapshotSpan text: {_snapShotSpanTwoText}";
+
             if (doTheyIntersect)
             {
-                MessageBox.Show("Yes, they do intersect.", "Yes");
+                MessageBox.Show("Yes, they do intersect." + spantexts, "Yes");
             }
             else 
             {
-                MessageBox.Show("No, they do not intersect.", "No");
+                MessageBox.Show("No, they do not intersect." + spantexts, "No");
             }
         }
 
