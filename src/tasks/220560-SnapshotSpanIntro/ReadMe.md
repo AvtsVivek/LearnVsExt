@@ -14,7 +14,21 @@
 
 3. `SnapshotSpan` is a subset of `Snapshot`.
 
-4. 
+
+## Build and Run
+1. Reset Visual Studio Exp instance and then Launch it.
+
+![Reset Visual Studio Exp](../200500-VSixBlankProjectAnalysis/images/57_50_ResetVsExpIntance.jpg)
+
+2. View -> Other Windows -> SnapshotSpanIntro
+
+![Launch the window](Images/50_50_OpenWindow.png)
+
+3. 
+
+
+
+
 
 
 ## Reference.

@@ -22,7 +22,7 @@ namespace SnapshotSpanIntro
             var componentModel = (IComponentModel)Package.GetGlobalService(typeof(SComponentModel));
             _textBufferFactoryService = componentModel.GetService<ITextBufferFactoryService>();
 
-            textLengthOfGivenString.Text = txtFullSnapshotText.Text.Length.ToString();
+            textLengthOfGivenString.Text = "Length of the above given string: " + txtFullSnapshotText.Text.Length.ToString();
         }
 
         /// <summary>
