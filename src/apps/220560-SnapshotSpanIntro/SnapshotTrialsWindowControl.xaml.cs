@@ -55,6 +55,8 @@ namespace SnapshotSpanIntro
             textLengthOfGivenString.Text = "Length of the above given string: " + txtFullSnapshotText.Text.Length.ToString();
 
             textSnapshotSpan.Text = snapShotSpan.GetText();
+            
+            textEndMinusStart.Text = $"End - Start is {(_endSpanValue - _startSpanValue)}";
         }
 
         private void buttonStartDecrement_Click(object sender, RoutedEventArgs e)

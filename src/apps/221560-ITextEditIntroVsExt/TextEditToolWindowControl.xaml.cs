@@ -3,7 +3,9 @@ using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -77,20 +79,15 @@ namespace ITextEditIntroVsExt
                 return;
             }
 
-            try
+            if (GetAppliedStatusOfTextEditObject())
             {
-                _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
+                MessageBox.Show(
+                    messageBoxText: "Text edit already applied. Cannot continue. Try clicking start again",
+                    caption: "Cannot Apply");
+                return;
             }
-            catch (Exception exception)
-            {
-                if (exception.Message == "Attempted to reuse an already applied edit.")
-                {
-                    MessageBox.Show(messageBoxText: $"{exception.Message} So restart by clicking the Reset button, then start and then the opration insert, delete or reset. " +
-                        $"{Environment.NewLine}Click the Apply button at the end.",
-                    caption: "Start again");
-                    return;
-                }
-            }
+
+            _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
 
             ITextEditApply();
             AddItemToListView(startPosition: position, 0, operationText: ITextEditInputTextInsertTxtBox.Text, operation: "Insert");
@@ -113,6 +110,15 @@ namespace ITextEditIntroVsExt
             {
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(_text))
+            {
+                MessageBox.Show(
+                    messageBoxText: "Imput text string appears to be empty. Try clicking start button.",
+                    caption: "Click start");
+                return;
+            }
+
             _text = _text.Remove(position, length);
 
             StringApply();
@@ -135,6 +141,14 @@ namespace ITextEditIntroVsExt
 
             if (!TryParseTextBoxToInt(textBox: ITextEditInputLengthDeleteTxtBox, textBoxValue: out int length))
             {
+                return;
+            }
+
+            if (GetAppliedStatusOfTextEditObject())
+            {
+                MessageBox.Show(
+                    messageBoxText: "Text edit already applied. Cannot continue. Try clicking start again",
+                    caption: "Cannot Apply");
                 return;
             }
 
@@ -194,6 +208,13 @@ namespace ITextEditIntroVsExt
                 replaceString = ITextEditInputTextReplaceTxtBox.Text;
             }
 
+            if (GetAppliedStatusOfTextEditObject())
+            {
+                MessageBox.Show(
+                    messageBoxText: "Text edit already applied. Cannot continue. Try clicking start again",
+                    caption: "Cannot Apply");
+                return;
+            }
 
             _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
             ITextEditApply();
@@ -234,8 +255,23 @@ namespace ITextEditIntroVsExt
                 return;
             }
 
+            if (GetAppliedStatusOfTextEditObject()) 
+            {
+                MessageBox.Show(
+                    messageBoxText: "Text edit already applied. Cannot continue. Try clicking start again'",
+                    caption: "Cannot Apply");
+                return;
+            }
+
             _textEdit.Apply();
             ITextEditApply();
+        }
+
+        private bool GetAppliedStatusOfTextEditObject()
+        {
+            FieldInfo appliedField = _textEdit.GetType().GetField("applied", BindingFlags.NonPublic | BindingFlags.Instance);
+            bool appliedFieldValue = (bool)appliedField.GetValue(_textEdit);
+            return appliedFieldValue;
         }
 
         private void ITextEditResetButton_Click(object sender, RoutedEventArgs e)

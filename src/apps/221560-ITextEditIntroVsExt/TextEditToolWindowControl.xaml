@@ -64,7 +64,7 @@
             </Grid.RowDefinitions>
             <TextBlock FontSize="20" Grid.Row="0" Grid.Column="0" Name="stringManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">String Manipulation</TextBlock>
             <TextBlock FontSize="20" Grid.Row="0" Grid.Column="1" Name="ITextEditManipulationHeader" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="5">ITextEdit Manipulation</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="0" Name="stringInputTextBox" Margin="5" ></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="0" Name="stringInputTextBox" Margin="5" Tag="Main String input text" Text="0123456789"></TextBox>
             <TextBlock FontSize="20" Grid.Row="1" Grid.Column="0" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -77,7 +77,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="ITextEditInputTextBox" Margin="5" Text="0123456789"></TextBox>
             <TextBlock FontSize="20" Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">

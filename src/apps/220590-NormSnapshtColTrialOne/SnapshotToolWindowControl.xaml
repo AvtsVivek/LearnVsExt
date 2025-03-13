@@ -50,8 +50,9 @@
                     <Label Content="End:" Margin="5, 0, 0, 0" Width="50"  />
                     <TextBox x:Name="endTextBox" Text="1" Width="20" Margin="0, 5, 0, 0"></TextBox>
                 </StackPanel>
-                <TextBox Name="txtSnapshotText" Margin="5" Padding="3" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" 
-                         VerticalScrollBarVisibility="Auto" AcceptsTab="True" SpellCheck.IsEnabled="True" TextChanged="txtSnapshotText_TextChanged" />
+                <TextBox Name="txtSnapshotText" Margin="5" Padding="3" TextWrapping="Wrap" AcceptsReturn="True" 
+                         HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" 
+                         SpellCheck.IsEnabled="True" TextChanged="txtSnapshotText_TextChanged" Text="abcdefghijklmnopqrstuvwxyz" />
                 <Button Margin="5" Padding="3" Content="Add SpanhotSpan" Click="buttonAddSpanshotSpan_Click" Height="30" Name="buttonAddSpan"/>
                 <ListView Margin="10" Name="spanListView" HorizontalAlignment="Left" VerticalAlignment="Top" ></ListView>
                 <Button Margin="5" Padding="3" Content="Different Buffers Trail" Height="30" Name="buttonDifferntBufferTrial" Click="buttonDifferntBufferTrial_Click" ></Button>

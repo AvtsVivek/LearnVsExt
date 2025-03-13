@@ -1,6 +1,6 @@
 ## Objective
 
-1. The earlier example(a pure wpf application) is not working. The component model object is obtained only in Visual Studio setting. We need to start a Visual Studio Extension project. Here is it.
+1. The earlier example(a pure wpf application) is not working. The component model object is obtained only in Visual Studio setting. We need to start a Visual Studio Extension project. Here it is.
 
 2. This example introduces [ITextEdit](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itextedit) 
 
@@ -88,21 +88,21 @@ Replace(5, 2, “ABC”);
 Replace(1, 3, “DEF”);
 ```
 
-![The order is reversed, but the intervals do not overlap](../221500-TextBufferIntro/Images/59_50_OrderReversedIntervalsNotOverlap.png)
+![The order is reversed, but the intervals do not overlap](../220555-TextBufferIntro/Images/59_50_OrderReversedIntervalsNotOverlap.png)
 
 ```cs
 Replace(1, 2, “ABC”);
 Replace(1, 3, “DEF”);
 ```
 
-![Intervals start at a single position and are combined in order of addition](../221500-TextBufferIntro/Images/60_50_IntervalsSinglePosCombinedInOrder.png)
+![Intervals start at a single position and are combined in order of addition](../220555-TextBufferIntro/Images/60_50_IntervalsSinglePosCombinedInOrder.png)
 
 ```cs	
 Replace(1, 3, “DEF”);
 Replace(1, 2, “ABC”);
 ```
 
-![And if you change the order of the operations, the result will be as follows](../221500-TextBufferIntro/Images/61_50_ChangeOrderOfOperation.png)
+![And if you change the order of the operations, the result will be as follows](../220555-TextBufferIntro/Images/61_50_ChangeOrderOfOperation.png)
 
 ```cs
 Replace(5, 2, “ABC”);
@@ -110,7 +110,7 @@ Replace(1, 3, “DEF”);
 Replace(4, 2, “ZXY”);
 ```
 
-![Multiple totally contiguous and/or overlapping intervals](../221500-TextBufferIntro/Images/62_50_MultipleContiguouseOverlappingIntervals.png)
+![Multiple totally contiguous and/or overlapping intervals](../220555-TextBufferIntro/Images/62_50_MultipleContiguouseOverlappingIntervals.png)
 
 
 

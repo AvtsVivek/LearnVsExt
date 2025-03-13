@@ -2,7 +2,6 @@
 
 1. Introduces `SnapshotSpan` IntersectsWith method.
 
-
 ## Build and Run
 1. Reset Visual Studio Exp instance and then Launch it.
 
@@ -22,5 +21,14 @@
 
 ## Notes
 
-1. When the buffers differ, then exception is thrown. 
+1. We get `ITextBuffer`, from `ITextBufferFactoryService`, 
+
+2. And `ITextSnapshot`, from `ITextBuffer`.
+
+3. `SnapshotSpan` is a subset of `Snapshot`.
+
+4. When the buffers differ, the intersection of `SnapshotSpan`s from those buffers does not make sense. So an exception is thrown. 
+
+
+
 
