@@ -120,3 +120,13 @@ Replace(4, 2, “ZXY”);
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#itextedit-textversion-and-text-change-notifications
 
+3. For the full article,
+   1. [AboutVsExtensions](..\900930-JsonEditor\Articles\1-AboutVsExtensions.md)
+   2. [VsEditor-ContentTypes](..\900930-JsonEditor\Articles\2-VsEditor-ContentTypes.md)
+   3. [ITextBuffer](..\900930-JsonEditor\Articles\3-ITextBuffer.md)
+   4. [Tags-Classifiers-Part-1](..\900930-JsonEditor\Articles\4-Tags-Classifiers-Part-1.md)
+   5. [Tags-Classifiers-Part-2](..\900930-JsonEditor\Articles\5-Tags-Classifiers-Part-2.md)
+   6. [Tags-Classifiers-Part-3](..\900930-JsonEditor\Articles\6-Tags-Classifiers-Part-3.md)   
+   7. [JSonParser](..\900930-JsonEditor\Articles\7-JSonParser.md)
+
+
