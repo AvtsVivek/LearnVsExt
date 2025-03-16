@@ -65,8 +65,8 @@ You should get `DEFABC3456789`
 7. Inside of the `ITextEdit` object, the deleting and inserting operations are converted to a replacement operation as follows.
 
 ```txt
-Delete(position, length) –> Replace(position, length, “”)
-Insert(position, “text”) –> Replace(position, 0, “text”) 
+Delete(position, length) –> Replace(position, length, "")
+Insert(position, "text") –> Replace(position, 0, "text") 
 ```
 
 8. So try this delete operation `e.Delete(0, 3);` and then with replace operation 0, 3 and empty space(dont put any replace text) 
@@ -84,30 +84,30 @@ Insert(position, “text”) –> Replace(position, 0, “text”)
 11. Understand and try the following as well.
 
 ```cs
-Replace(5, 2, “ABC”);
-Replace(1, 3, “DEF”);
+Replace(5, 2, "ABC");
+Replace(1, 3, "DEF");
 ```
 
 ![The order is reversed, but the intervals do not overlap](../220555-TextBufferIntro/Images/59_50_OrderReversedIntervalsNotOverlap.png)
 
 ```cs
-Replace(1, 2, “ABC”);
-Replace(1, 3, “DEF”);
+Replace(1, 2, "ABC");
+Replace(1, 3, "DEF");
 ```
 
 ![Intervals start at a single position and are combined in order of addition](../220555-TextBufferIntro/Images/60_50_IntervalsSinglePosCombinedInOrder.png)
 
 ```cs	
-Replace(1, 3, “DEF”);
-Replace(1, 2, “ABC”);
+Replace(1, 3, "DEF");
+Replace(1, 2, "ABC");
 ```
 
 ![And if you change the order of the operations, the result will be as follows](../220555-TextBufferIntro/Images/61_50_ChangeOrderOfOperation.png)
 
 ```cs
-Replace(5, 2, “ABC”);
-Replace(1, 3, “DEF”);
-Replace(4, 2, “ZXY”);
+Replace(5, 2, "ABC");
+Replace(1, 3, "DEF");
+Replace(4, 2, "ZXY");
 ```
 
 ![Multiple totally contiguous and/or overlapping intervals](../220555-TextBufferIntro/Images/62_50_MultipleContiguouseOverlappingIntervals.png)
@@ -120,13 +120,13 @@ Replace(4, 2, “ZXY”);
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#itextedit-textversion-and-text-change-notifications
 
-3. For the full article,
+3. For the full article see the following.
    1. [AboutVsExtensions](../900930-JsonEditor/Articles/1-AboutVsExtensions.md)
    2. [VsEditor-ContentTypes](../900930-JsonEditor/Articles/2-VsEditor-ContentTypes.md)
    3. [ITextBuffer](../900930-JsonEditor/Articles/3-ITextBuffer.md)
    4. [Tags-Classifiers-Part-1](../900930-JsonEditor/Articles/4-Tags-Classifiers-Part-1.md)
    5. [Tags-Classifiers-Part-2](../900930-JsonEditor/Articles/5-Tags-Classifiers-Part-2.md)
-   6. [Tags-Classifiers-Part-3](..\900930-JsonEditor\Articles\6-Tags-Classifiers-Part-3.md)   
+   6. [Tags-Classifiers-Part-3](../900930-JsonEditor/Articles/6-Tags-Classifiers-Part-3.md)   
    7. [JSonParser](../900930-JsonEditor/Articles/7-JSonParser.md)
 
 
