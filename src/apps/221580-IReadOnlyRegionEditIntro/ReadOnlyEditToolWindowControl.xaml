@@ -36,19 +36,31 @@
         <TextBlock FontSize="20" Grid.Row="0" Grid.Column="0" Foreground="Green" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="5" Padding="5" >
             Instructions<LineBreak/>
         </TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="0" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
-        <TextBlock FontSize="20" Grid.Row="1" Grid.Column="0" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <Grid Grid.Row="1" Grid.Column="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="20" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="SetDefaultTextButton" Click="SetDefaultTextButton_Click" IsEnabled="True" >Set Default Text</Button>
+        </Grid>
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

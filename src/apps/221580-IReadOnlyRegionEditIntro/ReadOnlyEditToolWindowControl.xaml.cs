@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -144,9 +145,9 @@ namespace IReadOnlyRegionEditIntro
                 return;
             }
 
-            var sn1 = _textBuffer.CurrentSnapshot;
-            var ro1 = _textBuffer.GetReadOnlyExtents(new Span(0, sn1.Length));
-            readonlyExtentsTextBlock.Text = ro1.Count.ToString();
+            var currentSnapshot = _textBuffer.CurrentSnapshot;
+            var readonlyExtent = _textBuffer.GetReadOnlyExtents(new Span(0, currentSnapshot.Length));
+            readonlyExtentsTextBlock.Text = readonlyExtent.Count.ToString();
 
         }
 
@@ -171,8 +172,29 @@ namespace IReadOnlyRegionEditIntro
 
         private void ITextEditApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            if (_textEdit == null)
+            {
+                MessageBox.Show(messageBoxText: "Text Edit object is null. So what to do", caption: "Text Edit is null");
+                return;
+            }
+
+            if (GetAppliedStatusOfTextEditObject())
+            {
+                MessageBox.Show(
+                    messageBoxText: "Text edit already applied. Cannot continue. Try clicking start again'",
+                    caption: "Cannot Apply");
+                return;
+            }
+
             var textSnapshot = _textEdit.Apply();
             ITextEditApply();
+        }
+
+        private bool GetAppliedStatusOfTextEditObject()
+        {
+            FieldInfo appliedField = _textEdit.GetType().GetField("applied", BindingFlags.NonPublic | BindingFlags.Instance);
+            bool appliedFieldValue = (bool)appliedField.GetValue(_textEdit);
+            return appliedFieldValue;
         }
 
         private void ITextEditResetButton_Click(object sender, RoutedEventArgs e)
@@ -192,15 +214,17 @@ namespace IReadOnlyRegionEditIntro
 
 
             ITextInputListView.Items.Clear();
+
+            SetDefaultTextButton.IsEnabled = true;
         }
 
         #endregion
 
         private void ITextEditApply()
         {
-            var sn2 = _textBuffer.CurrentSnapshot;
-            
-            ITextEditOutputTextBlock.Text = sn2.GetText();
+            var currentSnapshot = _textBuffer.CurrentSnapshot;
+
+            ITextEditOutputTextBlock.Text = currentSnapshot.GetText();
         }
 
         private void ITextEditReplaceButton_Click(object sender, RoutedEventArgs e)
@@ -216,8 +240,9 @@ namespace IReadOnlyRegionEditIntro
             if (string.IsNullOrEmpty(inputText))
             {
                 MessageBox.Show(
-                    messageBoxText: "Source text of ITextEdit Manipulationi for Insert is empty. Please input some text",
+                    messageBoxText: "Source text of ITextEdit Manipulation for Insert is empty. Please input some text",
                     caption: "No input");
+                return;
             }
 
             if (!TryParseTextBoxToInt(textBox: ITextEditInputPositionReplaceTxtBox, textBoxValue: out int position))
@@ -248,7 +273,23 @@ namespace IReadOnlyRegionEditIntro
                 _textEdit = _textBuffer.CreateEdit();
             }
 
-            _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
+            try
+            {
+                _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
+            }
+            catch (ArgumentOutOfRangeException exception)
+            {
+                if (exception.Message.Contains("Specified argument was out of the range of valid values"))
+                {
+                    MessageBox.Show(messageBoxText: exception.Message, "Arguments are out of range.");
+                    return;
+                }
+                throw;
+            }
+            catch 
+            {
+                throw;
+            }
 
             ITextEditApply();
 
@@ -292,5 +333,10 @@ namespace IReadOnlyRegionEditIntro
             return int.TryParse(textBox.Text, out textBoxValue);
         }
 
+        private void SetDefaultTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            SetDefaultTextButton.IsEnabled = false;
+        }
     }
 }
