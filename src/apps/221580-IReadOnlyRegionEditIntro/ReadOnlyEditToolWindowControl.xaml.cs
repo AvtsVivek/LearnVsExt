@@ -19,6 +19,8 @@ namespace IReadOnlyRegionEditIntro
 
         private ITextEdit _textEdit = null;
 
+        IReadOnlyRegionEdit _readOnlyRegionEdit;
+
         private string _text = string.Empty;
         /// <summary>
         /// Initializes a new instance of the <see cref="ReadOnlyEditToolWindowControl"/> class.
@@ -57,11 +59,11 @@ namespace IReadOnlyRegionEditIntro
 
             var span = new Span(spanStart, spanLength);
 
-            IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
+            _readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
 
             try
             {
-                readOnlyRegionEdit.CreateReadOnlyRegion(span);
+                _readOnlyRegionEdit.CreateReadOnlyRegion(span);
             }
             catch (ArgumentOutOfRangeException exception)
             {
@@ -75,7 +77,7 @@ namespace IReadOnlyRegionEditIntro
                 throw exception;
             }
 
-            readOnlyRegionEdit.Apply();
+            _readOnlyRegionEdit.Apply();
 
             UpdateReadOnlyExtentCount();
 
@@ -146,9 +148,28 @@ namespace IReadOnlyRegionEditIntro
             }
 
             var currentSnapshot = _textBuffer.CurrentSnapshot;
-            var readonlyExtent = _textBuffer.GetReadOnlyExtents(new Span(0, currentSnapshot.Length));
-            readonlyExtentsTextBlock.Text = readonlyExtent.Count.ToString();
 
+            var readonlyExtentNormalizedSpanCollection = _textBuffer.GetReadOnlyExtents(new Span(0, currentSnapshot.Length));
+            
+            readonlyExtentsTextBlock.Text = readonlyExtentNormalizedSpanCollection.Count.ToString();
+
+            var commaSeperatedReadonlyRegionString = string.Empty;
+
+            foreach (Span readOnlySpan in readonlyExtentNormalizedSpanCollection)
+            {
+                IReadOnlyRegion readOnlyRegion = _readOnlyRegionEdit.CreateReadOnlyRegion(readOnlySpan);
+
+                if (!string.IsNullOrWhiteSpace(commaSeperatedReadonlyRegionString))
+                {
+                    commaSeperatedReadonlyRegionString = commaSeperatedReadonlyRegionString + ", ";
+                }
+
+                commaSeperatedReadonlyRegionString = commaSeperatedReadonlyRegionString + readOnlyRegion.Span.GetText(currentSnapshot);
+            }
+
+            commaSeperatedReadonlyRegionString.TrimEnd(' ').TrimEnd(',');
+
+            ReadonlyRegionsTextBlock.Text = commaSeperatedReadonlyRegionString;
         }
 
         #region ITextEditStartAppyReset
@@ -214,6 +235,8 @@ namespace IReadOnlyRegionEditIntro
 
 
             ITextInputListView.Items.Clear();
+
+            ReadonlyRegionsTextBlock.Text = string.Empty;
 
             SetDefaultTextButton.IsEnabled = true;
         }

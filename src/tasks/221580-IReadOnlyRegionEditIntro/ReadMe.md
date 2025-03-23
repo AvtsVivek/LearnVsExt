@@ -2,6 +2,46 @@
 
 1. Introduces IReadOnlyRegionEdit
 
+## Notes
+1. The following are the steps.
+
+   1. Get the ITextBufferFactoryService
+```cs
+_textBufferFactoryService = componentModel.GetService<ITextBufferFactoryService>();
+```
+
+   2. Next get ITextBuffer from ITextBufferFactoryService
+```cs
+_textBuffer = _textBufferFactoryService.CreateTextBuffer(inputText, _textBufferFactoryService.PlaintextContentType);
+```
+
+   3. Get ITextEdit from text buffer.
+```cs
+_textEdit = _textBuffer.CreateEdit();
+```
+
+   4. Now you can use Replace
+```cs
+_textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
+```
+
+   5. Then we can get the current snapshot. 
+```cs
+var currentSnapshot = _textBuffer.CurrentSnapshot;
+```
+
+   6. Also we get the IReadOnlyRegionEdit from text buffer as follows.
+```cs
+IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
+```
+
+   7. Also we get the IReadOnlyRegionEdit from text buffer as follows.
+```cs
+IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
+```
+
+
+
 ## Build and Run
 
 1. Reset Visual Studio Exp instance and then Launch it.

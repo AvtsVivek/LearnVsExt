@@ -29,6 +29,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -36,6 +37,7 @@
         <TextBlock FontSize="20" Grid.Row="0" Grid.Column="0" Foreground="Green" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="5" Padding="5" >
             Instructions<LineBreak/>
         </TextBlock>
+
         <Grid Grid.Row="1" Grid.Column="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -61,6 +63,7 @@
             </TextBlock>
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="SetDefaultTextButton" Click="SetDefaultTextButton_Click" IsEnabled="True" >Set Default Text</Button>
         </Grid>
+        
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -98,7 +101,7 @@
             </TextBlock>
             <Button Margin="5" Grid.Row="0" Grid.Column="2" x:Name="ITextEditReadOnlySpanButton" Click="ITextEditCreateReadOnlyExtentButton_Click" >Create ReadOnly Region</Button>
         </Grid>
-
+        
         <Grid Grid.Row="3" Grid.Column="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -111,7 +114,10 @@
             <TextBlock FontSize="20" Grid.Column="0" Grid.Row="0" Name="readonlyExtentsTextBlock" HorizontalAlignment="Left" Padding="5,0,0,0" Margin="5" ></TextBlock>
             <Button Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Name="getReadOnlyExtentsButton" Content="Get Read Only Extents" Click="getReadOnlyExtentsButton_Click" ></Button>
         </Grid>
-        <Grid Grid.Row="4" Grid.Column="0" Name="ITextEditInputForReplaceGrid">
+
+        <TextBlock Grid.Row="4" FontSize="20" Name="ReadonlyRegionsTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" ></TextBlock>
+        
+        <Grid Grid.Row="5" Grid.Column="0" Name="ITextEditInputForReplaceGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -163,7 +169,7 @@
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditReplaceButton" Click="ITextEditReplaceButton_Click" >Replace</Button>
         </Grid>
         
-        <Grid Grid.Row="5" Grid.Column="0" x:Name="StartApplyResetButtonGrid" >
+        <Grid Grid.Row="6" Grid.Column="0" x:Name="StartApplyResetButtonGrid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -173,10 +179,11 @@
             <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="ITextEditApplyButton" Click="ITextEditApplyButton_Click" >Apply</Button>
             <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
         </Grid>
-
-        <TextBlock FontSize="20" Grid.Row="6" Grid.Column="0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5"></TextBlock>
-
-        <ListView Grid.Row="7" Grid.Column="0" x:Name="ITextInputListView">
+        
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Name="ITextEditOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5"></TextBlock>
+        
+        <ListView Grid.Row="8" Grid.Column="0" x:Name="ITextInputListView">
+        
         </ListView>
         
     </Grid>

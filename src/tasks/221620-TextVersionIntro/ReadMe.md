@@ -12,7 +12,7 @@ Another important point is read-only history, i.e. these interfaces do not offer
 
 3. In the above find the following diagram.
 
-![Here we ](../221500-TextBufferIntro/Images/65_50_SnapshotVersion.png)
+![Here we ](../220555-TextBufferIntro/Images/65_50_SnapshotVersion.png)
 
 
 ## Build and Run
