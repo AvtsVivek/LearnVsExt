@@ -146,8 +146,6 @@ namespace TextVersionIntro
                 _textEdit = _textBuffer.CreateEdit();
             }
 
-            // _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
-
             try
             {
                 _textEdit.Insert(position, ITextEditInputTextInsertTxtBox.Text);
@@ -156,7 +154,7 @@ namespace TextVersionIntro
             {
                 if (exception.Message == "Attempted to reuse an already applied edit.")
                 {
-                    MessageBox.Show(messageBoxText: $"{exception.Message} So restart by clicking the Reset button, then start and then the opration insert, delete or reset. " +
+                    MessageBox.Show(messageBoxText: $"{exception.Message} So restart by clicking the Reset button, then start and then the operation insert, delete or reset. " +
                         $"{Environment.NewLine}Click the Apply button at the end.",
                     caption: "Start again");
                     return;
@@ -266,7 +264,7 @@ namespace TextVersionIntro
                     && exception.Message == "Attempted to reuse an already applied edit.")
                 {
                     MessageBox.Show(
-                    messageBoxText: $"{exception.Message} Looks like Apply is clicked. So attempt an opration such as Replace.",
+                    messageBoxText: $"{exception.Message} Looks like Apply is clicked. So attempt an operation such as Replace.",
                     caption: "Invalid Operation");
                     return;
                 }
@@ -275,7 +273,7 @@ namespace TextVersionIntro
                     && exception.Message == "Operation is not valid due to the current state of the object.")
                 {
                     MessageBox.Show(
-                    messageBoxText: $"{exception.Message} Looks like Apply is clicked. So attempt an opration such as Replace.",
+                    messageBoxText: $"{exception.Message} Looks like Apply is clicked. So attempt an operation such as Replace.",
                     caption: "Invalid Operation");
                     return;
                 }
@@ -324,7 +322,7 @@ namespace TextVersionIntro
             textBlock.Text = versionInfoString;
             stackPanel.Children.Add(textBlock);
 
-            AddOprationsToListView(stackPanel);
+            AddOperationsToListView(stackPanel);
 
             if (_textEdit == null)
                 return;
@@ -362,7 +360,7 @@ namespace TextVersionIntro
             specificVersionTextTextBloc.Text = string.Empty;
             specificVersionTextBloc.Text = string.Empty;
 
-
+            SetDefaultTextButton.IsEnabled = true;
 
             _currentDisplayVersion = -1;
 
@@ -378,7 +376,7 @@ namespace TextVersionIntro
             ITextEditOutputTextBlock.Text = sn2.GetText();
         }
 
-        private void AddOprationsToListView(StackPanel stackPanel)
+        private void AddOperationsToListView(StackPanel stackPanel)
         {
             foreach (var textOperation in _textOperationList)
             {
@@ -387,15 +385,15 @@ namespace TextVersionIntro
                 var itemString = string.Empty;
                 if (textOperation.Operation == TextOperation.Replace)
                 {
-                    itemString = $"Opration: {textOperation.Operation}, start: {textOperation.Position}, length: {textOperation.Length}. Replace text: {textOperation.OperationText}";
+                    itemString = $"Operation: {textOperation.Operation}, start: {textOperation.Position}, length: {textOperation.Length}. Replace text: {textOperation.OperationText}";
                 }
                 else if (textOperation.Operation == TextOperation.Delete)
                 {
-                    itemString = $"Opration: {textOperation.Operation}, start: {textOperation.Position}, length: {textOperation.Length}";
+                    itemString = $"Operation: {textOperation.Operation}, start: {textOperation.Position}, length: {textOperation.Length}";
                 }
                 else if (textOperation.Operation == TextOperation.Insert)
                 {
-                    itemString = $"Opration: {textOperation.Operation}, start: {textOperation.Position}, Insert text: {textOperation.OperationText}";
+                    itemString = $"Operation: {textOperation.Operation}, start: {textOperation.Position}, Insert text: {textOperation.OperationText}";
                 }
                 else
                 {
@@ -462,6 +460,12 @@ namespace TextVersionIntro
                 specificVersionTextTextBloc.Text = textSnapshot.GetText();
                 specificVersionTextBloc.Text = _currentDisplayVersion.ToString();
             }
+        }
+
+        private void SetDefaultTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "012345678901234567890123456789";
+            SetDefaultTextButton.IsEnabled = false;
         }
     }
 }
