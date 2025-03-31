@@ -368,6 +368,9 @@ namespace TrackingSpanIntro
 
             // _textBufferUndoManager = null;
 
+            ITextEditInputTextBox.Text = "";
+            DefaultInputTextButton.IsEnabled = true;
+
             _textOperationList.Clear();
 
             messagesListView.Items.Clear();
@@ -538,6 +541,11 @@ namespace TrackingSpanIntro
 
             _trackingSpan = textSnapshot.CreateTrackingSpan(span, spanTrackingMode);
         }
-    }
 
+        private void DefaultInputTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "0123456789";
+            DefaultInputTextButton.IsEnabled = false;
+        }
+    }
 }

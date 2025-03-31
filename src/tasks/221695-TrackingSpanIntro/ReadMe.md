@@ -9,7 +9,7 @@
 
 2. 
 
-![Point Tracking Mode](..\221500-TextBufferIntro\Images\68_50_EdgePositive.png)
+![Point Tracking Mode](../220555-TextBufferIntro/Images/68_50_EdgePositive.png)
 
 EdgeExclusive - only characters from the old interval should be included in the final interval and not newly inserted characters. To do this, the initial position of the interval works in the Positive mode, and the end position works in the Negative mode
 
@@ -17,9 +17,9 @@ EdgeExclusive - only characters from the old interval should be included in the 
 
 EdgeInclusive is the opposite of EdgeExclusive, i.e. all intersecting intervals are included in the original one. Therefore, boundaries are tracked in opposite modes: the beginning in Negative and the end in Positive
 
-![Edge Insclusive](Images/51_50_EdgeInclusiveInsert.png)
+![Edge Inclusive](Images/51_50_EdgeInclusiveInsert.png)
 
-EdgePositive – Both Borders in Pisitive Mode
+EdgePositive – Both Borders in Positive Mode
 
 ![Edge Positive](Images/52_50_EdgePositiveInsert.png)
 
@@ -37,7 +37,7 @@ EdgeNegative – Both boundaries in Negative mode
 
 ## ToDo
 
-1. .CreateTrackingSpan( is found in the following exmaples. Need to look into them. Also 1 and 4 seem to be the same AsyncQuickInfoSourceIntro
+1. .CreateTrackingSpan() is found in the following examples. Need to look into them. Also 1 and 4 seem to be the same AsyncQuickInfoSourceIntro
    1. src\apps\252230-AsyncQuickInfoSourceIntro\LineAsyncQuickInfoSource.cs
    2. src\apps\252250-QuickInfoSourceNoAttribute\LineAsyncQuickInfoSource.cs
    3. src\apps\252275-FilterInsideQuickInfoSource\LineAsyncQuickInfoSource.cs

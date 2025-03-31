@@ -19,7 +19,7 @@
 
 2. The left portion of the diagram below is achieved from the above.
 
-![Here we ](..\220555-TextBufferIntro\Images\66_50_Tail.png)
+![Here we ](../220555-TextBufferIntro/Images/66_50_Tail.png)
 
 3. The right portion of the diagram above is achieved from the below.
 
@@ -31,7 +31,7 @@
 
 5. Diagram
 
-![Point Tracking Mode](..\220555-TextBufferIntro\Images\67_50_PointTrakingMode.png)
+![Point Tracking Mode](../220555-TextBufferIntro/Images/67_50_PointTrakingMode.png)
 
 Here we go...
 

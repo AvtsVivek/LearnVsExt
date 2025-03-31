@@ -108,6 +108,13 @@ namespace TrackingPointIntro
 
             var replaceSpan = new Span(position, length);
 
+            if (_textBuffer.CurrentSnapshot.Length < replaceSpan.End)
+            {
+                MessageBox.Show("Current Snapshot length is less than the end of replace span", "Cannot continue");
+                return;
+            }
+
+
             _textBuffer.Replace(replaceSpan, replaceWith);
 
             // _textEdit.Replace(startPosition: position, charsToReplace: length, replaceWith: replaceString);
@@ -115,6 +122,9 @@ namespace TrackingPointIntro
             PublishCurrentSnapshotAfterOperation();
 
             _textOperationList.Add(new OperationData { Position = position, Length = length, Operation = TextOperation.Replace, OperationText = replaceWith });
+
+            AddVersionAfterApplyClick();
+
         }
 
         private void ITextEditInsertButton_Click(object sender, RoutedEventArgs e)
@@ -234,8 +244,7 @@ namespace TrackingPointIntro
             _textBuffer = _textBufferFactoryService
                 .CreateTextBuffer(inputText, _textBufferFactoryService.PlaintextContentType);
 
-            AddVersionAfterApplyClick(_textBuffer.CurrentSnapshot);
-
+            AddVersionAfterApplyClick();
 
 
             // _textBufferUndoManager = _textBufferUndoManagerProvider.GetTextBufferUndoManager(_textBuffer);
@@ -299,8 +308,10 @@ namespace TrackingPointIntro
             _textOperationList.Clear();
         }
 
-        private void AddVersionAfterApplyClick(ITextSnapshot textSnapshot)
+        private void AddVersionAfterApplyClick()
         {
+            ITextSnapshot textSnapshot = _textBuffer.CurrentSnapshot;
+
             var versionInfoString = string.Empty;
 
             ITextVersion versionInfo = textSnapshot.Version;
@@ -544,8 +555,13 @@ namespace TrackingPointIntro
 
         private void DefaultInputTextButton_Click(object sender, RoutedEventArgs e)
         {
-            ITextEditInputTextBox.Text = "0123456789";
+            ITextEditInputTextBox.Text = "01234567890123456789";
             DefaultInputTextButton.IsEnabled = false;
+            TrackingSpanStartTextBox.Text = "3";
+            ITextEditInputPositionReplaceTxtBox.Text = "2";
+            ITextEditInputLengthReplaceTxtBox.Text = "4";
+            ITextEditInputTextReplaceTxtBox.Text = "ABC";
+            pointTrackingModeComboBox.SelectedIndex = 1; // Negative
         }
     }
 }

@@ -31,7 +31,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -269,17 +269,17 @@
         <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="newTrackingPointTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
         <Grid Grid.Row="8" Grid.Column="0" x:Name="listViewGrid">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ListView Grid.Row="0" Grid.Column="0" x:Name="applyListView">
-
+            <ListView Grid.Row="0" Grid.Column="0" x:Name="applyListView" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                ScrollViewer.CanContentScroll="False" >
             </ListView>
-            <ListView Grid.Row="0" Grid.Column="1" x:Name="messagesListView">
-
+            <ListView Grid.Row="0" Grid.Column="1" x:Name="messagesListView" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                ScrollViewer.CanContentScroll="True">
             </ListView>
         </Grid>
     </Grid>

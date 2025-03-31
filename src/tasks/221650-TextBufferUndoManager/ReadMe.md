@@ -8,6 +8,25 @@ ITextUndoTransaction textUndoTransaction = textBufferUndoHistory.CurrentTransact
 ITextUndoTransaction lastUndoTransaction = textBufferUndoHistory.LastUndoTransaction;// Gives Exception
 ITextUndoTransaction lastRedoTransaction = textBufferUndoHistory.LastRedoTransaction;// Gives Exception
 
+## Notes
+
+1. Undo and Redo happens as follows.
+
+```cs
+_textBufferUndoManagerProvider = componentModel.GetService<ITextBufferUndoManagerProvider>();
+_textBufferUndoManager = _textBufferUndoManagerProvider.GetTextBufferUndoManager(_textBuffer);
+
+_textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened += TextBufferUndoHistory_UndoRedoHappened;
+_textBufferUndoManager.TextBufferUndoHistory.UndoTransactionCompleted += TextBufferUndoHistory_UndoTransactionCompleted;
+
+var textBufferUndoHistory = _textBufferUndoManager.TextBufferUndoHistory;
+
+textBufferUndoHistory.Undo(1);
+// OR
+textBufferUndoHistory.Redo(1);
+
+```
+
 ## Build and Run
 
 1. Reset Visual Studio Exp instance and then Launch it.
