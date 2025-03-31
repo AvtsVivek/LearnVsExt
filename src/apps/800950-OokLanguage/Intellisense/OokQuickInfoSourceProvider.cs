@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Text.Tagging;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     [Export(typeof(IQuickInfoSourceProvider))]
     [ContentType("ook!")]

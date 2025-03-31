@@ -47,8 +47,8 @@ EdgeNegative – Both boundaries in Negative mode
    7. src\apps\750580-MenuCommentAdornment\CommentAdornmentTest\CommentAdornment.cs
    8. src\apps\800500-ColorfulEditor\ColorfulCompletionSource.cs
    9.  src\apps\800750-AsyncQuickInfo\LineAsyncQuickInfoSource.cs
-   10. src\apps\800950-OokLanguage\Intellisence\OokCompletionSource.cs
-   11. src\apps\800950-OokLanguage\Intellisence\OokQuickInfoSource.cs
+   10. src\apps\800950-OokLanguage\Intellisense\OokCompletionSource.cs
+   11. src\apps\800950-OokLanguage\Intellisense\OokQuickInfoSource.cs
    12. src\apps\900921-Temp\src\VsctCompletionShared\QuickInfo\IdQuickInfoSource.cs
    13. src\apps\900925-AsyncCompletionSourceIntro\JsonElementCompletion\SampleCompletionSource.cs
 

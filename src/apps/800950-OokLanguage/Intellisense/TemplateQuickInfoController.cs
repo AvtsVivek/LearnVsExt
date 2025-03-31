@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text;
 using System.Collections.Generic;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     internal class TemplateQuickInfoController : IIntellisenseController
     {

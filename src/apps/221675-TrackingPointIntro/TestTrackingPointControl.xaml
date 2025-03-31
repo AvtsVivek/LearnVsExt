@@ -36,19 +36,31 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
-        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <Grid Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputTextBoxGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="20" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=ITextEditInputTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="DefaultInputTextButton" Click="DefaultInputTextButton_Click" >Set Default Input</Button>
+        </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Name="trackingSpanGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

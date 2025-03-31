@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     class OokCompletionSource : ICompletionSource
     {

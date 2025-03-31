@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.Text.Tagging;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     /// <summary>
     /// Provides QuickInfo information to be displayed in a text buffer

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     [Export(typeof(IIntellisenseControllerProvider))]
     [Name("Template QuickInfo Controller")]

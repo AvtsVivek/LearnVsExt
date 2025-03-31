@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     [Export(typeof(IVsTextViewCreationListener))]
     [ContentType("ook!")]

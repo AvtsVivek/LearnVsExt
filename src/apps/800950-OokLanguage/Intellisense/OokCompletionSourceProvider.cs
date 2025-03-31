@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     [Export(typeof(ICompletionSourceProvider))]
     [ContentType("ook!")]

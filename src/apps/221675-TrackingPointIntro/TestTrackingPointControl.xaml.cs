@@ -360,6 +360,9 @@ namespace TrackingPointIntro
 
             applyListView.Items.Clear();
 
+            ITextEditInputTextBox.Text = "";
+            DefaultInputTextButton.IsEnabled = true;
+
             // _textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened += TextBufferUndoHistory_UndoRedoHappened;
             // The reason we are first subscribing(above, now uncommented), and then unsubscribing(below) is the
             // below can sometimes throw exception.
@@ -537,6 +540,12 @@ namespace TrackingPointIntro
             // Span span = new Span(spanStartInt, spanLengthInt);
 
             // _trackingSpan = textSnapshot.CreateTrackingSpan(span, pointTrackingMode);
+        }
+
+        private void DefaultInputTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "0123456789";
+            DefaultInputTextButton.IsEnabled = false;
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.VisualStudio;
 using System;
 using System.Runtime.InteropServices;
 
-namespace OokLanguage.Intellisence
+namespace OokLanguage.Intellisense
 {
     internal sealed class CommandFilter : IOleCommandTarget
     {
