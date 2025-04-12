@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.Shell;
 using System.Windows.Media;
+using System.Windows.Controls.Primitives;
 
 namespace TrackingPointIntro
 {
@@ -50,7 +51,6 @@ namespace TrackingPointIntro
             //    throw new Exception($"{nameof(_textBufferUndoManagerProvider)} is null. Cannot continue!!!");
 
             DataContext = this;
-            // pointTrackingModeComboBox.ItemsSource = PointTrackingModeArray;
         }
 
         public Array PointTrackingModeArray
@@ -80,8 +80,8 @@ namespace TrackingPointIntro
             if (!TryParseTextBoxToInt(textBox: ITextEditInputPositionReplaceTxtBox, textBoxValue: out int position))
             {
                 MessageBox.Show(
-                messageBoxText: "Position int is null. Cannot continue",
-                caption: "No input");
+                    messageBoxText: "Position int is null. Cannot continue",
+                    caption: "No input");
                 return;
             }
 
@@ -152,14 +152,14 @@ namespace TrackingPointIntro
 
             var insertString = string.Empty;
 
-            if (!string.IsNullOrEmpty(value: ITextEditInputTextReplaceTxtBox.Text))
+            if (!string.IsNullOrEmpty(value: ITextEditInputTextInsertTxtBox.Text))
             {
-                insertString = ITextEditInputTextReplaceTxtBox.Text;
+                insertString = ITextEditInputTextInsertTxtBox.Text;
             }
 
             if (!_textBuffer.EditInProgress)
             {
-                // _textEdit = _textBuffer.CreateEdit();
+                _textBuffer.Insert(position, insertString);
             }
 
             try
@@ -222,7 +222,16 @@ namespace TrackingPointIntro
 
             var deleteSpan = new Span(position, length);
 
-            var textSnapShot = _textBuffer.Delete(deleteSpan);
+            try
+            {
+                var textSnapShot = _textBuffer.Delete(deleteSpan);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                        
 
             PublishCurrentSnapshotAfterOperation();
 
@@ -372,7 +381,7 @@ namespace TrackingPointIntro
             applyListView.Items.Clear();
 
             ITextEditInputTextBox.Text = "";
-            DefaultInputTextButton.IsEnabled = true;
+            // DefaultInputTextButton.IsEnabled = true;
 
             // _textBufferUndoManager.TextBufferUndoHistory.UndoRedoHappened += TextBufferUndoHistory_UndoRedoHappened;
             // The reason we are first subscribing(above, now uncommented), and then unsubscribing(below) is the
@@ -406,10 +415,18 @@ namespace TrackingPointIntro
         private void PublishCurrentSnapshotAfterOperation()
         {
             var currentTextSnapshot = _textBuffer.CurrentSnapshot;
-            textBufferSnapshotAfterOperationTextBlock.Text = currentTextSnapshot.GetText();
 
-            if(_trackingPoint != null)
-                newTrackingPointTextBlock.Text = $"New position: {_trackingPoint.GetPosition(currentTextSnapshot)}";
+            textBufferSnapshotAfterOperationTextBlock.Text = currentTextSnapshot.GetText();
+            
+            if (_trackingPoint != null)
+            {
+                var newPosition = _trackingPoint.GetPosition(currentTextSnapshot);
+
+                if (currentTextSnapshot.Length >= newPosition + 1)
+                {
+                    newTrackingPointTextBlock.Text = $"New position: {newPosition}, and the char at this position is: {_trackingPoint.GetCharacter(currentTextSnapshot)}";
+                }
+            }
         }
 
         private void AddOprationsToListView(StackPanel stackPanel)
@@ -504,8 +521,7 @@ namespace TrackingPointIntro
 
             if (textSnapshot == null)
             {
-                MessageBox.Show(
-                messageBoxText: "Text snapshot on the text buffer is null, cannot continue.",
+                MessageBox.Show(messageBoxText: "Text snapshot on the text buffer is null, cannot continue.",
                 caption: "Click start");
                 return;
             }
@@ -553,15 +569,102 @@ namespace TrackingPointIntro
             // _trackingSpan = textSnapshot.CreateTrackingSpan(span, pointTrackingMode);
         }
 
-        private void DefaultInputTextButton_Click(object sender, RoutedEventArgs e)
+        private void SetInputDataPresetOne_Click(object sender, RoutedEventArgs e)
         {
             ITextEditInputTextBox.Text = "01234567890123456789";
-            DefaultInputTextButton.IsEnabled = false;
             TrackingSpanStartTextBox.Text = "3";
             ITextEditInputPositionReplaceTxtBox.Text = "2";
             ITextEditInputLengthReplaceTxtBox.Text = "4";
             ITextEditInputTextReplaceTxtBox.Text = "ABC";
-            pointTrackingModeComboBox.SelectedIndex = 1; // Negative
+            pointTrackingModeComboBox.SelectedIndex = 0; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetTwo_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "4";
+            ITextEditInputPositionReplaceTxtBox.Text = "2";
+            ITextEditInputLengthReplaceTxtBox.Text = "4";
+            ITextEditInputTextReplaceTxtBox.Text = "ABC";
+            pointTrackingModeComboBox.SelectedIndex = 1; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetThree_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "4";
+            ITextEditInputPositionInsertTxtBox.Text= "2";
+            ITextEditInputTextInsertTxtBox.Text = "ABC";
+            pointTrackingModeComboBox.SelectedIndex = 0; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetFour_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "3";
+            ITextEditInputPositionInsertTxtBox.Text = "5";
+            ITextEditInputTextInsertTxtBox.Text = "ABC";
+            pointTrackingModeComboBox.SelectedIndex = 1; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetFive_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "5";
+            ITextEditInputPositionInsertTxtBox.Text = "3";
+            ITextEditInputTextInsertTxtBox.Text = "ABCD";
+            pointTrackingModeComboBox.SelectedIndex = 0; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetSix_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "2";
+            ITextEditInputPositionInsertTxtBox.Text = "3";
+            ITextEditInputTextInsertTxtBox.Text = "ABCD";
+            pointTrackingModeComboBox.SelectedIndex = 1; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetSeven_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "15";
+            ITextEditInputPositionDeleteTxtBox.Text = "2";
+            ITextEditInputLengthDeleteTxtBox.Text = "4";
+            pointTrackingModeComboBox.SelectedIndex = 0; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void SetInputDataPresetEight_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            TrackingSpanStartTextBox.Text = "5";
+            ITextEditInputPositionDeleteTxtBox.Text = "2";
+            ITextEditInputLengthDeleteTxtBox.Text = "4";
+            pointTrackingModeComboBox.SelectedIndex = 1; // 0 is +ve, 1 is -ve
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            createTrackingPoint.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
         }
     }
 }

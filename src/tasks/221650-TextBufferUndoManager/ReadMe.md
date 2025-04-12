@@ -56,4 +56,7 @@ textBufferUndoHistory.Redo(1);
 
 2. https://learn.microsoft.com/en-us/visualstudio/extensibility/inside-the-editor#itextedit-textversion-and-text-change-notifications
 
+3. [Text buffer](../900930-JsonEditor/Articles/3-ITextBuffer.md)
+
+
 

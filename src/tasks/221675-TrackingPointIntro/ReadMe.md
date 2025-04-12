@@ -37,9 +37,18 @@ Here we go...
 
 ![Positive Tracking Point Insertion](Images/53_50_PositiveTrackingPointInsertion.png)
 
+6. Working with presets. Presets will help load data. 
+   1. Click any preset button, say Insert -ve Preset. 
+
+![Inset Preset](Images/54_50_InsertPreset.png)
+
+
+
 ## Reference.
 
 1. https://mihailromanov.wordpress.com/2021/11/05/json-on-steroids-2-2-visual-studio-editor-itextbuffer-and-related-types
+
+2. [Text buffer](../900930-JsonEditor/Articles/3-ITextBuffer.md)
 
 ## ToDo
 1. .CreateTrackingPoint is available in the following. So need to check. 
