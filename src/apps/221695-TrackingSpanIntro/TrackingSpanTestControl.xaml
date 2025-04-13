@@ -32,22 +32,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" x:Name="ITextEditInputTextBoxGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
-            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="20" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="20" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -59,9 +50,23 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="DefaultInputTextButton" Click="DefaultInputTextButton_Click" >Set Default Input</Button>
+        <Grid Grid.Row="1" x:Name="PresetGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Margin="5" Grid.Row="0" Grid.Column="0" x:Name="PresetOneButton" Click="PresetOneButton_Click" >Inset Preset 1</Button>
+            <Button Margin="5" Grid.Row="0" Grid.Column="1" x:Name="PresetTwoButton" Click="PresetTwoButton_Click" >Inset Preset 2</Button>
+            <Button Margin="5" Grid.Row="0" Grid.Column="2" x:Name="PresetThreeButton" Click="PresetThreeButton_Click" >Inset Preset 3</Button>
+            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="PresetFourButton" Click="PresetFourButton_Click" >Inset Preset 4</Button>
+            
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0" Name="trackingSpanGrid">
+        <Grid Grid.Row="2" Grid.Column="0" Name="trackingSpanGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -102,7 +107,7 @@
 
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="createTrackingSpan" Click="createTrackingSpan_Click" >Create Tracking Span</Button>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="0" Name="ITextEditInputForInsertGrid">
+        <Grid Grid.Row="3" Grid.Column="0" Name="ITextEditInputForInsertGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -153,7 +158,7 @@
             </TextBlock>
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditInsertButton" Click="ITextEditInsertButton_Click" >Insert</Button>
         </Grid>
-        <Grid Grid.Row="3" Grid.Column="0" Name="ITextEditInputForDeleteGrid">
+        <Grid Grid.Row="4" Grid.Column="0" Name="ITextEditInputForDeleteGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -204,7 +209,7 @@
             </TextBlock>
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditDeleteButton" Click="ITextEditDeleteButton_Click" >Delete</Button>
         </Grid>
-        <Grid Grid.Row="4" Grid.Column="0" Name="ITextEditInputForReplaceGrid">
+        <Grid Grid.Row="5" Grid.Column="0" Name="ITextEditInputForReplaceGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -255,7 +260,7 @@
             </TextBlock>
             <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="ITextEditReplaceButton" Click="ITextEditReplaceButton_Click" >Replace</Button>
         </Grid>
-        <Grid Grid.Row="5" Grid.Column="0" x:Name="StartApplyResetButtonGrid" >
+        <Grid Grid.Row="6" Grid.Column="0" x:Name="StartApplyResetButtonGrid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -265,9 +270,9 @@
             <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="ITextEditApplyButton" Click="ITextEditApplyButton_Click" >Apply</Button>
             <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
         </Grid>
-        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="textBufferSnapshotAfterOperationTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="newTrackingPointTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <Grid Grid.Row="8" Grid.Column="0" x:Name="listViewGrid">
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="textBufferSnapshotAfterOperationTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="0" FontSize="20" Padding="5, 0, 0, 0" Name="newTrackingPointTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <Grid Grid.Row="9" Grid.Column="0" x:Name="listViewGrid">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>

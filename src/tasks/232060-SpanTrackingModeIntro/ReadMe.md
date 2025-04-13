@@ -7,28 +7,25 @@
    4. [ITrackingPoint](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itrackingpoint)
    5. [ITrackingSpan](https://learn.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.itrackingspan)
 
-2. 
+2. This example attempts to explore different types value of the enum SpanTrackingMode namely EdgeExclusive, EdgeInclusive, EdgePositive, EdgeNegative. 
 
-![Point Tracking Mode](../220555-TextBufferIntro/Images/68_50_EdgePositive.png)
+![Open tool window](Images/51_50_ToolWindow.png)
 
+But all of the 4 are giving the same result. Need to explore more.
 
-EdgeExclusive - only characters from the old interval should be included in the final interval and not newly inserted characters. To do this, the initial position of the interval works in the Positive mode, and the end position works in the Negative mode
-
-![Edge Exclusive](Images/50_50_EdgeExclusiveInsert.png)
-
-EdgeInclusive is the opposite of EdgeExclusive, i.e. all intersecting intervals are included in the original one. Therefore, boundaries are tracked in opposite modes: the beginning in Negative and the end in Positive
-
-![Edge Inclusive](Images/51_50_EdgeInclusiveInsert.png)
-
-EdgePositive – Both Borders in Positive Mode
-
-![Edge Positive](Images/52_50_EdgePositiveInsert.png)
-
-EdgeNegative – Both boundaries in Negative mode
-
-![Edge Negative](Images/53_50_EdgeNegativeInsert.png)
 
 ## Build and Run
+1. Reset Visual Studio Exp instance and then Launch it.
+
+2. Ensure the line numbers are enabled for text files as follows.
+   1. Tools -> Options -> Text Editor -> All Languages -> General
+
+   ![Enable Line numbers](Images/50_50_EnableLineNumbers.png)
+
+3. Now open the tool window. View -> Other Windows -> ToolWindowForTextSnapShot
+
+![Open tool window](Images/51_50_ToolWindow.png)
+
 
 
 ## Reference.

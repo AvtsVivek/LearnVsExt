@@ -369,7 +369,6 @@ namespace TrackingSpanIntro
             // _textBufferUndoManager = null;
 
             ITextEditInputTextBox.Text = "";
-            DefaultInputTextButton.IsEnabled = true;
 
             _textOperationList.Clear();
 
@@ -542,10 +541,24 @@ namespace TrackingSpanIntro
             _trackingSpan = textSnapshot.CreateTrackingSpan(span, spanTrackingMode);
         }
 
-        private void DefaultInputTextButton_Click(object sender, RoutedEventArgs e)
+        private void PresetOneButton_Click(object sender, RoutedEventArgs e)
         {
-            ITextEditInputTextBox.Text = "0123456789";
-            DefaultInputTextButton.IsEnabled = false;
+            ITextEditInputTextBox.Text = "012345678901234567890123456789";
+        }
+
+        private void PresetTwoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PresetThreeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PresetFourButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

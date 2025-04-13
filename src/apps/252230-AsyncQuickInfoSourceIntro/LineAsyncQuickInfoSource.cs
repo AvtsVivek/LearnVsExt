@@ -29,7 +29,7 @@ namespace AsyncQuickInfoSourceIntro
             if (triggerPoint == null)
                 return Task.FromResult<QuickInfoItem>(null);
 
-            var line = triggerPoint.Value.GetContainingLine();
+            ITextSnapshotLine line = triggerPoint.Value.GetContainingLine();
             var lineNumber = triggerPoint.Value.GetContainingLine().LineNumber;
             var lineSpan = _textBuffer.CurrentSnapshot.CreateTrackingSpan(line.Extent, SpanTrackingMode.EdgeInclusive);
 

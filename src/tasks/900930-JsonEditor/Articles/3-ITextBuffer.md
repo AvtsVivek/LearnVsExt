@@ -543,9 +543,9 @@ A little more interesting is the situation with insertion (when the insertion lo
 
 This behavior is affected by the [PointTrackingMode](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.pointtrackingmode) parameter, which has 2 values: Negative (put the pointer on the first inserted character) and Positive (put on the last inserted character):
 
-![Point Traking Mode](../Images/3-TextBuffer/67_50_PointTrakingMode.png)
+![Point Tracking Mode](../Images/3-TextBuffer/67_50_PointTrakingMode.png)
 
-interval tracking
+Interval tracking
 
 Here you need to keep in mind the following - the interval is considered as a set of 2 boundaries: start and end - each of which behaves like a regular tracked position, i.e. there are 4 modes in total.
 
