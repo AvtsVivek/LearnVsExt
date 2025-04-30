@@ -56,7 +56,7 @@ namespace SnapshotSpanIntro
 
             textSnapshotSpan.Text = snapShotSpan.GetText();
             
-            textEndMinusStart.Text = $"End - Start is {(_endSpanValue - _startSpanValue)}";
+            textEndMinusStart.Text = $"End - Start is {_endSpanValue - _startSpanValue}";
         }
 
         private void buttonStartDecrement_Click(object sender, RoutedEventArgs e)
@@ -147,43 +147,39 @@ namespace SnapshotSpanIntro
         {
             var errorMessage = string.Empty;
 
-            bool returnValue = true;
+            bool returnValue = false;
 
             if (string.IsNullOrWhiteSpace(txtFullSnapshotText.Text))
             {
                 errorMessage = "Please put some snapshot text.";
-                returnValue = false;
             }
 
             if (!int.TryParse(startSpanTextBox.Text, out int startSpanValue))
             {
                 errorMessage = "End Span Value is not an integer. Please enter an int value!";
-                returnValue = false;
             }
 
             if (!int.TryParse(endSpanTextBox.Text, out int endSpanValue))
             {
                 errorMessage = "Start Span Value is not an integer. Please enter an int value!";
-                returnValue = false;
             }
 
             if (endSpanValue < 0 || startSpanValue < 0)
             {
                 errorMessage = "Start or End Span Value cannot be -ve. Please ensure a +ve value for both";
-                returnValue = false;
             }
 
             if (endSpanValue < startSpanValue)
             {
                 errorMessage = "Start value cannot be greater than end value. Please ensure End value is always greater than or atlest equal to start value";
-                returnValue = false;
             }
 
             if (endSpanValue > txtFullSnapshotText.Text.Length)
             {
                 errorMessage = "End value is longer than the lenght of the given string.";
-                returnValue = false;
             }
+
+            returnValue = true;
 
             textErrorMessage.Text = errorMessage;
             _startSpanValue = startSpanValue;

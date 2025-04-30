@@ -1,10 +1,7 @@
-﻿using EnvDTE;
-using Microsoft.VisualStudio.ComponentModelHost;
+﻿using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;

@@ -36,10 +36,11 @@ IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
 ```
 
    7. Also we get the IReadOnlyRegionEdit from text buffer as follows.
-```cs
-IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
-```
 
+```cs
+var span = new Span(spanStart, spanLength);
+_readOnlyRegionEdit.CreateReadOnlyRegion(span);
+```
 
 
 ## Build and Run
@@ -58,7 +59,7 @@ IReadOnlyRegionEdit readOnlyRegionEdit = _textBuffer.CreateReadOnlyRegionEdit();
 
 ![Create Read Only Extent](Images/51_50_CreateReadOnlyRegion.png)
 
-4. Now try to edit by replacing some text, whose span overlaps with the Readonly region. So put the position as say 7 and lenght say 5, and replace text say ABC, click `Replace` and then click `Apply`. Notice that there is no change to the text. This is because the edit overlaps with ReadOnly region. Read only regions do not allow edits.
+4. Now try to edit by replacing some text, whose span overlaps with the Readonly region. So put the position as say 7 and length say 5, and replace text say ABC, click `Replace` and then click `Apply`. Notice that there is no change to the text. This is because the edit overlaps with ReadOnly region. Read only regions do not allow edits.
 
 ![Replace in read only regions](Images/52_50_ReplaceInReadonlyRegion.png)
 

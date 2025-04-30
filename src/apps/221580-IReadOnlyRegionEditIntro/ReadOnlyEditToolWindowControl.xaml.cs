@@ -5,6 +5,7 @@ using System;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace IReadOnlyRegionEditIntro
 {
@@ -237,8 +238,6 @@ namespace IReadOnlyRegionEditIntro
             ITextInputListView.Items.Clear();
 
             ReadonlyRegionsTextBlock.Text = string.Empty;
-
-            SetDefaultTextButton.IsEnabled = true;
         }
 
         #endregion
@@ -356,10 +355,50 @@ namespace IReadOnlyRegionEditIntro
             return int.TryParse(textBox.Text, out textBoxValue);
         }
 
-        private void SetDefaultTextButton_Click(object sender, RoutedEventArgs e)
+        private void PresetOneButton_Click(object sender, RoutedEventArgs e)
         {
             ITextEditInputTextBox.Text = "01234567890123456789";
-            SetDefaultTextButton.IsEnabled = false;
+            ITextEditInputSpanStartTextBox.Text = "0";
+            ITextEditInputSpanLengthTextBox.Text = "10";
+            ITextEditInputPositionReplaceTxtBox.Text = "7";
+            ITextEditInputLengthReplaceTxtBox.Text = "5";
+            ITextEditInputTextReplaceTxtBox.Text = "ABC";
+
+        }
+
+        private void PresetTwoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            ITextEditInputSpanStartTextBox.Text = "0";
+            ITextEditInputSpanLengthTextBox.Text = "10";
+            ITextEditInputPositionReplaceTxtBox.Text = "12";
+            ITextEditInputLengthReplaceTxtBox.Text = "4";
+            ITextEditInputTextReplaceTxtBox.Text = "ABC";
+        }
+
+        private void PresetThreeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ITextEditInputTextBox.Text = "01234567890123456789";
+            ITextEditInputSpanStartTextBox.Text = "0";
+            ITextEditInputSpanLengthTextBox.Text = "7";
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditReadOnlySpanButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditInputSpanStartTextBox.Text = "9";
+            ITextEditInputSpanLengthTextBox.Text = "4";
+
+            ITextEditReadOnlySpanButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditInputSpanStartTextBox.Text = "12";
+            ITextEditInputSpanLengthTextBox.Text = "4";
+
+            ITextEditReadOnlySpanButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditInputPositionReplaceTxtBox.Text = "12";
+            ITextEditInputLengthReplaceTxtBox.Text = "4";
+            ITextEditInputTextReplaceTxtBox.Text = "ABC";
         }
     }
 }

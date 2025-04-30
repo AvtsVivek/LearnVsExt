@@ -71,8 +71,8 @@ namespace SnapshotSpanIntersectionTrial
             if (spanThree.Start + spanThree.Length > currentTextTwoSnapshot.Length)
             {
                 MessageBox.Show($"The range represented by the span three is out of range of the " +
-                    $"current spanshot represented by the text you entred. " +
-                    $"The lenght of the text is {currentTextTwoSnapshot.Length}, " +
+                    $"current spanshot represented by the text you entered. " +
+                    $"The length of the text is {currentTextTwoSnapshot.Length}, " +
                     $"but 'spanOne.Start + spanOne.Length' = {spanThree.Start + spanThree.Length} " +
                     $"is greater." + Environment.NewLine + "Cannot Continue", "Span ONE out of Range",
 

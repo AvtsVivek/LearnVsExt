@@ -30,6 +30,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -40,9 +41,6 @@
 
         <Grid Grid.Row="1" Grid.Column="0" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -61,7 +59,6 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <Button Margin="5" Grid.Row="0" Grid.Column="3" x:Name="SetDefaultTextButton" Click="SetDefaultTextButton_Click" IsEnabled="True" >Set Default Text</Button>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="0">
@@ -181,8 +178,19 @@
         </Grid>
         
         <TextBlock Grid.Row="7" Grid.Column="0" FontSize="20" Name="ITextEditOutputTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5"></TextBlock>
-        
-        <ListView Grid.Row="8" Grid.Column="0" x:Name="ITextInputListView">
+
+        <Grid Grid.Row="8" Grid.Column="0" x:Name="PresetButtonGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Margin="5" Grid.Column="0" HorizontalAlignment="Stretch" x:Name="PresetOneButton" Click="PresetOneButton_Click" >Preset One</Button>
+            <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="PresetTwoButton" Click="PresetTwoButton_Click" >Preset Two</Button>
+            <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="PresetThreeButton" Click="PresetThreeButton_Click" >Preset Three</Button>
+        </Grid>
+
+        <ListView Grid.Row="9" Grid.Column="0" x:Name="ITextInputListView">
         
         </ListView>
         
