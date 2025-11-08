@@ -24,7 +24,7 @@ namespace VsTextManagerIntro
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(VsTextManagerIntroPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VsTextManagerIntroPackage : AsyncPackage
     {
@@ -47,7 +47,7 @@ namespace VsTextManagerIntro
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await VsTextManagerIntro.Commands.TestCommand.InitializeAsync(this);
+            await Commands.TestCommand.InitializeAsync(this);
         }
 
         #endregion

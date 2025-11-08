@@ -29,18 +29,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
             <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="ITextEditInputTextBox" Margin="5" ></TextBox>
             <TextBlock FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" IsHitTestVisible="False" Text=" Your text input here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Foreground="DarkGray">
                 <TextBlock.Style>
@@ -54,9 +49,6 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-
-            <Button Grid.Column="3" Margin="5" x:Name="SetDefaultTextButton" Click="SetDefaultTextButton_Click" >Set Default Text</Button>
-            
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0" Name="ITextEditInputForInsertGrid">
@@ -226,9 +218,20 @@
             <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="ITextEditResetButton" Click="ITextEditResetButton_Click" >Reset</Button>
         </Grid>
 
-        <TextBlock FontSize="20" Padding="5, 0, 0, 0" Grid.Row="5" Grid.Column="0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <Grid Grid.Row="5" Grid.Column="0" x:Name="PresetButtonGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Margin="5" Grid.Column="0" HorizontalAlignment="Stretch" x:Name="PresetOneButton" Click="PresetOneButton_Click" >Preset One</Button>
+            <Button Margin="5" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="PresetTwoButton" Click="PresetTwoButton_Click" >Preset Two</Button>
+            <Button Margin="5" Grid.Column="2" HorizontalAlignment="Stretch" x:Name="PresetThreeButton" Click="PresetThreeButton_Click" >Preset Three</Button>
+        </Grid>
 
-        <Grid Grid.Row="6" x:Name="textVersionLinkedListGrid">
+        <TextBlock FontSize="20" Padding="5, 0, 0, 0" Grid.Row="6" Grid.Column="0" Name="ITextEditOutputTextBlock" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"></TextBlock>
+
+        <Grid Grid.Row="7" x:Name="textVersionLinkedListGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -249,7 +252,7 @@
             <Button Margin="0,5,5,5" Grid.Column="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" x:Name="nextTextVersionButton" Click="nextTextVersionButton_Click" >Next</Button>
         </Grid>
 
-        <ListView Grid.Row="7" Grid.Column="0" x:Name="applyListView">
+        <ListView Grid.Row="8" Grid.Column="0" x:Name="applyListView">
 
         </ListView>
 

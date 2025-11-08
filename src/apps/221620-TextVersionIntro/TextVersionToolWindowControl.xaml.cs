@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace TextVersionIntro
@@ -278,17 +279,30 @@ namespace TextVersionIntro
                     return;
                 }
 
+                if (exception is NullReferenceException)
+                {
+                    MessageBox.Show(
+                        messageBoxText: $"{exception.Message} Looks like Apply is clicked. So attempt an operation such as Replace.",
+                        caption: "Invalid Operation");
+                    return;
+                }
+
                 throw exception;
             }
 
+            if (_versionSnapshotDictionary.ContainsKey(textSnapshot.Version.VersionNumber))
+            {
+                _versionSnapshotDictionary.Remove(textSnapshot.Version.VersionNumber);
+            }
+
             _versionSnapshotDictionary.Add(textSnapshot.Version.VersionNumber, textSnapshot);
+
             AddVersionAfterApplyClick(textSnapshot);
             PublishCurrentSnapshotAfterOperation();
 
             _currentDisplayVersion = textSnapshot.Version.VersionNumber;
-            
-            UpdateStateTextVersion();
 
+            UpdateStateTextVersion();
             _textOperationList.Clear();
         }
 
@@ -359,8 +373,6 @@ namespace TextVersionIntro
 
             specificVersionTextTextBloc.Text = string.Empty;
             specificVersionTextBloc.Text = string.Empty;
-
-            SetDefaultTextButton.IsEnabled = true;
 
             _currentDisplayVersion = -1;
 
@@ -462,10 +474,37 @@ namespace TextVersionIntro
             }
         }
 
-        private void SetDefaultTextButton_Click(object sender, RoutedEventArgs e)
+        //private void SetDefaultTextButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ITextEditInputTextBox.Text = "012345678901234567890123456789";
+        //    SetDefaultTextButton.IsEnabled = false;
+        //}
+
+        private void PresetOneButton_Click(object sender, RoutedEventArgs e)
         {
             ITextEditInputTextBox.Text = "012345678901234567890123456789";
-            SetDefaultTextButton.IsEnabled = false;
+
+            ITextEditStartButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditInputPositionReplaceTxtBox.Text = "4";
+
+            ITextEditInputLengthReplaceTxtBox.Text = "2";
+
+            ITextEditInputTextReplaceTxtBox.Text = "CD";
+
+            ITextEditReplaceButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            ITextEditApplyButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        private void PresetTwoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not implemented");
+        }
+
+        private void PresetThreeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not implemented");
         }
     }
 }

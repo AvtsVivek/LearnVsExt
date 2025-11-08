@@ -51,7 +51,7 @@ Here we go...
 2. [Text buffer](../900930-JsonEditor/Articles/3-ITextBuffer.md)
 
 ## ToDo
-1. .CreateTrackingPoint is available in the following. So need to check. 
+1. CreateTrackingPoint is available in the following. So need to check. 
    1. 800950-OokLanguage\
       1. Intellisense\TemplateQuickInfoController.cs
       2. Intellisense\CommandFilter.cs
