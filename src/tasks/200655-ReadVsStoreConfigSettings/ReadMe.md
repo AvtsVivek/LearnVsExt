@@ -42,3 +42,17 @@ Then installed.
 9.  The message box
 
 ![The message box](images/54_50_TheMessageBox.jpg)
+
+10. Now modify the CollectionExists method call with the following - `@"InstalledProducts\WebProjectPackage"`
+
+![The existing config](images/55_50_AvailableConfigs.png)
+
+```cs
+var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\WebProjectPackage");
+```
+
+11. Now ResetExperimntalInstance, build and re run. This time you will get 
+
+![The true message box](images/56_50_AvailableConfigsTrue.png)
+
+

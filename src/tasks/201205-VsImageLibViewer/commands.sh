@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/201105-WpfAppToExtractVsMonikers
+cd src/tasks/201205-VsImageLibViewer
 
-cd src/apps/201105-WpfAppToExtractVsMonikers
+cd src/apps/201205-VsImageLibViewer
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

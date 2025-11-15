@@ -95,8 +95,8 @@ namespace ReadVsStoreConfigSettings.Commands
 
             var settingsManager = new ShellSettingsManager(this.package);
             var configurationSettingsStore = settingsManager.GetReadOnlySettingsStore(SettingsScope.Configuration);
-            var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\Microsoft Windows Phone Developer Tools");
-
+            // var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\Microsoft Windows Phone Developer Tools");
+            var arePhoneToolsInstalled = configurationSettingsStore.CollectionExists(@"InstalledProducts\WebProjectPackage");
             var message = string.Format(CultureInfo.CurrentCulture, "Microsoft Windows Phone Developer Tools: {0}", arePhoneToolsInstalled);
             var title = "CheckWindowsPhoneDevToolsCommand";
 

@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/352500-SimpleToolWindow
+cd src/tasks/200800-SimpleToolWindow
 
-cd src/apps/352500-SimpleToolWindow
+cd src/apps/200800-SimpleToolWindow
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 
