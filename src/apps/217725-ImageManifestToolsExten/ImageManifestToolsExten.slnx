@@ -4,7 +4,7 @@
     <Platform Name="arm64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="ImageManifestToolsExten.csproj">
+  <Project Path="ImageManifestToolsExten.csproj" Id="70e8ebd8-566f-4792-ae35-cd4975219c60">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>

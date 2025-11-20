@@ -33,3 +33,5 @@ ManifestFromResources /assembly:ManifestFromResources /manifest:MyImageManifest.
     <Content Include="images\Save.png" />
   </ItemGroup>
 ```
+
+dotnet sln migrate

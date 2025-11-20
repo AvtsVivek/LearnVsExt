@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="JsonRpcStdIoClient/JsonRpcStdIoClient.csproj" />
+  <Project Path="JsonRpcStdIoServer/JsonRpcStdIoServer.csproj" />
+</Solution>

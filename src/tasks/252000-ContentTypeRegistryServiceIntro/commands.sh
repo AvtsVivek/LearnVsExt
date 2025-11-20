@@ -2,7 +2,7 @@ cd ../../..
 
 cd src/tasks/252000-ContentTypeRegistryServiceIntro
 
-cd src/apps/252500-ContentTypeRegistryServiceIntro
+cd src/apps/252000-ContentTypeRegistryServiceIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

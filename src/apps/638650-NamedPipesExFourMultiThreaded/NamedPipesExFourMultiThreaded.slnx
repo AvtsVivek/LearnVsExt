@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NamedPipesExFourMultiThreadedClient/NamedPipesExFourMultiThreadedClient.csproj" />
+  <Project Path="NamedPipesExFourMultiThreadedServer/NamedPipesExFourMultiThreadedServer.csproj" />
+</Solution>

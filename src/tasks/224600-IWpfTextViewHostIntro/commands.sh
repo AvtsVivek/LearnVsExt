@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/424600-IWpfTextViewHostIntro
+cd src/tasks/224600-IWpfTextViewHostIntro
 
-cd src/apps/424600-IWpfTextViewHostIntro
+cd src/apps/224600-IWpfTextViewHostIntro
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

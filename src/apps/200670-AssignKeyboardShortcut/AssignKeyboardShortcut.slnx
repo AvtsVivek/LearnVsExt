@@ -4,7 +4,7 @@
     <Platform Name="arm64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="AssignKeyboardShortcut.csproj">
+  <Project Path="AssignKeyboardShortcut.csproj" Id="6e626203-5f14-41aa-a3e4-3a6d05e9e34a">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>

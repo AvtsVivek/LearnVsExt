@@ -1,22 +1,21 @@
 cd ../../..
 
-cd src/tasks/220520-NormalSpanColWpfApp
+cd src/tasks/221550-ITextEditIntroWpfNotWorking
 
-cd src/apps/220520-NormalSpanColWpfApp
+cd src/apps/221550-ITextEditIntroWpfNotWorking
 
-dotnet build NormalSpanColWpfApp.sln
+dotnet build ITextEditIntroWpfNotWorking.sln
 # or
-dotnet build NormalSpanColWpfApp.csproj
+dotnet build ITextEditIntroWpfNotWorking.csproj
 
-dotnet run NormalSpanColWpfApp.csproj
-
+dotnet run ITextEditIntroWpfNotWorking.csproj
 
 ## The following is not relevant. 
 
 ## I dont think we can build using the following dotnet command.
 ## The project is not a dotnet core project. 
 
-dotnet build --project ./NormalSpanColWpfApp.csproj
+dotnet build --project ./ITextEditIntroWpfNotWorking.csproj
 
 # For the following command to work, devenv must be added to the path environment variable. 
 # First ensure you have visual studio is installed on your machine.
@@ -25,15 +24,15 @@ dotnet build --project ./NormalSpanColWpfApp.csproj
 # Next add this to the path evnironment variable. 
 
 # https://stackoverflow.com/a/76077904/1977871
-nuget restore ./NormalSpanColWpfApp.sln
+nuget restore ./ITextEditIntroWpfNotWorking.sln
 
 # The following build commands does not seem to work. 
 # For debugging, build using visual studio only!!!
-devenv /build Debug ./NormalSpanColWpfApp.sln
-devenv /Rebuild Debug ./NormalSpanColWpfApp.sln
+devenv /build Debug ./ITextEditIntroWpfNotWorking.sln
+devenv /Rebuild Debug ./ITextEditIntroWpfNotWorking.sln
 
 # If you just want to start and run visual studi in experimental mode, run the following command.
-devenv.exe /RootSuffix Exp ./NormalSpanColWpfApp.sln
+devenv.exe /RootSuffix Exp ./ITextEditIntroWpfNotWorking.sln
 
 pwd
 

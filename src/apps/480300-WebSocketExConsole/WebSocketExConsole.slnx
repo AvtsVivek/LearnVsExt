@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WebSocketExConsoleClient/WebSocketExConsoleClient.csproj" />
+  <Project Path="WebSocketExConsoleServer/WebSocketExConsoleServer.csproj" />
+</Solution>

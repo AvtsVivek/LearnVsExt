@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/252570-TagVarieties
+cd src/tasks/252650-TagVarieties
 
-cd src/apps/252570-TagVarieties
+cd src/apps/252650-TagVarieties
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

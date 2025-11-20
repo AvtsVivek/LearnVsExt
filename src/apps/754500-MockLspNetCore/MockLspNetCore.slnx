@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="LanguageServerWithNetCoreWpfUI/LanguageServerWithNetCoreWpfUI.csproj" />
+  <Project Path="LspNetCoreLib/LspNetCoreLib.csproj" />
+  <Project Path="MockLspVSixSdkStyle/MockLspVSixSdkStyle.csproj">
+    <BuildDependency Project="LanguageServerWithNetCoreWpfUI/LanguageServerWithNetCoreWpfUI.csproj" />
+  </Project>
+</Solution>

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MyDataObject/MyDataObject.csproj" />
+  <Project Path="MyFirstVisualizer/MyFirstVisualizer.csproj" />
+  <Project Path="MyTestConsole/MyTestConsole.csproj" />
+</Solution>

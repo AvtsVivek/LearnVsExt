@@ -4,7 +4,7 @@
     <Platform Name="arm64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="VSixBlankProjectCodeAnalysis.csproj">
+  <Project Path="VSixBlankProjectCodeAnalysis.csproj" Id="33720430-1c22-4998-b76f-8f7a464f9da9">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>

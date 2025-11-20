@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/252600-HelloTextMarkerTag
+cd src/tasks/252670-HelloTextMarkerTag
 
-cd src/apps/252600-HelloTextMarkerTag
+cd src/apps/252670-HelloTextMarkerTag
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

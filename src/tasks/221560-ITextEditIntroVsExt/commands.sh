@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/224500-ITextEditIntroVsExt
+cd src/tasks/221560-ITextEditIntroVsExt
 
-cd src/apps/224500-ITextEditIntroVsExt
+cd src/apps/221560-ITextEditIntroVsExt
 
 ## I dont think we can build using the following dotnet command. 
 ## The project is not a dotnet core project. 

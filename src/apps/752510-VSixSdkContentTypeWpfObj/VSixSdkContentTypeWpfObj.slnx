@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NetCoreWpfAppObj/NetCoreWpfAppObj.csproj" />
+  <Project Path="VSixSdkStyleContentTypeObj/VSixSdkStyleContentTypeObj.csproj" />
+</Solution>

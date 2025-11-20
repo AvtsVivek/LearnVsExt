@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="JsonRpcNamedPipeClient/JsonRpcNamedPipeClient.csproj" />
+  <Project Path="JsonRpcNamedPipeServer/JsonRpcNamedPipeServer.csproj" />
+</Solution>

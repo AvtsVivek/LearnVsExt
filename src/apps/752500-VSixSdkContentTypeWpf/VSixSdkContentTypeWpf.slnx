@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="arm64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="NetCoreWpfApp/NetCoreWpfApp.csproj" />
+  <Project Path="VSixSdkStyleContentType/VSixSdkStyleContentType.csproj">
+    <BuildDependency Project="NetCoreWpfApp/NetCoreWpfApp.csproj" />
+    <Deploy Solution="*|Any CPU" />
+  </Project>
+</Solution>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NamedPipesExThreeClient/NamedPipesExThreeClient.csproj" />
+  <Project Path="NamedPipesExThreeServer/NamedPipesExThreeServer.csproj" />
+</Solution>
